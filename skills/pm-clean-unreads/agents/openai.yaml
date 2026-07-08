@@ -1,0 +1,4 @@
+interface:
+  display_name: "PM Clean Unreads"
+  short_description: "PM find completed Codex threads safe to mark read"
+  default_prompt: "Use $pm-clean-unreads to find unread Codex threads whose work is complete, finish-lined, deployed to dev when applicable, and safe to mark read."

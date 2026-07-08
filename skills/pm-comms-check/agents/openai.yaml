@@ -1,0 +1,6 @@
+interface:
+  display_name: "PM Comms Check"
+  short_description: "Review outstanding communication follow-ups"
+  default_prompt: "Use $pm-comms-check to summarize outstanding communications and blocked source coverage."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "PM Delegate"
+  short_description: "PM route selected work to the right project agent or worker"
+  default_prompt: "Use $pm-delegate to route the selected work to the appropriate project agent or bounded worker."
+policy:
+  allow_implicit_invocation: true

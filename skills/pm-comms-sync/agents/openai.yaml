@@ -1,0 +1,6 @@
+interface:
+  display_name: "PM Comms Sync"
+  short_description: "Run the PM communications monitor on demand"
+  default_prompt: "Use $pm-comms-sync to scan registered communication surfaces and refresh the PM comms ledger."
+policy:
+  allow_implicit_invocation: true
