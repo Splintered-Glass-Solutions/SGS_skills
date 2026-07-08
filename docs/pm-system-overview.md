@@ -1,5 +1,8 @@
 # PM System Overview
 
+This file is retained as a compact overview. The dedicated PM systems docs now
+live under [docs/pm-systems](pm-systems/README.md).
+
 ## System Map
 
 ```mermaid
@@ -99,4 +102,3 @@ flowchart TD
   on thread replay.
 - A read-only PM dashboard would make active, blocked, waiting, and decision
   queues easier to inspect.
-

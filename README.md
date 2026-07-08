@@ -40,7 +40,12 @@ folder is the durable source of truth. Persistent project threads keep project
 context warm. Bounded workers execute scoped tasks and return proof-oriented
 closeouts. Ledgers make work state survive chat compaction.
 
-See [docs/pm-system-overview.md](docs/pm-system-overview.md).
+See:
+
+- [docs/pm-systems](docs/pm-systems/README.md) for the dedicated PM systems
+  diagrams, operating loop, safety gates, unread cleanup logic, and roadmap.
+- [docs/pm-system-overview.md](docs/pm-system-overview.md) for the compact
+  overview.
 
 ## Portable Versions
 
