@@ -1,0 +1,6 @@
+interface:
+  display_name: "PM Dashboard"
+  short_description: "Open the local read-only PM cockpit"
+  default_prompt: "Use $pm-dashboard to refresh current-state and open the local PM cockpit."
+policy:
+  allow_implicit_invocation: true

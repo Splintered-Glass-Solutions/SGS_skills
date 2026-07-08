@@ -1,0 +1,15 @@
+---
+name: pm-dashboard
+display_name: PM Dashboard
+description: 'PM dashboard: use when the user wants the local read-only PM cockpit/dashboard
+  for active delegated work, blocked work, decisions needed, unread cleanup, comms
+  follow-ups, idle projects, and recent dispatcher scorecards.'
+source: skills/pm-dashboard/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

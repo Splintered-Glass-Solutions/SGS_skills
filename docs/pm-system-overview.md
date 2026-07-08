@@ -1,104 +1,135 @@
 # PM System Overview
 
-This file is retained as a compact overview. The dedicated PM systems docs now
-live under [docs/pm-systems](pm-systems/README.md).
+This is the compact map of the SGS/Codex project-management operating system.
+The deeper docs live under [docs/pm-systems](pm-systems/README.md).
 
-## System Map
+The core idea is simple: chat is the control surface, but durable files are the
+source of truth. The PM thread coordinates scans and decisions, project threads
+hold project context, workers do bounded work, and ledgers preserve state across
+compaction, restarts, and future PM passes.
+
+## Operating Picture
 
 ```mermaid
 flowchart TD
-  Preston["Preston"] --> PMThread["PM Thread / Portfolio HQ"]
+  Operator["Preston / operator"] --> PM["PM thread / portfolio HQ"]
 
-  PMThread --> Skills["PM Skills + Slash Commands"]
-  PMThread --> State["Portfolio State Files"]
-  PMThread --> Threads["Project Threads / Workers"]
-  PMThread --> Sources["External Work Sources"]
+  PM --> Skills["PM skills and slash commands"]
+  PM --> State["Local durable PM state"]
+  PM --> ProjectThreads["Verified project threads"]
+  PM --> Workers["Bounded workers / agents"]
+  PM --> Cockpit["Read-only PM dashboard"]
 
-  Skills --> PMPortfolio["PM Project Portfolio Manager"]
-  Skills --> PMDelegate["PM Delegate"]
-  Skills --> PMPlate["PM Plate Spin"]
-  Skills --> PMClean["PM Clean Unreads"]
-  Skills --> PMCommsCheck["PM Comms Check"]
-  Skills --> PMCommsSync["PM Comms Sync"]
+  Sources["Slack, email, texts, Teams, ClickUp, Skool, client comms"] --> CommsSync["PM comms sync/check"]
+  CommsSync --> LocalLedger["Local comms and work ledgers"]
+  LocalLedger --> State
 
-  State --> ProjectRegistry["project-registry.md"]
-  State --> ThreadRegistry["thread-registry.md"]
-  State --> ApprovalLedger["approval-ledger.md"]
-  State --> WorkLedger["work-ledger.jsonl"]
-  State --> Standards["standards-registry.md"]
-  State --> Scorecards["dispatcher scorecards"]
+  Skills --> Scan["Portfolio scan"]
+  Skills --> Delegate["Delegate selected work"]
+  Skills --> PlateSpin["Revive idle projects"]
+  Skills --> CleanUnreads["Clean unread threads"]
+  Skills --> Ingest["Ingest worker closeouts"]
 
-  Threads --> Persistent["Verified Persistent Project Threads"]
-  Threads --> Workers["Bounded Worker Threads / Agents"]
+  State --> Registries["Project/thread registries"]
+  State --> Approvals["Approval ledger"]
+  State --> WorkLedger["Work ledger"]
+  State --> Standards["Standards registry"]
+  State --> Scorecards["Dispatcher scorecards"]
+  State --> CurrentState["Generated current-state.json/md"]
 
-  Sources --> Slack["Slack"]
-  Sources --> Email["Email"]
-  Sources --> ClickUp["ClickUp"]
-  Sources --> Teams["Teams"]
-  Sources --> Texts["Text Threads"]
-  Sources --> Skool["Skool / Communities"]
+  Scan --> CurrentState
+  Delegate --> ProjectThreads
+  ProjectThreads --> Workers
+  Workers --> Ingest
+  Ingest --> WorkLedger
+  WorkLedger --> CurrentState
+  CurrentState --> Cockpit
+  Scorecards --> Cockpit
 ```
 
-## Main PM Loop
+## Durable State Flow
 
 ```mermaid
 flowchart LR
-  Scan["Scan portfolio state"] --> Classify["Classify work"]
-  Classify --> Decisions["Decisions needed from Preston"]
-  Classify --> Delegable["Safe delegation candidates"]
-  Classify --> Blocked["Blocked / escalation items"]
-  Classify --> Idle["Idle projects"]
+  Observation["Observed signal"] --> Record["Write local durable record first"]
+  Record --> Classify{"Actionable?"}
 
-  Delegable --> Delegate["PM Delegate"]
-  Idle --> PlateSpin["PM Plate Spin"]
-  Blocked --> Escalate["Escalate / ACTION_PROPOSAL"]
-  Decisions --> Preston["Ask Preston"]
+  Classify -->|"No: passive, duplicate, complete"| LedgerOnly["Keep local audit trail only"]
+  Classify -->|"Yes: decision, blocker, worker follow-up, failed validation, comms action"| ActionSurface["Action surface"]
 
-  Delegate --> ProjectThread["Relevant project thread"]
-  ProjectThread --> Worker["Bounded worker or project-agent follow-up"]
-  Worker --> Closeout["Proof-oriented closeout"]
-  Closeout --> Ledger["Append work-ledger event"]
-  Ledger --> NextScan["Next PM scan"]
+  ActionSurface --> Approval{"Preston-gated?"}
+  Approval -->|"Yes"| Proposal["ACTION_PROPOSAL + approval ledger"]
+  Approval -->|"No"| Route["Route to project thread, worker, or ClickUp"]
+
+  Route --> ClickUp{"ClickUp authorized and unique?"}
+  ClickUp -->|"Yes"| Task["Create concise ClickUp task"]
+  ClickUp -->|"No"| LocalOnly["Report ClickUp not created"]
+
+  Proposal --> CurrentState["Regenerate current-state"]
+  Task --> CurrentState
+  LocalOnly --> CurrentState
+  LedgerOnly --> CurrentState
 ```
 
-## Command Responsibilities
+## Outcome Loop
 
 ```mermaid
-flowchart TD
-  Portfolio["/pm-project-portfolio-manager"] --> Queue["Decision queue + project status"]
-  Delegate["/pm-delegate"] --> ProjectRoute["Route selected work"]
-  Plate["/pm-plate-spin"] --> SafeMoves["Small safe next prompts"]
-  Clean["/pm-clean-unreads"] --> ReadQueue["Unread cleanup queue"]
-  CommsCheck["/pm-comms-check"] --> Followups["Communication follow-ups"]
-  CommsSync["/pm-comms-sync"] --> CommsLedger["Refresh comms state"]
+sequenceDiagram
+  participant PM as PM thread
+  participant State as Local state files
+  participant Project as Project thread
+  participant Worker as Worker/agent
+  participant Dash as PM dashboard
+
+  PM->>State: Read registries, ledgers, standards, scorecards
+  PM->>State: Generate and validate current-state
+  PM->>PM: Classify decisions, blockers, idle lanes, comms, unreads
+  PM->>Project: Route bounded work when verified and allowed
+  Project->>Worker: Execute narrow task
+  Worker->>PM: Closeout with proof and WORK_LEDGER_UPDATE
+  PM->>State: Ingest closeout, validate ledgers
+  PM->>State: Append scorecard outcome metrics
+  State->>Dash: Render active work, blockers, decisions, unreads, comms, outcomes
 ```
 
-## Safety Gates
+## Command Families
 
-```mermaid
-flowchart TD
-  Action["Possible PM action"] --> Risk{"Is it gated?"}
+- `PM Project Portfolio Manager`: broad scan, durable state refresh, decisions,
+  blockers, safe next moves, scorecard updates.
+- `PM Delegate`: route highlighted work to the right verified project thread or
+  bounded worker.
+- `PM Plate Spin`: identify small safe next prompts for idle projects.
+- `PM Clean Unreads`: mark only truly complete unread threads as read and keep
+  incomplete work visible.
+- `PM Ingest Closeout`: ingest worker/project closeouts into the work ledger and
+  refresh current-state.
+- `PM Comms Check` and `PM Comms Sync`: consolidate communication follow-ups
+  from monitored channels.
+- `PM Dashboard`: launch the local read-only cockpit.
 
-  Risk -->|"Read-only scan / local proof / planning"| Allowed["Allowed"]
-  Risk -->|"Deploy / prod mutation / send message / DB grants / protected branch / create threads"| Proposal["Requires ACTION_PROPOSAL"]
-  Risk -->|"External task creation"| Policy{"Approved destination?"}
+## Safety Rules
 
-  Policy -->|"Local ledger only"| Local["Write local PM state"]
-  Policy -->|"ClickUp approved"| ClickUp["Create ClickUp task"]
-  Policy -->|"Unclear"| Ask["Ask Preston"]
+No deploys, production mutations, external messages, database permission/RLS
+changes, protected-branch operations, purchases, or Codex thread creation or
+messaging happen without a fresh `ACTION_PROPOSAL` and explicit approval.
 
-  Allowed --> Evidence["Collect proof"]
-  Proposal --> Preston["Preston approval"]
-  Preston --> Execute["Execute if approved"]
-```
+ClickUp is an action surface, not the source of truth. Every observed item lands
+in the local ledger/report layer first; ClickUp tasks are created only for
+actionable follow-ups with dedupe keys.
 
-## Current Gaps
+## Current Health
 
-- Closeout ingestion is still partly manual.
-- Clean-unreads status should write durable run reports.
-- Communication source coverage needs a normalized source registry and dedupe
-  keys.
-- A derived current-state view would make broad scans faster and less reliant
-  on thread replay.
-- A read-only PM dashboard would make active, blocked, waiting, and decision
-  queues easier to inspect.
+The system now has:
+
+- durable registries, approval ledger, work ledger, standards registry, and
+  dispatcher scorecards
+- generated `current-state.json` and `current-state.md`
+- closeout ingestion
+- delegation watchlist
+- durable clean-unreads reports
+- local ledger/ClickUp hybrid policy
+- read-only PM dashboard
+- dispatcher outcome scorecards that separate activity from actual movement
+
+The next useful evolution is trend reporting across scorecard outcomes and
+cleaner automated comms coverage across every source.

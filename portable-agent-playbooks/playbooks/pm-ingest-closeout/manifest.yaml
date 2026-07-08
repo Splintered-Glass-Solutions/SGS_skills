@@ -1,0 +1,16 @@
+---
+name: pm-ingest-closeout
+display_name: PM Ingest Closeout
+description: 'PM ingest closeout: use when the user highlights or references a worker,
+  bounded agent, or project-thread closeout and wants the PM thread to ingest its
+  WORK_LEDGER_UPDATE, append it to the portfolio work ledger, validate the ledger,
+  refresh current-state, and update active/blocked/waiting queues.'
+source: skills/pm-ingest-closeout/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

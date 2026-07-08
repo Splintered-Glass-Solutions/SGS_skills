@@ -1,0 +1,6 @@
+interface:
+  display_name: "PM Ingest Closeout"
+  short_description: "PM append worker closeout ledger updates and refresh queues"
+  default_prompt: "Use $pm-ingest-closeout to ingest the selected worker closeout into the portfolio ledger."
+policy:
+  allow_implicit_invocation: true

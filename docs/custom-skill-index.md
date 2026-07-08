@@ -57,7 +57,9 @@ excluded.
 - `pm-clean-unreads`
 - `pm-comms-check`
 - `pm-comms-sync`
+- `pm-dashboard`
 - `pm-delegate`
+- `pm-ingest-closeout`
 - `pm-plate-spin`
 - `pm-project-portfolio-manager`
 - `prep-work`
