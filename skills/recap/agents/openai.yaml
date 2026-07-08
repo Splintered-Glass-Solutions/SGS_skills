@@ -1,0 +1,6 @@
+interface:
+  display_name: "Recap"
+  short_description: "Summarize thread status and next paths"
+  default_prompt: "Use $recap to summarize the current thread, decisions, evidence, blockers, and next action paths."
+policy:
+  allow_implicit_invocation: true

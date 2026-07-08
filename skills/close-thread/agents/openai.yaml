@@ -1,0 +1,6 @@
+interface:
+  display_name: "Close Thread"
+  short_description: "Mark the current thread closed by prefixing its title"
+  default_prompt: "Use $close-thread to close the current thread with a title prefix and concise summary."
+policy:
+  allow_implicit_invocation: true

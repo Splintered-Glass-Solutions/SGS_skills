@@ -1,0 +1,15 @@
+---
+name: close-thread
+display_name: Close Thread
+description: Close the current agent thread by renaming it with a leading fullwidth
+  dash marker only. Use when the user asks to close out, mark closed, or run the close-thread
+  slash command for the current thread.
+source: skills/close-thread/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

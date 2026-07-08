@@ -30,6 +30,7 @@ excluded.
 - `car-wash`
 - `clickup`
 - `clickup-environment-map`
+- `close-thread`
 - `codex-safe-run`
 - `codex-slash-command-skill`
 - `continue`
@@ -65,6 +66,7 @@ excluded.
 - `prep-work`
 - `preston-communication`
 - `preston-house-style`
+- `recap`
 - `reanme-chat`
 - `rti-time-tracking`
 - `security-best-practices`

@@ -1,0 +1,16 @@
+---
+name: recap
+display_name: Recap
+description: Produce a concise thread recap with current state, decisions, evidence,
+  blockers, and clear next action paths. Use when the user asks to recap a thread,
+  summarize where things stand, prepare a handoff, or decide what can happen next
+  across many active agent threads.
+source: skills/recap/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions
