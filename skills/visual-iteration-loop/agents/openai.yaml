@@ -1,0 +1,4 @@
+interface:
+  display_name: "Visual Iteration Loop"
+  short_description: "Audit, improve, and retest visuals in loops"
+  default_prompt: "Use $visual-iteration-loop to audit and improve the visuals for up to 5 iterations, stopping early if the quality bar is met."

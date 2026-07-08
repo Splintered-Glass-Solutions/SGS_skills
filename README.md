@@ -1,23 +1,21 @@
 # SGS Skills
 
-Private repo for reusable Codex project-management skills, slash-command
-wrappers, and PM orchestration templates used by Splintered Glass Solutions.
+Private repo for reusable Codex skills, slash-command wrappers, and PM
+orchestration templates used by Splintered Glass Solutions.
 
 ## What Is Included
 
-- `skills/pm-project-portfolio-manager`: portfolio scan, decisions, blockers,
-  delegation candidates, scorecard/ledger updates.
-- `skills/pm-delegate`: route selected work to the right verified project
-  thread or bounded worker.
-- `skills/pm-plate-spin`: find idle projects and propose small safe next moves.
-- `skills/pm-clean-unreads`: classify unread Codex threads as ready to mark read
-  or keep unread with next steps.
-- `skills/pm-comms-check`: consolidate outstanding communications from the PM
-  comms ledger.
-- `skills/pm-comms-sync`: manually refresh the PM communications monitor.
-- `commands/pm-*.md`: slash-command wrappers for the same workflows.
+- `skills/`: all archived user-level custom Codex skills from
+  `/Users/preston/.codex/skills`, excluding only system/bundled/plugin skills.
+  This includes PM skills plus custom workflows such as `handoff`,
+  `orchestrator-mode`, `codex-safe-run`, `feature-finish-line`,
+  `full-suite-tests`, `bonfire-feature-release-update`,
+  `striq-feature-release-update`, `make-it-better`, `next-step`,
+  `autonomous-feature-build`, and the Bonfire/StrIQ/SGS helper skills.
+- `commands/`: user-level slash-command wrappers from `/Users/preston/.codex/commands`.
 - `portfolio/templates`: worker packet, worker closeout, and daily PM brief
   templates.
+- `docs/custom-skill-index.md`: current archived skill list.
 
 ## What Is Not Included
 
@@ -50,6 +48,5 @@ From this repo:
 ./scripts/install-local.sh
 ```
 
-This copies skills, command wrappers, and portfolio templates into
+This copies archived skills, command wrappers, and portfolio templates into
 `/Users/preston/.codex`. Review the script before running on another machine.
-

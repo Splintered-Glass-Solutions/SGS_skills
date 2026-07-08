@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bonfire Deployment Strategy"
+  short_description: "Choose Bonfire fast or slow deployment gates"
+  default_prompt: "Use $bonfire-deployment-strategy to choose the right Bonfire CI lane for this deployment."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prep Work"
+  short_description: "Audit prerequisites before autonomous long-running jobs"
+  default_prompt: "Use $prep-work before starting this large job to confirm credentials, access, approvals, risks, and validation readiness."

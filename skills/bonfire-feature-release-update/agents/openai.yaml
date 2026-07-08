@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bonfire Feature Release Update"
+  short_description: "Bonfire release comms workflow"
+  default_prompt: "Use $bonfire-feature-release-update to summarize the finished Bonfire feature, send the team and ClickUp updates, and publish the eligible release-log entry."

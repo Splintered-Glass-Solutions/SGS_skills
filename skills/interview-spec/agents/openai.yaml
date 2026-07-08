@@ -1,0 +1,6 @@
+interface:
+  display_name: "Interview Spec"
+  short_description: "Interview toward small verified specs"
+  default_prompt: "Use $interview-spec to interview me into a small, decision-ready project spec."
+policy:
+  allow_implicit_invocation: true

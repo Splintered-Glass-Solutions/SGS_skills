@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketing Asset Generation"
+  short_description: "Create persona-specific Bonfire launch assets"
+  default_prompt: "Use $marketing-asset-generation to create persona-specific Bonfire promotional assets for this feature."

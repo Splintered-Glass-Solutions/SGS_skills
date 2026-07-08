@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bonfire Content Source Integration"
+  short_description: "Add provider ingestion sources to Bonfire ETL."
+  default_prompt: "Use $bonfire-content-source-integration to build or update a Bonfire content source provider."

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Next Step"
+  short_description: "Choose and run the next safe autonomous step"
+  default_prompt: "Use $next-step to identify and execute the next safe, bounded step from the current context."
+policy:
+  allow_implicit_invocation: true

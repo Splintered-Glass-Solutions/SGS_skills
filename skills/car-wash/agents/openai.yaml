@@ -1,0 +1,6 @@
+interface:
+  display_name: "Car Wash"
+  short_description: "Clean up and consolidate local git state safely"
+  default_prompt: "Use $car-wash to clean up local git state and prepare the repo for continued work."
+policy:
+  allow_implicit_invocation: true

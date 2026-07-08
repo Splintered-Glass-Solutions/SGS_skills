@@ -1,0 +1,6 @@
+interface:
+  display_name: "Bonfire Supabase RLS"
+  short_description: "Schema and RLS changes for Bonfire"
+  default_prompt: "Use $bonfire-supabase-rls to add a Bonfire migration without weakening org isolation."
+policy:
+  allow_implicit_invocation: true

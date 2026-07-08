@@ -1,0 +1,7 @@
+interface:
+  display_name: "SGS Property Purchases"
+  short_description: "Route property purchases into ClickUp"
+  default_prompt: "Use $sgs-property-purchases to save these property purchase ideas to the right ClickUp list."
+
+policy:
+  allow_implicit_invocation: true

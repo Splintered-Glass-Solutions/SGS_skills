@@ -1,0 +1,7 @@
+interface:
+  display_name: "Orchestrator Mode"
+  short_description: "Use subagents while Codex orchestrates"
+  default_prompt: "Use $orchestrator-mode to keep this Codex thread as orchestrator, pair long or noisy work with $codex-safe-run guardrails, and launch bounded cheaper capable subagents for independent slices unless there is a concrete exception."
+
+policy:
+  allow_implicit_invocation: true

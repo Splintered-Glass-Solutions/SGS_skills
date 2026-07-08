@@ -1,0 +1,13 @@
+interface:
+  display_name: "Stitch MCP"
+  short_description: "Connect Codex to Google Stitch MCP"
+  default_prompt: "Use $stitch-mcp to connect to Google Stitch MCP and work with Stitch projects or design workflows."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "stitch"
+      description: "Google Stitch remote MCP server"
+      transport: "streamable_http"
+      url: "https://stitch.googleapis.com/mcp"
+policy:
+  allow_implicit_invocation: true

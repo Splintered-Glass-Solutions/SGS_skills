@@ -1,0 +1,4 @@
+interface:
+  display_name: "ClickUp Environment Map"
+  short_description: "Map Preston's ClickUp hierarchy"
+  default_prompt: "Use $clickup-environment-map to find the right workspace, list, shared folder, channel, or comment surface."

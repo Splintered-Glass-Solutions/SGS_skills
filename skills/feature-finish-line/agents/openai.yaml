@@ -1,0 +1,4 @@
+interface:
+  display_name: "Feature Finish Line"
+  short_description: "Harden, test, run, and document finished features"
+  default_prompt: "Use $feature-finish-line to harden this completed feature, add and run tests, finish safe local execution, and update docs."

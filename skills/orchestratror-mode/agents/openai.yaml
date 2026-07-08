@@ -1,0 +1,7 @@
+interface:
+  display_name: "Orchestrator Mode"
+  short_description: "Use cheaper subagents with safe, token-minimized orchestration"
+  default_prompt: "Use $orchestratror-mode to keep the current thread model as orchestrator, apply $codex-safe-run guardrails for long/noisy work, and delegate bounded work to cheaper capable subagents."
+
+policy:
+  allow_implicit_invocation: true

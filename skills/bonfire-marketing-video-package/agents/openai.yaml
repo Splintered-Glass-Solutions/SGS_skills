@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bonfire Marketing Video Package"
+  short_description: "Build Bonfire marketing video kits"
+  default_prompt: "Use $bonfire-marketing-video-package after finishing a Bonfire feature to create the Drive marketing package, Remotion/raw video files, and Bonfire text update."

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Bonfire Billing"
+  short_description: "Stripe, licenses, and billing flows for Bonfire"
+  default_prompt: "Use $bonfire-billing-stripe to change Bonfire billing behavior with webhook and license safety checks."
+policy:
+  allow_implicit_invocation: true

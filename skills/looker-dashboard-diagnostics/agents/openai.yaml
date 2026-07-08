@@ -1,0 +1,4 @@
+interface:
+  display_name: "Looker Dashboard Diagnostics"
+  short_description: "Inspect Looker dashboards for migration"
+  default_prompt: "Use $looker-dashboard-diagnostics to inventory a Looker dashboard and extract tile SQL for migration."

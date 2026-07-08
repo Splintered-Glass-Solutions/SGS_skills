@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ninety Rock Entry"
+  short_description: "Add Rocks and milestones to Ninety"
+  default_prompt: "Use $ninety-rock-entry to add Q3 rocks and milestones into Ninety from a prepared copyboard."

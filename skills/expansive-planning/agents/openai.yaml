@@ -1,0 +1,4 @@
+interface:
+  display_name: "Expansive Planning"
+  short_description: "Planning with practical pushback on architecture, breaking changes, and scope risk."
+  default_prompt: "Use $expansive-planning to turn an underspecified goal into a decision-complete plan."

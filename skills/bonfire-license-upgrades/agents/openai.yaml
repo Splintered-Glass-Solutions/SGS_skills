@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bonfire License Upgrades"
+  short_description: "Upgrade Bonfire orgs within the right ladder"
+  default_prompt: "Use $bonfire-license-upgrades to upgrade a Bonfire organization to the next plan in its current ladder."

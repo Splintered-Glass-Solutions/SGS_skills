@@ -1,0 +1,6 @@
+interface:
+  display_name: "Bonfire Chat Widget"
+  short_description: "Work safely on Bonfire's embeddable chat widget"
+  default_prompt: "Use $bonfire-chat-widget to fix a Bonfire widget behavior while preserving the public embed API."
+policy:
+  allow_implicit_invocation: true

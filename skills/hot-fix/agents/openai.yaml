@@ -1,0 +1,6 @@
+interface:
+  display_name: "Hot Fix"
+  short_description: "Resolve found issues and deploy fixes"
+  default_prompt: "Use $hot-fix to resolve any issues found and deploy the fixes."
+policy:
+  allow_implicit_invocation: true

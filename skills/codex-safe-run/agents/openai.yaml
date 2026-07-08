@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Safe Run"
+  short_description: "Run Codex Desktop with memory guardrails"
+  default_prompt: "Use $codex-safe-run to run Codex more safely and monitor for runaway Desktop memory."

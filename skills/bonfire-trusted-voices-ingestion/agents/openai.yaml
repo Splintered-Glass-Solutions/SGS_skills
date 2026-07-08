@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bonfire Trusted Voices Ingestion"
+  short_description: "Work on Trusted Voices corpus ingestion."
+  default_prompt: "Use $bonfire-trusted-voices-ingestion to update Trusted Voices ingestion."

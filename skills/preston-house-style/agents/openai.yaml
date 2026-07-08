@@ -1,0 +1,4 @@
+interface:
+  display_name: "Preston House Style"
+  short_description: "Apply Preston's pragmatic Python house style"
+  default_prompt: "Follow the Preston house style for structure, errors, responses, and tests."

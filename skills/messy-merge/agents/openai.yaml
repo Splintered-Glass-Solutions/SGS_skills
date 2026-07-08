@@ -1,0 +1,7 @@
+interface:
+  display_name: "Messy Merge"
+  short_description: "Merge feature work into dev safely."
+  default_prompt: "Use $messy-merge to safely merge this feature into dev while preserving concurrent work."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Local Dev Consolidation"
+  short_description: "Merge, validate, deploy-to-dev, and clean up local work"
+  default_prompt: "Use $local-dev-consolidation to inspect local repos/worktrees, consolidate functional work into a dev-ready branch, resolve conflicts, run validation, deploy to dev if I explicitly asked for it, and report anything excluded or unfinished."

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Make It Better"
+  short_description: "Autonomously audit and improve product quality"
+  default_prompt: "Use $make-it-better to inspect this project, run safe iterative product-quality loops, delegate bounded scans, and improve or plan improvements across UX, design, copy, code quality, testing, graphics, polish, and delight."
+policy:
+  allow_implicit_invocation: true

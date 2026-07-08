@@ -1,0 +1,4 @@
+interface:
+  display_name: "StrIQ Data Quality Review"
+  short_description: "Review StrIQ sync health and backlog."
+  default_prompt: "Review today’s StrIQ data quality. Validate valid-stage-to-prod property coverage first, then summarize remaining analytics and source-data backlog."

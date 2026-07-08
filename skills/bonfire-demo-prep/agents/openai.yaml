@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bonfire Demo Prep"
+  short_description: "Prepare and verify Bonfire demos"
+  default_prompt: "Use $bonfire-demo-prep to audit a Bonfire org, fix demo blockers, deploy to dev, and outline the best demo flow."

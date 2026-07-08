@@ -1,0 +1,7 @@
+interface:
+  display_name: "Autonomous Feature Build"
+  short_description: "Build full features with delegated Codex work"
+  default_prompt: "Use $autonomous-feature-build to create a goal, orchestrate the feature end to end, use $orchestrator-mode and $codex-safe-run guardrails, and delegate bounded work to cheaper capable subagents."
+
+policy:
+  allow_implicit_invocation: true

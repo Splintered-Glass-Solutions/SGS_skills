@@ -1,0 +1,7 @@
+interface:
+  display_name: "StrIQ Time Tracking"
+  short_description: "Log StrIQ time to the right ClickUp task"
+  default_prompt: "Use $striq-time-tracking to log time for this StrIQ work."
+
+policy:
+  allow_implicit_invocation: true

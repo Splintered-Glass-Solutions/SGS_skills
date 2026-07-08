@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bonfire ETL Security Review"
+  short_description: "Review ETL tenancy, storage, and secret risks."
+  default_prompt: "Use $bonfire-etl-security-review to review this Bonfire_ETL change for security risks."

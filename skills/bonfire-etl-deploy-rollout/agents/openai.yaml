@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bonfire ETL Deploy Rollout"
+  short_description: "Deploy Bonfire ETL functions and infra safely."
+  default_prompt: "Use $bonfire-etl-deploy-rollout to prepare or run a Bonfire_ETL deployment."

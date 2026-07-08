@@ -1,0 +1,4 @@
+interface:
+  display_name: "Doc Sync"
+  short_description: "Build a canonical repo docs spine."
+  default_prompt: "Use $doc-sync to audit this repository documentation and tighten it into a small canonical source of truth."

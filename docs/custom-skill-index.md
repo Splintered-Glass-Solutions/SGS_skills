@@ -1,0 +1,80 @@
+# Custom Skill Index
+
+Archived from `/Users/preston/.codex/skills` into this private repo.
+System, bundled, plugin-cache, and live portfolio-state files are intentionally
+excluded.
+
+## Skills
+
+- `autonomous-feature-build`
+- `bonfire-api-routes`
+- `bonfire-auth-org-permissions`
+- `bonfire-billing-stripe`
+- `bonfire-chat-widget`
+- `bonfire-content-etl`
+- `bonfire-content-source-integration`
+- `bonfire-demo-prep`
+- `bonfire-deployment-strategy`
+- `bonfire-docs-sync`
+- `bonfire-etl-deploy-rollout`
+- `bonfire-etl-function-builder`
+- `bonfire-etl-security-review`
+- `bonfire-etl-validation`
+- `bonfire-feature-release-update`
+- `bonfire-license-upgrades`
+- `bonfire-marketing-video-package`
+- `bonfire-qaqc`
+- `bonfire-status-updates`
+- `bonfire-supabase-rls`
+- `bonfire-trusted-voices-ingestion`
+- `car-wash`
+- `clickup`
+- `clickup-environment-map`
+- `codex-safe-run`
+- `codex-slash-command-skill`
+- `continue`
+- `develop-web-game`
+- `doc-sync`
+- `expansive-planning`
+- `fathom-notes-api`
+- `feature-finish-line`
+- `figma`
+- `full-suite-tests`
+- `handoff`
+- `hot-fix`
+- `interview-spec`
+- `local-dev-consolidation`
+- `looker-dashboard-diagnostics`
+- `make-it-better`
+- `marketing-asset-generation`
+- `messy-merge`
+- `next-step`
+- `ninety-rock-entry`
+- `orchestrator-mode`
+- `orchestratror-mode`
+- `pdf`
+- `playwright`
+- `pm-clean-unreads`
+- `pm-comms-check`
+- `pm-comms-sync`
+- `pm-delegate`
+- `pm-plate-spin`
+- `pm-project-portfolio-manager`
+- `prep-work`
+- `preston-communication`
+- `preston-house-style`
+- `reanme-chat`
+- `rti-time-tracking`
+- `security-best-practices`
+- `session-budget`
+- `sgs-personal-todo`
+- `sgs-property-purchases`
+- `sgs-proposal-microsites`
+- `sideline-feature`
+- `spin-up-local`
+- `stitch-mcp`
+- `striq-clickup`
+- `striq-data-quality-review`
+- `striq-feature-release-update`
+- `striq-time-tracking`
+- `visual-iteration-loop`

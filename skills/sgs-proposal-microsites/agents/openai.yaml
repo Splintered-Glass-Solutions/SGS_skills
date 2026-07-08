@@ -1,0 +1,4 @@
+interface:
+  display_name: "SGS Proposals"
+  short_description: "Build and update SGS proposal microsites"
+  default_prompt: "Use $sgs-proposal-microsites to add or update a client proposal in the shared SGS proposal repo."

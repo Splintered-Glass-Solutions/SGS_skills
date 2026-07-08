@@ -6,14 +6,24 @@ CODEX_HOME="${CODEX_HOME:-/Users/preston/.codex}"
 
 mkdir -p "$CODEX_HOME/skills" "$CODEX_HOME/commands" "$CODEX_HOME/portfolio/templates"
 
-rsync -a "$ROOT/skills/pm-delegate/" "$CODEX_HOME/skills/delegate/"
-rsync -a "$ROOT/skills/pm-clean-unreads/" "$CODEX_HOME/skills/clean-unreads/"
-rsync -a "$ROOT/skills/pm-plate-spin/" "$CODEX_HOME/skills/plate-spin/"
-rsync -a "$ROOT/skills/pm-project-portfolio-manager/" "$CODEX_HOME/skills/project-portfolio-manager/"
-rsync -a "$ROOT/skills/pm-comms-check/" "$CODEX_HOME/skills/pm-comms-check/"
-rsync -a "$ROOT/skills/pm-comms-sync/" "$CODEX_HOME/skills/pm-comms-sync/"
+for skill_dir in "$ROOT"/skills/*; do
+  [ -d "$skill_dir" ] || continue
+  skill_name="$(basename "$skill_dir")"
+
+  # Preserve current local folder names for PM skills whose SKILL.md names were
+  # prefixed after the original command wrappers were created.
+  case "$skill_name" in
+    pm-delegate) target_name="delegate" ;;
+    pm-clean-unreads) target_name="clean-unreads" ;;
+    pm-plate-spin) target_name="plate-spin" ;;
+    pm-project-portfolio-manager) target_name="project-portfolio-manager" ;;
+    *) target_name="$skill_name" ;;
+  esac
+
+  rsync -a "$skill_dir/" "$CODEX_HOME/skills/$target_name/"
+done
+
 rsync -a "$ROOT/commands/" "$CODEX_HOME/commands/"
 rsync -a "$ROOT/portfolio/templates/" "$CODEX_HOME/portfolio/templates/"
 
-echo "Installed PM skills, commands, and templates into $CODEX_HOME"
-
+echo "Installed archived skills, commands, and templates into $CODEX_HOME"
