@@ -1,0 +1,16 @@
+---
+name: spin-up-local
+display_name: Spin Up Local
+description: Start a project locally so the user can test the exact work currently
+  in progress. Use when the user says spin up local, local, run locally, let me test,
+  start the app, give me the local link, or asks to verify that local frontend, backend,
+  API, worker, or multi-repo changes are being used by the test server.
+source: skills/spin-up-local/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

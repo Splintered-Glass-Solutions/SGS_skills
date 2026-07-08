@@ -1,0 +1,15 @@
+---
+name: bonfire-api-routes
+display_name: Bonfire Api Routes
+description: Add, change, review, or test Bonfire Next.js API route handlers under
+  src/app/api, including validation, auth, org access, JSON response shape, CORS,
+  runtime selection, Sentry logging, or route tests.
+source: skills/bonfire-api-routes/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

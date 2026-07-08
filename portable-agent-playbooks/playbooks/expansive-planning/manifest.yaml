@@ -1,0 +1,18 @@
+---
+name: expansive-planning
+display_name: Expansive Planning
+description: Use when the agent is asked to plan, use planning mode, draft an implementation
+  plan, shape scope, design an automation or workflow, challenge assumptions, or turn
+  an underspecified goal into a decision-complete spec. Push for leverage by asking
+  practical prodding questions, surfacing hidden tradeoffs, calling out breaking changes,
+  major architecture shifts, deviations from existing patterns, and cross-repo implications,
+  and recommending a tight path that avoids unnecessary scope creep.
+source: skills/expansive-planning/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

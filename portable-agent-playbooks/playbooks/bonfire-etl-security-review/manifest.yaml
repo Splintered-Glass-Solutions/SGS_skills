@@ -1,0 +1,16 @@
+---
+name: bonfire-etl-security-review
+display_name: Bonfire Etl Security Review
+description: Review Bonfire_ETL security-sensitive code. Use when touching URL ingestion,
+  crawler behavior, redirects, storage paths, Supabase/Postgres tenant validation,
+  provider credentials, webhook auth, Sentry/logging, secret handling, or cross-tenant
+  data boundaries.
+source: skills/bonfire-etl-security-review/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

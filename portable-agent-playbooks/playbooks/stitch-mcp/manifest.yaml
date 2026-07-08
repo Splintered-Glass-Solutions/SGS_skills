@@ -1,0 +1,17 @@
+---
+name: stitch-mcp
+display_name: Stitch Mcp
+description: Connect the agent to Google Stitch through the remote MCP endpoint and
+  use Stitch projects as design context across repos. Use when a user wants to pull
+  from Stitch, authenticate a Stitch MCP client, inspect or operate on Stitch projects,
+  translate Stitch designs into product or code work, or troubleshoot Stitch MCP setup
+  in the agent, Cursor, VSCode, Claude Code, Antigravity, or Gemini CLI.
+source: skills/stitch-mcp/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

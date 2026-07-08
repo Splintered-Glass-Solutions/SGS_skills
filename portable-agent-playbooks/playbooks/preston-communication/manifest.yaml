@@ -1,0 +1,17 @@
+---
+name: preston-communication
+display_name: User Communication
+description: Draft, revise, or prepare messages in the user's communication style.
+  Use whenever the user asks the agent to send, draft, reply to, write, or respond
+  to a text message, iMessage, SMS, email, Gmail thread, client message, vendor support
+  email, family message, wife message, close-friend message, business-partner text,
+  or any outbound personal/professional communication as the user.
+source: skills/preston-communication/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

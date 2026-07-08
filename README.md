@@ -16,6 +16,8 @@ orchestration templates used by Splintered Glass Solutions.
 - `portfolio/templates`: worker packet, worker closeout, and daily PM brief
   templates.
 - `docs/custom-skill-index.md`: current archived skill list.
+- `portable-agent-playbooks/`: generalized versions of every archived skill for
+  Claude, Claude Code, Cursor, OpenAI/Codex, or other agent platforms.
 
 ## What Is Not Included
 
@@ -39,6 +41,15 @@ context warm. Bounded workers execute scoped tasks and return proof-oriented
 closeouts. Ledgers make work state survive chat compaction.
 
 See [docs/pm-system-overview.md](docs/pm-system-overview.md).
+
+## Portable Versions
+
+For non-Codex platforms, use
+[portable-agent-playbooks/README.md](portable-agent-playbooks/README.md).
+Each archived skill has a platform-neutral `AGENT.md` plus `manifest.yaml`.
+The portable versions replace machine-specific paths with placeholders such as
+`<agent-config>` and `<workspace>`, while preserving safety gates and workflow
+structure.
 
 ## Install Locally
 

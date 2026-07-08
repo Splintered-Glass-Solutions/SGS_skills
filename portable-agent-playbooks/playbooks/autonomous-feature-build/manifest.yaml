@@ -1,0 +1,17 @@
+---
+name: autonomous-feature-build
+display_name: Autonomous Feature Build
+description: 'Use when the user wants a full feature built end to end with the agent
+  acting as the orchestrator: create or track a goal, inspect the repo, plan implementation,
+  delegate bounded research, coding, testing, and log-reduction slices to cheaper
+  capable subagents, use agent-safe-run and low-token guardrails, implement the changes,
+  verify the result, and report proof plus remaining risks.'
+source: skills/autonomous-feature-build/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

@@ -1,0 +1,15 @@
+---
+name: bonfire-etl-function-builder
+display_name: Bonfire Etl Function Builder
+description: Build, modify, or review Bonfire ETL Lambda function folders. Use when
+  working on Bonfire_ETL functions, function.yaml files, Lambda handlers, SQS/webhook
+  contracts, Dockerfiles, per-function tests, or shared bonfire_etl_shared helpers.
+source: skills/bonfire-etl-function-builder/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

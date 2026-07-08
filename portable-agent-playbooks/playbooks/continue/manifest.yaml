@@ -1,0 +1,16 @@
+---
+name: continue
+display_name: Continue
+description: Resume interrupted agent work after a limit, pause, network cutout, app
+  reload, context compaction, or stalled thread. Use when the user invokes /continue,
+  says continue, resume, pick back up, keep going, do not restart, or asks the agent
+  to continue the exact work already underway without losing context.
+source: skills/continue/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

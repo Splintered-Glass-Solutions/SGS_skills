@@ -1,0 +1,17 @@
+---
+name: pm-project-portfolio-manager
+display_name: PM Project Portfolio Manager
+description: 'PM project portfolio manager: use when the user asks to monitor, coordinate,
+  prioritize, delegate, or brief work across multiple projects, repos, automations,
+  agent threads, or agents. Builds compact PM-style decision queues, bounded worker
+  task packets, and proof-first portfolio status from durable checkpoints and live
+  evidence.'
+source: skills/pm-project-portfolio-manager/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

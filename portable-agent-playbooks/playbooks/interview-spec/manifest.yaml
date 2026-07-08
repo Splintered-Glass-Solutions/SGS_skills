@@ -1,0 +1,18 @@
+---
+name: interview-spec
+display_name: Interview Spec
+description: Interview the user to discover the real goal behind a project, product
+  idea, feature request, implementation ask, automation, or ambiguous workstream;
+  bias toward small compartmentalized specs; and make the user verify key decisions
+  explicitly before implementation or handoff. Use when the user asks to scope, spec,
+  plan, define, break down, interview, clarify, or turn an idea into a decision-ready
+  project spec.
+source: skills/interview-spec/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

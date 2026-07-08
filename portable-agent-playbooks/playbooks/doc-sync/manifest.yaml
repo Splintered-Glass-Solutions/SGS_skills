@@ -1,0 +1,18 @@
+---
+name: doc-sync
+display_name: Doc Sync
+description: Audit a repository's documentation and improve it so the repo can serve
+  as its own up-to-date source of truth across machines and future sessions. Use when
+  the user asks whether repo docs are sufficient, wants a canonical docs spine, needs
+  README/docs/runbooks reorganized, or wants the project vision, current state, architecture,
+  workflows, decisions, blockers, and safe continuation path documented from repo
+  evidence.
+source: skills/doc-sync/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

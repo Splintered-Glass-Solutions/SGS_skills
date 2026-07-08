@@ -1,0 +1,15 @@
+---
+name: playwright
+display_name: Playwright
+description: Use when the task requires automating a real browser from the terminal
+  (navigation, form filling, snapshots, screenshots, data extraction, UI-flow debugging)
+  via `playwright-cli` or the bundled wrapper script.
+source: skills/playwright/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

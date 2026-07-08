@@ -1,0 +1,17 @@
+---
+name: looker-dashboard-diagnostics
+display_name: Looker Dashboard Diagnostics
+description: Inspect Looker dashboards for BI migration diagnostics, especially when
+  migrating Looker dashboards backed by dbt/Snowflake/Fivetran into Microsoft Fabric.
+  Use when asked to connect to Looker, inventory dashboards/tiles/filters, identify
+  which data a dashboard component uses, extract generated SQL, map Looker Explores/fields
+  to warehouse objects, or compare Looker reporting logic with Fabric semantic models.
+source: skills/looker-dashboard-diagnostics/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

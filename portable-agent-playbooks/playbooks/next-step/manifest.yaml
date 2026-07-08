@@ -1,0 +1,17 @@
+---
+name: next-step
+display_name: Next Step
+description: Decide and execute the most reasonable next safe step after a completed
+  run, plan, QA pass, deploy, investigation, or phased feature discussion. Use when
+  the user asks "next", "next step", "what now", "continue with the next phase", "work
+  the next most reasonable step", or wants autonomous continuation with gated safety
+  logic.
+source: skills/next-step/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

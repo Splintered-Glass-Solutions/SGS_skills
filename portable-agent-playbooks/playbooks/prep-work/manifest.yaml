@@ -1,0 +1,15 @@
+---
+name: prep-work
+display_name: Prep Work
+description: Run before large, long-running, autonomous jobs to audit whether the
+  agent has the repo context, credentials, database/API access, environment variables,
+  approvals, and validation path needed to finish without avoidable user interruption.
+source: skills/prep-work/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

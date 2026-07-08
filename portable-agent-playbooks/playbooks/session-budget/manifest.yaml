@@ -1,0 +1,16 @@
+---
+name: session-budget
+display_name: Session Budget
+description: Use when agent work is long, ambiguous, cross-repo, high-cost, repeatedly
+  looping, or needs task-type budget rules; includes checkpoints for debugging, build
+  work, planning, research/transcripts, QA/review, automation, and communication so
+  sessions produce artifacts instead of open-ended token burn.
+source: skills/session-budget/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

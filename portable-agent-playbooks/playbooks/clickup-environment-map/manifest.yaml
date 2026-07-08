@@ -1,0 +1,16 @@
+---
+name: clickup-environment-map
+display_name: Clickup Environment Map
+description: Use when working with the user's ClickUp environments, finding ClickUp
+  workspaces/spaces/folders/lists/shared hierarchy, or reading/writing ClickUp tasks,
+  comments, channels, messages, and replies across SGS Consulting, And Studio, SGS_x_S.IS,
+  or Matt's Workspace.
+source: skills/clickup-environment-map/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

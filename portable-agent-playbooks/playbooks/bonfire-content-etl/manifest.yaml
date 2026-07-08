@@ -1,0 +1,17 @@
+---
+name: bonfire-content-etl
+display_name: Bonfire Content Etl
+description: Work on Bonfire content ingestion, knowledge bases, ETL, content sources,
+  uploads, Google Drive, Notion, YouTube, Fathom AI, Fireflies AI, source sync status,
+  content visibility, source downloads, or files under src/services/*content*, src/services/*source*,
+  src/features/content-sources, src/app/api/content, src/app/api/knowledge_base, src/app/api/trigger_sync,
+  or docs/source-etl-handoff.md.
+source: skills/bonfire-content-etl/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

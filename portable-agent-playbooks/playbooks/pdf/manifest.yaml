@@ -1,0 +1,16 @@
+---
+name: pdf
+display_name: Pdf
+description: Use when tasks involve reading, creating, or reviewing PDF files where
+  rendering and layout matter; prefer visual checks by rendering pages (Poppler) and
+  use Python tools such as `reportlab`, `pdfplumber`, and `pypdf` for generation and
+  extraction.
+source: skills/pdf/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

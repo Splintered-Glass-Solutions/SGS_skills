@@ -1,0 +1,16 @@
+---
+name: pm-comms-sync
+display_name: PM Comms Sync
+description: 'PM comms sync: manually run the communication safety-net scan across
+  registered Slack, text, email, ClickUp, Teams, Skool, and client-contact surfaces.
+  Use when the user wants to refresh comms monitoring outside the scheduled four-hour
+  automation or validate the PM comms monitor.'
+source: skills/pm-comms-sync/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

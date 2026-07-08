@@ -1,0 +1,18 @@
+---
+name: bonfire-docs-sync
+display_name: Bonfire Docs Sync
+description: Keep Bonfire documentation current after major app, workflow, configuration,
+  deployment, or cross-repo changes. Use when the user asks to update Bonfire docs,
+  sync repo docs with shared docs, refresh Bonfire org KB/user-facing articles, document
+  deployed app behavior, reconcile README/runbooks/product KB after feature work,
+  or ensure `<workspace>/bonfire_shared_docs` reflects current Bonfire implementation
+  across `bonfire`, `Bonfire_AI`, and `Bonfire_ETL`.
+source: skills/bonfire-docs-sync/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

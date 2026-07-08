@@ -1,0 +1,18 @@
+---
+name: pm-clean-unreads
+display_name: PM Clean Unreads
+description: 'PM clean unreads: use for PM-style cleanup of unread agent threads when
+  the user wants to find threads whose work is actually done and safe to mark read.
+  Identifies unread project/work threads where the feature finish-line has run, required
+  local and dev/hosted testing is complete when applicable, deployment or dev-environment
+  validation is proven, no approvals/blockers/follow-ups remain, and the thread can
+  be marked read or returned as a ready-to-mark-read queue.'
+source: skills/pm-clean-unreads/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

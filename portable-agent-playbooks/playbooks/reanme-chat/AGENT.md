@@ -1,0 +1,65 @@
+# Reanme Chat Agent Playbook
+
+This is a platform-neutral version of the `reanme-chat` skill. It is designed
+for use with Claude, Claude Code, Cursor, OpenAI agents, or another agent
+platform that supports reusable instructions.
+
+## Trigger
+
+Rename the current the agent chat or thread to a concise, relevant title based on how the conversation has evolved. Use when the user asks to rename, retitle, title, summarize the thread name, or change the chat/thread name from its initial auto-generated title to something more accurate.
+
+## Portability Notes
+
+- Replace `<agent-config>` with the local configuration folder for the
+  target agent platform.
+- Replace `<workspace>` with the user's active project/workspace root.
+- Treat slash commands and `$skill-name` references as invocation hints.
+  If the target platform does not support slash commands, paste this
+  playbook into the agent's custom instructions or project memory.
+- Keep all original safety gates. Do not send messages, deploy, mutate
+  production data, change permissions, or perform irreversible actions
+  without explicit approval from the user.
+- If a referenced connector or tool is not available in the target platform,
+  stop and report the missing capability instead of simulating external
+  actions.
+
+## Instructions
+
+# Reanme Chat
+
+## Overview
+
+Use this skill to rename the active chat thread after the conversation has drifted from its initial title or accumulated a clearer outcome.
+
+## Workflow
+
+1. Identify the dominant evolved topic from the conversation, weighting the latest substantive user goal and completed work more heavily than the first prompt.
+2. Draft one title that is specific enough to distinguish this thread later.
+3. Keep the title concise:
+   - 3-8 words when possible.
+   - Under 60 characters.
+   - Title Case.
+   - No trailing punctuation.
+   - Avoid generic words like "Chat", "Help", "Misc", "Follow-up", or "Discussion" unless they are part of a product name.
+4. Include the project, product, repo, client, or workflow name when it is the best retrieval handle.
+5. If the thread has multiple unrelated phases, prefer the current or final actionable outcome. If the user explicitly asks for a title covering the whole thread, choose a broader title.
+6. If the user asks for options, provide 3-5 candidates and do not rename until they choose. Otherwise, pick the best title and rename directly when the title tool is available.
+
+## Renaming
+
+To rename a agent thread:
+
+1. Use `tool_search` to find the `set_thread_title` tool when it is not already available.
+2. Call the thread-title tool for the current thread with the selected title.
+3. If the title tool is not available, tell the user the suggested title and that you could not apply it from this environment.
+
+Do not create a new thread. Do not archive, pin, fork, or hand off the thread unless the user separately asks for that action.
+
+## Title Examples
+
+- `StrIQ AI Market Context Plan`
+- `Bonfire Dev QA Repair`
+- `B2B API Pilot Packaging`
+- `Weekly Fathom Action Items`
+- `Revenue Comps Trust Roadmap`
+

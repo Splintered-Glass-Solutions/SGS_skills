@@ -1,0 +1,18 @@
+---
+name: sideline-feature
+display_name: Sideline Feature
+description: Capture and preserve scoped feature ideas, feature plans, product explorations,
+  technical designs, or deferred implementation context into a dedicated sidelined-features
+  folder so future work can resume without losing decisions, source context, tradeoffs,
+  and next steps. Use when the user says to sideline, park, shelve, defer, backlog,
+  save for later, preserve context, or organize a feature plan without implementing
+  it.
+source: skills/sideline-feature/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

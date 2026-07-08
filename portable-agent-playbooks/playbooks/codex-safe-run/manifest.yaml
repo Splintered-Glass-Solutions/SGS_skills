@@ -1,0 +1,18 @@
+---
+name: codex-safe-run
+display_name: Agent Safe Run
+description: Run the agent runtime more safely on macOS when memory, swap, CPU, app-server,
+  MCP helper, node_repl, Computer Use, Browser, or multiple-thread runaway risk is
+  present. Use when the user says to run the agent safely, monitor the agent, use
+  one agent thread, investigate the agent memory leaks, avoid the agent runtime crashes,
+  clean up the agent helper processes, switch to CLI because Desktop is unstable,
+  or similar.
+source: skills/codex-safe-run/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

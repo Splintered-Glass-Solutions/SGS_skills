@@ -1,0 +1,19 @@
+---
+name: local-dev-consolidation
+display_name: Local Dev Consolidation
+description: 'Use when the user wants local work across one or more repos, branches,
+  or worktrees consolidated into a dev-ready state: inspect dirty working trees, identify
+  merge conflicts and incomplete work, safely merge functional changes, run validation,
+  deploy to the confirmed dev environment when explicitly requested, clean up local
+  state, and report what shipped versus what remains. Trigger on phrases like consolidate
+  local work, clean up working trees, merge everything to dev, deploy local work to
+  dev, wrap this into dev, or get my local environment clean.'
+source: skills/local-dev-consolidation/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

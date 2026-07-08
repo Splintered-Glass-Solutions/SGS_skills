@@ -1,0 +1,17 @@
+---
+name: handoff
+display_name: Handoff
+description: Create a concise handoff document and a copyable message that compact
+  the current conversation and working state so another agent or future session can
+  continue. Use when the user asks for a handoff, session summary, continuation note,
+  compacted context, transfer document, next-agent brief, or a saved recap of current
+  progress across any project.
+source: skills/handoff/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

@@ -1,0 +1,17 @@
+---
+name: bonfire-qaqc
+display_name: Bonfire Qaqc
+description: Run Bonfire QA/QC and release validation using the repo's canonical QA
+  docs. Use when the user asks to run or prepare QA, QC, "full suite", "full QAQC",
+  "test every page", "manual QA walkthrough", "production readiness", environment
+  validation, app.heybonfire.com checks, dev/local/prod smoke tests, release sync
+  validation, or weekly QA reporting for Bonfire.
+source: skills/bonfire-qaqc/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

@@ -1,0 +1,16 @@
+---
+name: pm-comms-check
+display_name: PM Comms Check
+description: 'PM comms check: consolidate the user''s communication follow-ups across
+  the PM comms ledger, source checkpoints, blocked source reports, and created ClickUp
+  tasks. Use when the user asks what communications, asks, follow-ups, approvals,
+  or client/team items may be slipping through the cracks.'
+source: skills/pm-comms-check/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

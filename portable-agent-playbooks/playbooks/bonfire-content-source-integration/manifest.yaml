@@ -1,0 +1,16 @@
+---
+name: bonfire-content-source-integration
+display_name: Bonfire Content Source Integration
+description: Add or modify Bonfire content source integrations. Use for provider source
+  work involving Notion, Fathom AI, Fireflies AI, Read AI, SharePoint, Google Drive,
+  YouTube, links, provision functions, sync functions, provider credentials, content_source.config,
+  normalized content storage, or content_process enqueueing.
+source: skills/bonfire-content-source-integration/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

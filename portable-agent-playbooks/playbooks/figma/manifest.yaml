@@ -1,0 +1,16 @@
+---
+name: figma
+display_name: Figma
+description: Use the Figma MCP server to fetch design context, screenshots, variables,
+  and assets from Figma, and to translate Figma nodes into production code. Trigger
+  when a task involves Figma URLs, node IDs, design-to-code implementation, or Figma
+  MCP setup and troubleshooting.
+source: skills/figma/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

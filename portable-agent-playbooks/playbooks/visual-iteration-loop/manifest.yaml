@@ -1,0 +1,17 @@
+---
+name: visual-iteration-loop
+display_name: Visual Iteration Loop
+description: Iterative visual quality workflow for auditing, improving, screenshotting,
+  and retesting UI, game, 3D, WebGL, or graphics-heavy projects. Use when the user
+  asks to loop through visuals, improve realism or polish, audit screenshots, compare
+  against a target style, run multiple visual QA passes, continue until visuals improve,
+  or stop after a maximum number of iterations.
+source: skills/visual-iteration-loop/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

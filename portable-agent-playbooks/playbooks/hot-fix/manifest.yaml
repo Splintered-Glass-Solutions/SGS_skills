@@ -1,0 +1,16 @@
+---
+name: hot-fix
+display_name: Hot Fix
+description: Resolve issues that have already been found, verify the fixes, deploy
+  them through the repository's established release path, and confirm the deployed
+  behavior. Use when the user asks to hot fix, fix issues from QA/review/CI/logs,
+  or resolve found problems and deploy the fixes.
+source: skills/hot-fix/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

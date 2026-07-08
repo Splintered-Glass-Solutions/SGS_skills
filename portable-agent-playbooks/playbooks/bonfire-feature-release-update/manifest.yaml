@@ -1,0 +1,19 @@
+---
+name: bonfire-feature-release-update
+display_name: Bonfire Feature Release Update
+description: Create and deliver Bonfire post-feature release communications after
+  a feature is finished or validated. Use when the user asks to summarize a completed
+  Bonfire feature, explain why it was built, capture the user story and customer impact,
+  identify API/frontend/ETL implications, prepare team/customer/marketing talking
+  points, include screenshots or marketing assets, send a Bonfire group text, post
+  to ClickUp `pd-bonfire` or AND Studio ClickUp, or publish a Bonfire production update-log
+  entry.
+source: skills/bonfire-feature-release-update/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

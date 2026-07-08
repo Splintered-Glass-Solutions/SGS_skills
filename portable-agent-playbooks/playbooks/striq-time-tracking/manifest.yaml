@@ -1,0 +1,17 @@
+---
+name: striq-time-tracking
+display_name: Striq Time Tracking
+description: Log or start ClickUp time tracking for StrIQ work across striq-backend,
+  striq-api, ios-striq, frontend, and striq-shared-docs. Use when the user asks to
+  track time, log time, add time, start a timer, preserve an active timer, or report
+  StrIQ time for implementation, investigation, QA, planning, release, or shared-docs
+  work.
+source: skills/striq-time-tracking/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

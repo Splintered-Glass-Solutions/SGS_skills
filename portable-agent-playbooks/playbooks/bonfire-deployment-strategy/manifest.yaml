@@ -1,0 +1,17 @@
+---
+name: bonfire-deployment-strategy
+display_name: Bonfire Deployment Strategy
+description: 'Use when planning, changing, or executing Bonfire deployment, CI, PR
+  merge, dev deploy, production promotion, release validation, fast lane, slow lane,
+  or full-suite gating workflows. Captures the default Bonfire rule: dev deploys use
+  the fast lane unless the user asks otherwise; production promotion uses the slow
+  full-suite lane.'
+source: skills/bonfire-deployment-strategy/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

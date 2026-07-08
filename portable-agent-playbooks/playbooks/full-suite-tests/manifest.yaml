@@ -1,0 +1,16 @@
+---
+name: full-suite-tests
+display_name: Full Suite Tests
+description: Run or plan a repository's full test and QA suite for a named environment.
+  Use when the user says "full-suite-tests in local", "full-suite-tests in dev", "full-suite-tests
+  in prod", "run full suite in local/dev/prod", "full QA in dev", "test everything
+  in prod", or similar environment-scoped full validation requests across any project.
+source: skills/full-suite-tests/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

@@ -1,0 +1,16 @@
+---
+name: bonfire-supabase-rls
+display_name: Bonfire Supabase Rls
+description: Work on Bonfire Supabase schema, migrations, row-level security, multi-tenant
+  data access, generated Supabase types, auth hooks, service-role access, or files
+  under supabase/migrations, supabase/seed.sql, src/types/supabase.ts, src/lib/supabase,
+  or src/lib/auth/org-context.
+source: skills/bonfire-supabase-rls/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

@@ -1,0 +1,16 @@
+---
+name: bonfire-etl-validation
+display_name: Bonfire Etl Validation
+description: Validate Bonfire_ETL changes with the repo's ETL-specific test, smoke,
+  readiness, and cost-gated provider checks. Use for ETL regression testing, readiness
+  reports, local or live storage smoke tests, paid provider smoke tests, YouTube transcript
+  checks, embedding/process/extract validation, or release confidence for Bonfire_ETL.
+source: skills/bonfire-etl-validation/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

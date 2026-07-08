@@ -1,0 +1,16 @@
+---
+name: car-wash
+display_name: Car Wash
+description: Clean up local git state after large builds, merges, PRs, or multi-worktree
+  work. Use when the user asks for a car wash, repo cleanup, branch consolidation,
+  local git reset/baseline cleanup, stale branch cleanup, or to make a project ready
+  to continue building from the right local development branch.
+source: skills/car-wash/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

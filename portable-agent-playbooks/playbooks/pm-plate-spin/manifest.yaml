@@ -1,0 +1,18 @@
+---
+name: pm-plate-spin
+display_name: PM Plate Spin
+description: 'PM plate spin: use for portfolio "spin the plates" passes that identify
+  idle projects, open/unread agent threads, stale delegated work, and small safe next
+  moves to keep the user''s active projects moving. Use when asked to revive stalled
+  project lanes, propose next prompts for project threads or workers, continue prior
+  features, or ask Bonfire/StrIQ shared-docs umbrella contexts what the next order
+  of business should be. Always pair with pm-project-portfolio-manager and orchestrator-mode.'
+source: skills/pm-plate-spin/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

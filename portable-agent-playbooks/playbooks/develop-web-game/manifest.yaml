@@ -1,0 +1,16 @@
+---
+name: develop-web-game
+display_name: Develop Web Game
+description: 'Use when the agent is building or iterating on a web game (HTML/JS)
+  and needs a reliable development + testing loop: implement small changes, run a
+  Playwright-based test script with short input bursts and intentional pauses, inspect
+  screenshots/text, and review console errors with render_game_to_text.'
+source: skills/develop-web-game/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

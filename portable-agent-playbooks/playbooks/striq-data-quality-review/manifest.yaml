@@ -1,0 +1,16 @@
+---
+name: striq-data-quality-review
+display_name: Striq Data Quality Review
+description: Review StrIQ stage-to-prod data quality, promotion health, valid-property
+  coverage, and analytics backlog. Use when the user asks how StrIQ data quality looks
+  today, whether stage/prod sync is healthy, whether valid properties are missing
+  from the app, or what ER/Economics/StriqScore/source-data items need resolution.
+source: skills/striq-data-quality-review/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

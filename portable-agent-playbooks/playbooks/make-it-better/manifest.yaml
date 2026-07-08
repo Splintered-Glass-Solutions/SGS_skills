@@ -1,0 +1,16 @@
+---
+name: make-it-better
+display_name: Make It Better
+description: Use when the user asks to broadly improve a project, make it better,
+  audit product quality, UI/UX, design, copy, code quality, testing gaps, graphics,
+  polish, or user delight with autonomous loops, agent-safe-run guardrails, orchestrated
+  subagents, and queued checkpoints instead of early blocking.
+source: skills/make-it-better/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions
