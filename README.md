@@ -46,6 +46,9 @@ See:
   diagrams, operating loop, safety gates, unread cleanup logic, and roadmap.
 - [docs/pm-system-overview.md](docs/pm-system-overview.md) for the compact
   overview.
+- [docs/save-skill.md](docs/save-skill.md) for the `/save-skill` workflow that
+  archives local Codex skills into this repo, regenerates portable playbooks,
+  commits, and pushes.
 
 ## Portable Versions
 

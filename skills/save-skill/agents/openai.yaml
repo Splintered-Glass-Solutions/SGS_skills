@@ -1,0 +1,6 @@
+interface:
+  display_name: "Save Skill"
+  short_description: "Archive a local skill to SGS_skills and push it"
+  default_prompt: "Use $save-skill to save a local skill into SGS_skills, commit it, and push it."
+policy:
+  allow_implicit_invocation: true

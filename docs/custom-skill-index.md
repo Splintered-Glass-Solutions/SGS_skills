@@ -71,6 +71,7 @@ excluded.
 - `rti-time-tracking`
 - `security-best-practices`
 - `session-budget`
+- `save-skill`
 - `sgs-personal-todo`
 - `sgs-property-purchases`
 - `sgs-proposal-microsites`
