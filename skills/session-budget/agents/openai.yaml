@@ -1,3 +1,4 @@
-display_name: Session Budget
-short_description: Keep long Codex work bounded with task-type checkpoints and reuse signals.
-default_prompt: Apply session budget rules to classify this task, set checkpoints, and avoid open-ended token burn.
+interface:
+  display_name: "Session Budget"
+  short_description: "Keep long Codex work bounded and reusable"
+  default_prompt: "Use $session-budget to classify this task, set evidence checkpoints, and keep the work bounded and reusable."

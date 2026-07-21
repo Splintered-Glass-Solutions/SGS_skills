@@ -43,11 +43,13 @@ Read the current governing files before scanning:
 
 - `<agent-config>/skills/project-portfolio-manager/SKILL.md` (`pm-project-portfolio-manager`)
 - `<agent-config>/skills/orchestrator-mode/SKILL.md`
+- `<agent-config>/skills/pm-project-agent/SKILL.md`
 - `<agent-config>/portfolio/project-registry.md`
 - `<agent-config>/portfolio/thread-registry.md`
 - `<agent-config>/portfolio/approval-ledger.md`
 - `<agent-config>/portfolio/work-ledger.md`
 - `<agent-config>/portfolio/work-ledger.jsonl`
+- `<agent-config>/portfolio/pm-ledger-clickup-model.md`
 - `<agent-config>/portfolio/standards-registry.md`
 - `<agent-config>/portfolio/scorecards/README.md`
 - `<agent-config>/portfolio/scorecards/dispatcher-scorecard.jsonl`
@@ -120,8 +122,13 @@ specific target, a small scope, and a proof artifact.
   non-`TBD` `thread_id`, the binding is verified, the prompt fits
   `when_to_message_this_thread`, and the current run explicitly authorizes
   thread messaging.
+- Persistent Project Agent threads are PM/orchestrator lanes, not workers. Use
+  them to pick the next safe worker, monitor worker progress, review closeouts,
+  and report status upward.
 - Use a bounded worker for repo execution, QA, screenshots, security review,
-  source research, cleanup, or validation.
+  source research, cleanup, or validation. If a verified Project Agent exists,
+  route the worker packet through that Project Agent with
+  `PROJECT_AGENT_ROLE: PM_ORCHESTRATOR_NOT_WORKER`.
 - Use `ask_shared_docs` for broad Bonfire/StrIQ prioritization before choosing
   scoped implementation work.
 - Use `ACTION_PROPOSAL` before any thread creation or messaging, deploy,
@@ -131,10 +138,22 @@ specific target, a small scope, and a proof artifact.
   return the exact prompt as ready-to-send instead.
 - Do not duplicate active work. If work-ledger says a lane is active or
   delegated, report the follow-up point instead of starting another worker.
+- Flag `project_agent_executed_worker_work` when an existing Project Agent
+  thread directly implemented, tested, researched, or QA'd work that should have
+  gone to a bounded worker. The next safe prompt should restore the PM pattern:
+  delegate remaining execution to a worker and ingest any valid closeout.
 
 ## Work-Ledger Rules
 
-Append compact work-ledger events only when lifecycle state changes in the run:
+Record every observed item locally before considering ClickUp. Use:
+
+- work-ledger events when lifecycle state changes
+- clean-unreads reports for unread-thread status
+- comms ledger for communication-derived observations
+- approval ledger for the user decisions
+- current-state regeneration for scan summaries
+
+Append compact work-ledger events when lifecycle state changes in the run:
 
 - `active`, `delegated`, `waiting`, `blocked`, `completed`, `no_new_signal`, or
   equivalent statuses allowed by the runbook.
@@ -145,21 +164,34 @@ Append compact work-ledger events only when lifecycle state changes in the run:
 
 For read-only assessment with no lifecycle change, report `none`.
 
+ClickUp is only for actionable follow-ups surfaced by the plate-spin pass:
+the user decision needed, worker/project follow-up needed, failed/not-green
+validation needing retest/fix, blocked escalation, or communication follow-up.
+Do not create ClickUp tasks for passive active/waiting status, duplicates,
+ready-to-mark-read threads, no-next-action items, or completed/no-op state.
+Use dedupe key format `pm:work:<project>:<work_id-or-thread_id>:<slug>` and
+report `ClickUp not created` when creation is not authorized or fails.
+
 ## Output Shape
 
+Use icon-prefixed PM section headers so plate-spin reports are easy to scan.
+Keep the canonical label text after the icon.
+
 ```text
-PLATE SPIN STATUS:
-IDLE LANES:
-OPEN/UNREAD THREADS:
-WAITING ON PRESTON:
-BLOCKED / ESCALATE:
-SAFE SPINS:
-READY PROMPTS:
-ACTION PROPOSALS:
-WORK LEDGER UPDATES:
-DISPATCHER SCORECARD:
-PROOF GATHERED:
-NEXT CHECK:
+🌀 PLATE SPIN STATUS:
+😴 IDLE LANES:
+🧵 OPEN/UNREAD THREADS:
+⚠️ WAITING ON PRESTON:
+🔴 BLOCKED / ESCALATE:
+🟢 SAFE SPINS:
+🧭 READY PROMPTS:
+⚠️ ACTION PROPOSALS:
+🧾 WORK LEDGER UPDATES:
+🗂️ LOCAL RECORDS:
+📌 CLICKUP TASKS:
+📊 DISPATCHER SCORECARD:
+🧾 PROOF GATHERED:
+⏭️ NEXT CHECK:
 ```
 
 Keep final updates compact. Recommend at most five safe spins unless the user

@@ -1,0 +1,20 @@
+---
+name: pm-elephant-dinner
+display_name: PM Elephant Dinner
+description: 'PM Elephant Dinner: use when any project or initiative has too many
+  tasks, commitments, decisions, workstreams, unread threads, dependencies, or spinning
+  plates to reason about safely. Works for software, client delivery, creative, operations,
+  research, events, and personal projects. Gather the relevant live evidence, dedupe
+  the work, interview for the few decisions that change scope, define a shared batch,
+  build a dependency-aware execution plan, create a visual command center when useful,
+  and prepare selectable PM delegation packets without starting gated actions until
+  approved.'
+source: skills/pm-elephant-dinner/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

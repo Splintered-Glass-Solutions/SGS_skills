@@ -18,6 +18,25 @@ research, coding, testing, and log-reduction slices to cheaper capable subagents
 or parallel tool waves when the work is independent and the expected evidence is
 clear.
 
+Invoking this skill is standing approval to perform the non-destructive work
+needed to make the feature actually function end to end after inspection and
+safety review. That includes local code edits, tests, docs, migrations, schema
+updates, non-destructive database upserts/seeds/backfills, queue/job setup,
+provider configuration, environment-variable additions, and other required
+local or dev/staging setup steps when the target environment is clear and the
+operation is compatible with existing data and deployed code.
+
+This standing approval does not waive stricter approval boundaries from system,
+developer, project, or user instructions. Stop and ask for exact approval before
+permissions, grants, roles, ownership, RLS/policy changes, destructive data
+operations, production DB mutations, billing changes, external customer/partner
+messages, protected-branch operations, or dev/production deploys unless those
+actions are specifically requested in the current conversation. If an earlier
+bounded delegation packet or planning-only instruction conflicts with
+end-to-end execution, treat the newest explicit user instruction as the desired
+scope, but still surface the scope change and run the safety review before live
+mutation.
+
 Pair this with `$orchestrator-mode` for broad decomposition and with
 `$codex-safe-run` for long, noisy, browser-heavy, or multi-agent work. Keep the
 main thread lean: targeted searches, compact reads, bounded output, file-backed
@@ -29,13 +48,23 @@ logs for verbose commands, and no repeated streaming watchers in chat.
 2. Classify the task and state the success bar.
 3. Inspect the repo before planning implementation details.
 4. Identify the smallest set of independent workstreams.
-5. Decide what must stay in the main thread and what can be delegated.
-6. Launch at most one bounded delegation wave before integrating results.
+5. Identify required live, local, or shared-state changes such as migrations,
+   seeds, backfills, source-sync setup, queue/job setup, env additions, or
+   provider configuration.
+6. Perform a safety review for any stateful mutation: target environment,
+   exact command/payload, rollback or forward-fix path, compatibility with
+   existing data/deployed code, tenant isolation, auth/security impact, and
+   whether the action crosses a stricter approval boundary.
+7. Decide what must stay in the main thread and what can be delegated.
+8. Launch at most one bounded delegation wave before integrating results.
 
 ## Main-Thread Responsibilities
 
 - Own the product interpretation and technical design.
 - Decide architecture, tradeoffs, validation strategy, and integration order.
+- Decide and verify any required migrations, seeds, backfills, DB writes,
+  queue/job setup, provider setup, or env changes covered by the skill's
+  standing approval.
 - Prevent parallel agents from editing the same files at the same time.
 - Reopen important files and review delegated diffs before accepting them.
 - Run or spot-check the verification that matters before claiming completion.
@@ -82,11 +111,14 @@ judgment.
 Before the final response:
 
 1. Inspect the final diff or final artifact.
-2. Run relevant tests, checks, screenshots, or browser verification for the
+2. Confirm every required local/dev/staging state change was either executed
+   and verified, or explicitly marked blocked by a stricter approval boundary.
+3. Run relevant tests, checks, screenshots, or browser verification for the
    feature's risk level.
-3. Reconcile delegated evidence centrally.
-4. Update the goal as complete only when no required work remains.
-5. Report what changed, proof gathered, remaining risks, and recommended next
+4. Reconcile delegated evidence centrally.
+5. Update the goal as complete only when no required work remains.
+6. Report what changed, proof gathered, stateful operations performed or
+   skipped, remaining risks, and recommended next
    action.
 
 ## Default Framing

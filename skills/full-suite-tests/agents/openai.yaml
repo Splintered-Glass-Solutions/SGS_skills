@@ -1,6 +1,4 @@
 interface:
   display_name: "Full Suite Tests"
-  short_description: "Run a repo's broad test and QA suite for an environment"
-  default_prompt: "Use $full-suite-tests to run or plan the repository full validation suite for the requested environment."
-policy:
-  allow_implicit_invocation: true
+  short_description: "Run complete environment-scoped test and QA suites"
+  default_prompt: "Use $full-suite-tests to run the complete test and QA suite for the requested environment."

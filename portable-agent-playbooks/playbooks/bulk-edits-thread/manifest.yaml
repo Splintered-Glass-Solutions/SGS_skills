@@ -1,0 +1,18 @@
+---
+name: bulk-edits-thread
+display_name: Bulk Edits Thread
+description: Prepare a the agent task and local repository for a rapid series of edits
+  by renaming the current task with today's date, consolidating safe work from active
+  branches and worktrees onto a current local dev-based branch, validating the merged
+  state, and starting the app locally. Use when the user says "bulk edits thread",
+  wants one task ready to receive many edits, or asks to gather work from other tasks
+  before beginning an editing session.
+source: skills/bulk-edits-thread/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

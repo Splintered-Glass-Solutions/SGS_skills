@@ -2,13 +2,11 @@
 name: feature-finish-line
 display_name: Feature Finish Line
 description: 'Use after a planned feature build or implementation completes and the
-  user wants the finishing pass: add deterministic and computer-use/browser tests,
-  run validation, fix remaining local issues, identify blockers, complete safe local
-  execution, review needed migrations/deploy steps, update repo/shared docs, prepare
-  release notes, and generate or reuse Bonfire marketing assets. Trigger on phrases
-  like finish-line this feature, post-build hardening pass, finishing touches, get
-  this over the finish line, what remains, add tests and run them, or fully execute
-  this locally.'
+  user wants the finishing pass: add missing deterministic and computer-use/browser
+  tests, run focused feature validation, finish remaining polish, identify blockers,
+  complete safe local execution, review needed migrations/deploy steps, update repo/shared
+  docs, prepare release notes, and generate or reuse Bonfire marketing assets. Full-app/full-suite
+  testing is separate and only runs when explicitly requested.'
 source: skills/feature-finish-line/SKILL.md
 entrypoint: AGENT.md
 target_platforms:

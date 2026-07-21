@@ -58,9 +58,11 @@ path instead of guessing.
 1. Read `<agent-config>/portfolio/work-ledger.md`.
 2. Read `<agent-config>/portfolio/templates/worker-closeout-contract.md`.
 3. Read `<agent-config>/portfolio/pm-ledger-clickup-model.md`.
-4. Read `<agent-config>/portfolio/current-state.md` when it exists, so
+4. Read `<agent-config>/skills/pm-project-agent/SKILL.md` when ingesting
+   a closeout from a persistent Project Agent thread.
+5. Read `<agent-config>/portfolio/current-state.md` when it exists, so
    the before/after queue change is clear.
-5. Confirm the closeout contains a parseable `WORK_LEDGER_UPDATE` JSON object
+6. Confirm the closeout contains a parseable `WORK_LEDGER_UPDATE` JSON object
    or JSON array. If not, do not append anything; report the exact missing
    closeout field.
 
@@ -103,6 +105,12 @@ Use `--dry-run` when the user asks to preview an ingestion without appending.
   asks to ingest an approval update too.
 - Do not mark a work item complete unless the closeout's own ledger event says
   `status_after: completed`.
+- If a persistent Project Agent closeout shows the Project Agent directly
+  executed substantive implementation, QA, research, screenshots, repo hygiene,
+  or validation instead of supervising a worker, ingest any valid lifecycle event
+  but also report drift as `project_agent_executed_worker_work`. The next safe
+  action should be to route remaining execution to a bounded worker and keep the
+  Project Agent in a monitor/review role.
 - The local work-ledger/current-state update is the required source of truth.
   Create ClickUp only for actionable follow-ups surfaced by the closeout
   (the user decision, worker/project follow-up, failed validation retest/fix, or

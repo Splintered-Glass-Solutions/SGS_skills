@@ -1,0 +1,17 @@
+---
+name: pm-project-agent
+display_name: PM Project Agent
+description: 'PM project agent: use for persistent the agent Project Agent threads
+  that should operate as project managers/orchestrators, not as implementation workers.
+  Defines how project agents receive delegated work, create or route bounded worker
+  threads, monitor worker progress, review closeouts, and report status back to the
+  portfolio PM layer.'
+source: skills/pm-project-agent/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

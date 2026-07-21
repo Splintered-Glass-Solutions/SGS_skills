@@ -1,0 +1,6 @@
+interface:
+  display_name: "PM Project Agent"
+  short_description: "PM contract for project agents as managers"
+  default_prompt: "Use $pm-project-agent to keep a persistent Project Agent acting as a PM/orchestrator rather than an implementation worker."
+policy:
+  allow_implicit_invocation: true

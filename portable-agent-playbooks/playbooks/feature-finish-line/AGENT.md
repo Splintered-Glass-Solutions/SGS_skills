@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Use after a planned feature build or implementation completes and the user wants the finishing pass: add deterministic and computer-use/browser tests, run validation, fix remaining local issues, identify blockers, complete safe local execution, review needed migrations/deploy steps, update repo/shared docs, prepare release notes, and generate or reuse Bonfire marketing assets. Trigger on phrases like finish-line this feature, post-build hardening pass, finishing touches, get this over the finish line, what remains, add tests and run them, or fully execute this locally.
+Use after a planned feature build or implementation completes and the user wants the finishing pass: add missing deterministic and computer-use/browser tests, run focused feature validation, finish remaining polish, identify blockers, complete safe local execution, review needed migrations/deploy steps, update repo/shared docs, prepare release notes, and generate or reuse Bonfire marketing assets. Full-app/full-suite testing is separate and only runs when explicitly requested.
 
 ## Portability Notes
 
@@ -35,6 +35,8 @@ Assume local finishing work is allowed. A request to use this finish-line skill 
 
 Finish-line must leave behind real automated coverage for the feature. A feature is not finished if the only validation is manual clicking, source-text assertions, screenshots, a build, lint, or a public-page smoke check. Every invocation must either add or identify already-existing executable tests that directly exercise the new user-visible behavior, API contract, state transition, data persistence, or regression risk. If no meaningful automated test can be added because of missing credentials, missing harness support, external service limitations, or product ambiguity, record that as a blocker and propose the smallest harness/test-account change required. Do not report the feature as fully finished while that test gap remains.
 
+Run focused tests that directly exercise the feature and its specific regression risks. Do not automatically run the repository-wide/full-app suite, broad cross-browser matrix, or unrelated regression inventory as part of finish-line. `full-suite-tests` or another explicit full-app testing request executes those broader gates. If focused validation cannot run, report the authored coverage as unverified rather than passed.
+
 Finish-line must build an explicit issue-to-test coverage ledger. For every bug, feedback item, acceptance criterion, regression, user report, or behavior changed during the feature, list the issue, the failure mode/root cause, the executable test(s) that would fail if it regressed, and the suite command that runs those tests. Do not collapse several unrelated bugs into one vague "covered by e2e" claim. If one test covers multiple issues, name each issue and the exact assertion that covers it. If an issue is intentionally not covered, mark it as a blocker or residual risk and explain the smallest practical test/harness change needed.
 
 Finish-line must also make the coverage ledger consumable by any later `full-suite-tests` run. The final report must include a "Finish-line coverage ledger" section with exact test file paths, test names or grep patterns, and required commands. When `full-suite-tests` is run afterward, those tests are mandatory in-scope checks and must pass or be explicitly marked blocked; they cannot be skipped merely because the broader suite has other smoke coverage.
@@ -45,14 +47,14 @@ Before running any migration, cloud database mutation, live data operation, envi
 
 This standing approval does not waive exact approval requirements for database permissions, grants, roles, ownership, RLS policies, object owners, destructive production data changes, or sending real external messages to customers unless those actions are specifically named in the current request. If those appear necessary, stop and ask for exact approval.
 
-If a safe local or live non-deployment fix is needed and it is unlikely to cause breaking changes, make the fix and retest. If the fix would change product direction, data contracts, permissions/RLS/ownership, or customer-facing external behavior beyond the accepted feature scope, stop and report it as a remaining decision item.
+If a safe local or live non-deployment fix is needed and it is unlikely to cause breaking changes, make the fix and rerun only the affected focused validation. If the fix would change product direction, data contracts, permissions/RLS/ownership, or customer-facing external behavior beyond the accepted feature scope, stop and report it as a remaining decision item.
 
 ## Finish-Line Sequence
 
 Use this sequence as the high-level completion order. The detailed workflow below explains how to execute each step safely.
 
 1. Verify feature is complete.
-2. Run QA/regression checks.
+2. Run focused feature QA/regression checks; leave full-app testing to a separate request.
 3. Confirm acceptance criteria are met.
 4. Update documentation/changelog.
 5. Generate release notes.
@@ -100,16 +102,15 @@ Every finish-line report must include completed/incomplete state for each sequen
    - Do not stop after adding a single happy-path test when the feature fixed multiple issues. Each distinct issue must have at least one direct assertion for the specific failure mode, such as Enter-key behavior, stale persisted state, exact payload defaults, mobile layout state, auth/session preservation, pagination/windowing, provider data completeness, or deployed-environment recovery.
    - Use realistic fixture scale and failure timing. If the reported bug involved large result sets, async suggestions, mobile state, stale local storage, pagination, retries, missing backend rows, or external-service delay, include fixture data or harness behavior that reproduces that pressure instead of relying on a one-record happy-path mock.
    - Add negative/regression assertions where useful: prove stale data is not sent, heavy records are not eagerly rendered, forbidden requests do not erase auth, unavailable suggestions do not fake success, or a "no results" state does not appear while a valid search is being resolved.
-   - After adding tests, update the issue-to-test coverage ledger before running the wide suite so failures can be traced back to the reported symptoms.
+   - After adding tests, update the issue-to-test coverage ledger before focused validation and the later full-suite handoff so failures can be traced back to the reported symptoms.
 
-5. Run validation.
-   - Run the new focused tests first.
-   - Run the relevant wider suite next: lint, typecheck, build, integration, browser/e2e, or smoke checks as the repo supports.
-   - If the repo has a `full-suite-tests` skill/runbook and the user asks for finish-line plus deployment readiness, use the full-suite definition rather than substituting a narrower suite.
-   - Confirm that every test named in the coverage ledger is exercised by the focused command and by at least one normal broader suite command. If a test only passes when run manually by path or grep and is absent from the broad suite, fix the suite wiring or mark finish-line incomplete.
+5. Run focused feature validation and prepare the full-suite handoff.
+   - Run the smallest deterministic, integration, browser/e2e, lint, typecheck, or smoke commands that directly exercise the feature and changed files.
+   - Do not run the repository-wide/full-app suite, broad route inventory, broad cross-browser matrix, or unrelated test groups unless the user explicitly requests full-app testing.
+   - Confirm by inspection that every test named in the coverage ledger is included in at least one normal broader suite command. If a test is absent from the broad suite, fix the suite wiring or mark finish-line incomplete.
+   - Record the exact focused commands run and the broader suite command reserved for a later `full-suite-tests` request.
    - When the user later asks for `full-suite-tests`, the full-suite run must include every finish-line ledger test and report each as passed, failed, blocked, or not applicable for the requested environment.
-   - Start or verify local services when required, and report the URL or health endpoint used.
-   - Capture useful evidence for UI-facing work: screenshots, URLs, console errors, network failures, or test artifact paths.
+   - Clearly distinguish focused tests executed during finish-line from broader tests reserved for a separate full-suite run.
 
 6. Review rollout and migration safety.
    - Identify any migrations, schema/type changes, seed/backfill scripts, env changes, deploy steps, queues/jobs, or provider credentials needed for the feature to actually work after code merge.
@@ -119,9 +120,9 @@ Every finish-line report must include completed/incomplete state for each sequen
    - Do not deploy to dev or production merely because deployment is needed; deployment always requires explicit current-turn approval naming the deployment target.
    - If applying an approved migration, env update, provider setup, billing setup, webhook setup, queue/job setup, seed, backfill, or other non-deployment operation, run the smallest scoped command, capture durable evidence, and verify the post-condition without printing secrets.
 
-7. Fix and retest.
-   - Fix local issues discovered by the tests or browser/computer-use pass when the fix is within the feature scope and low risk.
-   - Retest the affected area after each fix.
+7. Finish remaining polish and test wiring.
+   - Fix local issues discovered during implementation review when the fix is within the feature scope and low risk.
+   - Add regression coverage for each fix and rerun only the affected focused tests.
    - Keep edits scoped to the implementation, test harness, and relevant docs.
 
 8. Execute remaining safe local tasks.

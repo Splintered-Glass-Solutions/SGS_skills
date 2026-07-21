@@ -3,8 +3,10 @@ name: make-it-better
 description: >-
   Use when Preston asks to broadly improve a project, make it better, audit
   product quality, UI/UX, design, copy, code quality, testing gaps, graphics,
-  polish, or user delight with autonomous loops, codex-safe-run guardrails,
-  orchestrated subagents, and queued checkpoints instead of early blocking.
+  polish, or user delight with orchestrator-mode, autonomous loops,
+  codex-safe-run guardrails, bounded subagents or delegated project threads,
+  active monitoring/review of delegated work, and queued checkpoints instead of
+  early blocking.
 ---
 
 # Make It Better
@@ -20,8 +22,12 @@ Security is secondary. Flag only obvious trust, privacy, or safety issues that
 materially affect product confidence unless Preston explicitly asks for a deep
 security audit.
 
-Pair this skill with `$orchestratror-mode`, `$codex-safe-run`, and, when changes
-are allowed, `$autonomous-feature-build`.
+Default to pairing this skill with `$orchestrator-mode` and `$codex-safe-run`.
+When changes are allowed, also pair it with `$autonomous-feature-build`. If the
+work is broad, high-cost, QA-heavy, multi-file, multi-repo, ambiguous, or likely
+to benefit from independent review, make an explicit delegation decision and use
+bounded subagents or delegated project threads unless there is a concrete reason
+not to.
 
 ## Success Bar
 
@@ -43,9 +49,25 @@ improvements when the current request permits edits. The final result must show:
 Use the strongest available deep-reasoning frontier agent as the main
 orchestrator, product reviewer, architect, and final decision-maker.
 
-Use cheaper capable subagents or bounded parallel tool waves for broad scanning,
-evidence gathering, narrow implementation research, testing, screenshot review,
-log reduction, and rapid idea generation.
+Use `$orchestrator-mode` as the default operating model. The main thread remains
+the orchestrator and keeps decomposition, prioritization, architecture,
+tradeoffs, validation strategy, synthesis, and final review.
+
+Use cheaper capable subagents, delegated project threads, or bounded parallel
+tool waves for broad scanning, evidence gathering, narrow implementation
+research, testing, screenshot review, log reduction, rapid idea generation, and
+sidecar code review. Subagents are preferred over doing all broad or noisy work
+in the main thread when a slice can be scoped independently.
+
+For substantial work, launch at least one bounded subagent/delegation wave before
+final synthesis unless there is a concrete exception such as:
+
+- the task is tiny and single-file
+- subagent/thread tooling is unavailable
+- the next blocker requires direct main-thread inspection
+- the work is privacy/safety-sensitive and should not be delegated
+
+If subagents are skipped, state the reason in the final deliverable.
 
 Keep these in the main thread:
 
@@ -72,6 +94,17 @@ Delegate these when independent and bounded:
 - graphics, imagery, chart, and iconography review
 - rapid brainstorming
 - focused verification and log reduction
+- independent code review of the selected patch
+- durable worker packets for repo-specific execution
+- project-thread follow-up, when a verified project thread is the right owner
+
+When delegation is useful and thread management is available, the orchestrator
+may route work through persistent project threads or bounded worker threads. Use
+the PM/project delegation pattern when Preston asks to delegate or when a
+verified project thread clearly owns the work. The main thread must monitor,
+manage, and review those threads: define the packet, set authority limits, wait
+only when the result is needed, integrate evidence, inspect risky diffs, and
+close or summarize worker outputs before final synthesis.
 
 Treat delegated output as evidence, not a verdict. Reopen important files and
 inspect key artifacts before relying on them.
@@ -132,14 +165,17 @@ Run several improvement loops, not a single pass.
 
 Map repos, app structure, routes, users, flows, design system, styles,
 components, tests, scripts, and docs. Identify what the product appears to be
-and who it serves.
+and who it serves. Classify the work, state the objective and success bar, and
+make an explicit orchestration/delegation decision before widening the work.
 
 ### Loop 2: Scan
 
 Use cheaper agents or bounded parallel scans across UI/UX, design, copy, code
 quality, testing, graphics, performance, accessibility, and developer
 experience. Gather evidence, screenshots where useful, file paths, routes,
-components, test commands, and examples.
+components, test commands, and examples. For broad or high-cost runs, prefer a
+bounded subagent or delegated-thread scan for at least one independent slice,
+then integrate that output centrally.
 
 ### Loop 3: Ideate
 
@@ -157,12 +193,16 @@ ideas, and chooses the best product direction and first implementation batch.
 Run targeted checks against the chosen direction. Look for risks, missing
 context, better variants, and implementation traps. If implementation is
 allowed, make changes and verify them. If implementation is not allowed, produce
-a concrete next-pass implementation plan.
+a concrete next-pass implementation plan. Use sidecar subagents or delegated
+threads for focused verification/log reduction/code review when they can run in
+parallel without blocking the main implementation path.
 
 ### Loop 6: Refine
 
 Re-prioritize based on evidence and verification. Queue unresolved questions.
-Produce a final roadmap and next-pass prompt.
+Review and reconcile delegated outputs, inspect important diffs or artifacts
+yourself, close or summarize worker threads when appropriate, and produce a
+final roadmap and next-pass prompt.
 
 ## Focus Areas
 
@@ -231,6 +271,9 @@ Use this shape, trimmed to fit the work actually performed.
 - Tests/checks run:
 - Screenshots/browser checks, if any:
 - Proof gathered:
+- Orchestrator-mode/delegation decision:
+- Subagents or delegated threads used:
+- Delegated outputs reviewed:
 - What was intentionally not changed:
 
 ### Top Prioritized Recommendations
@@ -275,6 +318,9 @@ For each recommendation:
 ### Iteration Notes
 
 - Loops completed:
+- Orchestration/delegation decision:
+- Subagents/thread delegations launched:
+- How delegated work was monitored and reviewed:
 - Improvement directions considered:
 - Ideas rejected and why:
 - Ideas combined:

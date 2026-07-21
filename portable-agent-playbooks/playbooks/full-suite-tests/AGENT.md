@@ -35,6 +35,16 @@ Treat "full suite" as the repo's broadest reasonable validation pass, not a sing
 
 The suite breadth must not shrink because the target is `dev`, `staging`, `preview`, `prod`, or an app URL. The environment changes the base URL, credentials/session, deploy metadata, and safety posture; it does not change the obligation to run all automated suites and all relevant browser/API/manual coverage across the repo. If a suite cannot run safely against an environment, mark that exact suite blocked with the reason and continue with the remaining non-blocked suites. Do not silently replace authenticated app tests with public smoke tests.
 
+For any app with authenticated user-facing surfaces, a full-suite result is
+failed/incomplete when authenticated coverage cannot run. Public smoke tests are
+useful supplemental evidence, but they are never an acceptable substitute for
+testing the logged-in app. In production, missing or stale authenticated QA
+session state must be reported as an overall full-suite failure, not as a green
+run with a caveat, not as "mostly passed", and not as merely a skipped optional
+slice. Continue running safe public checks for evidence, but the headline status
+must remain failed until authenticated production coverage actually runs and
+passes.
+
 For monorepos or repos with multiple apps/packages, "full suite" means the entire repository scope: all package/workspace test commands, all configured lint/type/build checks, all e2e/computer-use/browser suites, all API/integration suites, and all documented manual or smoke checklists that apply to the target environment. Do not limit execution to the currently edited app unless the user explicitly narrows the scope.
 
 If a previous or current `feature-finish-line` run produced a finish-line coverage ledger, those tests are mandatory full-suite inputs. Before running broad validation, locate the ledger in the current thread, PR notes, QA doc, commit/PR description, or finish-line final report. Add every listed test file, test name/grep pattern, direct command, and broader suite command to the suite inventory. A full-suite run is not complete until every finish-line ledger test has passed in the requested environment's applicable suite, or is explicitly marked blocked/not applicable with a concrete reason. Do not assume a route smoke, lint, build, or unrelated e2e pass covers a ledger item unless the exact assertion/test from the ledger ran.
@@ -62,7 +72,7 @@ Default meaning:
 4. Verify environment/deploy health for the requested target.
 5. Establish an authenticated test session when the app has authenticated user-facing surfaces.
 6. Run computer-use/e2e/browser/manual/API smoke or regression coverage when the app has user-facing surfaces.
-7. Record every suite/check as passed, failed, blocked, skipped by explicit user scope, or not applicable.
+7. Record every suite/check as passed, failed, blocked, skipped by explicit user scope, or not applicable. If authenticated coverage is required but cannot run, mark the overall full-suite status as failed/incomplete even if public checks pass.
 8. Repair and retest failures in batches until the suite is green, the loop cap is reached, or only explicit external blockers remain.
 
 If the environment is missing, ask for it before executing. If the environment is present, proceed using the rules below.
@@ -117,17 +127,18 @@ Use `rg` and targeted file reads. Avoid broad scans of generated folders such as
    - Production: verify target URL and health using production-safe actions only.
 
 4. Authenticated test-user setup
-   - For any real app with login, dashboard, account, admin, settings, data, billing, or other authenticated surfaces, a full suite is incomplete unless browser/e2e/manual coverage logs in with an approved test or QA user.
+   - For any real app with login, dashboard, account, admin, settings, data, billing, or other authenticated surfaces, a full suite is incomplete and must be reported as failed unless browser/e2e/manual coverage logs in with an approved test or QA user.
    - First look for project docs that name approved QA users, seeded auth sessions, or test credentials. Then inspect safe local env names only, such as `PLAYWRIGHT_AUTH_SESSION_FILE`, `PLAYWRIGHT_AUTH_SESSION_JSON`, `PLAYWRIGHT_AUTH_EMAIL`, `PLAYWRIGHT_AUTH_PASSWORD`, `QA_EMAIL`, `TEST_USER_EMAIL`, or project-specific equivalents. Do not print secret values.
    - If no auth session exists, create or recover one only through approved, production-safe flows for the target environment: test-user signup in local/dev, passwordless or forgot-password flows for approved QA aliases, or an app-supported auth fixture. Use email access when available to complete the login/recovery flow.
-   - Prefer `the user@splinteredglass.solutions` as the user's general cross-app QA identity when a project does not document a better one and the account is approved for the target environment.
-   - For production, do not treat missing credentials as an acceptable pass. Report it as a blocker and continue only with clearly labeled unauthenticated/public checks until an authenticated session is obtained.
+   - Prefer `the user@splinteredglass.solutions` as the user's general cross-app QA identity when a project does not document a better one and the account is approved for the target environment. This email is a common QA/test account across apps the user builds.
+   - the agent is allowed and expected to complete auth for this QA identity during full-suite validation when Gmail or Superhuman access is available: trigger the app's real login, retrieve the OTP/passcode or magic link from that mailbox, complete login, save/reuse the browser or Playwright auth state, and run the authenticated suite. Do not ask the user for the OTP or treat "no auth session was already present" as a blocker before attempting this path.
+   - For production, do not treat missing credentials as an acceptable pass. Report missing authenticated QA access as a full-suite failure/incomplete result, continue only with clearly labeled unauthenticated/public checks for supplemental evidence, and state plainly that most of the app was not tested.
    - Do not use real customer accounts, invite real users, reset passwords for non-approved accounts, or create/modify paid production subscriptions unless the user explicitly approves that exact action.
 
 5. Computer-use, browser, API, and manual coverage
    - If the project has a web app, UI, API workflow, or CLI workflow with a real user path, full suite includes the repo's computer-use/e2e/browser tests plus any manual walkthrough checklist.
    - Do not skip computer-use/e2e/browser tests merely because deterministic checks pass. Skip them only when the repo has no such tests/surface, the requested environment makes them impossible, or safety/credentials block them; report the skip as a blocker or explicit not-run item.
-   - For authenticated apps, run the browser/e2e/manual checklist after login and cover authenticated routes with the approved user. Public-only checks are supplemental, not a replacement for authenticated app QA.
+   - For authenticated apps, run the browser/e2e/manual checklist after login and cover authenticated routes with the approved user. Public-only checks are supplemental, not a replacement for authenticated app QA. If authenticated checks do not run, the full-suite status is failed/incomplete.
    - If the repo has deployed-environment canaries for `dev`, `preview`, or `prod`, run them for the requested environment with the same feature coverage expectations. A prod canary may be read-only, but it must still cover authenticated user workflows when the app has them.
    - If the same Playwright/Cypress/computer-use suite can point at local/dev/prod through base URL and auth variables, use that suite for all environments rather than maintaining weaker environment-specific smoke suites.
    - For any finish-line ledger item that names a browser/e2e/computer-use test, run that exact test or the suite that includes it against the requested environment when safe. If the environment cannot support the exact test because of auth, paid actions, external-service risk, or fixture limitations, mark that ledger item blocked and run the closest safe canary only as supplemental evidence.
@@ -152,7 +163,7 @@ Use `rg` and targeted file reads. Avoid broad scans of generated folders such as
    - Include environment, URL, branch/commit/deploy, authenticated test user used, commands run, manual coverage, failures, blockers, and retests.
    - Include the suite inventory with status for each discovered suite/check. If anything did not run, state whether it was blocked, not applicable, explicitly excluded by the user, or unsafe for the target environment.
    - Include a "Finish-line ledger verification" section when a ledger exists: list every ledger issue/test, direct command result, broader suite result, environment applicability, and whether the exact assertion ran. If any ledger item did not run, the full suite is incomplete unless it is explicitly blocked or not applicable for the target environment.
-   - State whether authenticated coverage ran. If it did not, the full suite is incomplete unless the app has no authenticated surface.
+   - State whether authenticated coverage ran. If it did not, and the app has any authenticated surface, lead the report with a failure status and explicitly say that the suite did not test most of the app behind login. Do not bury this as a secondary blocker after public passes.
    - End with a high-level loop summary: total loops run out of the cap, failure groups found in each pass, what changed, what passed locally before deployment, deployment identifiers for hosted loops, hosted retest results, how the failures were solved or why they remain blocked, and any implications that should be reviewed to ensure the fixes did not unintentionally change app scope or functionality.
    - If a run-log convention exists, update it. Otherwise create a dated log only when the run is substantial or browser/manual coverage is performed.
 
@@ -208,4 +219,24 @@ Default Bonfire full suite includes both deterministic checks and Computer Use c
 - Computer Use/browser checks: `corepack pnpm test:computer` plus the full-app Computer Use checklist for full-suite QA. Also run the Studio/actions/resources Computer Use release checklist when the changed area matches that checklist.
 
 For Bonfire, keep the standing release guardrail: validated `dev` is the stopping point unless the user explicitly asks for `main` or production promotion in the current conversation.
+
+## StrIQ Known Mapping
+
+When the current repo is StrIQ frontend and the requested environment is
+`prod`/`production`, authenticated coverage is mandatory for a full-suite pass.
+Use `the user@splinteredglass.solutions` as the approved StrIQ production QA
+identity unless the user specifies a different account. Complete the general
+QA-email auth flow above, save a Playwright storage state, then rerun the
+production suite with:
+
+```bash
+PLAYWRIGHT_PROD_BASE_URL=https://app.striq.com \
+PLAYWRIGHT_PROD_AUTH_STORAGE_STATE=/path/to/prod-auth-storage.json \
+npm run test:full:prod
+```
+
+Do not report StrIQ production full-suite QA as passed until the authenticated
+dashboard/app canaries run with that storage state and pass. If OTP retrieval,
+email access, or session creation fails after the available tools have been
+tried, report the full suite as failed because the logged-in app was not tested.
 

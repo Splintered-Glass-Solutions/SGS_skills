@@ -17,6 +17,7 @@ The user invoked this command with: $ARGUMENTS
    conversation or selection context when obvious; otherwise ask for the missing
    closeout text or artifact path.
 4. Read `/Users/preston/.codex/portfolio/pm-ledger-clickup-model.md`.
+5. Read `/Users/preston/.codex/skills/pm-project-agent/SKILL.md` when the closeout came from a persistent Project Agent thread.
 
 ## Guardrails
 
@@ -24,5 +25,6 @@ The user invoked this command with: $ARGUMENTS
 - Validate the work ledger after append.
 - Regenerate and validate `current-state`.
 - Treat local ledger/current-state as the source of truth. Create ClickUp only for actionable follow-ups with dedupe keys, and report `ClickUp not created` when not authorized or failed.
+- If a Project Agent directly executed worker-scoped work, ingest valid ledger state but flag `project_agent_executed_worker_work` and route remaining execution to a bounded worker.
 - Do not deploy, send external messages, mutate production, create Codex
   threads, or modify approval ledgers unless explicitly requested.

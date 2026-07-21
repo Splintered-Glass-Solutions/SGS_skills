@@ -1,0 +1,6 @@
+interface:
+  display_name: "Save Skills"
+  short_description: "Turn repeated conversation patterns into reusable skills"
+  default_prompt: "Use $save-skills to analyze this conversation for repeatable workflows and create high-confidence reusable slash-command skills."
+policy:
+  allow_implicit_invocation: true

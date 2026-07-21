@@ -35,6 +35,7 @@ Read these first:
 
 - `/Users/preston/.codex/portfolio/comms/source-registry.md`
 - `/Users/preston/.codex/portfolio/comms/comms-ledger.jsonl`
+- `/Users/preston/.codex/portfolio/pm-ledger-clickup-model.md`
 - `/Users/preston/.codex/automations/pm-comms-monitor-every-4-hours-2/memory.md`
 
 Use source-specific memory before rescanning:
@@ -49,10 +50,14 @@ Use source-specific memory before rescanning:
 3. For sources without verified access or ids, perform a bounded discovery pass
    and record `blocked_source` or `needs_source_mapping` rather than guessing.
 4. Classify candidates as actionable, review, duplicate, noise, or blocked.
-5. Search local ledger and ClickUp duplicate anchors before creating any task.
-6. Append compact JSONL events for candidates, created tasks, duplicates,
-   blockers, and source checkpoint updates.
-7. Refresh the monitor memory with per-source status and next-run checkpoint.
+5. Write or update the local comms-ledger event for every observed item before
+   any ClickUp task is considered, including candidates, duplicates, noise,
+   blockers, source checkpoint updates, and ClickUp failures.
+6. Search local ledger and ClickUp duplicate anchors before creating any task.
+7. Create ClickUp tasks only for actionable follow-ups and only when authorized.
+8. Append compact JSONL events for task creations or `ClickUp not created`
+   failures, then refresh the monitor memory with per-source status and
+   next-run checkpoint.
 
 ## Source Coverage
 
@@ -80,8 +85,13 @@ Ignore newsletters, receipts, automated notices, FYI-only status, duplicate
 alerts, already-captured tasks, and chatter without a concrete ask unless the
 source is a direct client or active project blocker.
 
-If an item is ambiguous but plausibly important, record it as `needs_review`.
-If ClickUp creation is enabled, create a low or normal priority `Review:` task.
+If an item is ambiguous but plausibly important, record it locally as
+`needs_review`. If ClickUp creation is enabled and the item has an actionable
+next step, create a low or normal priority `Review:` task.
+
+Do not create ClickUp tasks for informational-only items: duplicates,
+FYI-only/noise, completed/no-op state, no-next-action items, or passive
+waiting/active status.
 
 ## ClickUp Task Shape
 
@@ -94,6 +104,8 @@ When task creation is enabled, each task must include:
 - explicit due date with estimated-vs-explicit note
 - duplicate anchors searched
 - tags where supported: source, project/client, and `pm-comms`
+- dedupe key using
+  `pm:comms:<project-or-source>:<source-id-or-thread-id>:<message-or-task-slug>`
 
 Default destination for uncategorized communication tasks is ClickUp workspace
 `10508245`, list `901414592170`, assignee `12890094`, unless the source
@@ -101,17 +113,21 @@ registry names a more specific project destination.
 
 ## Output Shape
 
+Use icon-prefixed PM section headers so sync accounting is scannable at a
+glance. Keep the canonical label text after the icon.
+
 ```text
-PM COMMS SYNC:
-MODE:
-SOURCE COVERAGE:
-NEW ACTIONABLE:
-REVIEW ITEMS:
-TASKS CREATED:
-DUPLICATES SKIPPED:
-BLOCKED SOURCES:
-CHECKPOINTS UPDATED:
-NEXT RUN MEMORY:
+🔄 PM COMMS SYNC:
+🧭 MODE:
+📡 SOURCE COVERAGE:
+⚠️ NEW ACTIONABLE:
+🟡 REVIEW ITEMS:
+📌 TASKS CREATED:
+🟢 DUPLICATES SKIPPED:
+🔴 BLOCKED SOURCES:
+🧾 LOCAL LEDGER EVENTS:
+✅ CHECKPOINTS UPDATED:
+🧠 NEXT RUN MEMORY:
 ```
 
 End every run with explicit accounting. A no-new run is successful only when

@@ -49,6 +49,14 @@ For every thread kept unread, report the next needed step. The report should
 make clear whether the blocker is worker continuation, the user approval,
 failed validation, missing evidence, or unclear status.
 
+Persistent Project Agent threads are PM/orchestrator lanes, not execution
+workers. If a Project Agent thread directly implemented, tested, researched, or
+QA'd substantive work that should have gone to a bounded worker, keep the
+thread unread and classify the follow-up as
+`project_agent_executed_worker_work`. The next needed step is to restore the PM
+pattern: route remaining execution to a bounded worker, ingest any valid
+closeout, and have the Project Agent review/report upward.
+
 ## Required Preflight
 
 Read these before broad cleanup:
@@ -59,6 +67,8 @@ Read these before broad cleanup:
 - `<agent-config>/portfolio/approval-ledger.md`
 - `<agent-config>/portfolio/work-ledger.md`
 - `<agent-config>/portfolio/work-ledger.jsonl`
+- `<agent-config>/portfolio/pm-ledger-clickup-model.md`
+- `<agent-config>/portfolio/templates/clean-unreads-report.md`
 - `<agent-config>/portfolio/standards-registry.md`
 
 ## Current PM Thread Exclusion
@@ -144,6 +154,8 @@ Classify each unread thread as exactly one:
   validation failed or is incomplete.
 - `keep_unread_unclear`: evidence is insufficient; provide the exact missing
   proof.
+- `project_agent_executed_worker_work`: persistent Project Agent directly did
+  worker-scoped execution instead of routing/supervising a bounded worker.
 - `not_project_work`: unread thread is personal/admin/non-project noise; do not
   mark read unless the latest request is plainly done and no follow-up remains.
 
@@ -164,6 +176,38 @@ hotfix remains.
 
 Default to read-only classification unless the user explicitly asks to clean.
 
+## Durable Run Artifact
+
+Every clean-unreads run must save a local report before returning:
+
+```text
+<agent-config>/portfolio/reports/clean-unreads/YYYY-MM-DD-HHMM.md
+```
+
+The report is the local ledger surface for unread observations. It must include:
+
+- run timestamp and scope
+- excluded current PM thread
+- `READY_TO_MARK_READ_QUEUE`
+- `KEEP_UNREAD_QUEUE`
+- next step per kept-unread thread
+- `THREADS_ACTUALLY_CLEARED`
+- `THREADS_LEFT_OR_MARKED_UNREAD`
+- ClickUp candidates and `ClickUp not created` entries
+- dedupe keys for every reported thread:
+  `pm:unread:<project-or-source>:<thread_id>:<classification-or-work-slug>`
+
+Use `<agent-config>/portfolio/templates/clean-unreads-report.md` as the
+required section template when writing the report.
+
+Do not create ClickUp tasks for `ready_to_mark_read`, passive active/waiting
+status, duplicate observations, completed/no-op threads, or items with no next
+action. Only create or propose ClickUp tasks when the kept-unread item has an
+actionable follow-up: the user decision, worker/project follow-up,
+failed/not-green validation, blocked escalation, or communication response.
+If ClickUp creation is not explicitly authorized or fails, keep the report as
+source of truth and write `ClickUp not created`.
+
 When mark-read tooling is available and the run is authorized:
 
 1. Mark only threads classified `ready_to_mark_read`.
@@ -171,7 +215,7 @@ When mark-read tooling is available and the run is authorized:
 3. If mark-unread tooling is available, mark or leave all `keep_unread_*`
    threads unread so unresolved work stays visible.
 4. Record the count and thread IDs for both read and kept-unread actions in the
-   final response.
+   run artifact and final response.
 5. Append a compact work-ledger event if this was a portfolio cleanup run and
    the cleanup materially changed PM state.
 6. Validate the work ledger after appending.
@@ -182,19 +226,24 @@ needed step for each incomplete thread. Do not archive as a workaround.
 
 ## Output Shape
 
+Use icon-prefixed PM section headers so unread cleanup reports are scannable at
+a glance. Keep the canonical label text after the icon.
+
 ```text
-CLEAN UNREADS STATUS:
-READY TO MARK READ:
-KEEP UNREAD - ACTIVE:
-KEEP UNREAD - NEEDS PRESTON:
-KEEP UNREAD - FAILED OR NOT GREEN:
-KEEP UNREAD - UNCLEAR:
-NOT PROJECT WORK:
-NEXT NEEDED STEPS:
-ACTION TAKEN:
-WORK LEDGER UPDATES:
-PROOF GATHERED:
-NEXT CHECK:
+🧹 CLEAN UNREADS STATUS:
+✅ READY TO MARK READ:
+🟡 KEEP UNREAD - ACTIVE:
+⚠️ KEEP UNREAD - NEEDS PRESTON:
+🔴 KEEP UNREAD - FAILED OR NOT GREEN:
+❓ KEEP UNREAD - UNCLEAR:
+📥 NOT PROJECT WORK:
+🧭 NEXT NEEDED STEPS:
+✅ ACTION TAKEN:
+🧾 WORK LEDGER UPDATES:
+📄 RUN ARTIFACT:
+📌 CLICKUP TASKS:
+🧾 PROOF GATHERED:
+⏭️ NEXT CHECK:
 ```
 
 For each ready item include:
@@ -209,6 +258,8 @@ For each ready item include:
   finish_line:
   dev_or_hosted_validation:
   reason_safe_to_mark_read:
+  dedupe_key:
+  clickup: not_actionable
 ```
 
 For each kept-unread item include:
@@ -222,6 +273,8 @@ For each kept-unread item include:
   classification:
   why_not_complete:
   next_needed_step:
+  dedupe_key:
+  clickup: created | ClickUp not created | not_actionable
 ```
 
 Keep the response compact. Prioritize false-negative safety over clearing more
