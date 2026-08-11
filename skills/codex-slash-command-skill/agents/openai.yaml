@@ -1,7 +1,0 @@
-interface:
-  display_name: "Codex Slash Command Skill"
-  short_description: "Create picker-visible Codex slash-command skills"
-  default_prompt: "Use $codex-slash-command-skill to create a user-level Codex skill that appears in the slash picker the first time."
-
-policy:
-  allow_implicit_invocation: true

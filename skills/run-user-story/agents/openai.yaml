@@ -1,4 +1,0 @@
-interface:
-  display_name: "Run User Story"
-  short_description: "Expand, execute, and harden user stories"
-  default_prompt: "Use $run-user-story to turn this high-level scenario into a complete user-story test contract, execute it end to end, repair defects, and retest until the story passes or reaches a genuine blocker."

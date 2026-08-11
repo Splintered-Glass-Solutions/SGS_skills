@@ -1,4 +1,0 @@
-interface:
-  display_name: "QA Run"
-  short_description: "Run QA and persist results for any project"
-  default_prompt: "Use $qa-run to execute this project's QA/QC scope, persist a new dashboard/database run or durable local run as supported, and assign reviewer Codey."

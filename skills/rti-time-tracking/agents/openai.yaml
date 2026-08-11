@@ -1,4 +1,0 @@
-interface:
-  display_name: "RTI Time Tracking"
-  short_description: "Log RTI ClickUp time entries"
-  default_prompt: "Use $rti-time-tracking to log this RTI work to ClickUp."

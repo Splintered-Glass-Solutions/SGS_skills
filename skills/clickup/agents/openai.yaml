@@ -1,7 +1,0 @@
-interface:
-  display_name: "ClickUp"
-  short_description: "Create and manage ClickUp tasks cleanly"
-  default_prompt: "Use $clickup to create or update ClickUp tasks with the right list, assignees, status, priority, and source context."
-
-policy:
-  allow_implicit_invocation: true

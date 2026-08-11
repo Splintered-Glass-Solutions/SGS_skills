@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Use when the current model running the active agent thread should act as the orchestrator for broad or high-cost work: keep decomposition, tradeoffs, validation strategy, synthesis, and final review on the main model while delegating independent research, coding, and testing slices to cheaper the agent subagents or parallel tool waves with bounded scope and explicit evidence requirements.
+Use when the current model running the active agent thread should act as the orchestrator for broad or high-cost work: keep decomposition, tradeoffs, validation strategy, synthesis, and final review on the main model while delegating independent research, coding, and testing slices to cheaper subagents or parallel tool waves with bounded scope and explicit evidence requirements.
 
 ## Portability Notes
 
@@ -143,4 +143,3 @@ reviewer, use `$agent-safe-run` guardrails for long or noisy work, and use
 cheaper capable subagents or bounded parallel tool work for independent
 research, coding, or testing slices so the main context stays focused on
 judgment, synthesis, and final quality while minimizing token waste."
-

@@ -4,8 +4,8 @@ display_name: Orchestratror Mode
 description: 'Use when the current model running the active agent thread should act
   as the orchestrator for broad or high-cost work: keep decomposition, tradeoffs,
   validation strategy, synthesis, and final review on the main model while delegating
-  independent research, coding, and testing slices to cheaper the agent subagents
-  or parallel tool waves with bounded scope and explicit evidence requirements.'
+  independent research, coding, and testing slices to cheaper subagents or parallel
+  tool waves with bounded scope and explicit evidence requirements.'
 source: skills/orchestratror-mode/SKILL.md
 entrypoint: AGENT.md
 target_platforms:

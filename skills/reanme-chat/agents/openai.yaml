@@ -1,4 +1,0 @@
-interface:
-  display_name: "Rename Chat Thread"
-  short_description: "Rename this chat based on how it evolved"
-  default_prompt: "Use $reanme-chat to rename this thread based on the conversation so far."

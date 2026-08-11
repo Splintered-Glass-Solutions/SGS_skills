@@ -1,4 +1,0 @@
-interface:
-  display_name: "Preston Communication"
-  short_description: "Draft texts and emails in Preston's voice"
-  default_prompt: "Use $preston-communication to draft a text or email in Preston's voice."

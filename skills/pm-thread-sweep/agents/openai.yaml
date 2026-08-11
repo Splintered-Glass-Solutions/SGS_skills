@@ -1,6 +1,0 @@
-interface:
-  display_name: "PM Thread Sweep"
-  short_description: "Review, finish, decide, and close project threads"
-  default_prompt: "Use $pm-thread-sweep to review open project threads, close proven-complete work, continue incomplete work, and stage decisions."
-policy:
-  allow_implicit_invocation: true

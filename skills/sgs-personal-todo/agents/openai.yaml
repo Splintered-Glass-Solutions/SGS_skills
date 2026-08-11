@@ -1,7 +1,0 @@
-interface:
-  display_name: "SGS Personal To-Do"
-  short_description: "Create personal SGS tasks in ClickUp"
-  default_prompt: "Use $sgs-personal-todo to organize these personal home and garden tasks in ClickUp."
-
-policy:
-  allow_implicit_invocation: true

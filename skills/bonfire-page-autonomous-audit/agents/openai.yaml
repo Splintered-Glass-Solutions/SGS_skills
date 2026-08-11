@@ -1,4 +1,0 @@
-interface:
-  display_name: "Bonfire Page Autonomous Audit"
-  short_description: "Audit and repair a Bonfire page end to end"
-  default_prompt: "Use $bonfire-page-autonomous-audit to audit and repair the full functionality of the specified Bonfire page."

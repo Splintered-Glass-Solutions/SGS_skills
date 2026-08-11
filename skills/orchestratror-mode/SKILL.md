@@ -1,6 +1,12 @@
 ---
 name: orchestratror-mode
-description: Use when the current model running the active Codex thread should act as the orchestrator for broad or high-cost work: keep decomposition, tradeoffs, validation strategy, synthesis, and final review on the main model while delegating independent research, coding, and testing slices to cheaper Codex subagents or parallel tool waves with bounded scope and explicit evidence requirements.
+description: >-
+  Use when the current model running the active agent thread should act as the
+  orchestrator for broad or high-cost work: keep decomposition, tradeoffs,
+  validation strategy, synthesis, and final review on the main model while
+  delegating independent research, coding, and testing slices to cheaper
+  subagents or parallel tool waves with bounded scope and explicit evidence
+  requirements.
 ---
 
 # Orchestratror Mode

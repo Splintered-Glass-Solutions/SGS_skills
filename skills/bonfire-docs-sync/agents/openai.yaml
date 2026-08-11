@@ -1,4 +1,0 @@
-interface:
-  display_name: "Bonfire Docs Sync"
-  short_description: "Sync Bonfire repo and shared docs after major changes"
-  default_prompt: "Use $bonfire-docs-sync after major Bonfire app changes to update repo docs, shared docs, and user-facing KB articles."

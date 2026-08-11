@@ -1,4 +1,0 @@
-interface:
-  display_name: "Tiburon Feature Release Update"
-  short_description: "Tiburon release email workflow for Caleb"
-  default_prompt: "Use $tiburon-feature-release-update to verify a finished Tiburon feature and send Caleb a concise release update with proof, screenshots, and next steps."

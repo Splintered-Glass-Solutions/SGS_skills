@@ -1,4 +1,0 @@
-interface:
-  display_name: "PM Plate Spin"
-  short_description: "PM revive idle portfolio lanes with safe next moves"
-  default_prompt: "Use $pm-plate-spin to scan idle portfolio projects and route small safe next moves with $pm-project-portfolio-manager and $orchestrator-mode."

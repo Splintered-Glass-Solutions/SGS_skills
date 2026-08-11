@@ -1,4 +1,0 @@
-interface:
-  display_name: "Group Testing Thread"
-  short_description: "Monitor QA threads and batch fixes"
-  default_prompt: "Use $group-testing-thread to monitor the testing thread every 20 minutes, mark accepted reports with 👀, locally resolved reports with 🔵, and dev-deployed verified reports with ✅, then post batched release notes."

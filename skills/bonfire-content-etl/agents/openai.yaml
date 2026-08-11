@@ -1,6 +1,0 @@
-interface:
-  display_name: "Bonfire Content ETL"
-  short_description: "Content ingestion and source sync workflows"
-  default_prompt: "Use $bonfire-content-etl to add or fix a Bonfire content source ingestion path."
-policy:
-  allow_implicit_invocation: true

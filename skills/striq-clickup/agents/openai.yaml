@@ -1,7 +1,0 @@
-interface:
-  display_name: "StrIQ ClickUp"
-  short_description: "Route StrIQ work into the right ClickUp list"
-  default_prompt: "Use $striq-clickup to create or update the right ClickUp task for this StrIQ work."
-
-policy:
-  allow_implicit_invocation: true

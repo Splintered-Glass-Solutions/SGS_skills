@@ -1,4 +1,0 @@
-interface:
-  display_name: "Bonfire ETL Function Builder"
-  short_description: "Build Bonfire Lambda ETL functions consistently."
-  default_prompt: "Use $bonfire-etl-function-builder to add or modify a Bonfire ETL function."

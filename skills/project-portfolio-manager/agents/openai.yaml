@@ -1,6 +1,0 @@
-interface:
-  display_name: "PM Project Portfolio Manager"
-  short_description: "PM coordinate projects, agents, checkpoints, and decision queues"
-  default_prompt: "Use $pm-project-portfolio-manager to review the portfolio registry, inspect relevant checkpoints, and return a compact proof-first decision queue."
-policy:
-  allow_implicit_invocation: true

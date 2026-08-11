@@ -1,4 +1,0 @@
-interface:
-  display_name: "Feature Finish Line"
-  short_description: "Finish features with tests, migrations, QA records, and proof"
-  default_prompt: "Use $feature-finish-line to validate this feature, wire regression coverage, discover and apply every required safe migration and bounded data setup to the verified canonical database including Bonfire's unified production database, verify the remote ledger and live post-condition, update project-native QA/QC records, and reconcile every proof layer without deploying the app."

@@ -1,6 +1,0 @@
-interface:
-  display_name: "Sideline Feature"
-  short_description: "Save deferred feature plans for later"
-  default_prompt: "Use $sideline-feature to preserve this feature plan for later without implementing it."
-policy:
-  allow_implicit_invocation: true

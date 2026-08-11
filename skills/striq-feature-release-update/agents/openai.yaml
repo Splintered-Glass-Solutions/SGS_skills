@@ -1,4 +1,0 @@
-interface:
-  display_name: "StrIQ Feature Release Update"
-  short_description: "StrIQ release comms to the L10 group text"
-  default_prompt: "Use $striq-feature-release-update to summarize the finished StrIQ feature, confirm live status, and send the StrIQ L10 Team group text."

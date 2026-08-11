@@ -1,4 +1,0 @@
-interface:
-  display_name: "Bonfire ETL Validation"
-  short_description: "Run focused ETL tests and smoke checks."
-  default_prompt: "Use $bonfire-etl-validation to validate the current Bonfire_ETL change."

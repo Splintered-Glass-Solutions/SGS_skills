@@ -1,4 +1,0 @@
-interface:
-  display_name: "Bonfire Status Updates"
-  short_description: "Draft Bonfire text and ClickUp updates"
-  default_prompt: "Use $bonfire-status-updates to draft a Bonfire team update for the text thread and ClickUp channel."
