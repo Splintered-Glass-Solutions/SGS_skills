@@ -1,0 +1,16 @@
+---
+name: bonfire-browser-test-accounts
+display_name: Bonfire Browser Test Accounts
+description: Choose and verify the user's approved Bonfire browser-test identity.
+  Use for Bonfire browser QA, authenticated acceptance, Super Admin portal checks,
+  ordinary-user or least-privilege checks, login blockers, and requests involving
+  Arc, the TAPOS space, or Bonfire credentials in 1Password.
+source: skills/bonfire-browser-test-accounts/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

@@ -1,0 +1,17 @@
+---
+name: soundtrack-prompt-planner
+display_name: Soundtrack Prompt Planner
+description: Use when creating, adapting, or generalizing generated-music soundtrack
+  prompt plans for games, apps, videos, products, interactive experiences, or branded
+  worlds. Produces paste-ready prompts for Suno, Udio, Lyria, or similar music generators;
+  useful for mode-based game soundtracks, adaptive music states, loopable cues, stingers,
+  ambience beds, shared motif systems, and cohesive soundtrack packages.
+source: skills/soundtrack-prompt-planner/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

@@ -140,6 +140,9 @@ Known destination:
 - Destination name: `PD - Bonfire`
 - ClickUp Chat channel ID: `5-90050590186-8`
 - Surface type: shared private folder/chat
+- Visual verification anchor: in the And Studio left navigation, it appears as the favorited private chat `PD - Bonfire` (lock icon), as confirmed by Preston on 2026-08-11.
+
+The stored channel ID may become stale or the private chat may be omitted from the connector's channel listing. If a direct post returns `Resource not found`, do not substitute another channel. Resolve the current private `PD - Bonfire` chat through the ClickUp UI using the visual anchor above, then use its freshly verified identifier for the post and update this skill's channel ID.
 
 Important: `PD - Bonfire` does not appear in the normal SGS Consulting workspace hierarchy. It lives in the And Studio shared/private ClickUp hierarchy. Use `clickup-environment-map` when resolving it, and check the ClickUp shared hierarchy path if generic connector search does not show it.
 

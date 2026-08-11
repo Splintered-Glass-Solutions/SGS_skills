@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan Handoff"
+  short_description: "Package a plan for a clean execution task"
+  default_prompt: "Use $plan-handoff to package this completed exploration into one execution-ready handoff document."

@@ -1,0 +1,18 @@
+---
+name: prune-local
+display_name: Prune Local
+description: Audit and safely prune local Git worktrees and branches across one or
+  more related repositories. Use when the user says prune local, prune everything,
+  clean up old worktrees, or asks which branches still need a bulk-edit collapse.
+  Verify each branch against its repository's local dev target, report unresolved
+  work, cross-repo gaps, and collapse recommendations, then remove only fully integrated
+  and safely disposable local leftovers.
+source: skills/prune-local/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

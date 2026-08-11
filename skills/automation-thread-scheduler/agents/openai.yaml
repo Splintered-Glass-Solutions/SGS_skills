@@ -1,0 +1,6 @@
+interface:
+  display_name: "Automation Thread Scheduler"
+  short_description: "Create same-thread automations with emoji-labeled threads"
+  default_prompt: "Use $automation-thread-scheduler to create or repair a Codex automation so it runs in the same thread, has an emoji-prefixed title, checks duplicate schedules, and preserves memory/checkpoints."
+policy:
+  allow_implicit_invocation: true

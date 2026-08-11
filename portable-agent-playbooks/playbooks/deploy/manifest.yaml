@@ -1,0 +1,21 @@
+---
+name: deploy
+display_name: Deploy
+description: Deploy the feature, functionality, branch, commit, or PR worked on in
+  the current the agent task to an explicit environment or the sole registered environment
+  for a single-target project, including dependency-aware deployment across multiple
+  repositories such as frontend, backend, API, workers, infrastructure, and database
+  components. Recover or create missing deployable artifacts when the current task
+  contains a decision-ready feature scope. Use when the user invokes $deploy or /deploy,
+  including a bare "deploy" in a registered single-environment project, and expects
+  the agent to persist until every in-scope component is deployed or a genuine external
+  blocker is proven.
+source: skills/deploy/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

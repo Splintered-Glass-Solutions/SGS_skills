@@ -1,0 +1,19 @@
+---
+name: plan-handoff
+display_name: Plan Handoff
+description: Package completed research, exploration, discovery, ideation, architecture,
+  or planning into one execution-ready Markdown handoff for a clean task. Use when
+  the user says Plan Handoff, asks to package or compact a plan, wants to transfer
+  a finished plan to another agent or fresh thread, or needs one canonical context
+  document containing the concept, purpose, target audience, user story, requirements,
+  decisions, implementation details, full execution plan, validation, risks, and references
+  without the exploratory history or token-heavy reasoning.
+source: skills/plan-handoff/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

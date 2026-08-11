@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "policy": "fail-closed",
+  "policy_notes": [
+    "An unregistered client, app, repository, worktree, team, project ID, or local Vercel link is a hard stop.",
+    "Never infer ownership from a Vercel project name, deployment URL, directory name, GitHub organization, or the active Vercel login.",
+    "This registry is a preflight control, not authorization to deploy, promote, relink, edit environment variables, or change domains."
+  ],
+  "entries": [
+    {
+      "client": "striq",
+      "app": "frontend",
+      "repository": "/Users/preston/Code/frontend",
+      "git_remote": "https://github.com/StrIQ-Git/frontend.git",
+      "vercel_scope": "striq",
+      "team_id": "team_ZqsjUb3bh3rMutmB6YP6xTH0",
+      "project_id": "prj_SKog2ldEk86Pjf5dsULbjfWn1IlP",
+      "project_name": "frontend",
+      "production_aliases": ["https://app.striq.com"],
+      "nonproduction_aliases": ["https://dev.striq.com"],
+      "approved_deploy_paths": [],
+      "known_local_state": "Verified locally on 2026-07-27: the direct checkout's .vercel/project.json matches this immutable team/project identity. Deployment still requires a separate explicit approval. The older stale-link warning in striq-shared-docs is superseded by this current local proof and should be refreshed separately."
+    },
+    {
+      "client": "striq",
+      "app": "admin",
+      "repository": "/Users/preston/Code/admin",
+      "git_remote": "https://github.com/StrIQ-Git/admin.git",
+      "vercel_scope": "striq",
+      "team_id": "team_ZqsjUb3bh3rMutmB6YP6xTH0",
+      "project_id": "prj_OZfALeqKn4DRM25ifw5Y0toOF3Qx",
+      "project_name": "admin",
+      "production_aliases": ["https://admin.striq.com"],
+      "nonproduction_aliases": [],
+      "approved_deploy_paths": [],
+      "known_local_state": "Metadata identity matches the registry, but deployment still requires a separate explicit approval."
+    },
+    {
+      "client": "striq",
+      "app": "conference-game",
+      "repository": "/Users/preston/Code/conference-game",
+      "git_remote": "https://github.com/StrIQ-Git/conference-game.git",
+      "vercel_scope": "preston-popes-projects",
+      "team_id": "team_sw7Nix2eZZaMWjwT20q6rWlW",
+      "project_id": "prj_mKgOQXtejAacLi3e1tAIQtuUK8f7",
+      "project_name": "conference-game",
+      "production_aliases": ["https://conference-game-eight.vercel.app"],
+      "nonproduction_aliases": [],
+      "approved_deploy_paths": [],
+      "known_local_state": "Mapped from the current canonical STRIQ deployment record; deployment still requires a separate explicit approval."
+    },
+    {
+      "client": "tiburon",
+      "app": "tiburon-dev",
+      "repository": "/Users/preston/Code/tiburon",
+      "git_remote": "https://github.com/Stewardship-IS/tiburon.git",
+      "vercel_scope": "tiburon-ai",
+      "team_id": "team_4MbpDlK5jf7cNkpkmUM6ETho",
+      "project_id": "prj_b2T8Lr9nQpNs0Zq71Avj33hS5XPC",
+      "project_name": "tiburon-dev",
+      "production_aliases": ["https://tiburon-dev.vercel.app"],
+      "nonproduction_aliases": [],
+      "approved_deploy_paths": ["git-push-dev"],
+      "known_local_state": "Verified on 2026-07-27: /Users/preston/Code/tiburon/.vercel/project.json matches this immutable team/project identity; ./bin/tiburon doctor vercel confirmed the tiburon-ai scope and expected tiburon-dev project; the canonical Git remote matches; and tiburon-dev.vercel.app returned HTTP 200. This maps the Vercel production environment for the project named tiburon-dev. A deployment still requires separate explicit authorization."
+    },
+    {
+      "client": "songs-for-a-cause",
+      "app": "songs4-ac-ause",
+      "repository": "/Users/preston/Code/Songs4ACause",
+      "git_remote": "https://github.com/Splintered-Glass-Solutions/Songs4ACause.git",
+      "vercel_scope": "preston-popes-projects",
+      "team_id": "team_sw7Nix2eZZaMWjwT20q6rWlW",
+      "project_id": "prj_ErB1uxksLBniAmVkH3HBcsjqaqf8",
+      "project_name": "songs4-ac-ause",
+      "production_aliases": [],
+      "nonproduction_aliases": [],
+      "approved_deploy_paths": ["vercel-production"],
+      "known_local_state": "Verified from the canonical repository remote and matching local .vercel/project.json on 2026-07-29. The repository documents one Vercel production deployment lane. The current stable alias still requires provider inspection during deployment preflight."
+    },
+    {
+      "client": "selah",
+      "app": "selah",
+      "repository": "/Users/preston/Code/selah",
+      "git_remote": "https://github.com/prestonpope192/selah.git",
+      "vercel_scope": "preston-popes-projects",
+      "team_id": "team_sw7Nix2eZZaMWjwT20q6rWlW",
+      "project_id": "prj_WKGZ1aZYWWam2ILfKHwxbnrwJJoK",
+      "project_name": "selah",
+      "production_aliases": ["https://selah-eta-gold.vercel.app"],
+      "nonproduction_aliases": [],
+      "approved_deploy_paths": ["vercel-production"],
+      "known_local_state": "Verified from the canonical repository remote, matching local .vercel/project.json, and repository deployment documentation on 2026-07-29. Deployment still requires separate explicit authorization and live provider preflight."
+    }
+  ]
+}

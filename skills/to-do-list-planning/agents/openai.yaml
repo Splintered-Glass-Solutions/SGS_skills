@@ -1,0 +1,4 @@
+interface:
+  display_name: "To-Do List Planning"
+  short_description: "Turn scoped notes into an approved Batch Brief"
+  default_prompt: "Use $to-do-list-planning to turn this scoped to-do batch into a concise Batch Brief."

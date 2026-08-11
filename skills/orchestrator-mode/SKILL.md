@@ -7,10 +7,38 @@ description: >-
   the main model, make an explicit delegation decision, and for broad or
   high-cost work normally launch bounded Codex subagents for independent
   research, coding, testing, log-reduction, or coverage slices. Pair with
-  codex-safe-run guardrails to minimize token usage and Desktop runaway risk.
+  codex-safe-run guardrails and always invoke and enforce token-saver to
+  minimize token usage, autonomous output, and Desktop runaway risk.
 ---
 
 # Orchestrator Mode
+
+## Mandatory Token-Saver Contract
+
+Always invoke and follow `$token-saver` at the start of `$orchestrator-mode`.
+This is a required operating dependency, even when the user does not mention
+it. Establish the narrow context packet, accepted-state checkpoint, compact
+evidence format, and retry limits before widening the work or delegating.
+
+- Search durable artifacts and exact identifiers before reopening sources or
+  repeating discovery.
+- Read only the smallest source slices needed for the next decision.
+- Keep verbose tool, test, browser, and agent output in files; bring only
+  decisions, counts, exact failures, bounded excerpts, and artifact paths into
+  the main thread.
+- Put a compact-return requirement in every delegation packet. Do not request
+  or accept broad narrative, full logs, full diffs, or duplicated excerpts when
+  a changed-files/evidence/risks summary is sufficient.
+- Send user updates only for meaningful state changes, decisions, blockers, or
+  required progress checkpoints. Do not narrate routine work or unchanged
+  polling.
+- Reuse the accepted-state checkpoint after compaction or resumption instead of
+  reconstructing the task from chat history.
+- Stop speculative delegation and repeated retries when their coordination or
+  context cost exceeds the expected value.
+
+Token conservation must not weaken correctness, safety, validation, or evidence.
+Reduce duplication and representation size, not the required proof surface.
 
 Use the current model running the active Codex thread as the orchestrator. Keep
 judgment-heavy work on the main model. Push repeatable, bounded, or
@@ -27,7 +55,8 @@ only when there is a concrete reason, and state that reason explicitly.
 The target is lower premium-model usage, lower main-thread context load, and
 faster wall-clock progress. It is not always fewer total tokens.
 
-For long, broad, or multi-agent work, pair this skill with `$codex-safe-run`.
+For long, broad, or multi-agent work, pair this skill with `$codex-safe-run`
+after invoking `$token-saver`.
 Keep Codex Desktop stable and minimize token usage: compact status updates,
 short output caps, file-backed logs for verbose commands, targeted reads instead
 of full dumps, and no watchers or repeated streaming output inside chat.
@@ -35,18 +64,32 @@ of full dumps, and no watchers or repeated streaming output inside chat.
 ## Start
 
 1. State the objective, task class, and success bar before widening the work.
-2. Create a concrete goal when the host supports goal tracking and the work is
-   substantial enough to justify it.
-3. Inspect the repo or source material before committing to an implementation
+2. Invoke `$token-saver` and define the narrow context packet, compact worker
+   return shape, file-backed log locations, and accepted-state checkpoint.
+3. Create a concrete goal when the host supports goal tracking and the work is
+   substantial enough to justify it. Omit `token_budget` unless the user
+   explicitly requests a token budget.
+4. Inspect the repo or source material before committing to an implementation
    plan.
-4. Separate orchestrator decisions from delegable execution.
-5. Make an explicit delegation decision:
+5. Separate orchestrator decisions from delegable execution.
+6. Make an explicit delegation decision:
    - "Subagents required" for broad/high-cost work with independent slices.
    - "Subagents skipped" only for a short, concrete exception such as missing
      subagent tooling, a tiny task, a privacy/safety boundary, or a single
      serial blocker that must be inspected directly.
-6. If subagents are required, identify and launch one bounded wave before doing
+7. If subagents are required, identify and launch one bounded wave before doing
    the whole task in the main thread.
+
+## Goal Budget Rule
+
+Create tracked goals without a token budget by default. Set `token_budget` only
+when the user explicitly asks for a finite token budget or cap. Never infer a
+budget from task size, cost, complexity, expected duration, or a desire to
+contain usage.
+
+If a goal becomes budget-limited, do not mark it complete or create a competing
+goal merely to bypass the limit. Explain the state and ask the user how to
+proceed.
 
 ## Orchestrator Responsibilities
 
@@ -109,6 +152,7 @@ failures, residual risk, and anything that still requires orchestrator judgment.
 
 ## Token And Desktop Safety
 
+- Treat every `$token-saver` operating rule as binding for the entire run.
 - Keep the main thread lean: summarize exploration, avoid pasting full logs, and
   load only the next relevant file sections.
 - Prefer `rg`, targeted `sed`, structured summaries, and bounded command output
@@ -136,7 +180,8 @@ Before the final response:
 ## Default Framing
 
 "I will use `$orchestrator-mode` to keep this Codex thread as the orchestrator
-and reviewer, pair it with `$codex-safe-run` guardrails for long or noisy work,
+and reviewer, enforce `$token-saver`, pair it with `$codex-safe-run` guardrails
+for long or noisy work,
 and launch bounded cheaper capable subagents for independent research, coding,
 testing, coverage, or log-reduction slices when the task is broad enough. I
 will skip subagents only for a concrete exception and state that exception."

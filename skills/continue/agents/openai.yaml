@@ -1,6 +1,6 @@
 interface:
   display_name: "Continue"
-  short_description: "Resume paused Codex work cleanly"
-  default_prompt: "Use $continue to resume the interrupted work from the current context."
+  short_description: "Resume work with sessions, proof, and approvals intact"
+  default_prompt: "Use $continue to recover the durable checkpoint, reuse active sessions, preserve exact scoped approvals, and resume at the next safe or action-time-gated step."
 policy:
   allow_implicit_invocation: true

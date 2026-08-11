@@ -1,0 +1,4 @@
+interface:
+  display_name: "QA/QC Record Upsert"
+  short_description: "Create or update atomic QA test specifications"
+  default_prompt: "Use $qaqc-record-upsert to create or update the QA/QC specification records for these features or bug fixes, validate them, and report local and database sync status."

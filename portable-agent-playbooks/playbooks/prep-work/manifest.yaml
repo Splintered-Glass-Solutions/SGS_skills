@@ -2,8 +2,10 @@
 name: prep-work
 display_name: Prep Work
 description: Run before large, long-running, autonomous jobs to audit whether the
-  agent has the repo context, credentials, database/API access, environment variables,
-  approvals, and validation path needed to finish without avoidable user interruption.
+  agent has the repo context, target environments and accounts, credentials, database/API
+  access, environment variables, approval classes, existing sessions, and validation
+  path needed to finish without avoidable user interruption, then produce a reusable
+  run contract for the executing skill.
 source: skills/prep-work/SKILL.md
 entrypoint: AGENT.md
 target_platforms:

@@ -1,0 +1,20 @@
+---
+name: run-user-story
+display_name: Run User Story
+description: Expand a short, high-level product scenario into a complete user-story
+  hardening contract, then execute it end to end by testing each step, auditing the
+  actual result, diagnosing defects, implementing authorized fixes, and retesting
+  until the story passes or reaches a genuine blocker. Use when the user asks the
+  agent to create and run a user story, exercise a realistic workflow, test and harden
+  a multi-step journey, turn an example into an autonomous QA run, or produce the
+  same audit-repair-retest style of workflow used in prior Bonfire business or ministry
+  testing.
+source: skills/run-user-story/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

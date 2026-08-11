@@ -519,8 +519,17 @@ def draw_product_visual(
     header, sections, footer = visual_content_for(feature_name, description)
     draw.text((left + int(width * 0.06), top + int(header_h * 0.30)), header, fill=BRAND_SLATE, font=chip_font)
     row_top = top + header_h + int(height * 0.08)
-    row_gap = int(height * 0.045)
-    row_h = max(int(height * 0.14), chip_font.size * 2)
+    footer_y = bottom - int(height * 0.08)
+    rows_bottom = footer_y - int(height * 0.08)
+    row_gap = int(height * 0.025)
+    available_rows_height = max(rows_bottom - row_top, 1)
+    row_h = max(
+        chip_font.size * 2,
+        int(
+            (available_rows_height - row_gap * max(len(sections) - 1, 0))
+            / max(len(sections), 1)
+        ),
+    )
     for label, color in sections:
         draw.rounded_rectangle(
             (left + int(width * 0.06), row_top, right - int(width * 0.06), row_top + row_h),
@@ -542,7 +551,7 @@ def draw_product_visual(
         )
         row_top += row_h + row_gap
 
-    draw.text((left + int(width * 0.06), bottom - int(height * 0.12)), footer, fill=BRAND_MUTED, font=small_font)
+    draw.text((left + int(width * 0.06), footer_y), footer, fill=BRAND_MUTED, font=small_font)
 
 
 def is_source_skill_feature(feature_name: str, description: str) -> bool:

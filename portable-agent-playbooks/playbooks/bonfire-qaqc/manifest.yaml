@@ -1,11 +1,13 @@
 ---
 name: bonfire-qaqc
 display_name: Bonfire Qaqc
-description: Run Bonfire QA/QC and release validation using the repo's canonical QA
-  docs. Use when the user asks to run or prepare QA, QC, "full suite", "full QAQC",
-  "test every page", "manual QA walkthrough", "production readiness", environment
-  validation, app.heybonfire.com checks, dev/local/prod smoke tests, release sync
-  validation, or weekly QA reporting for Bonfire.
+description: Run, resume, reconcile, or report Bonfire QA/QC across frontend pages,
+  interfaces, Web and AI APIs, MCP tools, ETL functions/schedules, and Super Admin.
+  Use for full-suite QA, scoped or delta retests, production readiness, environment
+  validation, blocked-check cleanup, dashboard sessions, manual walkthroughs, release
+  regression checks, and weekly QA reporting. Persist Bonfire runs through the live
+  Supabase QA infrastructure with reviewer Codey and use the Super Admin QA/QC dashboard
+  as the staff interface.
 source: skills/bonfire-qaqc/SKILL.md
 entrypoint: AGENT.md
 target_platforms:

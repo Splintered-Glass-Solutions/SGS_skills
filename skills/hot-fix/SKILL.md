@@ -38,6 +38,12 @@ live result.
 7. Deploy through the repo's established path. Confirm the target environment,
    branch, service, and credentials first. If the deploy target or permission is
    ambiguous, ask before changing production state.
+   When multiple environments are requested, resolve and preflight each target
+   independently. Deploy a confirmed, explicitly authorized target even if
+   another target is absent, unmapped, or uncertain. Do not infer or substitute
+   the uncertain target; report it separately. Stop every target only when a
+   shared artifact, safety prerequisite, or dependency makes a partial rollout
+   unsafe.
 8. Verify the deployed result against the original issue with live evidence:
    hosted route checks, API responses, logs, health checks, smoke tests, or
    screenshots. Keep "local build passed" separate from "deployment verified."

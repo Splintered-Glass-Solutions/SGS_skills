@@ -1,0 +1,4 @@
+interface:
+  display_name: "To-Do List"
+  short_description: "Gather and capture actionable to-do items"
+  default_prompt: "Use $to-do-list to capture each new item as a concise planning note."

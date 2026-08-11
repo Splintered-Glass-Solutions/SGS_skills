@@ -1,4 +1,4 @@
 interface:
   display_name: "Prep Work"
-  short_description: "Audit prerequisites before autonomous long-running jobs"
-  default_prompt: "Use $prep-work before starting this large job to confirm credentials, access, approvals, risks, and validation readiness."
+  short_description: "Create a reusable readiness and approval contract"
+  default_prompt: "Use $prep-work to audit this job's targets, credentials, approval classes, existing sessions, and proof surfaces, then hand the executing skill a reusable run contract."

@@ -1,0 +1,18 @@
+---
+name: bonfire-page-autonomous-audit
+display_name: Bonfire Page Autonomous Audit
+description: Autonomously inventory, test, repair, and validate every feature and
+  connected workflow of a named Bonfire page across Web, Bonfire_AI, Bonfire_ETL,
+  database, infrastructure, and documentation. Use when the user asks for a complete
+  page audit, end-to-end functional QA, authenticated Bulverde Chapel testing, cross-repository
+  repairs, or safe additive production database changes while keeping the existing
+  thread working trees and branches unchanged.
+source: skills/bonfire-page-autonomous-audit/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

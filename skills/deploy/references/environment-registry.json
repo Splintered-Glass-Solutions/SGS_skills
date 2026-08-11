@@ -1,0 +1,284 @@
+{
+  "schema_version": 1,
+  "policy": "fail-closed",
+  "policy_notes": [
+    "This registry resolves logical environment names only. It does not authorize a deployment or prove provider identity.",
+    "An omitted environment may resolve only when allow_implicit_environment is true and exactly one environment is registered.",
+    "Multi-environment projects always require the requester to name the environment.",
+    "Provider-specific doctor, target-registry, account, project, and immutable identity checks remain mandatory before writes."
+  ],
+  "projects": [
+    {
+      "project": "tiburon",
+      "repositories": [
+        "/Users/preston/Code/tiburon"
+      ],
+      "git_remotes": [
+        "https://github.com/Stewardship-IS/tiburon.git"
+      ],
+      "allow_implicit_environment": true,
+      "environments": [
+        {
+          "name": "production",
+          "provider": "vercel",
+          "provider_target": "production",
+          "provider_project": "tiburon-ai/tiburon-dev",
+          "source_branch": "dev",
+          "stable_url": "https://tiburon-dev.vercel.app",
+          "identity_gate": "Tiburon ./bin/tiburon doctor plus vercel-deployment-safety registry"
+        }
+      ]
+    },
+    {
+      "project": "pinion",
+      "aliases": [
+        "pinon"
+      ],
+      "repositories": [
+        "/Users/preston/Code/pinion"
+      ],
+      "git_remotes": [
+        "https://github.com/Stewardship-IS/pinon.git"
+      ],
+      "allow_implicit_environment": true,
+      "environments": [
+        {
+          "name": "production",
+          "provider": "vercel",
+          "provider_target": "production",
+          "provider_project": "pinon/pinon",
+          "source_branch": "main",
+          "stable_url": "https://pinon.vercel.app",
+          "identity_gate": "Pinion make doctor"
+        }
+      ]
+    },
+    {
+      "project": "songs-for-a-cause",
+      "aliases": [
+        "songs4acause",
+        "songs-for-cause",
+        "songs for a cause"
+      ],
+      "repositories": [
+        "/Users/preston/Code/Songs4ACause"
+      ],
+      "git_remotes": [
+        "https://github.com/Splintered-Glass-Solutions/Songs4ACause.git"
+      ],
+      "allow_implicit_environment": true,
+      "environments": [
+        {
+          "name": "production",
+          "provider": "vercel",
+          "provider_target": "production",
+          "provider_project": "preston-popes-projects/songs4-ac-ause",
+          "source_branch": null,
+          "stable_url": null,
+          "identity_gate": "vercel-deployment-safety registry"
+        }
+      ]
+    },
+    {
+      "project": "selah",
+      "aliases": [
+        "sela"
+      ],
+      "repositories": [
+        "/Users/preston/Code/selah"
+      ],
+      "git_remotes": [
+        "https://github.com/prestonpope192/selah.git"
+      ],
+      "allow_implicit_environment": true,
+      "environments": [
+        {
+          "name": "production",
+          "provider": "vercel",
+          "provider_target": "production",
+          "provider_project": "preston-popes-projects/selah",
+          "source_branch": null,
+          "stable_url": "https://selah-eta-gold.vercel.app",
+          "identity_gate": "vercel-deployment-safety registry"
+        }
+      ]
+    },
+    {
+      "project": "threadlight",
+      "repositories": [
+        "/Users/preston/Code/threadlight"
+      ],
+      "git_remotes": [
+        "https://github.com/Living-LIVE/threadlight.git"
+      ],
+      "allow_implicit_environment": true,
+      "environments": [
+        {
+          "name": "production",
+          "provider": "railway",
+          "provider_target": "production",
+          "provider_project": "threadlight/threadlight",
+          "source_branch": "codex/build-threadlight",
+          "stable_url": "https://threadlight-production.up.railway.app",
+          "identity_gate": "Railway project 293f3005-4804-4d60-904f-c12a93fbb6ae, environment fe2b2bda-37ad-4c1c-89ca-43408b6c5801, service a7754bfd-3dea-420f-a7ff-1bc4d08b1147"
+        }
+      ]
+    },
+    {
+      "project": "striq-frontend",
+      "aliases": [
+        "striq"
+      ],
+      "repositories": [
+        "/Users/preston/Code/frontend"
+      ],
+      "git_remotes": [
+        "https://github.com/StrIQ-Git/frontend.git"
+      ],
+      "allow_implicit_environment": false,
+      "environments": [
+        {
+          "name": "dev",
+          "provider": "vercel",
+          "provider_target": "preview",
+          "provider_project": "striq/frontend",
+          "source_branch": "dev",
+          "stable_url": "https://dev.striq.com",
+          "identity_gate": "vercel-deployment-safety registry plus STRIQ VERCEL_DEPLOYMENT_MAP.md"
+        },
+        {
+          "name": "production",
+          "provider": "vercel",
+          "provider_target": "production",
+          "provider_project": "striq/frontend",
+          "source_branch": "main",
+          "stable_url": "https://app.striq.com",
+          "identity_gate": "vercel-deployment-safety registry plus STRIQ VERCEL_DEPLOYMENT_MAP.md"
+        }
+      ]
+    },
+    {
+      "project": "striq-admin",
+      "repositories": [
+        "/Users/preston/Code/admin"
+      ],
+      "git_remotes": [
+        "https://github.com/StrIQ-Git/admin.git"
+      ],
+      "allow_implicit_environment": false,
+      "environments": [
+        {
+          "name": "preview",
+          "provider": "vercel",
+          "provider_target": "preview",
+          "provider_project": "striq/admin",
+          "source_branch": null,
+          "stable_url": null,
+          "identity_gate": "vercel-deployment-safety registry plus STRIQ VERCEL_DEPLOYMENT_MAP.md"
+        },
+        {
+          "name": "production",
+          "provider": "vercel",
+          "provider_target": "production",
+          "provider_project": "striq/admin",
+          "source_branch": "main",
+          "stable_url": "https://admin.striq.com",
+          "identity_gate": "vercel-deployment-safety registry plus STRIQ VERCEL_DEPLOYMENT_MAP.md"
+        }
+      ]
+    },
+    {
+      "project": "bonfire-app",
+      "aliases": [
+        "bonfire"
+      ],
+      "repositories": [
+        "/Users/preston/Code/bonfire"
+      ],
+      "git_remotes": [
+        "https://github.com/Living-LIVE/bonfire.git"
+      ],
+      "allow_implicit_environment": false,
+      "environments": [
+        {
+          "name": "dev",
+          "provider": "project-runbook",
+          "provider_target": "dev",
+          "provider_project": null,
+          "source_branch": "dev",
+          "stable_url": "https://dev.heybonfire.com",
+          "identity_gate": "bonfire-deployment-strategy and current environment matrix"
+        },
+        {
+          "name": "production",
+          "provider": "project-runbook",
+          "provider_target": "production",
+          "provider_project": null,
+          "source_branch": "main",
+          "stable_url": "https://heybonfire.com",
+          "identity_gate": "bonfire-deployment-strategy and current environment matrix"
+        }
+      ]
+    },
+    {
+      "project": "bonfire-api",
+      "repositories": [
+        "/Users/preston/Code/Bonfire_AI"
+      ],
+      "git_remotes": [
+        "https://github.com/Splintered-Glass-Solutions/Bonfire_AI.git"
+      ],
+      "allow_implicit_environment": false,
+      "environments": [
+        {
+          "name": "dev",
+          "provider": "project-runbook",
+          "provider_target": "dev",
+          "provider_project": null,
+          "source_branch": "dev",
+          "stable_url": null,
+          "identity_gate": "bonfire-deployment-strategy"
+        },
+        {
+          "name": "production",
+          "provider": "project-runbook",
+          "provider_target": "production",
+          "provider_project": null,
+          "source_branch": "main",
+          "stable_url": null,
+          "identity_gate": "bonfire-deployment-strategy"
+        }
+      ]
+    },
+    {
+      "project": "bonfire-etl",
+      "repositories": [
+        "/Users/preston/Code/Bonfire_ETL"
+      ],
+      "git_remotes": [
+        "https://github.com/Splintered-Glass-Solutions/Bonfire_ETL.git"
+      ],
+      "allow_implicit_environment": false,
+      "environments": [
+        {
+          "name": "dev",
+          "provider": "project-runbook",
+          "provider_target": "dev",
+          "provider_project": null,
+          "source_branch": "dev",
+          "stable_url": null,
+          "identity_gate": "bonfire-etl-deploy-rollout"
+        },
+        {
+          "name": "production",
+          "provider": "project-runbook",
+          "provider_target": "production",
+          "provider_project": null,
+          "source_branch": "main",
+          "stable_url": null,
+          "identity_gate": "bonfire-etl-deploy-rollout"
+        }
+      ]
+    }
+  ]
+}

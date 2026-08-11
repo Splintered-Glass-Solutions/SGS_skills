@@ -1,0 +1,4 @@
+interface:
+  display_name: "Soundtrack Prompt Planner"
+  short_description: "Create reusable generated-music prompt plans"
+  default_prompt: "Use $soundtrack-prompt-planner to create a paste-ready generated-music soundtrack prompt plan for this project."

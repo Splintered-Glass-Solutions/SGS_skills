@@ -1,4 +1,4 @@
 interface:
   display_name: "Bulk Edits Thread"
-  short_description: "Consolidate dev work and start local editing"
-  default_prompt: "Use $bulk-edits-thread to rename this task, consolidate local dev work, and start the app for editing."
+  short_description: "Start an isolated planned bulk-edit lane"
+  default_prompt: "Use $bulk-edits-thread to start an isolated dev-based worktree for this approved Batch Brief."

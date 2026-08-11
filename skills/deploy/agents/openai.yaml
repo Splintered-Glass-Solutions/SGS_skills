@@ -1,0 +1,4 @@
+interface:
+  display_name: "Deploy"
+  short_description: "Deploy task features to explicit or sole environments"
+  default_prompt: "Use $deploy to deliver the current task feature completely to the requested environment, or to the sole registered environment when this project has only one."

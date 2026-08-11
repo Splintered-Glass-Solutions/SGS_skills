@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vercel Deployment Safety"
+  short_description: "Fail-closed Vercel project and team verification."
+  default_prompt: "Verify the intended Vercel client, app, team, project, repository, and local linkage before any deployment."

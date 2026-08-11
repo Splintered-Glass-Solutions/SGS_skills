@@ -1,0 +1,18 @@
+---
+name: automation-thread-scheduler
+display_name: Automation Thread Scheduler
+description: 'Create or repair the agent automations and scheduled monitors with thread
+  hygiene: prefer same-thread heartbeat automations, prevent recurring cron thread
+  spam, add an emoji-prefixed automation thread title, remove or pause duplicate standalone
+  schedules, and preserve automation memory/checkpoints. Use when the user asks to
+  create, schedule, update, repair, convert, or clean up a the agent automation, monitor,
+  reminder, recurring run, heartbeat, or scheduled skill.'
+source: skills/automation-thread-scheduler/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

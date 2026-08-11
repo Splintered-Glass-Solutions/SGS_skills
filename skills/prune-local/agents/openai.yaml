@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prune Local Work"
+  short_description: "Audit and safely prune local worktrees"
+  default_prompt: "Use $prune-local to audit local branches and worktrees, identify unresolved work, and safely clean up integrated leftovers."

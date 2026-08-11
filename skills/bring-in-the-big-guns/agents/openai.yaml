@@ -1,0 +1,6 @@
+interface:
+  display_name: "Bring in the Big Guns"
+  short_description: "Escalate stuck work to frontier reasoning"
+  default_prompt: "Use $bring-in-the-big-guns to escalate this stuck task, repair the root problem, and clean up failed attempts."
+policy:
+  allow_implicit_invocation: true

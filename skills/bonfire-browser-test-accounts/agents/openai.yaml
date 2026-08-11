@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bonfire Browser Test Accounts"
+  short_description: "Choose the right Bonfire QA login"
+  default_prompt: "Use $bonfire-browser-test-accounts to choose and verify the correct Bonfire browser-test identity."

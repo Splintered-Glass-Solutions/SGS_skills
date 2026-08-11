@@ -1,13 +1,13 @@
 ---
 name: local-dev-consolidation
 display_name: Local Dev Consolidation
-description: 'Use when the user wants local work across one or more repos, branches,
-  or worktrees consolidated into a dev-ready state: inspect dirty working trees, identify
-  merge conflicts and incomplete work, safely merge functional changes, run validation,
-  deploy to the confirmed dev environment when explicitly requested, clean up local
-  state, and report what shipped versus what remains. Trigger on phrases like consolidate
-  local work, clean up working trees, merge everything to dev, deploy local work to
-  dev, wrap this into dev, or get my local environment clean.'
+description: 'Consolidate work across local repos, branches, or worktrees into a clean
+  local branch based on the confirmed dev baseline, resolve conflicts, validate locally,
+  and prepare a local-testing handoff. This skill is local-only by default: it does
+  not push or deploy unless the user separately and explicitly requests deployment
+  to dev. Trigger on consolidate local work, clean up working trees, merge everything
+  into a local dev branch, wrap this into a dev-ready branch, or get my local environment
+  clean.'
 source: skills/local-dev-consolidation/SKILL.md
 entrypoint: AGENT.md
 target_platforms:

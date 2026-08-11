@@ -1,17 +1,48 @@
 ---
 name: full-suite-tests
-description: Run or plan a repository's full test and QA suite for a named environment. Use when the user says "full-suite-tests in local", "full-suite-tests in dev", "full-suite-tests in prod", "run full suite in local/dev/prod", "full QA in dev", "test everything in prod", or similar environment-scoped full validation requests across any project.
+description: Run or plan a repository's complete environment-scoped test and QA suite, including its durable QA/QC catalog, and persist per-check results to the configured QA dashboard/database or local run store. Always invoke and enforce $token-saver for these normally autonomous, log-heavy runs. Use when the user says "full-suite-tests in local", "full-suite-tests in dev", "full-suite-tests in prod", "run full suite in local/dev/prod", "full QA in dev", "test everything in prod", or similar full validation requests across any project.
 ---
 
 # Full Suite Tests
 
 Use this skill when the user asks for a full test or QA pass scoped to an environment such as `local`, `dev`, `staging`, `preview`, or `prod`.
 
+## Mandatory Token-Saver Contract
+
+Always invoke and follow `$token-saver` before discovery or execution. This is
+a required operating dependency of `$full-suite-tests`, even when the user does
+not mention it. Do not begin a broad scan, suite, browser run, or delegation
+wave until the token-saving execution shape is established.
+
+- Reuse accepted inventories, run ledgers, catalog snapshots, auth sessions,
+  and prior proof after cheaply checking drift. Do not reconstruct stable work.
+- Search before reading and load only the sections needed for the next
+  decision. Never dump whole logs, catalogs, traces, generated folders, or
+  large files into chat.
+- Send verbose command output to file-backed logs. Return only exit status,
+  counts, exact failing test identities, bounded error excerpts, and artifact
+  paths.
+- Require every subagent to return the compact evidence schema requested by
+  `$token-saver`; reject broad narratives and repeated source excerpts.
+- Communicate only meaningful milestones, changed state, actionable failures,
+  and blockers. Do not narrate routine commands or unchanged polling.
+- Keep the final response decision-sized. Link the durable run artifact instead
+  of reproducing it.
+
+Token conservation must never remove a required suite, assertion, failure
+detail, safety check, or proof. Reduce representation and repetition, not test
+coverage or correctness. If a command starts flooding output, stop or redirect
+the noisy path, preserve its log, and continue from a compact summary.
+
 ## Contract
 
 Treat "full suite" as the repo's broadest reasonable validation pass, not a single default test command, unless the repo clearly defines it that way. By default, "full suite" means both deterministic checks and computer-use/e2e/browser validation when the project has those tests or user-facing flows.
 
 The suite breadth must not shrink because the target is `dev`, `staging`, `preview`, `prod`, or an app URL. The environment changes the base URL, credentials/session, deploy metadata, and safety posture; it does not change the obligation to run all automated suites and all relevant browser/API/manual coverage across the repo. If a suite cannot run safely against an environment, mark that exact suite blocked with the reason and continue with the remaining non-blocked suites. Do not silently replace authenticated app tests with public smoke tests.
+
+When a project has a QA/QC catalog, checklist, dashboard, or run store, full suite must use it as the execution ledger. Select every active environment-applicable check, retain unsafe or unresolved checks as blocked rather than omitting them, and persist one attributable result or explicit non-execution disposition per selected check. Automated command success is evidence for a catalog check only when the exact test/assertion exercises that check's success criteria; never mark the whole catalog passed because lint, build, or a generic smoke suite passed.
+
+Use `$qa-run` for run lifecycle, reviewer mapping, storage adapters, append-only attempts, evidence, and persistence verification. Keep this skill responsible for discovering and executing the complete suite; use `qa-run` to durably materialize that execution. A full-suite request authorizes one bounded QA-only run and its result/evidence/audit writes to an already-configured QA store. It does not authorize schema creation, permissions/RLS changes, deployment, unrelated application-data mutation, destructive checks, paid operations, or production writes beyond separately approved safe test actions.
 
 For any app with authenticated user-facing surfaces, a full-suite result is
 failed/incomplete when authenticated coverage cannot run. Public smoke tests are
@@ -27,9 +58,9 @@ For monorepos or repos with multiple apps/packages, "full suite" means the entir
 
 If a previous or current `feature-finish-line` run produced a finish-line coverage ledger, those tests are mandatory full-suite inputs. Before running broad validation, locate the ledger in the current thread, PR notes, QA doc, commit/PR description, or finish-line final report. Add every listed test file, test name/grep pattern, direct command, and broader suite command to the suite inventory. A full-suite run is not complete until every finish-line ledger test has passed in the requested environment's applicable suite, or is explicitly marked blocked/not applicable with a concrete reason. Do not assume a route smoke, lint, build, or unrelated e2e pass covers a ledger item unless the exact assertion/test from the ledger ran.
 
-Mandatory orchestration and safe-run posture:
+Mandatory orchestration, token-saving, and safe-run posture:
 
-- Always use the `orchestrator-mode` and `codex-safe-run` skills before starting broad checks or running full-suite tests. Treat both as part of this skill, even when the user does not mention them separately.
+- Always use the `token-saver`, `orchestrator-mode`, `codex-safe-run`, and `qa-run` skills before starting broad checks or running full-suite tests. Treat all four as part of this skill, even when the user does not mention them separately.
 - Keep the active thread as the orchestrator for decomposition, validation strategy, delegated evidence review, and final synthesis.
 - Make an explicit delegation decision before broad execution. For broad, high-cost, multi-suite, browser-heavy, or log-heavy runs, normally launch bounded Codex subagents for independent discovery, coverage slices, or log reduction when the slices can stand alone. Skip subagents only for a concrete reason and state it.
 - Minimize Codex token usage during test execution. Do not stream full test, build, browser, deploy, or CI logs into the chat.
@@ -40,18 +71,21 @@ Mandatory orchestration and safe-run posture:
 - Use bounded command output caps and avoid commands that print secrets, large env files, generated assets, coverage dumps, `.next`, `dist`, `node_modules`, or full `test-results` contents.
 - Run the full discovered suite inventory for the requested environment. Stop only when a prerequisite blocker makes later checks invalid or unsafe, then record exactly which suites are blocked and continue with any independent suites that remain safe to run.
 - Preserve durable evidence by writing or updating the repo's QA run log when the run is substantial, blocked, or browser/manual coverage was attempted.
-- Treat failures as a bounded batch repair loop, not a one-shot report. Run the full discovered suite first, collect the complete failure set, fix failures together when they share a likely cause or can be handled in one local batch, verify the batch locally, deploy to the requested non-production target when hosted retesting requires it, then rerun the affected hosted suite inventory. Do not run a separate loop for each feature or each individual failure unless isolation is necessary for safety or diagnosis. Default cap: up to 5 full run/repair/local-verify/deploy/retest loops, or a lower cap if the user explicitly gives one. Stop earlier when all in-scope suites pass or the remaining failures are blocked by a reasonably insurmountable hurdle that needs human review, external access, third-party service recovery, credentials, billing/account intervention, production approval, or another outside step. Maintain a compact loop log.
+- Create the QA run/session and snapshot its selected checks before execution when a configured writer exists. Save outcomes incrementally and read them back; do not wait until the end and risk losing the run.
+- If no QA database/dashboard exists, use `qa-run` local persistence. If a configured or project-required dashboard exists but cannot be written, preserve the run locally, mark dashboard synchronization blocked, and report the full suite incomplete on persistence even when executed tests pass.
+- Treat failures as a bounded batch repair loop, not a one-shot report. Run the full discovered suite first, collect the complete failure set, fix failures together when they share a likely cause or can be handled in one local batch, and verify the batch locally. Deploy to a requested non-production target only when separate current authority covers that exact repo/target/branch or SHA; otherwise record the hosted retest as blocked. Do not run a separate loop for each feature or each individual failure unless isolation is necessary for safety or diagnosis. Default cap: up to 5 full run/repair/local-verify/retest loops, or a lower cap if the user explicitly gives one. Stop earlier when all in-scope suites pass or the remaining failures are blocked by a reasonably insurmountable hurdle that needs human review, external access, third-party service recovery, credentials, billing/account intervention, production approval, or another outside step. Maintain a compact loop log.
 
 Default meaning:
 
 1. Discover the project's own definition of full validation.
-2. Build a complete suite inventory for the repo before running: deterministic, build/type/lint, integration/API, browser/e2e/computer-use, environment canaries, and documented manual smoke checklists.
-3. Run deterministic automated checks first.
-4. Verify environment/deploy health for the requested target.
-5. Establish an authenticated test session when the app has authenticated user-facing surfaces.
-6. Run computer-use/e2e/browser/manual/API smoke or regression coverage when the app has user-facing surfaces.
-7. Record every suite/check as passed, failed, blocked, skipped by explicit user scope, or not applicable. If authenticated coverage is required but cannot run, mark the overall full-suite status as failed/incomplete even if public checks pass.
-8. Repair and retest failures in batches until the suite is green, the loop cap is reached, or only explicit external blockers remain.
+2. Discover the QA/QC catalog and run store, then materialize the complete environment-applicable check scope with reviewer `Codey` through `$qa-run`.
+3. Build a complete suite inventory for the repo before running: catalog checks, deterministic tests, build/type/lint, integration/API, browser/e2e/computer-use, environment canaries, and documented manual smoke checklists. Map executable tests to stable catalog check IDs/keys.
+4. Run deterministic automated checks first and persist only the catalog results they directly prove.
+5. Verify environment/deploy health for the requested target.
+6. Establish an authenticated test session when the app has authenticated user-facing surfaces.
+7. Run computer-use/e2e/browser/manual/API smoke or regression coverage when the app has user-facing surfaces.
+8. Record and read back every selected catalog/suite check as passed, failed, blocked, skipped by explicit user scope, or not applicable. If authenticated coverage is required but cannot run, mark the overall full-suite status as failed/incomplete even if public checks pass.
+9. Repair and retest failures in batches until the suite is green, the loop cap is reached, or only explicit external blockers remain. Retests append attempts; they never overwrite failed history.
 
 If the environment is missing, ask for it before executing. If the environment is present, proceed using the rules below.
 
@@ -79,13 +113,15 @@ Use `rg` and targeted file reads. Avoid broad scans of generated folders such as
 ## Execution Order
 
 1. Preflight
-   - Invoke `$orchestrator-mode` and `$codex-safe-run` as mandatory setup for broad test execution.
+   - Invoke `$token-saver`, `$orchestrator-mode`, `$codex-safe-run`, and `$qa-run` as mandatory setup for broad test execution.
    - State the objective, task class, success bar, and delegation decision before widening the run.
    - Record repo path, branch, commit, dirty git state, requested environment, target URL, and known deploy/build identifier when applicable.
    - Locate any finish-line coverage ledger from this thread, repo QA docs, PR notes, branch docs, or recent finish-line report. If a ledger exists, import it into the suite inventory before execution. If the user specifically asks to validate recent finish-line work and no ledger can be found, report that as a coverage accounting blocker and reconstruct the issue-to-test mapping from diffs/tests before running broad checks.
    - Confirm required env vars/services are present without printing secrets.
    - Check whether the requested environment has safety constraints or approval requirements.
    - Produce a suite inventory before execution. Include every discovered script/check/config file and every finish-line ledger test, and classify each as in-scope, blocked, not applicable, or explicitly excluded by the user. Do not omit configured suites because they are slow, browser-heavy, or previously passing.
+   - Discover the project's QA catalog/checklist, current catalog revision, prior attempts, run/session writer, evidence store, reviewer representation, and stable check identity. Prefer an authenticated dashboard API over direct database writes.
+   - Create the parent QA run with reviewer display name `Codey`, snapshot every active check applicable to the environment, read the scope back, and reconcile its selected count before running tests. If the project has no QA store, initialize the local `qa-run` artifacts instead.
 
 2. Automated checks
    - Run the repo's canonical full deterministic suite.
@@ -98,6 +134,7 @@ Use `rg` and targeted file reads. Avoid broad scans of generated folders such as
    - Run every direct finish-line ledger command or prove the repo's canonical command includes it. If a canonical full-suite command does not include a ledger test, run the ledger test separately and record the suite wiring gap as a follow-up or blocker.
    - In JavaScript/TypeScript workspaces, run all relevant package-manager scripts matching deterministic tests, browser/e2e/computer-use tests, prod/dev/preview canaries, lint, typecheck, build, and check. If a canonical `test:all`, `test:predeploy`, or equivalent omits configured browser/canary suites, run the omitted suites separately.
    - For monorepos, run root-level suite commands plus each workspace/package suite unless the root command is documented to transitively run them all.
+   - After each bounded suite, map its exact assertions to selected QA check IDs/keys. Append attempts with environment, build/commit, command/test identity, actual result, and artifact/log reference. Leave unrelated catalog checks pending for their own browser, API, ETL, or manual execution.
 
 3. Environment checks
    - `local`: start or reuse the documented local server and verify health/routes.
@@ -122,19 +159,31 @@ Use `rg` and targeted file reads. Avoid broad scans of generated folders such as
    - For any finish-line ledger item that names a browser/e2e/computer-use test, run that exact test or the suite that includes it against the requested environment when safe. If the environment cannot support the exact test because of auth, paid actions, external-service risk, or fixture limitations, mark that ledger item blocked and run the closest safe canary only as supplemental evidence.
    - Cover primary user workflows, auth/onboarding, navigation, settings/admin surfaces, data creation/edit paths, and mobile/responsive behavior when applicable.
    - Capture console/network errors and screenshots/artifacts for failures.
+   - Persist browser results per mapped test. For each failed Playwright,
+     Cypress, or Computer Use test, record the exact file/line/title identity,
+     failure class, actionable error/assertion, bounded stack excerpt (or why it
+     is unavailable), and artifact paths. Record neighboring mapped tests with
+     their own outcomes. A bare `Playwright failed`, exit code, or `passed |
+     failed` summary is invalid evidence.
+   - If the browser runner, auth, fixture, reporter, or artifact pipeline fails
+     before an attributable product assertion, classify the QA check as
+     `blocked` with the infrastructure cause and recovery action. Do not turn a
+     harness failure into a product `failed` result.
+   - Execute every remaining applicable catalog check from its stored prerequisites, steps, and success criteria. Record failures with observations/evidence and blocked/N/A/skipped results with a reason. Do not silently leave manual or fixture-dependent catalog rows outside the denominator.
 
 6. Repair and retest loop
-   - Use a batch-first loop. One loop is: run the broad suite inventory for the target environment, identify all failures from that pass, group related failures, write concrete hypotheses for each group, fix all actionable groups locally, run focused local checks for each fix, run the relevant broader local suites, deploy the verified batch when the target is hosted non-production, then rerun the affected hosted full-suite inventory.
+   - Use a batch-first loop. One loop is: run the broad suite inventory for the target environment, identify all failures from that pass, group related failures, write concrete hypotheses for each group, fix all actionable groups locally, run focused local checks for each fix, and run the relevant broader local suites. When the target is hosted, deploy and retest only if separate current deployment authority names the exact repo, target, and branch/SHA.
    - Do not spend a loop per feature, per screenshot, or per individual test when the failures can be diagnosed and fixed together. Use focused reruns inside a loop to prove a fix, but count the loop at the batch level.
    - Default to a maximum of 5 loops. If the user explicitly gives a lower cap, honor the lower cap. If the user asks for more than 5 loops, pause at loop 5 with a compact status report and ask before continuing.
-   - For `local`, validate fixes against the local suite and local app. For hosted `dev`, `staging`, or `preview`, validate locally first, then deploy through the repo's documented non-production path before rerunning hosted checks. If deployment is blocked or not authorized for that target, record the hosted retest as blocked and report the exact next action needed.
+   - For `local`, validate fixes against the local suite and local app. For hosted `dev`, `staging`, or `preview`, validate locally first, then use the documented non-production deployment path only when the exact deployment is already authorized. Otherwise record the hosted retest as blocked and report the exact next action needed.
    - For `prod` or `production`, do not deploy or mutate production as part of the loop unless the user explicitly approves that exact production action. Production loops are read-only by default and should stop at a local or non-prod fix plus a clear production validation blocker when deployment would be required.
-   - Continue looping while the next step is under Codex control and reasonably safe: code fixes, test fixes, config corrections, fixture cleanup, local service restarts, retrying flaky third-party reads, recovering approved auth sessions, adding missing documented setup, and documented non-production redeploys for hosted retest.
+   - Continue looping while the next step is under Codex control and reasonably safe: code fixes, test fixes, config corrections, fixture cleanup, local service restarts, retrying flaky third-party reads, recovering approved auth sessions, and adding missing documented setup. Include non-production redeploys only under separate valid deployment authority.
    - Stop looping only when the suite is green, the loop cap is reached, or the remaining issue is blocked by something outside the current agent run: missing/expired credentials that cannot be recovered through approved paths, access or billing limits, unavailable third-party services, required human product/scope decision, production-safety approval, destructive data migration approval, account owner action, or another dependency that cannot be resolved from the repo/session.
    - Do not label ordinary test failures, unclear code paths, slow suites, or broad logs as blockers until a focused diagnosis has shown that the next useful step requires outside input or would exceed approved safety boundaries.
    - Keep a compact loop log with loop number, failure groups, hypotheses, local changes/actions, focused local retests, broader local retests, deployment identifier when applicable, hosted retest command/result, and whether the loop expanded or narrowed the remaining failure set.
    - When a fix touches application behavior, rerun both the focused failing check and the relevant broader local suite before deploying or calling the run green. For hosted targets, do not call the hosted run green until the deployed environment has also passed the affected hosted suite inventory.
    - If a fix could change product scope, user-visible behavior, permissions, data mutation, billing, auth, or environment safety posture, flag it for human review even when tests pass.
+   - Persist each retest as a new attempt linked to the same selected check. Preserve the original failure and make recovery/regression history visible in dashboard rollups.
 
 7. Report
    - Summarize pass/fail status by check type.
@@ -144,13 +193,14 @@ Use `rg` and targeted file reads. Avoid broad scans of generated folders such as
    - State whether authenticated coverage ran. If it did not, and the app has any authenticated surface, lead the report with a failure status and explicitly say that the suite did not test most of the app behind login. Do not bury this as a secondary blocker after public passes.
    - End with a high-level loop summary: total loops run out of the cap, failure groups found in each pass, what changed, what passed locally before deployment, deployment identifiers for hosted loops, hosted retest results, how the failures were solved or why they remain blocked, and any implications that should be reviewed to ensure the fixes did not unintentionally change app scope or functionality.
    - If a run-log convention exists, update it. Otherwise create a dated log only when the run is substantial or browser/manual coverage is performed.
+   - Include a "QA/QC persistence" section: storage mode, run/session ID or path, reviewer `Codey`, catalog revision, selected/result counts, per-outcome rollup, read-back proof, dashboard/local synchronization status, and any checks whose persistence failed.
 
 ## Safety Rules
 
 - Production full suite is non-destructive by default.
 - Do not delete production data, invite real users, mutate paid subscriptions, post public release notes, send real customer notifications, or run large/costly jobs unless the user explicitly approves that exact action.
 - For databases, do not change permissions, grants, roles, ownership, RLS, or object owners without exact approval.
-- A green `dev` or staging suite does not imply permission to promote to `main` or release to production. Do those only when the user explicitly asks. Non-production deploys are allowed inside the repair loop only when the requested target is hosted non-production and the loop needs a deployed retest; use the repo's documented non-production deployment path and report the deploy identifier.
+- A green `dev` or staging suite does not imply permission to deploy, promote to `main`, or release to production. Deploy only under separate current authority naming the exact repo, target, and branch/SHA when relevant; use the documented deployment path and report the deploy identifier.
 - If secrets are needed, verify presence and names only; do not print secret values.
 
 ## Bonfire Known Mapping
@@ -164,11 +214,39 @@ When the current repo is Bonfire, use the repo's canonical QA docs:
 - `docs/qa/manual-run-template.md`
 - `docs/qa/README.md`
 
+Also read the Bonfire adapter at `/Users/preston/.codex/skills/qa-run/references/dashboard-run-contract.md`. Verify deployed state rather than assuming the product specification or migration files have been applied.
+
+Before importing or persisting Bonfire attempts, apply
+`/Users/preston/Code/bonfire_shared_docs/shared/quality/qa_browser_failure_evidence.md`
+and run its validator. Do not complete a session whose browser failure evidence
+does not pass.
+
+Bonfire QA persistence should use the deployed server-side QA/QC API when available. When the deployed implementation matches the catalog design, use:
+
+- `app_private.qa_quality_check` for the active specification catalog;
+- `app_private.qa_test_session` for the full-suite run;
+- `app_private.qa_test_session_check` for the immutable selected scope;
+- `app_private.qa_test_attempt` for append-only results and retests;
+- `app_private.qa_test_evidence` and `app_private.qa_test_event` for safe evidence metadata and audit history;
+- `app_private.qa_v_session_rollup`, `app_private.qa_v_latest_check_result`, and `app_private.qa_v_check_recent_history` for read-back and dashboard reconciliation.
+
+Set the reviewer display name to exactly `Codey` using the existing Bonfire staff/reviewer mapping. Keep the authenticated executor in `started_by`/`tested_by`, and never use Codey as `signoff_by` without a real sign-off. Do not invent a reviewer UUID or change staff access.
+
+Select the live active catalog applicable to the target environment; do not hardcode a historical row count. Include frontend, interface, API, MCP, and ETL checks, plus the release-regression tranche when it is present in the live catalog. Persist the exact automated test or manual observation supporting each terminal outcome. If the QA tables/API or Codey mapping are not deployed or writable, save the complete run through the local adapter, mark `dashboard_sync_status: blocked`, and report the Bonfire full suite incomplete on persistence. Do not create missing tables, apply migrations, or broaden permissions as part of the test run.
+
 Environment URLs:
 
 - `local`: `http://localhost:5001`
 - `dev`: `https://dev.heybonfire.com`
 - `prod`: production URL from the environment matrix or user prompt
+
+Bonfire Dev supporting surfaces:
+
+- Super Admin and QA/QC dashboard: `https://bonfire-super-admin-dev.up.railway.app`
+- Session API and Agent Tools MCP: `https://dev-api.heybonfire.com`
+- Ordinary app/API/interface/ETL fixtures: the active organization `Test Org`; resolve exact IDs and the standing Test Org-scoped write/destructive authorization from the Bonfire QA adapter and `shared/quality/qa_fixture_registry.json`.
+- Do not report AWS ETL access missing until `aws sts get-caller-identity` and the relevant Scheduler/Lambda read have been attempted with the configured CLI identity.
+- Do not report MCP credentials missing until the `bonfire-preston-personal` Codex MCP and the Test Org API-key Keychain entry have been checked without printing their secrets.
 
 Approved Bonfire auth users:
 

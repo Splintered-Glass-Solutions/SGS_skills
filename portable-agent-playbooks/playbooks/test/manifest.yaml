@@ -1,0 +1,17 @@
+---
+name: test
+display_name: Test
+description: Run feature-scoped validation for only the feature or related features
+  worked on recently in the current the agent task. Use when the user invokes $test
+  or /test, asks to test the current feature, wants focused QA after recent implementation
+  work, or wants the rigor of full-suite-tests without running unrelated repository
+  suites.
+source: skills/test/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

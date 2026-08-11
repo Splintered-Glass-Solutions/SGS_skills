@@ -1,4 +1,4 @@
 interface:
   display_name: "Full Suite Tests"
-  short_description: "Run complete environment-scoped test and QA suites"
-  default_prompt: "Use $full-suite-tests to run the complete test and QA suite for the requested environment."
+  short_description: "Run and persist complete environment QA suites"
+  default_prompt: "Use $full-suite-tests with mandatory $token-saver enforcement to run the complete environment suite and persist every QA/QC result."

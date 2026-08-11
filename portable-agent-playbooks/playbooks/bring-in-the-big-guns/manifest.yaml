@@ -1,0 +1,18 @@
+---
+name: bring-in-the-big-guns
+display_name: Bring In The Big Guns
+description: Escalate a stuck, looping, or repeatedly patched the agent task to the
+  latest available frontier model at high reasoning, then repair the original problem
+  and clean up damage from earlier attempts. Use when the user invokes this skill,
+  says bring in the big guns, reports that Terra, Luna, or another smaller model is
+  cycling, applying Band-Aids, producing half-built fixes, reopening failures, or
+  making the workspace progressively messier.
+source: skills/bring-in-the-big-guns/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

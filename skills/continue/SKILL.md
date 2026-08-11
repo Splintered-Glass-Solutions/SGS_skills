@@ -4,7 +4,8 @@ description: >-
   Resume interrupted Codex work after a limit, pause, network cutout, app reload,
   context compaction, or stalled thread. Use when Preston invokes /continue,
   says continue, resume, pick back up, keep going, do not restart, or asks Codex
-  to continue the exact work already underway without losing context.
+  to continue the exact work already underway without losing context, existing
+  sessions, scoped approvals, proof layers, or the next action-time gate.
 ---
 
 # Continue
@@ -37,6 +38,11 @@ clearly invalid. Do not claim prior work was verified unless there is visible
 evidence in the thread, filesystem, terminal, git state, logs, test output, or a
 durable artifact.
 
+A newer user instruction to continue resumes the work even if a host goal still
+shows a stale `blocked` status. Do not recreate the goal or treat that stale
+status as a fresh blocker. Update the plan, continue safe lanes, and follow the
+host tool's explicit threshold before marking the resumed goal blocked again.
+
 ## Preflight
 
 Inspect only what is needed to recover momentum:
@@ -51,9 +57,22 @@ Inspect only what is needed to recover momentum:
 - durable artifacts named by the thread: notes, plans, checkpoints, logs,
   screenshots, generated files, test reports, queue/checkpoint files, or memory
   files
+- the task's prep/build execution ledger, approval register, and proof matrix
+- any persistent PTY, browser, server, OAuth, or auth session IDs and current
+  state
 
 If a command/session may still be running, inspect it before starting duplicate
 work. If a server is already running and useful, reuse it.
+
+For multi-system work, recover this minimum state before widening the run:
+
+- exact repo/worktree/branch/base SHA
+- current objective and acceptance/test ledger
+- approvals by class, target, account, environment, and evidence
+- local, merged, hosted, shared data/provider, and production/customer-visible
+  proof status
+- completed/pending migrations, env changes, provider configuration, and deploys
+- exact next safe action and exact next gated action
 
 ## Resume Decision
 
@@ -102,6 +121,19 @@ Stop and ask for the smallest missing input when continuation would require:
 If the user already gave approval in the current thread, preserve the exact
 scope: target repo, branch, environment, account, recipient, and action.
 
+Preserve valid exact approval across the interruption using the task tuple:
+`action + repo + branch/SHA when relevant + environment + provider/account +
+exact operation or payload + approval evidence + status`. Invalidate it only
+when revoked or when the target, account, environment, branch/SHA, payload/diff,
+permission/destructive impact, or relevant external state materially changed.
+Do not treat that preserved approval as satisfying a tool-required action-time
+confirmation. Prepare the final action, ask at action time, and continue other
+safe work while waiting.
+
+Treat a shared database used by production as production-connected even if the
+application target is development. Never infer permission to reapply or widen
+RLS/grants/roles/ownership from a general “continue.”
+
 ## When State Is Ambiguous
 
 If the prior work cannot be recovered confidently:
@@ -137,6 +169,10 @@ that the workflow already uses, such as a plan file, QA report, run log,
 checkpoint file, memory note, or generated handoff. Do not create new memory
 entries unless Preston explicitly asks for memory updates.
 
+Update the checkpoint before yielding at a biometric/login/action-time gate so
+the next continuation can reuse the prepared operation and existing session.
+Never store secret values.
+
 ## Final Shape
 
 Keep the final answer short and continuity-focused:
@@ -146,5 +182,6 @@ Keep the final answer short and continuity-focused:
 - what was verified
 - files/artifacts changed
 - remaining blocker or next action, if any
+- the proof layer reached and the exact next gated action
 
 If relying on recovered or inferred state, say so plainly.

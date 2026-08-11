@@ -1,0 +1,18 @@
+---
+name: token-saver
+display_name: Token Saver
+description: Reduce avoidable context, source, output, tool, model-call, and retry
+  token use without weakening correctness, and measure savings across the whole job.
+  Use for long or multi-step tasks, large files or document sets, repeated revisions,
+  research-to-writing handoffs, expensive API workflows, context-window pressure,
+  or when the user asks to conserve tokens, avoid usage limits, reuse an accepted
+  result, or keep an AI task lean.
+source: skills/token-saver/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

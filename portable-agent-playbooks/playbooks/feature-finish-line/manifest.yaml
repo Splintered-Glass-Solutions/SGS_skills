@@ -3,10 +3,11 @@ name: feature-finish-line
 display_name: Feature Finish Line
 description: 'Use after a planned feature build or implementation completes and the
   user wants the finishing pass: add missing deterministic and computer-use/browser
-  tests, run focused feature validation, finish remaining polish, identify blockers,
-  complete safe local execution, review needed migrations/deploy steps, update repo/shared
-  docs, prepare release notes, and generate or reuse Bonfire marketing assets. Full-app/full-suite
-  testing is separate and only runs when explicitly requested.'
+  tests, run focused feature validation, apply and verify required safe database migrations
+  and non-destructive data setup including Bonfire''s canonical unified production
+  database, write or update atomic QA/QC catalog records, finish remaining polish,
+  update docs, prepare stage-appropriate release artifacts, and reconcile local/merged/hosted/provider/production
+  truth. Full-app/full-suite testing is separate and only runs when explicitly requested.'
 source: skills/feature-finish-line/SKILL.md
 entrypoint: AGENT.md
 target_platforms:

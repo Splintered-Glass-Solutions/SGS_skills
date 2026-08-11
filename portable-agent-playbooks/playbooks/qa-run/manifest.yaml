@@ -1,0 +1,18 @@
+---
+name: qa-run
+display_name: Qa Run
+description: Execute a QA/QC pass for any software project and persist a new run with
+  reviewer Codey. Use when the user says QA run, run QA/QC, start a dashboard session,
+  test a feature or full project and record results, retest failures, or save QA evidence/history.
+  Adapt to an existing dashboard API or relational/document database when available,
+  and otherwise create durable local run artifacts. Use the Bonfire-specific adapter
+  for exact Bonfire catalog, API, table, and storage paths.
+source: skills/qa-run/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

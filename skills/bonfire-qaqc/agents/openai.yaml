@@ -1,6 +1,6 @@
 interface:
   display_name: "Bonfire QA/QC"
-  short_description: "Run Bonfire full-suite QAQC, page-by-page browser checks, smoke tests, and release checks"
-  default_prompt: "Use $bonfire-qaqc to run a full Bonfire QAQC pass across deterministic tests and page-by-page Computer Use coverage, then record the results."
+  short_description: "Run and persist holistic Bonfire QA/QC sessions"
+  default_prompt: "Use $bonfire-qaqc to run an evidence-backed Bonfire QA/QC session and persist the results in the live QA dashboard."
 policy:
   allow_implicit_invocation: true

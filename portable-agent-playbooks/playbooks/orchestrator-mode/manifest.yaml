@@ -6,8 +6,9 @@ description: 'Use when the current agent thread should act as the orchestrator f
   architecture, tradeoffs, validation strategy, synthesis, and final review on the
   main model, make an explicit delegation decision, and for broad or high-cost work
   normally launch bounded the agent subagents for independent research, coding, testing,
-  log-reduction, or coverage slices. Pair with agent-safe-run guardrails to minimize
-  token usage and Desktop runaway risk.'
+  log-reduction, or coverage slices. Pair with agent-safe-run guardrails and always
+  invoke and enforce token-saver to minimize token usage, autonomous output, and Desktop
+  runaway risk.'
 source: skills/orchestrator-mode/SKILL.md
 entrypoint: AGENT.md
 target_platforms:

@@ -1,0 +1,16 @@
+---
+name: sleep
+display_name: Sleep
+description: Pause the current the agent task for a requested duration before continuing
+  or processing queued user work. Use when the user says sleep, wait, pause for a
+  specific amount of time, delay the next response, or asks for a prompt-level equivalent
+  of sleep().
+source: skills/sleep/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

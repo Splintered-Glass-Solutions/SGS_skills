@@ -1,0 +1,6 @@
+interface:
+  display_name: "Note"
+  short_description: "Save a planning note without taking action"
+  default_prompt: "Use $note to save this for later planning without taking action."
+policy:
+  allow_implicit_invocation: true

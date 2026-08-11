@@ -1,12 +1,11 @@
 ---
 name: bulk-edits-thread
 display_name: Bulk Edits Thread
-description: Prepare a the agent task and local repository for a rapid series of edits
-  by renaming the current task with today's date, consolidating safe work from active
-  branches and worktrees onto a current local dev-based branch, validating the merged
-  state, and starting the app locally. Use when the user says "bulk edits thread",
-  wants one task ready to receive many edits, or asks to gather work from other tasks
-  before beginning an editing session.
+description: Prepare one scoped the agent editing task and isolated local worktree
+  from the confirmed dev baseline, using an approved Batch Brief and a committed Batch
+  Manifest. Use when the user says "bulk edits thread", wants one focused task ready
+  to receive many related edits, or asks to start an isolated local editing lane.
+  Always enforce agent-safe-run throughout.
 source: skills/bulk-edits-thread/SKILL.md
 entrypoint: AGENT.md
 target_platforms:

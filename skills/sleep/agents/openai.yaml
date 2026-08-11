@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sleep"
+  short_description: "Pause a task without processing new work"
+  default_prompt: "Use $sleep to wait five minutes before continuing this task."

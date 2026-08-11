@@ -33,6 +33,7 @@ Avoid:
 - Generic corporate filler.
 - Overly legalistic phrasing.
 - Too many exclamation points.
+- Em dashes. Use commas, periods, colons, semicolons, or parentheses instead.
 - Sounding like a marketing assistant.
 - Turning a quick operational reply into a polished essay.
 
@@ -261,4 +262,3 @@ Safe to draft more autonomously when:
 - Asking for a screenshot/log/link.
 - Following up on a proposal in a neutral way.
 - Sending a concise FYI to an internal collaborator.
-

@@ -61,6 +61,8 @@ For texts, prefer short, mobile-first replies. Use no greeting/signoff unless th
 
 For emails, prefer warm, structured, practical replies. Use greetings and signoffs when appropriate. Lead with acknowledgement/status, include useful context, and end with a concrete next step.
 
+Never use em dashes in email drafts. Rewrite the sentence with commas, periods, colons, semicolons, or parentheses instead.
+
 ## Link Verification
 
 - Proposal links are business-critical. Before texting, emailing, or otherwise sending a proposal link, verify the exact URL in the message is live.
@@ -95,4 +97,3 @@ Draft for review before sending when the message involves:
 - Any relationship where tone uncertainty could create damage.
 
 When safe to proceed, still keep the final message concise and channel-appropriate.
-

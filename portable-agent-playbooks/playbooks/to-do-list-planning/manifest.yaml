@@ -1,0 +1,16 @@
+---
+name: to-do-list-planning
+display_name: To Do List Planning
+description: Turn a bounded set of captured to-do notes into a concise proposed Batch
+  Brief for isolated implementation. Use when the user asks to plan, scope, group,
+  sequence, or prepare related captured items before starting $bulk-edits-thread;
+  do not use for capture-only to-do gathering or implementation.
+source: skills/to-do-list-planning/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

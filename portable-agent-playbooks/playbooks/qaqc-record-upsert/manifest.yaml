@@ -1,0 +1,17 @@
+---
+name: qaqc-record-upsert
+display_name: Qaqc Record Upsert
+description: Create or update durable QA/QC feature and functionality specification
+  records. Use when the user asks to add, register, revise, sync, or backfill a QA/QC
+  record for a feature, bug fix, regression, page, interface, API route, MCP tool,
+  ETL job, or release; when a finish-line workflow needs to tell QA what to test and
+  what success looks like; or when duplicate QA records need reconciliation.
+source: skills/qaqc-record-upsert/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

@@ -1,0 +1,6 @@
+interface:
+  display_name: "PM Elephant Dinner"
+  short_description: "Turn any project overload into a sourced, delegable plan"
+  default_prompt: "Use $pm-elephant-dinner to classify this overloaded project or initiative, gather only the relevant evidence, dedupe and order the work, identify the decisions that change scope, and return a bounded selectable delegation plan without starting gated actions."
+policy:
+  allow_implicit_invocation: true

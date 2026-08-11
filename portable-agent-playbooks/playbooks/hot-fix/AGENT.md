@@ -56,6 +56,12 @@ live result.
 7. Deploy through the repo's established path. Confirm the target environment,
    branch, service, and credentials first. If the deploy target or permission is
    ambiguous, ask before changing production state.
+   When multiple environments are requested, resolve and preflight each target
+   independently. Deploy a confirmed, explicitly authorized target even if
+   another target is absent, unmapped, or uncertain. Do not infer or substitute
+   the uncertain target; report it separately. Stop every target only when a
+   shared artifact, safety prerequisite, or dependency makes a partial rollout
+   unsafe.
 8. Verify the deployed result against the original issue with live evidence:
    hosted route checks, API responses, logs, health checks, smoke tests, or
    screenshots. Keep "local build passed" separate from "deployment verified."
@@ -81,4 +87,3 @@ When invoked from `/hot-fix`, treat `$ARGUMENTS` as the source of the found
 issues, target repo, deploy environment, or release instruction. If arguments
 are empty, infer from the current conversation only when the issue source and
 deploy target are obvious; otherwise ask for the missing issue source or target.
-

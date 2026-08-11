@@ -11,6 +11,30 @@ Write a handoff document summarizing the current session so a fresh agent can co
 
 If the user provides extra arguments or a stated focus, treat that as the intended purpose of the next session and tailor the handoff around it.
 
+## Handoff Modes
+
+Classify the request before acting:
+
+1. **Document-only handoff** — the user asks for a handoff, recap for later,
+   continuation note, or copyable prompt but does not explicitly ask to create
+   or start a new thread.
+   - Create the Markdown handoff and return its path plus the copyable message.
+   - Do **not** create a Codex thread.
+2. **New-thread handoff** — the user explicitly asks to create, start, open, or
+   hand off to a new thread/task.
+   - Create the Markdown handoff first.
+   - Then create the new thread in the **same Codex project** as the current
+     thread.
+   - Use the **same model and reasoning/thinking settings** as the current
+     thread.
+   - Never substitute a projectless thread, a different saved project, or the
+     user's default model settings merely because they are convenient.
+
+If the current project ID or current model/reasoning settings cannot be
+resolved from the Codex app context or thread metadata, do not guess. Still
+create the Markdown handoff, explain exactly which setting could not be
+resolved, and ask for the missing direction before creating the new thread.
+
 ## Workflow
 
 1. Determine the OS temp directory:
@@ -22,6 +46,21 @@ If the user provides extra arguments or a stated focus, treat that as the intend
 5. Include a `Suggested Skills` section naming skills that the next agent should invoke, with a one-line reason for each. If no specific skill is relevant, write `None identified`.
 6. After writing the file, respond with the absolute path, a short note about what it is tailored for, and a full copyable handoff message the user can send to the new thread.
 7. The copyable message must include all context the new thread needs to begin: the purpose, current state, key constraints, artifact path, completed work, remaining work, verification status, risks, and suggested skills. It should point to the saved Markdown handoff rather than duplicating every detail from it.
+8. For a new-thread handoff:
+   - Resolve the current thread's `projectId`, model, and reasoning/thinking
+     effort before calling thread-creation tools.
+   - Call `list_projects` and verify the resolved project still exists.
+   - Use `create_thread` with `target.type = "project"` and that exact
+     `projectId`.
+   - Pass the current model and reasoning/thinking effort explicitly when the
+     tool supports them.
+   - Follow the project's normal environment rule: use a worktree for a Git
+     project unless the user explicitly requests the saved project directly;
+     use local for a non-Git project.
+   - Do not create a second thread if creation returns an in-progress client
+     thread ID. Wait for or inspect that task instead.
+   - Confirm the created task is ready or active before reporting success.
+   - Include the appropriate created-thread directive in the final response.
 
 ## Document Shape
 
@@ -69,7 +108,9 @@ Skills the next agent should use and why.
 
 ## Final Response Shape
 
-Return the saved path first, then include a fenced code block labeled as the copyable message for the next thread.
+For a document-only handoff, return the saved path first, then include a fenced
+code block labeled as the copyable message for the next thread. Do not create a
+thread or emit a created-thread directive.
 
 The copyable message should be self-contained enough that the receiving thread can act without reading this conversation, but should still reference the saved handoff path for the complete details.
 
@@ -103,3 +144,7 @@ Suggested skills:
 [skill names and reasons, or None identified]
 ```
 ````
+
+For a new-thread handoff, use the same response shape and additionally report
+that the task was created in the same project with the same model/reasoning
+settings. Emit the created-thread directive only after creation succeeds.
