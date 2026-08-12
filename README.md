@@ -18,6 +18,9 @@ orchestration templates used by Splintered Glass Solutions.
 - `docs/custom-skill-index.md`: current archived skill list.
 - `portable-agent-playbooks/`: generalized versions of every archived skill for
   Claude, Claude Code, Cursor, OpenAI/Codex, or other agent platforms.
+- `docs/ai-best-practices/`: reusable training materials for applying AI to
+  planning, multi-project and multi-repo coding, debugging, hotfixes, QA,
+  handoffs, communication, and context/token management.
 
 ## What Is Not Included
 
@@ -58,6 +61,12 @@ Each archived skill has a platform-neutral `AGENT.md` plus `manifest.yaml`.
 The portable versions replace machine-specific paths with placeholders such as
 `<agent-config>` and `<workspace>`, while preserving safety gates and workflow
 structure.
+
+## AI Best Practices Training
+
+Start with [docs/ai-best-practices/README.md](docs/ai-best-practices/README.md).
+The package includes the operating model, task playbooks, Codex skill routing,
+reusable templates, checklists, facilitator exercises, and an assessment rubric.
 
 ## Install Locally
 
