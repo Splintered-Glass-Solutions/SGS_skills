@@ -82,4 +82,3 @@ Use Stitch as a remote MCP-backed design source. Prefer API-key auth for simpler
 
 - [authentication.md](./references/authentication.md)
 - [tools-and-usage.md](./references/tools-and-usage.md)
-

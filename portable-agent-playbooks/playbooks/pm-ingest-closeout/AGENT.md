@@ -55,12 +55,12 @@ path instead of guessing.
 
 ## Required Preflight
 
-1. Read `<agent-config>/portfolio/work-ledger.md`.
-2. Read `<agent-config>/portfolio/templates/worker-closeout-contract.md`.
-3. Read `<agent-config>/portfolio/pm-ledger-clickup-model.md`.
-4. Read `<agent-config>/skills/pm-project-agent/SKILL.md` when ingesting
+1. Read `$CODEX_HOME/portfolio/work-ledger.md`.
+2. Read `$CODEX_HOME/portfolio/templates/worker-closeout-contract.md`.
+3. Read `$CODEX_HOME/portfolio/pm-ledger-clickup-model.md`.
+4. Read `$CODEX_HOME/skills/pm-project-agent/SKILL.md` when ingesting
    a closeout from a persistent Project Agent thread.
-5. Read `<agent-config>/portfolio/current-state.md` when it exists, so
+5. Read `$CODEX_HOME/portfolio/current-state.md` when it exists, so
    the before/after queue change is clear.
 6. Confirm the closeout contains a parseable `WORK_LEDGER_UPDATE` JSON object
    or JSON array. If not, do not append anything; report the exact missing
@@ -71,13 +71,13 @@ path instead of guessing.
 Prefer the deterministic script:
 
 ```bash
-node <agent-config>/portfolio/scripts/ingest-closeout.mjs --closeout-file /path/to/closeout.txt
+node $CODEX_HOME/portfolio/scripts/ingest-closeout.mjs --closeout-file /path/to/closeout.txt
 ```
 
 For selected or pasted closeout text, pipe the selected text on stdin:
 
 ```bash
-node <agent-config>/portfolio/scripts/ingest-closeout.mjs --stdin
+node $CODEX_HOME/portfolio/scripts/ingest-closeout.mjs --stdin
 ```
 
 The script:
@@ -118,7 +118,7 @@ Use `--dry-run` when the user asks to preview an ingestion without appending.
   `pm:work:<project>:<work_id>:<slug>`. Report `ClickUp not created` when
   creation is not authorized or fails.
 - After ingestion, read the regenerated
-  `<agent-config>/portfolio/current-state.json` or `.md` and report:
+  `$CODEX_HOME/portfolio/current-state.json` or `.md` and report:
   - event IDs appended or already present
   - work IDs affected
   - active/delegated/waiting/blocked/completed queue impact
@@ -150,4 +150,3 @@ For blocked ingestion:
 🧩 NEXT NEEDED CLOSEOUT FIELD:
 🧭 SAFE NEXT STEP:
 ```
-

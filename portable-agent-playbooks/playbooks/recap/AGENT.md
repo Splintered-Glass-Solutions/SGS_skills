@@ -144,4 +144,3 @@ Do not update the agent memory unless the user explicitly asks to update memory.
 
 Return the recap itself. Do not append process notes unless there is a validation
 or evidence limitation the user needs to know.
-

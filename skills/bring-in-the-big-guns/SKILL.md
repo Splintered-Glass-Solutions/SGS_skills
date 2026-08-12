@@ -3,7 +3,7 @@ name: bring-in-the-big-guns
 description: >-
   Escalate a stuck, looping, or repeatedly patched Codex task to the latest
   available frontier model at high reasoning, then repair the original problem
-  and clean up damage from earlier attempts. Use when Preston invokes this skill,
+  and clean up damage from earlier attempts. Use when the user invokes this skill,
   says bring in the big guns, reports that Terra, Luna, or another smaller model
   is cycling, applying Band-Aids, producing half-built fixes, reopening failures,
   or making the workspace progressively messier.
@@ -35,7 +35,7 @@ Before making another task edit:
    Give it the conversation context and the recovery checkpoint below. Do not
    keep editing in parallel while it works.
 6. If neither switching nor a frontier-model handoff is available, say so
-   plainly and ask Preston to select the frontier/high setting. Do not claim an
+   plainly and ask the user to select the frontier/high setting. Do not claim an
    escalation occurred.
 
 Resolve “latest frontier” from the models exposed by the current runtime; do

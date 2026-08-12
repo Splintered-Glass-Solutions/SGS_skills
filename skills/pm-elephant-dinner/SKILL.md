@@ -20,17 +20,17 @@ owners, order, proof, and a consolidation path.
 
 Read and follow:
 
-- `/Users/preston/.codex/skills/orchestrator-mode/SKILL.md`
-- `/Users/preston/.codex/skills/session-budget/SKILL.md`
-- `/Users/preston/.codex/skills/project-portfolio-manager/SKILL.md`
-- `/Users/preston/.codex/skills/interview-spec/SKILL.md`
+- `$CODEX_HOME/skills/orchestrator-mode/SKILL.md`
+- `$CODEX_HOME/skills/session-budget/SKILL.md`
+- `$CODEX_HOME/skills/project-portfolio-manager/SKILL.md`
+- `$CODEX_HOME/skills/interview-spec/SKILL.md`
 
-Read `/Users/preston/.codex/skills/delegate/SKILL.md` when preparing or
+Read `$CODEX_HOME/skills/delegate/SKILL.md` when preparing or
 executing delegation packets.
 
 For technical branch sprawl, also read:
 
-- `/Users/preston/.codex/skills/local-dev-consolidation/SKILL.md`
+- `$CODEX_HOME/skills/local-dev-consolidation/SKILL.md`
 
 ## Operating Contract
 

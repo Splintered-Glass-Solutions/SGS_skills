@@ -1,6 +1,6 @@
 ---
 name: local-dev-consolidation
-description: "Consolidate work across local repos, branches, or worktrees into a clean local branch based on the confirmed dev baseline, resolve conflicts, validate locally, and prepare a local-testing handoff. This skill is local-only by default: it does not push or deploy unless Preston separately and explicitly requests deployment to dev. Trigger on consolidate local work, clean up working trees, merge everything into a local dev branch, wrap this into a dev-ready branch, or get my local environment clean."
+description: "Consolidate work across local repos, branches, or worktrees into a clean local branch based on the confirmed dev baseline, resolve conflicts, validate locally, and prepare a local-testing handoff. This skill is local-only by default: it does not push or deploy unless the user separately and explicitly requests deployment to dev. Trigger on consolidate local work, clean up working trees, merge everything into a local dev branch, wrap this into a dev-ready branch, or get my local environment clean."
 ---
 
 # Local Dev Consolidation
@@ -13,15 +13,15 @@ Default to `local_only` mode. Assume local inspection, consolidation, conflict r
 
 A bare invocation of this skill never authorizes a push or deployment. Interpret phrases such as “merge everything to dev,” “wrap this into dev,” or “consolidate into dev” as: create or update an isolated local integration branch from the confirmed dev baseline. Do not interpret them as permission to update the remote `dev` branch or deploy a hosted dev environment.
 
-If Preston asks to plan, audit, assess, outline, or prepare consolidation rather
+If the user asks to plan, audit, assess, outline, or prepare consolidation rather
 than execute it, enter `planning_only` mode. In that mode do not fetch, create a
 branch/worktree, merge, cherry-pick, apply/drop a stash, prune, clean, deploy, or
 otherwise mutate Git. Return the registry, baseline recommendation, risks,
 validation plan, and exact approval needed to execute.
 
-A request to use this skill is approval to inspect local git state, consolidate work locally, resolve conflicts, and run local validation. Pushing a branch or deploying to dev requires a separate, explicit request from Preston. Prefer receiving that approval after reporting the local branch and local test results.
+A request to use this skill is approval to inspect local git state, consolidate work locally, resolve conflicts, and run local validation. Pushing a branch or deploying to dev requires a separate, explicit request from the user. Prefer receiving that approval after reporting the local branch and local test results.
 
-Do not push to production, merge to `main`, delete branches, delete worktrees, drop stashes, discard changes, mutate shared databases, or deploy to production unless Preston explicitly asks for that action in the current conversation.
+Do not push to production, merge to `main`, delete branches, delete worktrees, drop stashes, discard changes, mutate shared databases, or deploy to production unless the user explicitly asks for that action in the current conversation.
 
 If a change is incomplete, broken, unsafe, or product-ambiguous, do not force it into dev. Isolate it, document it, and explain what remains.
 
@@ -35,7 +35,7 @@ The end state should be:
 - merge conflicts resolved;
 - local validation run;
 - local testing instructions and exact worktree/branch/SHA provided;
-- hosted dev remains unchanged unless Preston separately requests deployment;
+- hosted dev remains unchanged unless the user separately requests deployment;
 - when deployment is requested, it occurs only after the local result is available for testing and through the established dev process;
 - dirty, unmerged, or incomplete work clearly accounted for;
 - local cleanup completed only where safe;
@@ -120,10 +120,10 @@ The end state should be:
    - If a command fails because of unrelated pre-existing dirty work, prove the changed source subset passes if possible and report the unrelated blocker clearly.
 
 10. Hand off for local testing.
-   - Stop after local validation unless Preston explicitly requested deployment.
-   - Report the exact worktree path, local branch, baseline SHA, integration SHA, startup command, local URL when known, and the specific workflows Preston should test.
+   - Stop after local validation unless the user explicitly requested deployment.
+   - Report the exact worktree path, local branch, baseline SHA, integration SHA, startup command, local URL when known, and the specific workflows the user should test.
    - State clearly: `Deployment: not performed; local testing is the next step.`
-   - Preserve the consolidation worktree and branch so Preston can test the exact validated result.
+   - Preserve the consolidation worktree and branch so the user can test the exact validated result.
    - Recommend the sequence: test locally, report any findings, then explicitly request deployment to dev.
 
 11. Deploy to dev, only after a separate explicit request.
@@ -154,7 +154,7 @@ The end state should be:
 - Never push or deploy during the default `local_only` workflow.
 - Never treat “merge to dev” as approval to modify remote `dev` or a hosted dev environment.
 - Never deploy to production from this skill.
-- Never merge to `main` unless Preston explicitly says to merge to `main`.
+- Never merge to `main` unless the user explicitly says to merge to `main`.
 - Never drop work to make the tree look clean.
 - Never apply database migrations to shared or cloud environments without explicit approval and confirmed target.
 - Never include secrets, local env files, logs, caches, or large generated artifacts unless the repo explicitly tracks them.

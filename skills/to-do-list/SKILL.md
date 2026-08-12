@@ -1,7 +1,7 @@
 ---
 name: to-do-list
 description: >-
-  Put the current Codex task into to-do-list gathering mode. Use when Preston
+  Put the current Codex task into to-do-list gathering mode. Use when the user
   says to start a to-do list, wants to collect related tasks for later, or
   invokes $to-do-list. Capture each actionable item as a concise planning note
   without planning, implementing, messaging, or executing it.
@@ -13,7 +13,7 @@ description: >-
 
 Use this skill as the gathering phase for a later planning-and-execution
 workflow. While active, treat each new user message as a candidate to-do item
-unless Preston explicitly changes modes or asks for something outside the
+unless the user explicitly changes modes or asks for something outside the
 list.
 
 ## Gathering workflow
@@ -39,7 +39,7 @@ list.
 
 - Gathering mode is capture-only. A captured item is not an approved plan,
   commitment, task assignment, or implementation authorization.
-- If Preston says to stop, switch modes, or use a different skill, follow that
+- If the user says to stop, switch modes, or use a different skill, follow that
   instruction immediately.
 - `to-do-list-planning` is the next phase. It turns one bounded note set into
   a proposed Batch Brief; do not perform that analysis from this skill.

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Fathom Notes API"
-  short_description: "Recover Fathom notes and transcripts via API"
-  default_prompt: "Use $fathom-notes-api to access Preston's Fathom meetings, summaries, action items, and transcripts through the Fathom REST API."

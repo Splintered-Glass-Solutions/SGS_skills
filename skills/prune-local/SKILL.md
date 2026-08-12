@@ -2,7 +2,7 @@
 name: prune-local
 description: >-
   Audit and safely prune local Git worktrees and branches across one or more
-  related repositories. Use when Preston says prune local, prune everything,
+  related repositories. Use when the user says prune local, prune everything,
   clean up old worktrees, or asks which branches still need a bulk-edit
   collapse. Verify each branch against its repository's local dev target,
   report unresolved work, cross-repo gaps, and collapse recommendations, then

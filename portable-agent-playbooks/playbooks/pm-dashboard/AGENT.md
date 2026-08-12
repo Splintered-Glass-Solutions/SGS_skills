@@ -48,7 +48,7 @@ The dashboard summarizes:
 Run:
 
 ```bash
-node <agent-config>/portfolio/portal/start-dashboard.mjs
+node $CODEX_HOME/portfolio/portal/start-dashboard.mjs
 ```
 
 Default URL:
@@ -58,7 +58,7 @@ http://127.0.0.1:8787/#dashboard
 ```
 
 The launcher refreshes and validates current-state first, then starts
-`<agent-config>/portfolio/portal/server.mjs` with:
+`$CODEX_HOME/portfolio/portal/server.mjs` with:
 
 ```text
 PM_DASHBOARD_READ_ONLY=1
@@ -86,4 +86,3 @@ PM_DASHBOARD_READ_ONLY=1
 🧾 SOURCE STATE:
 ⚠️ NOTES:
 ```
-

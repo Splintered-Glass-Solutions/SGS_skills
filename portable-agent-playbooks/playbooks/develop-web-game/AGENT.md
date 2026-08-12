@@ -168,4 +168,3 @@ At the end of your work, leave TODOs and suggestions for the next agent in `prog
 ## References
 
 - `$WEB_GAME_ACTIONS` (installed default: `$CODEX_HOME/skills/develop-web-game/references/action_payloads.json`) — example action payloads (keyboard + mouse, per-frame capture). Use these to build your burst.
-

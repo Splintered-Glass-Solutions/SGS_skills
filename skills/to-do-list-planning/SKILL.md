@@ -1,6 +1,6 @@
 ---
 name: to-do-list-planning
-description: Turn a bounded set of captured to-do notes into a concise proposed Batch Brief for isolated implementation. Use when Preston asks to plan, scope, group, sequence, or prepare related captured items before starting $bulk-edits-thread; do not use for capture-only to-do gathering or implementation.
+description: Turn a bounded set of captured to-do notes into a concise proposed Batch Brief for isolated implementation. Use when the user asks to plan, scope, group, sequence, or prepare related captured items before starting $bulk-edits-thread; do not use for capture-only to-do gathering or implementation.
 ---
 
 # To-Do List Planning
@@ -34,7 +34,7 @@ branch, product change, deployment, or shared-database mutation.
    - dependencies, risks, and only decision-critical questions;
    - expected validation by item and broad validation;
    - the required fresh-dev baseline check for execution.
-6. End at the Batch Brief. It becomes approved only when Preston explicitly
+6. End at the Batch Brief. It becomes approved only when the user explicitly
    starts the bulk-edit phase. Pass only the accepted brief and necessary
    evidence into `$bulk-edits-thread`; do not replay the capture discussion.
 

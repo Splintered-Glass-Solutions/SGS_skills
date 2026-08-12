@@ -58,7 +58,7 @@ human to reread every thread:
 
 - active delegated work
 - waiting and blocked work
-- exact Preston decisions blocking motion
+- exact the user decisions blocking motion
 - ready-to-clean versus keep-unread threads
 - actionable communication follow-ups
 - idle projects with safe next prompts
@@ -66,5 +66,5 @@ human to reread every thread:
 - dispatcher outcomes, not just dispatcher activity
 
 The key metric is not how many things the PM system notices. The key metric is
-whether it reduces Preston's decision, routing, and follow-through burden while
+whether it reduces the user's decision, routing, and follow-through burden while
 respecting safety gates.

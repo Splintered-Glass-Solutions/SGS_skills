@@ -152,4 +152,3 @@ Lead with the verdict:
 - `BLOCKED`: consolidation could not safely finish because of conflicts, missing target branch, ambiguous dirty work, failed validation, or permission/network limits.
 
 Keep the summary concrete. Separate local-only state, remote divergence, and promotion/deployment status. Do not imply anything has shipped unless a push/deploy actually happened.
-

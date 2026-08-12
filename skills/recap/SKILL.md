@@ -2,7 +2,7 @@
 name: recap
 description: >-
   Produce a concise thread recap with current state, decisions, evidence,
-  blockers, and clear next action paths. Use when Preston asks to recap a
+  blockers, and clear next action paths. Use when the user asks to recap a
   thread, summarize where things stand, prepare a handoff, or decide what can
   happen next across many active Codex threads.
 ---
@@ -12,12 +12,12 @@ description: >-
 ## Purpose
 
 Use this skill to turn the current thread into a decision-ready status recap.
-The goal is to help Preston quickly reload context across many simultaneous
+The goal is to help the user quickly reload context across many simultaneous
 threads without re-reading all messages, logs, diffs, or tool output.
 
 This skill is read-only by default. Do not continue implementation, deploy,
 send messages, change files, update memory, or create durable artifacts unless
-Preston explicitly asks for that as part of the command arguments.
+the user explicitly asks for that as part of the command arguments.
 
 ## Inputs
 
@@ -25,8 +25,8 @@ The command may be invoked with optional context in `$ARGUMENTS`, such as:
 
 - a project, repo, branch, or environment to focus on
 - a specific decision or blocker to explain
-- "save" or "handoff" if Preston wants a durable artifact
-- "brief" if Preston wants the shortest useful version
+- "save" or "handoff" if the user wants a durable artifact
+- "brief" if the user wants the shortest useful version
 
 If no arguments are provided, infer scope from the current thread and latest
 user request.
@@ -69,7 +69,7 @@ Decisions Made:
 - <explicit decisions or assumptions that now guide the work>
 
 Open Decisions:
-- <decisions Preston still needs to make, if any>
+- <decisions the user still needs to make, if any>
 
 Next Action Paths:
 A. <safest immediate next step>
@@ -115,14 +115,14 @@ If they are alternatives, say "choose one."
 
 ## Durable Output
 
-Only create a file when Preston explicitly asks to save, hand off, or archive
+Only create a file when the user explicitly asks to save, hand off, or archive
 the recap. If saving is requested and no path is specified, choose a small
 plain-text markdown artifact under the relevant repo's `tmp/`, `output/`,
 `docs/qa/`, or another existing local convention. Report the exact path.
 
-Do not update Codex memory unless Preston explicitly asks to update memory.
+Do not update Codex memory unless the user explicitly asks to update memory.
 
 ## Final Response
 
 Return the recap itself. Do not append process notes unless there is a validation
-or evidence limitation Preston needs to know.
+or evidence limitation the user needs to know.

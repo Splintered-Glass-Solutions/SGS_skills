@@ -9,12 +9,12 @@ The user invoked this command with: $ARGUMENTS
 
 ## Preflight
 
-1. Read and follow `/Users/preston/.codex/skills/pm-dashboard/SKILL.md`.
+1. Read and follow `$CODEX_HOME/skills/pm-dashboard/SKILL.md`.
 2. If `$ARGUMENTS` contains a port number, run the dashboard with `PORT=<port>`.
 3. Otherwise run:
 
 ```bash
-node /Users/preston/.codex/portfolio/portal/start-dashboard.mjs
+node $CODEX_HOME/portfolio/portal/start-dashboard.mjs
 ```
 
 ## Guardrails

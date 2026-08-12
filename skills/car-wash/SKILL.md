@@ -1,11 +1,11 @@
 ---
 name: car-wash
-description: "Clean up local git state after large builds, merges, PRs, or multi-worktree work. Use when Preston asks for a car wash, repo cleanup, branch consolidation, local git reset/baseline cleanup, stale branch cleanup, or to make a project ready to continue building from the right local development branch."
+description: "Clean up local git state after large builds, merges, PRs, or multi-worktree work. Use when the user asks for a car wash, repo cleanup, branch consolidation, local git reset/baseline cleanup, stale branch cleanup, or to make a project ready to continue building from the right local development branch."
 ---
 
 # Car Wash
 
-Use this skill when Preston wants a repo's local git state consolidated, cleaned up, and ready for more work.
+Use this skill when the user wants a repo's local git state consolidated, cleaned up, and ready for more work.
 
 ## Operating Contract
 
@@ -31,7 +31,7 @@ Never revert unrelated user changes. If dirty files block branch movement, prese
 
 ## Choose The Integration Branch
 
-Infer the local branch Preston should keep building from:
+Infer the local branch the user should keep building from:
 
 1. If the prompt names a branch, use that branch.
 2. Else prefer an existing local `dev` branch when the repo has one.
@@ -67,7 +67,7 @@ Do not silently reset the integration branch to its remote. Local commits may be
 
 4. Preserve dirty work before moving branches.
    - If any worktree is dirty, inspect `git diff --stat`, `git diff --cached --stat`, and untracked paths.
-   - If changes appear task-related and should move to the target branch, keep them in place or commit them only when Preston asked for a commit.
+   - If changes appear task-related and should move to the target branch, keep them in place or commit them only when the user asked for a commit.
    - If changes are unrelated or branch switching is needed, use a named stash such as `git stash push -u -m "car-wash YYYY-MM-DD preserve before branch consolidation"`.
    - Do not drop the stash during cleanup unless explicitly approved.
 
@@ -107,7 +107,7 @@ Do not silently reset the integration branch to its remote. Local commits may be
      - The branch is not the target branch, the default branch, the current branch, or an obvious backup/safety branch.
      - The branch is not checked out in any worktree.
      - `git branch -d BRANCH` succeeds without force.
-   - Do not remove worktrees, stashes, untracked files, ignored files, caches, or generated artifacts unless Preston explicitly approves that exact cleanup.
+   - Do not remove worktrees, stashes, untracked files, ignored files, caches, or generated artifacts unless the user explicitly approves that exact cleanup.
 
 9. Finish on the target branch.
    - Leave the active checkout on the target branch unless another branch is required for safety.

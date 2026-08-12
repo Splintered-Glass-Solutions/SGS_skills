@@ -2,7 +2,7 @@
 name: continue
 description: >-
   Resume interrupted Codex work after a limit, pause, network cutout, app reload,
-  context compaction, or stalled thread. Use when Preston invokes /continue,
+  context compaction, or stalled thread. Use when the user invokes /continue,
   says continue, resume, pick back up, keep going, do not restart, or asks Codex
   to continue the exact work already underway without losing context, existing
   sessions, scoped approvals, proof layers, or the next action-time gate.
@@ -15,7 +15,7 @@ description: >-
 Use this skill to resume the same work that was already in progress. The goal is
 continuity: rebuild the last known objective, identify what changed or was
 already proven, and carry the work forward without starting over or asking
-Preston to restate context when it can be recovered locally.
+the user to restate context when it can be recovered locally.
 
 This skill is not a license for open-ended autonomous work. Resume the active
 objective, not a new adjacent idea.
@@ -91,13 +91,13 @@ Then continue according to the task type:
 - `build work`: make one coherent implementation pass, then run the relevant
   tests, screenshot checks, browser checks, typecheck, build, or syntax check.
 - `planning`: stop when the spec or decision brief is complete; do not drift
-  into implementation unless Preston asked for it.
+  into implementation unless the user asked for it.
 - `research/transcript`: preserve durable notes, citations, source IDs, or
   extracted evidence before closing.
 - `QA/review`: lead with findings and evidence references.
 - `automation`: include create/no-create accounting, checkpoint handling, and
   next-run memory when the workflow supports it.
-- `communication`: produce concise recipient-fit text or send only if Preston
+- `communication`: produce concise recipient-fit text or send only if the user
   clearly asked to send.
 
 ## Safety Gates
@@ -167,7 +167,7 @@ second major pass:
 If the work should survive another pause, save or update the durable artifact
 that the workflow already uses, such as a plan file, QA report, run log,
 checkpoint file, memory note, or generated handoff. Do not create new memory
-entries unless Preston explicitly asks for memory updates.
+entries unless the user explicitly asks for memory updates.
 
 Update the checkpoint before yielding at a biometric/login/action-time gate so
 the next continuation can reuse the prepared operation and existing session.

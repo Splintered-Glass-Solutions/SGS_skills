@@ -11,7 +11,7 @@ The user invoked this command with: $ARGUMENTS
 
 ## Preflight
 
-1. Read and follow the local skill at `/Users/preston/.codex/skills/interview-spec/SKILL.md`.
+1. Read and follow the local skill at `$CODEX_HOME/skills/interview-spec/SKILL.md`.
 2. Treat `$ARGUMENTS` as the seed project idea, feature request, automation, product direction, or unclear implementation ask.
 3. If `$ARGUMENTS` is empty, infer the seed from the current conversation when obvious; otherwise ask for the project idea or workstream.
 4. Stay in interview/spec mode until the user explicitly asks to implement after verifying the decisions.

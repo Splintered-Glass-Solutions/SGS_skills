@@ -12,7 +12,7 @@ compaction, restarts, and future PM passes.
 
 ```mermaid
 flowchart TD
-  Operator["Preston / operator"] --> PM["PM thread / portfolio HQ"]
+  Operator["the user / operator"] --> PM["PM thread / portfolio HQ"]
 
   PM --> Skills["PM skills and slash commands"]
   PM --> State["Local durable PM state"]
@@ -57,7 +57,7 @@ flowchart LR
   Classify -->|"No: passive, duplicate, complete"| LedgerOnly["Keep local audit trail only"]
   Classify -->|"Yes: decision, blocker, worker follow-up, failed validation, comms action"| ActionSurface["Action surface"]
 
-  ActionSurface --> Approval{"Preston-gated?"}
+  ActionSurface --> Approval{"the user-gated?"}
   Approval -->|"Yes"| Proposal["ACTION_PROPOSAL + approval ledger"]
   Approval -->|"No"| Route["Route to project thread, worker, or ClickUp"]
 

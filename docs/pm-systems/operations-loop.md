@@ -15,7 +15,7 @@ flowchart TD
 
   Classify --> Ignore["Ignore / duplicate / no action"]
   Classify --> Monitor["Monitor / passive status"]
-  Classify --> Decision["Ask Preston / approval ledger"]
+  Classify --> Decision["Ask the user / approval ledger"]
   Classify --> Delegate["Safe delegation"]
   Classify --> Escalate["Blocked escalation"]
   Classify --> Comms["Communication follow-up"]
@@ -153,7 +153,7 @@ flowchart LR
   Activity --> A3["approvals requested"]
 
   Outcomes --> O1["blockers removed"]
-  Outcomes --> O2["Preston decisions reduced"]
+  Outcomes --> O2["the user decisions reduced"]
   Outcomes --> O3["delegated tasks completed"]
   Outcomes --> O4["stale projects revived"]
   Outcomes --> O5["unreads cleared safely"]

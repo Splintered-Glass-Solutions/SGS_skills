@@ -38,7 +38,7 @@ message, deploy, or modify a product.
 2. Infer a concise initiative label from the active thread when it is obvious;
    otherwise use `general-planning`.
 3. Save one small Markdown file under
-   `<agent-config>/memories/extensions/ad_hoc/notes/` named
+   `$CODEX_HOME/memories/extensions/ad_hoc/notes/` named
    `YYYY-MM-DD-<initiative>-note.md`. Add a short time suffix if that filename
    already exists.
 4. Use this exact structure:

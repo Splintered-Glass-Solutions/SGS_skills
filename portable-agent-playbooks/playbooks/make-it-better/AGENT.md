@@ -385,4 +385,3 @@ For each area:
 Write a concise follow-up prompt the user can paste back in after answering the
 checkpoint questions so the next agent can continue from this audit without
 starting over.
-

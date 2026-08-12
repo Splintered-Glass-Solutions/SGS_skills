@@ -35,31 +35,31 @@ messages, production changes, and ambiguous strategic decisions.
 
 ## Required Files
 
-- Project registry: `<agent-config>/portfolio/project-registry.md`
-- Thread registry: `<agent-config>/portfolio/thread-registry.md`
-- Approval ledger: `<agent-config>/portfolio/approval-ledger.md`
-- Approval schema: `<agent-config>/portfolio/approval-schema.md`
-- Approval ledger validator: `<agent-config>/portfolio/scripts/validate-approval-ledger.mjs`
-- Work ledger: `<agent-config>/portfolio/work-ledger.jsonl`
-- Work ledger runbook: `<agent-config>/portfolio/work-ledger.md`
-- Delegation watchlist runbook: `<agent-config>/portfolio/delegation-watchlist.md`
-- PM ledger / ClickUp hybrid model: `<agent-config>/portfolio/pm-ledger-clickup-model.md`
-- Current state JSON: `<agent-config>/portfolio/current-state.json`
-- Current state brief: `<agent-config>/portfolio/current-state.md`
-- Current state generator: `<agent-config>/portfolio/scripts/generate-current-state.mjs`
-- Current state validator: `<agent-config>/portfolio/scripts/validate-current-state.mjs`
-- PM dashboard skill: `<agent-config>/skills/pm-dashboard/SKILL.md`
-- PM dashboard launcher: `<agent-config>/portfolio/portal/start-dashboard.mjs`
-- PM Project Agent contract: `<agent-config>/skills/pm-project-agent/SKILL.md`
-- Closeout ingest script: `<agent-config>/portfolio/scripts/ingest-closeout.mjs`
-- PM ingest closeout skill: `<agent-config>/skills/pm-ingest-closeout/SKILL.md`
-- Standards registry: `<agent-config>/portfolio/standards-registry.md`
-- Dispatcher scorecard: `<agent-config>/portfolio/scorecards/dispatcher-scorecard.jsonl`
-- Dispatcher scorecard runbook: `<agent-config>/portfolio/scorecards/README.md`
-- Orchestrator mode skill: `<agent-config>/skills/orchestrator-mode/SKILL.md`
-- Daily brief template: `<agent-config>/portfolio/templates/daily-pm-brief.md`
-- Worker packet template: `<agent-config>/portfolio/templates/worker-task-packet.md`
-- Closeout contract: `<agent-config>/portfolio/templates/worker-closeout-contract.md`
+- Project registry: `$CODEX_HOME/portfolio/project-registry.md`
+- Thread registry: `$CODEX_HOME/portfolio/thread-registry.md`
+- Approval ledger: `$CODEX_HOME/portfolio/approval-ledger.md`
+- Approval schema: `$CODEX_HOME/portfolio/approval-schema.md`
+- Approval ledger validator: `$CODEX_HOME/portfolio/scripts/validate-approval-ledger.mjs`
+- Work ledger: `$CODEX_HOME/portfolio/work-ledger.jsonl`
+- Work ledger runbook: `$CODEX_HOME/portfolio/work-ledger.md`
+- Delegation watchlist runbook: `$CODEX_HOME/portfolio/delegation-watchlist.md`
+- PM ledger / ClickUp hybrid model: `$CODEX_HOME/portfolio/pm-ledger-clickup-model.md`
+- Current state JSON: `$CODEX_HOME/portfolio/current-state.json`
+- Current state brief: `$CODEX_HOME/portfolio/current-state.md`
+- Current state generator: `$CODEX_HOME/portfolio/scripts/generate-current-state.mjs`
+- Current state validator: `$CODEX_HOME/portfolio/scripts/validate-current-state.mjs`
+- PM dashboard skill: `$CODEX_HOME/skills/pm-dashboard/SKILL.md`
+- PM dashboard launcher: `$CODEX_HOME/portfolio/portal/start-dashboard.mjs`
+- PM Project Agent contract: `$CODEX_HOME/skills/pm-project-agent/SKILL.md`
+- Closeout ingest script: `$CODEX_HOME/portfolio/scripts/ingest-closeout.mjs`
+- PM ingest closeout skill: `$CODEX_HOME/skills/pm-ingest-closeout/SKILL.md`
+- Standards registry: `$CODEX_HOME/portfolio/standards-registry.md`
+- Dispatcher scorecard: `$CODEX_HOME/portfolio/scorecards/dispatcher-scorecard.jsonl`
+- Dispatcher scorecard runbook: `$CODEX_HOME/portfolio/scorecards/README.md`
+- Orchestrator mode skill: `$CODEX_HOME/skills/orchestrator-mode/SKILL.md`
+- Daily brief template: `$CODEX_HOME/portfolio/templates/daily-pm-brief.md`
+- Worker packet template: `$CODEX_HOME/portfolio/templates/worker-task-packet.md`
+- Closeout contract: `$CODEX_HOME/portfolio/templates/worker-closeout-contract.md`
 
 Read the project registry before broad project coordination. Read the thread
 registry before creating, reading, pinning, or messaging the agent project threads.
@@ -101,8 +101,8 @@ only an actionable task surface.
 
 For broad portfolio scans, current-state questions, dispatcher prep, and PM
 cleanup passes, prefer the derived current-state files after refreshing them
-with `<agent-config>/portfolio/scripts/generate-current-state.mjs` and
-validating with `<agent-config>/portfolio/scripts/validate-current-state.mjs`.
+with `$CODEX_HOME/portfolio/scripts/generate-current-state.mjs` and
+validating with `$CODEX_HOME/portfolio/scripts/validate-current-state.mjs`.
 Treat `current-state.json` and `current-state.md` as generated artifacts from
 the ledgers, registries, latest clean-unreads report, and latest dispatcher
 scorecard; do not hand-edit them.
@@ -181,10 +181,10 @@ requirement.
   closeout, and report back with `WORK_LEDGER_UPDATE`.
 - Treat `candidate_threads` as read-only discovery notes until the user approves
   the binding.
-- Treat `<agent-config>/portfolio/approval-ledger.md` as the durable
+- Treat `$CODEX_HOME/portfolio/approval-ledger.md` as the durable
   source of truth for the user decisions. Do not leave approvals only in a run
   artifact when the approval is expected to persist beyond the current run.
-- Treat `<agent-config>/portfolio/work-ledger.jsonl` as the durable
+- Treat `$CODEX_HOME/portfolio/work-ledger.jsonl` as the durable
   source of truth for operational work lifecycle. Do not leave active,
   delegated, blocked, waiting, completed, or no-new-signal work only in hidden
   chat state.
@@ -192,7 +192,7 @@ requirement.
   blocker, unread status, and observed follow-up, write or update a local
   durable record first. Use the work ledger, approval ledger, comms ledger,
   clean-unreads report artifact, and generated current-state according to
-  `<agent-config>/portfolio/pm-ledger-clickup-model.md`.
+  `$CODEX_HOME/portfolio/pm-ledger-clickup-model.md`.
 - Create ClickUp tasks only for actionable follow-ups: the user decisions,
   worker/project follow-ups, failed/not-green validations needing retest or fix,
   blocked escalations, and communication follow-ups needing response/action.
@@ -204,21 +204,21 @@ requirement.
   Check local records and ClickUp before creating a task. If ClickUp creation
   fails or is not authorized, keep the local ledger/report as source of truth
   and report `ClickUp not created`.
-- Treat `<agent-config>/portfolio/current-state.json` and
-  `<agent-config>/portfolio/current-state.md` as derived snapshots for
+- Treat `$CODEX_HOME/portfolio/current-state.json` and
+  `$CODEX_HOME/portfolio/current-state.md` as derived snapshots for
   fast PM review. Regenerate them from source ledgers instead of editing them by
   hand when thread closeouts, approvals, work events, clean-unreads reports, or
   dispatcher scorecards change.
-- Work-ledger events must follow `<agent-config>/portfolio/work-ledger.md`
+- Work-ledger events must follow `$CODEX_HOME/portfolio/work-ledger.md`
   and include stable `work_id`, `event_type`, `status_after`, source, artifact,
   and next-action fields. Never include secrets or long logs.
-- Treat `<agent-config>/portfolio/standards-registry.md` as the durable
+- Treat `$CODEX_HOME/portfolio/standards-registry.md` as the durable
   source for quality bars, project preferences, proof standards, and repeatable
   judgment criteria. Do not rely on hidden chat memory for recurring standards.
 - Standards precedence is: current explicit user instruction, current
   approval-ledger decision, project-specific standard, general standard, then
   skill/automation/repo defaults.
-- Treat `<agent-config>/portfolio/scorecards/dispatcher-scorecard.jsonl`
+- Treat `$CODEX_HOME/portfolio/scorecards/dispatcher-scorecard.jsonl`
   as the durable source for dispatcher effectiveness. Do not equate activity
   with progress; measure whether the user's decision, routing, or execution
   bottleneck was actually reduced. Count activity separately from outcomes:
@@ -254,21 +254,21 @@ requirement.
    note approved-but-unfinished items related to the requested scope.
 4. Load the work ledger and note active, delegated, blocked, waiting, completed,
    and no-new-signal items related to the requested scope.
-5. Load `<agent-config>/portfolio/delegation-watchlist.md` when
+5. Load `$CODEX_HOME/portfolio/delegation-watchlist.md` when
    delegation follow-through is in scope.
-6. Load `<agent-config>/portfolio/pm-ledger-clickup-model.md` and decide
+6. Load `$CODEX_HOME/portfolio/pm-ledger-clickup-model.md` and decide
    which local durable surface will record every observed item before any
    ClickUp task is considered.
 7. For all-project, dispatcher, clean-unreads, plate-spin, or PM status scans,
    refresh and read the derived current-state files:
-   - run `node <agent-config>/portfolio/scripts/generate-current-state.mjs`
-   - run `node <agent-config>/portfolio/scripts/validate-current-state.mjs`
+   - run `node $CODEX_HOME/portfolio/scripts/generate-current-state.mjs`
+   - run `node $CODEX_HOME/portfolio/scripts/validate-current-state.mjs`
    - use `current-state.json` for machine-readable queues and
      `current-state.md` for a compact human brief
 8. Load the standards registry and identify proof standards, approval gates,
    delegation rules, automation standards, and project-specific preferences that
    apply to the requested scope.
-9. Load `<agent-config>/skills/pm-project-agent/SKILL.md` whenever the
+9. Load `$CODEX_HOME/skills/pm-project-agent/SKILL.md` whenever the
    requested scope involves a persistent Project Agent thread.
 10. For all-project scans, dispatcher runs, stale-work sweeps, multi-repo
    current-state scans, or broad delegation passes, load `orchestrator-mode` and
@@ -353,7 +353,7 @@ requirement.
    files or irreversible environment.
 22. Fan in worker closeouts, spot-check important proof, and use
    `$pm-ingest-closeout` or
-   `<agent-config>/portfolio/scripts/ingest-closeout.mjs` to append valid
+   `$CODEX_HOME/portfolio/scripts/ingest-closeout.mjs` to append valid
    `WORK_LEDGER_UPDATE` events, validate the ledger, and refresh current-state.
    Update the relevant checkpoint, manual sweep artifact, and approval ledger
    separately when a the user-gated item changed state.
@@ -369,7 +369,7 @@ requirement.
    updates, validate the approval ledger when approvals changed, then regenerate and validate the current-state files so the PM snapshot stays in sync with
    source ledgers.
 25. At the end of scheduled dispatcher runs, append a dispatcher scorecard entry
-   and run `<agent-config>/portfolio/scripts/validate-dispatcher-scorecard.mjs`.
+   and run `$CODEX_HOME/portfolio/scripts/validate-dispatcher-scorecard.mjs`.
    Score conservatively: useful packets and approvals can raise the score, but
    `bottlenecks_removed` should stay zero unless the run actually cleared a
    blocker, resolved waiting work, or removed a the user decision loop. Outcome
@@ -425,4 +425,3 @@ Create or propose a recurring automation only after a manual run has produced
 useful signal. Prefer `suggested_create` first for new broad portfolio routines.
 Use existing automation memory paths as the source of truth when a domain already
 has a recurring workflow.
-

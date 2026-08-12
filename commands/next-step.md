@@ -9,7 +9,7 @@ The user invoked this command with: $ARGUMENTS
 
 ## Preflight
 
-1. Read and follow the local skill at `/Users/preston/.codex/skills/next-step/SKILL.md`.
+1. Read and follow the local skill at `$CODEX_HOME/skills/next-step/SKILL.md`.
 2. Treat `$ARGUMENTS` as optional context for selecting the next step.
 3. If `$ARGUMENTS` is empty, infer the next step from the current conversation,
    active plan, repo state, and latest validation/deploy/QA evidence.

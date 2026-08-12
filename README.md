@@ -1,80 +1,101 @@
-# SGS Skills
+# SGS AI Operating Resources
 
-Private repo for reusable Codex skills, slash-command wrappers, and PM
-orchestration templates used by Splintered Glass Solutions.
+Reusable skills, playbooks, training, and operating patterns from [Splintered
+Glass Solutions](https://splinteredglass.solutions/).
 
-## What Is Included
+SGS helps teams turn AI ambition into practical, governed work: clearer
+planning, better context, safer execution, stronger QA, and systems people can
+actually adopt. This repository is the public library behind that approach.
 
-- `skills/`: all archived user-level custom Codex skills from
-  `/Users/preston/.codex/skills`, excluding only system/bundled/plugin skills.
-  This includes PM skills plus custom workflows such as `handoff`,
-  `orchestrator-mode`, `codex-safe-run`, `feature-finish-line`,
-  `full-suite-tests`, `bonfire-feature-release-update`,
-  `striq-feature-release-update`, `make-it-better`, `next-step`,
-  `autonomous-feature-build`, and the Bonfire/StrIQ/SGS helper skills.
-- `commands/`: user-level slash-command wrappers from `/Users/preston/.codex/commands`.
-- `portfolio/templates`: worker packet, worker closeout, and daily PM brief
-  templates.
-- `docs/custom-skill-index.md`: current archived skill list.
-- `portable-agent-playbooks/`: generalized versions of every archived skill for
-  Claude, Claude Code, Cursor, OpenAI/Codex, or other agent platforms.
-- `docs/ai-best-practices/`: reusable training materials for applying AI to
-  planning, multi-project and multi-repo coding, debugging, hotfixes, QA,
-  handoffs, communication, and context/token management.
+**Start here:** [AI Best Practices](packages/ai-best-practices/README.md) ·
+[Skill catalog](docs/custom-skill-index.md) · [Portable playbooks](portable-agent-playbooks/README.md)
 
-## What Is Not Included
+**Need help applying this to your team?** [Start a conversation with SGS](https://splinteredglass.solutions/contact).
 
-Live portfolio state is intentionally not copied here by default:
+## What is in this repository?
 
-- project/thread registries
-- approval ledgers
-- work-ledger events
-- dispatcher scorecards
-- private source artifacts
+| Area | Use it for | Start here |
+| --- | --- | --- |
+| `skills/` | Codex-native workflows for planning, coding, debugging, QA, handoffs, and context management | [Skill catalog](docs/custom-skill-index.md) |
+| `packages/` | Curated training and implementation-ready bundles | [Package index](packages/README.md) |
+| `portable-agent-playbooks/` | Platform-neutral versions for Claude, Claude Code, Cursor, OpenAI agents, or another agent runtime | [Portable playbooks](portable-agent-playbooks/README.md) |
+| `commands/` | Thin slash-command entry points for supported Codex skills | [Command map](docs/pm-systems/command-map.md) |
+| `portfolio/templates/` | Reusable task packets, closeout contracts, and operating briefs | [Template guide](portfolio/templates/README.md) |
+| `docs/` | Operating model, safety gates, contribution guidance, and publication rules | [Documentation hub](docs/README.md) |
 
-Those files may include live project names, thread IDs, client context, or
-operational details. Keep this repo focused on reusable PM system mechanics
-unless a specific state snapshot is intentionally sanitized for sharing.
+## Featured resources
 
-## Operating Model
+### Learn the operating model
 
-The PM thread is the control room. Skills encode the workflows. The portfolio
-folder is the durable source of truth. Persistent project threads keep project
-context warm. Bounded workers execute scoped tasks and return proof-oriented
-closeouts. Ledgers make work state survive chat compaction.
+[AI Best Practices](packages/ai-best-practices/README.md) is a practical
+curriculum for individuals, engineering teams, PMs, and leaders. It covers
+task classification, to-do capture and planning, multi-project and multi-repo
+coding, debugging, hotfixes, QA, communication, handoffs, and token-efficient
+AI use.
 
-See:
+### Build with bounded execution
 
-- [docs/pm-systems](docs/pm-systems/README.md) for the dedicated PM systems
-  diagrams, operating loop, safety gates, unread cleanup logic, and roadmap.
-- [docs/pm-system-overview.md](docs/pm-system-overview.md) for the compact
-  overview.
-- [docs/save-skill.md](docs/save-skill.md) for the `/save-skill` workflow that
-  archives local Codex skills into this repo, regenerates portable playbooks,
-  commits, and pushes.
+The core workflow is simple:
 
-## Portable Versions
-
-For non-Codex platforms, use
-[portable-agent-playbooks/README.md](portable-agent-playbooks/README.md).
-Each archived skill has a platform-neutral `AGENT.md` plus `manifest.yaml`.
-The portable versions replace machine-specific paths with placeholders such as
-`<agent-config>` and `<workspace>`, while preserving safety gates and workflow
-structure.
-
-## AI Best Practices Training
-
-Start with [docs/ai-best-practices/README.md](docs/ai-best-practices/README.md).
-The package includes the operating model, task playbooks, Codex skill routing,
-reusable templates, checklists, facilitator exercises, and an assessment rubric.
-
-## Install Locally
-
-From this repo:
-
-```bash
-./scripts/install-local.sh
+```text
+Clarify the outcome and authority
+        ↓
+Plan a bounded slice
+        ↓
+Choose the right execution lane
+        ↓
+Implement or investigate
+        ↓
+Validate the actual result
+        ↓
+Reconcile, communicate, or hand off
 ```
 
-This copies archived skills, command wrappers, and portfolio templates into
-`/Users/preston/.codex`. Review the script before running on another machine.
+Useful starting points include:
+
+- [Expansive planning](skills/expansive-planning/SKILL.md)
+- [Bulk editing threads](skills/bulk-edits-thread/SKILL.md)
+- [Debugging and hotfixes](skills/hot-fix/SKILL.md)
+- [Testing and QA](skills/test/SKILL.md)
+- [Token and context management](skills/token-saver/SKILL.md)
+- [Handoffs](skills/handoff/SKILL.md)
+- [Public-resource improvement](skills/make-it-better/SKILL.md)
+
+### Adapt patterns across agent platforms
+
+The [portable playbooks](portable-agent-playbooks/README.md) preserve the
+workflow and safety gates while replacing machine-specific paths and tool
+assumptions with placeholders.
+
+## What SGS believes
+
+- Business outcomes come before tools.
+- AI should be grounded in approved context and clear ownership.
+- Bounded workflows are easier to trust than vague autonomy.
+- Human review belongs around judgment and irreversible actions.
+- Validation should distinguish local, merged, deployed, provider-backed, and
+  customer-visible proof.
+- Documentation and training are part of implementation, not an afterthought.
+
+## Public boundary
+
+This repository intentionally contains generalized, reusable material. It does
+not contain live project state, customer data, credentials, private meeting
+notes, environment-specific migration work, or personal operating ledgers.
+See [the publication boundary](docs/publication-boundary.md) before adding a
+new skill or package.
+
+## Contributing and support
+
+- Read [Contributing](CONTRIBUTING.md) before proposing a skill or package.
+- Use [Security](SECURITY.md) for a suspected secret or sensitive-data issue.
+- Browse the [documentation hub](docs/README.md) for the operating model and
+  maintainer guidance.
+- For AI implementation help, [contact SGS](https://splinteredglass.solutions/contact).
+
+## About SGS
+
+[Splintered Glass Solutions](https://splinteredglass.solutions/) partners with
+growing companies across positioning, systems, workflow, data, practical AI,
+custom tools, and launch support. This library shares the working patterns
+behind that practice.

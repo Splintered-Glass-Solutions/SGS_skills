@@ -92,4 +92,3 @@ Keep notes compact during the loop. In the final response, include:
 ## Quality Bar
 
 For realism or professional polish requests, do not claim "fully realistic" when the project still uses placeholder/procedural assets. Say what improved and clearly separate code-based polish from asset-quality work that needs authored models, textures, lighting references, or animation assets.
-

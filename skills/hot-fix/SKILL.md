@@ -3,7 +3,7 @@ name: hot-fix
 description: >-
   Resolve issues that have already been found, verify the fixes, deploy them
   through the repository's established release path, and confirm the deployed
-  behavior. Use when Preston asks to hot fix, fix issues from QA/review/CI/logs,
+  behavior. Use when the user asks to hot fix, fix issues from QA/review/CI/logs,
   or resolve found problems and deploy the fixes.
 ---
 
@@ -52,7 +52,7 @@ live result.
 
 ## Guardrails
 
-- Do not run destructive git or infrastructure commands unless Preston asked
+- Do not run destructive git or infrastructure commands unless the user asked
   for that exact operation in the current conversation.
 - Do not merge, push, promote, or change production data when repo-specific
   memory or local instructions require an explicit current approval.

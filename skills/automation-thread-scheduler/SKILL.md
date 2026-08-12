@@ -5,7 +5,7 @@ description: >-
   prefer same-thread heartbeat automations, prevent recurring cron thread spam,
   add an emoji-prefixed automation thread title, remove or pause duplicate
   standalone schedules, and preserve automation memory/checkpoints. Use when
-  Preston asks to create, schedule, update, repair, convert, or clean up a Codex
+  the user asks to create, schedule, update, repair, convert, or clean up a Codex
   automation, monitor, reminder, recurring run, heartbeat, or scheduled skill.
 ---
 
@@ -19,7 +19,7 @@ new Codex thread every run.
 
 - Prefer `kind: heartbeat` with `destination: thread` for recurring follow-ups,
   monitors, reminders, and scheduled skill runs.
-- Do not create a recurring standalone `cron` automation unless Preston
+- Do not create a recurring standalone `cron` automation unless the user
   explicitly asks for a separate standalone job, worktree, or project-scoped
   background run.
 - Every active same-thread automation must have a target thread title that
@@ -53,8 +53,8 @@ creation.
    - target thread, current thread, or existing automation id;
    - memory path and any source-specific checkpoint files.
 3. Inspect existing automation configs under
-   `/Users/preston/.codex/automations/*/automation.toml`.
-4. If `$CODEX_HOME` is empty, use `/Users/preston/.codex` directly.
+   `$CODEX_HOME/automations/*/automation.toml`.
+4. If `$CODEX_HOME` is empty, use `$CODEX_HOME` directly.
 5. Find candidate duplicates by:
    - matching `id`;
    - matching `name`;
@@ -120,7 +120,7 @@ When an existing recurring automation is opening a new thread each run:
 
 Use `kind: cron` only when one of these is true:
 
-- Preston explicitly asks for a new separate thread/job/worktree.
+- the user explicitly asks for a new separate thread/job/worktree.
 - The automation must run in a project/worktree environment that is not tied to
   an existing conversation.
 - The run is expected to produce a standalone artifact without conversational
@@ -165,7 +165,7 @@ Before final response, verify:
 Useful local check:
 
 ```bash
-find /Users/preston/.codex/automations -maxdepth 2 -name automation.toml \
+find $CODEX_HOME/automations -maxdepth 2 -name automation.toml \
   -print -exec rg -n "^(id|kind|name|status|rrule|target_thread_id|target) =" {} \;
 ```
 

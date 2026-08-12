@@ -2,7 +2,12 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-CODEX_HOME="${CODEX_HOME:-/Users/preston/.codex}"
+CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
+
+command -v rsync >/dev/null 2>&1 || {
+  echo "rsync is required to install the archived resources." >&2
+  exit 1
+}
 
 mkdir -p "$CODEX_HOME/skills" "$CODEX_HOME/commands" "$CODEX_HOME/portfolio/templates"
 
@@ -27,3 +32,4 @@ rsync -a "$ROOT/commands/" "$CODEX_HOME/commands/"
 rsync -a "$ROOT/portfolio/templates/" "$CODEX_HOME/portfolio/templates/"
 
 echo "Installed archived skills, commands, and templates into $CODEX_HOME"
+echo "Existing local files were preserved unless the same archived path was updated."

@@ -77,4 +77,3 @@ When ready to finalize, produce a concise decision-complete plan with:
 - Risk review for meaningful architecture, compatibility, or cross-system concerns
 - Test and acceptance plan
 - Assumptions and defaults
-

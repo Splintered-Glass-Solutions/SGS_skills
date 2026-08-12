@@ -10,14 +10,14 @@ The user invoked this command with: $ARGUMENTS
 ## Preflight
 
 1. Read and follow the local skill at
-   `/Users/preston/.codex/skills/pm-ingest-closeout/SKILL.md`.
+   `$CODEX_HOME/skills/pm-ingest-closeout/SKILL.md`.
 2. Treat `$ARGUMENTS` as the selected closeout text, pasted closeout, closeout
    artifact path, or context needed to find the closeout.
 3. If `$ARGUMENTS` is empty, infer the selected closeout from the current
    conversation or selection context when obvious; otherwise ask for the missing
    closeout text or artifact path.
-4. Read `/Users/preston/.codex/portfolio/pm-ledger-clickup-model.md`.
-5. Read `/Users/preston/.codex/skills/pm-project-agent/SKILL.md` when the closeout came from a persistent Project Agent thread.
+4. Read `$CODEX_HOME/portfolio/pm-ledger-clickup-model.md`.
+5. Read `$CODEX_HOME/skills/pm-project-agent/SKILL.md` when the closeout came from a persistent Project Agent thread.
 
 ## Guardrails
 

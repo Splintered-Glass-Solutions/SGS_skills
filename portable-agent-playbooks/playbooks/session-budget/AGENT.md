@@ -101,4 +101,3 @@ For substantial sessions, include:
 - What artifact changed or was created
 - What remains uncertain or blocked
 - Whether this pattern should be kept, made reusable, or tightened/stopped
-

@@ -87,4 +87,3 @@ summary is based on the visible thread context.
 - Never double-prefix a title that already begins with `－`.
 - If `set_thread_title` fails, do not claim the thread is closed.
 - The final response is the last step after the rename attempt.
-

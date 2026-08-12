@@ -1,7 +1,7 @@
 ---
 name: pm-dashboard
 description: >-
-  PM dashboard: use when Preston wants the local read-only PM cockpit/dashboard
+  PM dashboard: use when the user wants the local read-only PM cockpit/dashboard
   for active delegated work, blocked work, decisions needed, unread cleanup,
   comms follow-ups, idle projects, and recent dispatcher scorecards.
 ---
@@ -29,7 +29,7 @@ The dashboard summarizes:
 Run:
 
 ```bash
-node /Users/preston/.codex/portfolio/portal/start-dashboard.mjs
+node $CODEX_HOME/portfolio/portal/start-dashboard.mjs
 ```
 
 Default URL:
@@ -39,7 +39,7 @@ http://127.0.0.1:8787/#dashboard
 ```
 
 The launcher refreshes and validates current-state first, then starts
-`/Users/preston/.codex/portfolio/portal/server.mjs` with:
+`$CODEX_HOME/portfolio/portal/server.mjs` with:
 
 ```text
 PM_DASHBOARD_READ_ONLY=1

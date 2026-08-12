@@ -9,7 +9,7 @@ The user invoked this command with: $ARGUMENTS
 
 ## Preflight
 
-1. Read and follow the local skill at `/Users/preston/.codex/skills/continue/SKILL.md`.
+1. Read and follow the local skill at `$CODEX_HOME/skills/continue/SKILL.md`.
 2. Treat `$ARGUMENTS` as optional recovery context for the interrupted work.
 3. If `$ARGUMENTS` is empty, infer the active objective from the current
    conversation, active plan, repo state, terminal output, and durable artifacts.

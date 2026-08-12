@@ -1,9 +1,9 @@
 ---
 name: pm-comms-check
 description: >-
-  PM comms check: consolidate Preston's communication follow-ups across the
+  PM comms check: consolidate the user's communication follow-ups across the
   PM comms ledger, source checkpoints, blocked source reports, and created
-  ClickUp tasks. Use when Preston asks what communications, asks, follow-ups,
+  ClickUp tasks. Use when the user asks what communications, asks, follow-ups,
   approvals, or client/team items may be slipping through the cracks.
 ---
 
@@ -11,7 +11,7 @@ description: >-
 
 ## Overview
 
-Run a read-only PM communications check. The goal is to show Preston what needs
+Run a read-only PM communications check. The goal is to show the user what needs
 attention now without rescanning every source or creating new tasks.
 
 Default posture: read-only. Do not send messages, reply, mark mail read, mark
@@ -21,10 +21,10 @@ threads read, create ClickUp tasks, update ClickUp, or mutate source systems.
 
 Read these before reporting:
 
-- `/Users/preston/.codex/portfolio/comms/source-registry.md`
-- `/Users/preston/.codex/portfolio/comms/comms-ledger.jsonl`
-- `/Users/preston/.codex/portfolio/pm-ledger-clickup-model.md`
-- `/Users/preston/.codex/automations/pm-comms-monitor-every-4-hours-2/memory.md`
+- `$CODEX_HOME/portfolio/comms/source-registry.md`
+- `$CODEX_HOME/portfolio/comms/comms-ledger.jsonl`
+- `$CODEX_HOME/portfolio/pm-ledger-clickup-model.md`
+- `$CODEX_HOME/automations/pm-comms-monitor-every-4-hours-2/memory.md`
 
 If available and relevant, also inspect:
 
@@ -36,7 +36,7 @@ If available and relevant, also inspect:
 
 Classify open items into:
 
-- `needs_preston_now`: direct ask, deadline, approval, blocker, or client issue.
+- `needs_the user_now`: direct ask, deadline, approval, blocker, or client issue.
 - `delegatable`: clear task another project agent or worker can take.
 - `waiting_on_other`: already responded to or waiting on someone else.
 - `captured_in_clickup`: already persisted as a ClickUp task.
@@ -57,7 +57,7 @@ ledger, report `local_record_missing` and the exact dedupe key to capture during
 
 ClickUp should exist only for actionable communication follow-ups:
 
-- Preston response/action needed
+- the user response/action needed
 - direct client/team ask
 - blocker or escalation
 - approval/decision needed
@@ -74,7 +74,7 @@ quickly. Keep the canonical label text after the icon.
 ```text
 📬 PM COMMS CHECK:
 🧭 STATUS:
-⚠️ NEEDS PRESTON NOW:
+⚠️ NEEDS USER NOW:
 🧵 DELEGATABLE:
 📌 CAPTURED IN CLICKUP:
 🟡 NEEDS REVIEW:

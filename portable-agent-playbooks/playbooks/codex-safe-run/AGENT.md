@@ -107,7 +107,7 @@ For "run one single thread safely":
 Use the bundled monitor when possible:
 
 ```bash
-<agent-config>/skills/agent-safe-run/scripts/agent-safe-monitor.sh --log /tmp/agent-safe-monitor.log --interval 5
+$CODEX_HOME/skills/agent-safe-run/scripts/agent-safe-monitor.sh --log /tmp/agent-safe-monitor.log --interval 5
 ```
 
 Read only recent compact output:
@@ -119,7 +119,7 @@ tail -80 /tmp/agent-safe-monitor.log
 For a one-shot check:
 
 ```bash
-<agent-config>/skills/agent-safe-run/scripts/agent-safe-monitor.sh --once
+$CODEX_HOME/skills/agent-safe-run/scripts/agent-safe-monitor.sh --once
 ```
 
 Do not run verbose `while true` monitors inside the agent runtime that print full commands every few seconds.
@@ -153,4 +153,3 @@ End with:
 - Stale helpers found and cleanup performed.
 - Whether this was a clean one-thread baseline.
 - Recommendation: continue Desktop, restart Desktop, or switch to CLI.
-

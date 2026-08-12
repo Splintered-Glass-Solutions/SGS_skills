@@ -11,7 +11,7 @@ The user invoked this command with: $ARGUMENTS
 
 ## Preflight
 
-1. Read and follow the local skill at `/Users/preston/.codex/skills/prep-work/SKILL.md`.
+1. Read and follow the local skill at `$CODEX_HOME/skills/prep-work/SKILL.md`.
 2. Treat `$ARGUMENTS` as the proposed job description.
 3. If `$ARGUMENTS` is empty, ask the user for the job scope before checking anything.
 4. Stay read-only unless the user explicitly asks for setup or mutation.

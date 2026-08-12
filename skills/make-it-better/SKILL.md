@@ -1,7 +1,7 @@
 ---
 name: make-it-better
 description: >-
-  Use when Preston asks to broadly improve a project, make it better, audit
+  Use when the user asks to broadly improve a project, make it better, audit
   product quality, UI/UX, design, copy, code quality, testing gaps, graphics,
   polish, or user delight with orchestrator-mode, autonomous loops,
   codex-safe-run guardrails, bounded subagents or delegated project threads,
@@ -19,7 +19,7 @@ quality, UI/UX, design, style, copy, code quality, testing, graphics, polish,
 performance, accessibility, developer experience, and user delight.
 
 Security is secondary. Flag only obvious trust, privacy, or safety issues that
-materially affect product confidence unless Preston explicitly asks for a deep
+materially affect product confidence unless the user explicitly asks for a deep
 security audit.
 
 Default to pairing this skill with `$orchestrator-mode` and `$codex-safe-run`.
@@ -100,7 +100,7 @@ Delegate these when independent and bounded:
 
 When delegation is useful and thread management is available, the orchestrator
 may route work through persistent project threads or bounded worker threads. Use
-the PM/project delegation pattern when Preston asks to delegate or when a
+the PM/project delegation pattern when the user asks to delegate or when a
 verified project thread clearly owns the work. The main thread must monitor,
 manage, and review those threads: define the packet, set authority limits, wait
 only when the result is needed, integrate evidence, inspect risky diffs, and
@@ -366,6 +366,6 @@ For each area:
 
 ### Next-Pass Prompt
 
-Write a concise follow-up prompt Preston can paste back in after answering the
+Write a concise follow-up prompt the user can paste back in after answering the
 checkpoint questions so the next agent can continue from this audit without
 starting over.

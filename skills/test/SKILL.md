@@ -2,7 +2,7 @@
 name: test
 description: >-
   Run feature-scoped validation for only the feature or related features worked
-  on recently in the current Codex task. Use when Preston invokes $test or
+  on recently in the current Codex task. Use when the user invokes $test or
   /test, asks to test the current feature, wants focused QA after recent
   implementation work, or wants the rigor of full-suite-tests without running
   unrelated repository suites.

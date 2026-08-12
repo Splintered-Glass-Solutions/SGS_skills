@@ -1,8 +1,8 @@
 ---
 name: spin-up-local
 description: >-
-  Start a project locally so Preston can test the exact work currently in
-  progress. Use when Preston says spin up local, local, run locally, let me test,
+  Start a project locally so the user can test the exact work currently in
+  progress. Use when the user says spin up local, local, run locally, let me test,
   start the app, give me the local link, or asks to verify that local frontend,
   backend, API, worker, or multi-repo changes are being used by the test server.
 ---
@@ -24,7 +24,7 @@ Use this skill to turn the current local workspace into a testable app URL. The 
    - Prefer `package.json`, `README`, `Makefile`, `docker-compose*`, framework config, or repo docs.
    - Use existing dependencies if installed. Install only when required and safe for the repo.
    - Pick an open port instead of killing an unrelated listener.
-4. Map runtime targets before giving Preston the link:
+4. Map runtime targets before giving the user the link:
    - Inspect relevant local env files for API/base URL names without exposing secrets.
    - Report whether the app is using local services, a dev/stage backend, production backend, mocks, or unknown targets.
    - For proxy-based apps, trace the server route or proxy config far enough to name the effective upstream.
@@ -32,9 +32,9 @@ Use this skill to turn the current local workspace into a testable app URL. The 
    - Look for sibling repos from env targets, docs, workspace files, git remotes, docker compose, package workspace config, or known project conventions.
    - If the frontend depends on local backend/API changes, start those local services too or explicitly report that the frontend is pointed at a remote backend.
    - If a required related repo has uncommitted local changes, run from that worktree rather than a clean clone, unless that would risk data mutation or production access.
-6. Start the app from the worktree that contains the changes Preston needs to test:
+6. Start the app from the worktree that contains the changes the user needs to test:
    - Use a long-running shell session for dev servers.
-   - Keep the server running unless Preston asks to stop it.
+   - Keep the server running unless the user asks to stop it.
    - Capture the local URL, port, process/session, and command.
 7. Verify reachability:
    - Check the URL with `curl` or the browser.
@@ -52,7 +52,7 @@ Use this skill to turn the current local workspace into a testable app URL. The 
 
 - Start narrow, then widen only when the app needs it.
 - Keep local, dev, and production claims separate.
-- Never mutate shared databases, run migrations, seed production, deploy, push, or merge unless Preston explicitly asks.
+- Never mutate shared databases, run migrations, seed production, deploy, push, or merge unless the user explicitly asks.
 - If local frontend changes require backend changes that are not present locally, say so before presenting the URL as feature-complete.
 - If multiple local repos must be active, list every repo path, branch, command, port, and health check.
 

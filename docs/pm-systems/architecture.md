@@ -120,7 +120,7 @@ stateDiagram-v2
   [*] --> Observed
   Observed --> Recorded: local durable record
   Recorded --> Routed: safe delegate
-  Recorded --> WaitingApproval: Preston-gated
+  Recorded --> WaitingApproval: the user-gated
   Recorded --> NoAction: duplicate/passive/no next step
   Routed --> InProgress: project thread or worker starts
   InProgress --> Blocked: blocker found
@@ -133,7 +133,7 @@ stateDiagram-v2
 ```
 
 Every lifecycle change should be reflected in `work-ledger.jsonl`, and every
-Preston-gated decision should be reflected in `approval-ledger.md`.
+the user-gated decision should be reflected in `approval-ledger.md`.
 
 ## Local Ledger / ClickUp Hybrid
 
@@ -145,7 +145,7 @@ flowchart TD
   Actionable -->|"No"| Audit["Keep as audit/status only"]
   Actionable -->|"Yes"| Kind{"Why actionable?"}
 
-  Kind --> Decision["Preston decision needed"]
+  Kind --> Decision["the user decision needed"]
   Kind --> Followup["Worker/project follow-up"]
   Kind --> Validation["Failed validation or retest"]
   Kind --> Blocker["Blocked escalation"]
@@ -179,7 +179,7 @@ flowchart LR
   Activity --> Checks["projects checked"]
 
   Outcomes --> Removed["blockers removed"]
-  Outcomes --> Decisions["Preston decisions reduced"]
+  Outcomes --> Decisions["the user decisions reduced"]
   Outcomes --> Done["delegated tasks completed"]
   Outcomes --> Revived["stale projects revived"]
   Outcomes --> Unreads["unread threads cleared safely"]
@@ -206,7 +206,7 @@ flowchart TD
   Gate -->|"Deploy, prod mutation, external send, DB grants/RLS/ownership, purchase, protected branch, thread create/message"| Proposal["ACTION_PROPOSAL required"]
   Gate -->|"External task creation"| TaskGate["Local-first ClickUp policy"]
 
-  Proposal --> Approval["Explicit Preston approval"]
+  Proposal --> Approval["Explicit the user approval"]
   Approval --> Execute["Execute exact approved action"]
   TaskGate --> LocalRecord["Local durable record first"]
   LocalRecord --> Dedupe["Dedupe and authorization"]

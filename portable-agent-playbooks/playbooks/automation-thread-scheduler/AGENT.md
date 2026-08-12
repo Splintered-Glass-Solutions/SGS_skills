@@ -69,8 +69,8 @@ creation.
    - target thread, current thread, or existing automation id;
    - memory path and any source-specific checkpoint files.
 3. Inspect existing automation configs under
-   `<agent-config>/automations/*/automation.toml`.
-4. If `$CODEX_HOME` is empty, use `<agent-config>` directly.
+   `$CODEX_HOME/automations/*/automation.toml`.
+4. If `$CODEX_HOME` is empty, use `$CODEX_HOME` directly.
 5. Find candidate duplicates by:
    - matching `id`;
    - matching `name`;
@@ -181,7 +181,7 @@ Before final response, verify:
 Useful local check:
 
 ```bash
-find <agent-config>/automations -maxdepth 2 -name automation.toml \
+find $CODEX_HOME/automations -maxdepth 2 -name automation.toml \
   -print -exec rg -n "^(id|kind|name|status|rrule|target_thread_id|target) =" {} \;
 ```
 

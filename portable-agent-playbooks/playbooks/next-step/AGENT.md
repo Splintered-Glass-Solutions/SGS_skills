@@ -174,4 +174,3 @@ Remaining: <next blocker or next likely action>
 ```
 
 Keep the response short unless the next step produced findings that need detail.
-

@@ -9,7 +9,7 @@ The user invoked this command with: $ARGUMENTS
 
 ## Preflight
 
-1. Read and follow `/Users/preston/.codex/skills/automation-thread-scheduler/SKILL.md`.
+1. Read and follow `$CODEX_HOME/skills/automation-thread-scheduler/SKILL.md`.
 2. Treat `$ARGUMENTS` as the automation name, automation id, or scheduling
    request.
 3. Use the Codex `automation_update` tool for automation changes and

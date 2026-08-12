@@ -17,7 +17,7 @@ HANDOFF_RECEIPT:
   files_touched_or_read:
   next_safe_prompt:
   blocked_by:
-PRESTON_DECISION_NEEDED:
+USER_DECISION_NEEDED:
 ACTION_PROPOSAL:
   target:
   action:
@@ -39,7 +39,7 @@ Rules:
 - If blocked, name the smallest missing input or approval.
 - Always include `HANDOFF_RECEIPT` so another project agent or worker can
   continue without reconstructing context from chat history:
-  - `handoff_target`: persistent project thread, bounded worker, Preston, or
+  - `handoff_target`: persistent project thread, bounded worker, the user, or
     no handoff.
   - `state_to_continue_from`: the exact state, checkpoint, branch, artifact, or
     last verified fact the next agent should start from.
@@ -51,19 +51,19 @@ Rules:
   - `blocked_by`: empty when unblocked; otherwise name the exact missing
     approval, credential, repo state, source access, product decision, or
     validation failure.
-- If Preston approval is needed, include a proposed approval ledger update with
-  project, requested decision, why Preston is needed, approval unlocks, and safe
+- If the user approval is needed, include a proposed approval ledger update with
+  project, requested decision, why the user is needed, approval unlocks, and safe
   fallback while waiting.
 - If the work was picked up, delegated, blocked, waiting, completed, resumed,
   superseded, cancelled, or checked with no new signal, include the exact JSON
   object that should be appended to
-  `/Users/preston/.codex/portfolio/work-ledger.jsonl`.
+  `$CODEX_HOME/portfolio/work-ledger.jsonl`.
 - Name the standards applied from
-  `/Users/preston/.codex/portfolio/standards-registry.md`, especially any proof,
+  `$CODEX_HOME/portfolio/standards-registry.md`, especially any proof,
   approval, automation, frontend, code/test, or project-specific standard that
   affected the closeout.
 - If the next recommended action is gated, include `ACTION_PROPOSAL`. The
-  proposal must be specific enough for Preston to approve or reject without
+  proposal must be specific enough for the user to approve or reject without
   reopening the full run: target, action, risk, proof_ready, approval_needed,
   and rollback_or_undo.
 - If no new signal, include the source range checked and checkpoint result.

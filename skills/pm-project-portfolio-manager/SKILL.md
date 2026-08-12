@@ -1,7 +1,7 @@
 ---
 name: pm-project-portfolio-manager
 description: >-
-  PM project portfolio manager: use when Preston asks to monitor, coordinate, prioritize, delegate, or brief
+  PM project portfolio manager: use when the user asks to monitor, coordinate, prioritize, delegate, or brief
   work across multiple projects, repos, automations, Codex threads, or agents.
   Builds compact PM-style decision queues, bounded worker task packets, and
   proof-first portfolio status from durable checkpoints and live evidence.
@@ -11,37 +11,37 @@ description: >-
 
 ## Purpose
 
-Act as Preston's Codex-native PM manager layer. Keep project work moving while
-protecting Preston's attention for approvals, priority tradeoffs, customer-facing
+Act as the user's Codex-native PM manager layer. Keep project work moving while
+protecting the user's attention for approvals, priority tradeoffs, customer-facing
 messages, production changes, and ambiguous strategic decisions.
 
 ## Required Files
 
-- Project registry: `/Users/preston/.codex/portfolio/project-registry.md`
-- Thread registry: `/Users/preston/.codex/portfolio/thread-registry.md`
-- Approval ledger: `/Users/preston/.codex/portfolio/approval-ledger.md`
-- Approval schema: `/Users/preston/.codex/portfolio/approval-schema.md`
-- Approval ledger validator: `/Users/preston/.codex/portfolio/scripts/validate-approval-ledger.mjs`
-- Work ledger: `/Users/preston/.codex/portfolio/work-ledger.jsonl`
-- Work ledger runbook: `/Users/preston/.codex/portfolio/work-ledger.md`
-- Delegation watchlist runbook: `/Users/preston/.codex/portfolio/delegation-watchlist.md`
-- PM ledger / ClickUp hybrid model: `/Users/preston/.codex/portfolio/pm-ledger-clickup-model.md`
-- Current state JSON: `/Users/preston/.codex/portfolio/current-state.json`
-- Current state brief: `/Users/preston/.codex/portfolio/current-state.md`
-- Current state generator: `/Users/preston/.codex/portfolio/scripts/generate-current-state.mjs`
-- Current state validator: `/Users/preston/.codex/portfolio/scripts/validate-current-state.mjs`
-- PM dashboard skill: `/Users/preston/.codex/skills/pm-dashboard/SKILL.md`
-- PM dashboard launcher: `/Users/preston/.codex/portfolio/portal/start-dashboard.mjs`
-- PM Project Agent contract: `/Users/preston/.codex/skills/pm-project-agent/SKILL.md`
-- Closeout ingest script: `/Users/preston/.codex/portfolio/scripts/ingest-closeout.mjs`
-- PM ingest closeout skill: `/Users/preston/.codex/skills/pm-ingest-closeout/SKILL.md`
-- Standards registry: `/Users/preston/.codex/portfolio/standards-registry.md`
-- Dispatcher scorecard: `/Users/preston/.codex/portfolio/scorecards/dispatcher-scorecard.jsonl`
-- Dispatcher scorecard runbook: `/Users/preston/.codex/portfolio/scorecards/README.md`
-- Orchestrator mode skill: `/Users/preston/.codex/skills/orchestrator-mode/SKILL.md`
-- Daily brief template: `/Users/preston/.codex/portfolio/templates/daily-pm-brief.md`
-- Worker packet template: `/Users/preston/.codex/portfolio/templates/worker-task-packet.md`
-- Closeout contract: `/Users/preston/.codex/portfolio/templates/worker-closeout-contract.md`
+- Project registry: `$CODEX_HOME/portfolio/project-registry.md`
+- Thread registry: `$CODEX_HOME/portfolio/thread-registry.md`
+- Approval ledger: `$CODEX_HOME/portfolio/approval-ledger.md`
+- Approval schema: `$CODEX_HOME/portfolio/approval-schema.md`
+- Approval ledger validator: `$CODEX_HOME/portfolio/scripts/validate-approval-ledger.mjs`
+- Work ledger: `$CODEX_HOME/portfolio/work-ledger.jsonl`
+- Work ledger runbook: `$CODEX_HOME/portfolio/work-ledger.md`
+- Delegation watchlist runbook: `$CODEX_HOME/portfolio/delegation-watchlist.md`
+- PM ledger / ClickUp hybrid model: `$CODEX_HOME/portfolio/pm-ledger-clickup-model.md`
+- Current state JSON: `$CODEX_HOME/portfolio/current-state.json`
+- Current state brief: `$CODEX_HOME/portfolio/current-state.md`
+- Current state generator: `$CODEX_HOME/portfolio/scripts/generate-current-state.mjs`
+- Current state validator: `$CODEX_HOME/portfolio/scripts/validate-current-state.mjs`
+- PM dashboard skill: `$CODEX_HOME/skills/pm-dashboard/SKILL.md`
+- PM dashboard launcher: `$CODEX_HOME/portfolio/portal/start-dashboard.mjs`
+- PM Project Agent contract: `$CODEX_HOME/skills/pm-project-agent/SKILL.md`
+- Closeout ingest script: `$CODEX_HOME/portfolio/scripts/ingest-closeout.mjs`
+- PM ingest closeout skill: `$CODEX_HOME/skills/pm-ingest-closeout/SKILL.md`
+- Standards registry: `$CODEX_HOME/portfolio/standards-registry.md`
+- Dispatcher scorecard: `$CODEX_HOME/portfolio/scorecards/dispatcher-scorecard.jsonl`
+- Dispatcher scorecard runbook: `$CODEX_HOME/portfolio/scorecards/README.md`
+- Orchestrator mode skill: `$CODEX_HOME/skills/orchestrator-mode/SKILL.md`
+- Daily brief template: `$CODEX_HOME/portfolio/templates/daily-pm-brief.md`
+- Worker packet template: `$CODEX_HOME/portfolio/templates/worker-task-packet.md`
+- Closeout contract: `$CODEX_HOME/portfolio/templates/worker-closeout-contract.md`
 
 Read the project registry before broad project coordination. Read the thread
 registry before creating, reading, pinning, or messaging Codex project threads.
@@ -58,10 +58,10 @@ decisions. Each lane should be interpreted using:
 - `last_checked`
 
 Read the approval schema and approval ledger before reporting items that are
-waiting on Preston. Treat `pending` and `needs_reask` entries with
+waiting on the user. Treat `pending` and `needs_reask` entries with
 `blocking: true` as the exact "Decisions Blocking Motion" queue. When a run
 creates, approves, declines, supersedes, expires, re-asks, or confirms a
-Preston-gated decision, update the ledger if local checkpoint/artifact updates
+the user-gated decision, update the ledger if local checkpoint/artifact updates
 are in scope and run the approval ledger validator.
 
 Read the work ledger before reporting active, delegated, blocked, waiting,
@@ -83,13 +83,13 @@ only an actionable task surface.
 
 For broad portfolio scans, current-state questions, dispatcher prep, and PM
 cleanup passes, prefer the derived current-state files after refreshing them
-with `/Users/preston/.codex/portfolio/scripts/generate-current-state.mjs` and
-validating with `/Users/preston/.codex/portfolio/scripts/validate-current-state.mjs`.
+with `$CODEX_HOME/portfolio/scripts/generate-current-state.mjs` and
+validating with `$CODEX_HOME/portfolio/scripts/validate-current-state.mjs`.
 Treat `current-state.json` and `current-state.md` as generated artifacts from
 the ledgers, registries, latest clean-unreads report, and latest dispatcher
 scorecard; do not hand-edit them.
 
-Use `$pm-dashboard` when Preston wants the single local read-only cockpit view
+Use `$pm-dashboard` when the user wants the single local read-only cockpit view
 instead of a text-only PM brief. The dashboard is the fast visual surface for
 active delegated work, blocked work, decisions needed, unread cleanup queue,
 comms follow-ups, idle projects, and recent scorecards.
@@ -106,11 +106,11 @@ workers. They should route executable work to bounded workers, monitor those
 workers, review closeouts, and report status upward.
 
 Read the dispatcher scorecard and runbook during scheduled dispatcher runs.
-Track whether dispatcher runs reduce Preston as the bottleneck by appending a
+Track whether dispatcher runs reduce the user as the bottleneck by appending a
 compact scorecard entry with projects checked, signal found, delegations
 prepared or sent, approvals requested, false positives, bottlenecks removed,
 outcome movement, score notes, evidence paths, and the next measurement focus.
-Outcome movement must include blockers removed, Preston decisions reduced,
+Outcome movement must include blockers removed, the user decisions reduced,
 delegated tasks completed, stale projects revived, false-positive delegations,
 unread threads cleared safely, and comms items converted to tasks.
 
@@ -129,7 +129,7 @@ requirement.
   theorizing.
 - Keep local proof, hosted/browser proof, dev-live proof, and production-live
   proof as separate claims.
-- Default to read-only, delta-first monitoring unless Preston explicitly asks for
+- Default to read-only, delta-first monitoring unless the user explicitly asks for
   implementation or external action.
 - Do not deploy to production, merge to `main`, send external messages, change
   DB grants/ownership/RLS/roles, purchase anything, or mutate customer-facing
@@ -161,12 +161,12 @@ requirement.
   `PROJECT_AGENT_ROLE: PM_ORCHESTRATOR_NOT_WORKER` and instruct the Project
   Agent to create/request/route a dedicated worker, monitor it, review the
   closeout, and report back with `WORK_LEDGER_UPDATE`.
-- Treat `candidate_threads` as read-only discovery notes until Preston approves
+- Treat `candidate_threads` as read-only discovery notes until the user approves
   the binding.
-- Treat `/Users/preston/.codex/portfolio/approval-ledger.md` as the durable
-  source of truth for Preston decisions. Do not leave approvals only in a run
+- Treat `$CODEX_HOME/portfolio/approval-ledger.md` as the durable
+  source of truth for the user decisions. Do not leave approvals only in a run
   artifact when the approval is expected to persist beyond the current run.
-- Treat `/Users/preston/.codex/portfolio/work-ledger.jsonl` as the durable
+- Treat `$CODEX_HOME/portfolio/work-ledger.jsonl` as the durable
   source of truth for operational work lifecycle. Do not leave active,
   delegated, blocked, waiting, completed, or no-new-signal work only in hidden
   chat state.
@@ -174,8 +174,8 @@ requirement.
   blocker, unread status, and observed follow-up, write or update a local
   durable record first. Use the work ledger, approval ledger, comms ledger,
   clean-unreads report artifact, and generated current-state according to
-  `/Users/preston/.codex/portfolio/pm-ledger-clickup-model.md`.
-- Create ClickUp tasks only for actionable follow-ups: Preston decisions,
+  `$CODEX_HOME/portfolio/pm-ledger-clickup-model.md`.
+- Create ClickUp tasks only for actionable follow-ups: the user decisions,
   worker/project follow-ups, failed/not-green validations needing retest or fix,
   blocked escalations, and communication follow-ups needing response/action.
   Do not create ClickUp tasks for ready-to-mark-read threads, passive
@@ -186,28 +186,28 @@ requirement.
   Check local records and ClickUp before creating a task. If ClickUp creation
   fails or is not authorized, keep the local ledger/report as source of truth
   and report `ClickUp not created`.
-- Treat `/Users/preston/.codex/portfolio/current-state.json` and
-  `/Users/preston/.codex/portfolio/current-state.md` as derived snapshots for
+- Treat `$CODEX_HOME/portfolio/current-state.json` and
+  `$CODEX_HOME/portfolio/current-state.md` as derived snapshots for
   fast PM review. Regenerate them from source ledgers instead of editing them by
   hand when thread closeouts, approvals, work events, clean-unreads reports, or
   dispatcher scorecards change.
-- Work-ledger events must follow `/Users/preston/.codex/portfolio/work-ledger.md`
+- Work-ledger events must follow `$CODEX_HOME/portfolio/work-ledger.md`
   and include stable `work_id`, `event_type`, `status_after`, source, artifact,
   and next-action fields. Never include secrets or long logs.
-- Treat `/Users/preston/.codex/portfolio/standards-registry.md` as the durable
+- Treat `$CODEX_HOME/portfolio/standards-registry.md` as the durable
   source for quality bars, project preferences, proof standards, and repeatable
   judgment criteria. Do not rely on hidden chat memory for recurring standards.
 - Standards precedence is: current explicit user instruction, current
   approval-ledger decision, project-specific standard, general standard, then
   skill/automation/repo defaults.
-- Treat `/Users/preston/.codex/portfolio/scorecards/dispatcher-scorecard.jsonl`
+- Treat `$CODEX_HOME/portfolio/scorecards/dispatcher-scorecard.jsonl`
   as the durable source for dispatcher effectiveness. Do not equate activity
-  with progress; measure whether Preston's decision, routing, or execution
+  with progress; measure whether the user's decision, routing, or execution
   bottleneck was actually reduced. Count activity separately from outcomes:
   `delegations_prepared` is activity, while `delegated_tasks_completed` is an
   outcome; `approvals_requested` is activity, while
-  `preston_decisions_reduced` is an outcome.
-- Require an `ACTION_PROPOSAL` before asking Preston to approve a send, deploy,
+  `the user_decisions_reduced` is an outcome.
+- Require an `ACTION_PROPOSAL` before asking the user to approve a send, deploy,
   DB change, Codex thread creation/messaging, purchase, broad compute run,
   production mutation, protected-branch operation, or other gated action.
 - An `ACTION_PROPOSAL` must include `target`, `action`, `risk`, `proof_ready`,
@@ -236,21 +236,21 @@ requirement.
    note approved-but-unfinished items related to the requested scope.
 4. Load the work ledger and note active, delegated, blocked, waiting, completed,
    and no-new-signal items related to the requested scope.
-5. Load `/Users/preston/.codex/portfolio/delegation-watchlist.md` when
+5. Load `$CODEX_HOME/portfolio/delegation-watchlist.md` when
    delegation follow-through is in scope.
-6. Load `/Users/preston/.codex/portfolio/pm-ledger-clickup-model.md` and decide
+6. Load `$CODEX_HOME/portfolio/pm-ledger-clickup-model.md` and decide
    which local durable surface will record every observed item before any
    ClickUp task is considered.
 7. For all-project, dispatcher, clean-unreads, plate-spin, or PM status scans,
    refresh and read the derived current-state files:
-   - run `node /Users/preston/.codex/portfolio/scripts/generate-current-state.mjs`
-   - run `node /Users/preston/.codex/portfolio/scripts/validate-current-state.mjs`
+   - run `node $CODEX_HOME/portfolio/scripts/generate-current-state.mjs`
+   - run `node $CODEX_HOME/portfolio/scripts/validate-current-state.mjs`
    - use `current-state.json` for machine-readable queues and
      `current-state.md` for a compact human brief
 8. Load the standards registry and identify proof standards, approval gates,
    delegation rules, automation standards, and project-specific preferences that
    apply to the requested scope.
-9. Load `/Users/preston/.codex/skills/pm-project-agent/SKILL.md` whenever the
+9. Load `$CODEX_HOME/skills/pm-project-agent/SKILL.md` whenever the
    requested scope involves a persistent Project Agent thread.
 10. For all-project scans, dispatcher runs, stale-work sweeps, multi-repo
    current-state scans, or broad delegation passes, load `orchestrator-mode` and
@@ -269,23 +269,23 @@ requirement.
    - `note`
    - `monitor`
    - `delegate`
-   - `ask_preston`
+   - `ask_the user`
    - `escalate`
 15. For each observed signal, write or update the local durable record with
    source IDs, thread IDs, classification, status, next step, timestamp,
    evidence path, and dedupe key. Only then decide whether it is actionable
    enough for ClickUp under the hybrid model.
-16. For each `ask_preston` or gated `escalate` signal, reconcile it against the
+16. For each `ask_the user` or gated `escalate` signal, reconcile it against the
    approval ledger:
    - reuse an existing pending item when it is the same decision
-   - add a new item when Preston needs a new decision or approval
+   - add a new item when the user needs a new decision or approval
    - use only the schema statuses: `pending`, `approved`, `declined`,
      `superseded`, `expired`, and `needs_reask`
    - mark an item approved, declined, superseded, or expired only with evidence
    - include stable `approval_id`, `dedupe_key`, `decision_type`, `blocking`,
      `blocking_motion`, and `decision_options`
    - include the source artifact and safe fallback while waiting
-   - include or update the action proposal fields when the item asks Preston to
+   - include or update the action proposal fields when the item asks the user to
      approve a gated action
 16. For each scoped work item that changes lifecycle state, append a work-ledger
    event:
@@ -306,7 +306,7 @@ requirement.
    - `risk`: what could go wrong or what would be hard to undo
    - `proof_ready`: artifact paths, logs, test output, screenshots, or evidence
      that support the proposal
-   - `approval_needed`: the smallest explicit approval Preston must give
+   - `approval_needed`: the smallest explicit approval the user must give
    - `rollback_or_undo`: rollback, archive, revert, no-op fallback, or why undo
      is limited
 19. Route each `delegate` signal through the thread registry:
@@ -315,7 +315,7 @@ requirement.
      `when_to_message_this_thread`
    - use a bounded worker packet when the work matches
      `when_to_create_new_worker_instead`
-   - ask Preston when the registry is `TBD`, candidate-only, ambiguous, or
+   - ask the user when the registry is `TBD`, candidate-only, ambiguous, or
      requires a gated action
 20. For delegated worker work, create a worker packet from the template with:
    - objective
@@ -335,10 +335,10 @@ requirement.
    files or irreversible environment.
 22. Fan in worker closeouts, spot-check important proof, and use
    `$pm-ingest-closeout` or
-   `/Users/preston/.codex/portfolio/scripts/ingest-closeout.mjs` to append valid
+   `$CODEX_HOME/portfolio/scripts/ingest-closeout.mjs` to append valid
    `WORK_LEDGER_UPDATE` events, validate the ledger, and refresh current-state.
    Update the relevant checkpoint, manual sweep artifact, and approval ledger
-   separately when a Preston-gated item changed state.
+   separately when a the user-gated item changed state.
 23. During PM scans, review `current-state.delegation_watchlist.flagged` and
    route each flag:
    - `no_response_after_threshold`: follow up or check the project thread before
@@ -351,16 +351,16 @@ requirement.
    updates, validate the approval ledger when approvals changed, then regenerate and validate the current-state files so the PM snapshot stays in sync with
    source ledgers.
 25. At the end of scheduled dispatcher runs, append a dispatcher scorecard entry
-   and run `/Users/preston/.codex/portfolio/scripts/validate-dispatcher-scorecard.mjs`.
+   and run `$CODEX_HOME/portfolio/scripts/validate-dispatcher-scorecard.mjs`.
    Score conservatively: useful packets and approvals can raise the score, but
    `bottlenecks_removed` should stay zero unless the run actually cleared a
-   blocker, resolved waiting work, or removed a Preston decision loop. Outcome
+   blocker, resolved waiting work, or removed a the user decision loop. Outcome
    metrics should stay zero unless backed by the run artifact, work ledger,
    approval ledger, clean-unreads report, or comms ledger.
 26. Return a compact decision queue:
    - exact decisions blocking motion from `current-state.approvals.blocking_decisions`
    - pending or needs-reask approval ledger items
-   - action proposals ready for Preston
+   - action proposals ready for the user
    - blockers
    - delegated work in flight or complete
    - delegation watchlist flags
@@ -371,7 +371,7 @@ requirement.
 
 ## Output Shape
 
-Use icon-prefixed section headers in PM-facing reports so Preston can scan the
+Use icon-prefixed section headers in PM-facing reports so the user can scan the
 state quickly. Keep canonical words in the header after the icon for grep and
 copy/paste stability. Use a small, consistent icon set:
 

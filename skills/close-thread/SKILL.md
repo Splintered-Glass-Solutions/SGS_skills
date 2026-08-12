@@ -2,7 +2,7 @@
 name: close-thread
 description: >-
   Close the current Codex thread by renaming it with a leading fullwidth dash
-  marker only. Use when Preston asks to close out, mark closed, or run the
+  marker only. Use when the user asks to close out, mark closed, or run the
   close-thread slash command for the current thread.
 ---
 

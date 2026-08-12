@@ -107,7 +107,7 @@ WORKER_RESULT:
 PROOF_REVIEWED:
 PM_VERDICT:
 NEXT_SAFE_ACTION:
-PRESTON_DECISION_NEEDED:
+USER_DECISION_NEEDED:
 ACTION_PROPOSAL:
 WORK_LEDGER_UPDATE:
 ```
@@ -144,4 +144,3 @@ project_agent_executed_worker_work
 The next safe action is to restore the PM pattern: create a bounded worker for
 remaining execution, ingest any valid closeout, and update the PM ledger with
 the corrected lifecycle state.
-

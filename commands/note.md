@@ -7,7 +7,7 @@ argument-hint: [note]
 
 The user invoked this command with: $ARGUMENTS
 
-1. Read and follow `/Users/preston/.codex/skills/note/SKILL.md`.
+1. Read and follow `$CODEX_HOME/skills/note/SKILL.md`.
 2. Treat `$ARGUMENTS` as the note content. If it is empty, use the immediately
    preceding user message when it clearly contains a note.
 3. Save the note only. Do not take follow-on action, inspect repositories, or

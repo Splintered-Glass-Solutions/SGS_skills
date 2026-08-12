@@ -5,7 +5,7 @@ description: >-
   worktree for unfinished work, migrations, conflicts, and validation gaps;
   merging the completed branch into the local dev branch; verifying the result;
   and removing only the temporary worktree after successful reconciliation.
-  Use when Preston says to collapse, close, wrap up, or merge back a bulk-edit
+  Use when the user says to collapse, close, wrap up, or merge back a bulk-edit
   thread or worktree, including coordinated work across multiple repositories.
 ---
 
@@ -51,7 +51,7 @@ is closed while any affected repository remains unresolved.
 
 ## Phase 2: Reconcile into local dev
 
-Only continue when the audit is clear or Preston explicitly resolves every
+Only continue when the audit is clear or the user explicitly resolves every
 reported decision item.
 
 1. Recheck mutable Git state immediately before merging. Fetch remotes only to
@@ -71,7 +71,7 @@ reported decision item.
 6. Run the strongest practical local checks for every touched repo: diff
    checks, focused tests, typecheck/lint/build, and relevant integration or
    browser checks. Validate migrations/schema syntax without applying changes
-   to shared databases unless Preston separately authorizes that exact action.
+   to shared databases unless the user separately authorizes that exact action.
 7. Re-read the final local `dev` tree and verify that each requested completed
    item is present, no pre-existing dev feature was removed unintentionally,
    and no unresolved conflict markers or accidental generated/secrets files

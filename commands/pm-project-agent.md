@@ -9,7 +9,7 @@ The user invoked this command with: $ARGUMENTS
 
 ## Preflight
 
-1. Read and follow `/Users/preston/.codex/skills/pm-project-agent/SKILL.md`.
+1. Read and follow `$CODEX_HOME/skills/pm-project-agent/SKILL.md`.
 2. If `$ARGUMENTS` names a project or thread, use the portfolio thread registry
    to verify the project-agent lane.
 3. Treat persistent Project Agent threads as PM/orchestrator lanes, not

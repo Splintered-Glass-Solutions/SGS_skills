@@ -1,6 +1,6 @@
 ---
 name: codex-safe-run
-description: Run Codex Desktop more safely on macOS when memory, swap, CPU, app-server, MCP helper, node_repl, Computer Use, Browser, or multiple-thread runaway risk is present. Use when Preston says to run Codex safely, monitor Codex, use one Codex thread, investigate Codex memory leaks, avoid Codex Desktop crashes, clean up Codex helper processes, switch to CLI because Desktop is unstable, or similar.
+description: Run Codex Desktop more safely on macOS when memory, swap, CPU, app-server, MCP helper, node_repl, Computer Use, Browser, or multiple-thread runaway risk is present. Use when the user says to run Codex safely, monitor Codex, use one Codex thread, investigate Codex memory leaks, avoid Codex Desktop crashes, clean up Codex helper processes, switch to CLI because Desktop is unstable, or similar.
 ---
 
 # Codex Safe Run
@@ -24,7 +24,7 @@ Default to dry-run audits and compact file-backed logging. Kill processes only w
 
 1. the process is clearly stale or runaway,
 2. killing it will not destroy active user work, and
-3. Preston has approved the cleanup in the current thread, or the process is an obvious accidental infinite loop that is not useful work.
+3. the user has approved the cleanup in the current thread, or the process is an obvious accidental infinite loop that is not useful work.
 
 ## Token Budget
 
@@ -49,7 +49,7 @@ If Codex is already slow, hot, crashing, or showing huge memory in Activity Moni
    - `ps -axo pid,ppid,pgid,%cpu,rss,etime,stat,command | sort -nrk5 | head -40`
 2. If a single Codex app-server is hot, sample it before killing if the system can tolerate 5 seconds:
    - `sample PID 5 -file /tmp/codex-app-server-PID-sample.txt`
-3. If swap is climbing quickly or the app-server physical footprint is multi-GB, stop interactive monitoring and tell Preston to fully quit Codex Desktop.
+3. If swap is climbing quickly or the app-server physical footprint is multi-GB, stop interactive monitoring and tell the user to fully quit Codex Desktop.
 4. After Codex quits, verify stale helpers:
    - `pgrep -alf 'Codex|codex|node_repl|mcp/server|playwright-mcp|Computer Use|SkyComputerUse'`
 5. Only then restart Codex for a clean one-thread run.
@@ -69,7 +69,7 @@ For "run one single thread safely":
 1. Fully quit Codex Desktop.
 2. Confirm there are no old app-server roots:
    - `pgrep -alf 'codex app-server --analytics-default-enabled'`
-3. If stale Codex helper processes remain, ask Preston before killing them unless they are obvious orphaned/no-op monitors.
+3. If stale Codex helper processes remain, ask the user before killing them unless they are obvious orphaned/no-op monitors.
 4. Reopen Codex.
 5. Open only the needed thread.
 6. Avoid starting extra Desktop threads, Browser/Computer Use sessions, or MCP-heavy helpers unless needed.
@@ -85,7 +85,7 @@ For "run one single thread safely":
 Use the bundled monitor when possible:
 
 ```bash
-/Users/preston/.codex/skills/codex-safe-run/scripts/codex-safe-monitor.sh --log /tmp/codex-safe-monitor.log --interval 5
+$CODEX_HOME/skills/codex-safe-run/scripts/codex-safe-monitor.sh --log /tmp/codex-safe-monitor.log --interval 5
 ```
 
 Read only recent compact output:
@@ -97,7 +97,7 @@ tail -80 /tmp/codex-safe-monitor.log
 For a one-shot check:
 
 ```bash
-/Users/preston/.codex/skills/codex-safe-run/scripts/codex-safe-monitor.sh --once
+$CODEX_HOME/skills/codex-safe-run/scripts/codex-safe-monitor.sh --once
 ```
 
 Do not run verbose `while true` monitors inside Codex Desktop that print full commands every few seconds.

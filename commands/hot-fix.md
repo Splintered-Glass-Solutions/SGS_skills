@@ -12,7 +12,7 @@ The user invoked this command with: $ARGUMENTS
 
 ## Preflight
 
-1. Read and follow the local skill at `/Users/preston/.codex/skills/hot-fix/SKILL.md`.
+1. Read and follow the local skill at `$CODEX_HOME/skills/hot-fix/SKILL.md`.
 2. Treat `$ARGUMENTS` as the issue source, target repo, deploy environment, or release instruction.
 3. If `$ARGUMENTS` is empty, infer the issue source and deploy target from the current conversation when obvious; otherwise ask for the missing context.
 

@@ -101,4 +101,3 @@ Before implementation or handoff, explicitly ask the user to confirm a short dec
 - validation method
 
 If any item is not verified, label it as an assumption or open question.
-

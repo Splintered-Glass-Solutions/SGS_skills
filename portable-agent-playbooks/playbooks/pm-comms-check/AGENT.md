@@ -39,10 +39,10 @@ threads read, create ClickUp tasks, update ClickUp, or mutate source systems.
 
 Read these before reporting:
 
-- `<agent-config>/portfolio/comms/source-registry.md`
-- `<agent-config>/portfolio/comms/comms-ledger.jsonl`
-- `<agent-config>/portfolio/pm-ledger-clickup-model.md`
-- `<agent-config>/automations/pm-comms-monitor-every-4-hours-2/memory.md`
+- `$CODEX_HOME/portfolio/comms/source-registry.md`
+- `$CODEX_HOME/portfolio/comms/comms-ledger.jsonl`
+- `$CODEX_HOME/portfolio/pm-ledger-clickup-model.md`
+- `$CODEX_HOME/automations/pm-comms-monitor-every-4-hours-2/memory.md`
 
 If available and relevant, also inspect:
 
@@ -92,7 +92,7 @@ quickly. Keep the canonical label text after the icon.
 ```text
 📬 PM COMMS CHECK:
 🧭 STATUS:
-⚠️ NEEDS PRESTON NOW:
+⚠️ NEEDS USER NOW:
 🧵 DELEGATABLE:
 📌 CAPTURED IN CLICKUP:
 🟡 NEEDS REVIEW:
@@ -118,4 +118,3 @@ For each actionable item include:
 
 Keep the answer compact. Prefer the newest unhandled items and anything with a
 deadline, direct client impact, or blocked project work.
-

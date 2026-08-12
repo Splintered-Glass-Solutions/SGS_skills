@@ -3,7 +3,7 @@ name: next-step
 description: >-
   Decide and execute the most reasonable next safe step after a completed run,
   plan, QA pass, deploy, investigation, or phased feature discussion. Use when
-  Preston asks "next", "next step", "what now", "continue with the next phase",
+  the user asks "next", "next step", "what now", "continue with the next phase",
   "work the next most reasonable step", or wants autonomous continuation with
   gated safety logic.
 ---
@@ -72,7 +72,7 @@ Stop and ask, or report blocked, when the next step involves:
 - ambiguous product choices, pricing, billing, auth, permissions, or compliance
   behavior
 
-If Preston explicitly approved one of those gated actions in the current thread,
+If the user explicitly approved one of those gated actions in the current thread,
 the approval applies only to that named action and target environment.
 
 ## Workflow

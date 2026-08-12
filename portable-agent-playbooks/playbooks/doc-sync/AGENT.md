@@ -122,4 +122,3 @@ End with:
 - "Reorganize our scattered docs into one obvious starting point."
 
 No bundled resources are required for the initial version of this skill.
-

@@ -33,7 +33,7 @@ worker packet. It should not execute substantive work itself.
 
 ## Worker Boundary
 
-Project Agents must route these to a bounded worker unless Preston explicitly
+Project Agents must route these to a bounded worker unless the user explicitly
 authorizes direct execution in the current prompt:
 
 - code implementation
@@ -61,7 +61,7 @@ When handed a task, the Project Agent should respond or act using this shape:
 
 ```text
 PROJECT_AGENT_ROLE: PM_ORCHESTRATOR_NOT_WORKER
-ROUTING_DECISION: worker_needed | direct_tiny_read_only | needs_preston | blocked
+ROUTING_DECISION: worker_needed | direct_tiny_read_only | needs_the user | blocked
 WORKER_TARGET:
 WORKER_PACKET_OR_PROMPT:
 MONITORING_PLAN:
@@ -90,14 +90,14 @@ WORKER_RESULT:
 PROOF_REVIEWED:
 PM_VERDICT:
 NEXT_SAFE_ACTION:
-PRESTON_DECISION_NEEDED:
+USER_DECISION_NEEDED:
 ACTION_PROPOSAL:
 WORK_LEDGER_UPDATE:
 ```
 
 Do not mark work complete unless the worker closeout has enough proof for the
 project's standards. If proof is missing, report `blocked` or `waiting` and name
-the next worker prompt or Preston decision.
+the next worker prompt or the user decision.
 
 ## Safety Gates
 

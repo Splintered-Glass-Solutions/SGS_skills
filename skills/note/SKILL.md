@@ -2,7 +2,7 @@
 name: note
 description: >-
   Save a concise planning note from the current conversation for later reference
-  without taking follow-on action. Use when Preston says to note, remember, jot
+  without taking follow-on action. Use when the user says to note, remember, jot
   down, save for later, or invokes /note.
 ---
 
@@ -19,7 +19,7 @@ message, deploy, or modify a product.
 2. Infer a concise initiative label from the active thread when it is obvious;
    otherwise use `general-planning`.
 3. Save one small Markdown file under
-   `/Users/preston/.codex/memories/extensions/ad_hoc/notes/` named
+   `$CODEX_HOME/memories/extensions/ad_hoc/notes/` named
    `YYYY-MM-DD-<initiative>-note.md`. Add a short time suffix if that filename
    already exists.
 4. Use this exact structure:

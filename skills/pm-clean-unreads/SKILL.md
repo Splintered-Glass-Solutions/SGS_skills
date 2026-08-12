@@ -1,7 +1,7 @@
 ---
 name: pm-clean-unreads
 description: >-
-  PM clean unreads: use for PM-style cleanup of unread Codex threads when Preston wants to find
+  PM clean unreads: use for PM-style cleanup of unread Codex threads when the user wants to find
   threads whose work is actually done and safe to mark read. Identifies unread
   project/work threads where the feature finish-line has run, required local and
   dev/hosted testing is complete when applicable, deployment or dev-environment
@@ -15,7 +15,7 @@ description: >-
 
 Run a conservative unread cleanup pass for Codex project-management hygiene.
 The goal is to remove unread noise only when the thread is truly complete and
-no longer needs Preston's attention.
+no longer needs the user's attention.
 
 Do not treat "agent said done" as enough. A thread is cleanable only when the
 current evidence proves completion, finish-line validation, and the correct
@@ -24,13 +24,13 @@ environment proof for that project.
 ## Mandatory Incomplete-Thread Rule
 
 If a thread is not complete, has incomplete work, has remaining action items,
-is missing finish-line/dev proof, or contains any next step for Preston or a
+is missing finish-line/dev proof, or contains any next step for the user or a
 worker, it must stay unread. If explicit mark-unread tooling is available and
 the run is authorized to clean unread state, mark or leave that thread unread
 instead of clearing it.
 
 For every thread kept unread, report the next needed step. The report should
-make clear whether the blocker is worker continuation, Preston approval,
+make clear whether the blocker is worker continuation, the user approval,
 failed validation, missing evidence, or unclear status.
 
 Persistent Project Agent threads are PM/orchestrator lanes, not execution
@@ -45,15 +45,15 @@ closeout, and have the Project Agent review/report upward.
 
 Read these before broad cleanup:
 
-- `/Users/preston/.codex/skills/project-portfolio-manager/SKILL.md` (`pm-project-portfolio-manager`)
-- `/Users/preston/.codex/portfolio/project-registry.md`
-- `/Users/preston/.codex/portfolio/thread-registry.md`
-- `/Users/preston/.codex/portfolio/approval-ledger.md`
-- `/Users/preston/.codex/portfolio/work-ledger.md`
-- `/Users/preston/.codex/portfolio/work-ledger.jsonl`
-- `/Users/preston/.codex/portfolio/pm-ledger-clickup-model.md`
-- `/Users/preston/.codex/portfolio/templates/clean-unreads-report.md`
-- `/Users/preston/.codex/portfolio/standards-registry.md`
+- `$CODEX_HOME/skills/project-portfolio-manager/SKILL.md` (`pm-project-portfolio-manager`)
+- `$CODEX_HOME/portfolio/project-registry.md`
+- `$CODEX_HOME/portfolio/thread-registry.md`
+- `$CODEX_HOME/portfolio/approval-ledger.md`
+- `$CODEX_HOME/portfolio/work-ledger.md`
+- `$CODEX_HOME/portfolio/work-ledger.jsonl`
+- `$CODEX_HOME/portfolio/pm-ledger-clickup-model.md`
+- `$CODEX_HOME/portfolio/templates/clean-unreads-report.md`
+- `$CODEX_HOME/portfolio/standards-registry.md`
 
 ## Current PM Thread Exclusion
 
@@ -75,12 +75,12 @@ Use Codex thread tooling when available:
   threads classified `keep_unread_*` when incomplete work or action items
   remain.
 
-Do not archive threads as a substitute for marking them read unless Preston
+Do not archive threads as a substitute for marking them read unless the user
 explicitly asks to archive.
 
 ## Thread Context Fields
 
-For every reported thread, include enough context for Preston to recognize it
+For every reported thread, include enough context for the user to recognize it
 without opening the sidebar:
 
 - `thread_title`: the exact Codex thread title from `list_threads` or
@@ -121,7 +121,7 @@ A thread is `ready_to_mark_read` only when all applicable checks pass:
 6. The approval ledger has no pending item tied to the thread's work.
 7. The work ledger has no current `active`, `delegated`, `waiting`, or `blocked`
    event for the same `work_id` after the alleged completion.
-8. The final answer does not contain a pending next step that Preston must
+8. The final answer does not contain a pending next step that the user must
    review, approve, send, deploy, stage, commit, or choose.
 9. No unhandled `ACTION_PROPOSAL`, `blocked_by`, `needs_approval`, failed test,
    failed hosted smoke, or "not green" status remains.
@@ -132,7 +132,7 @@ Classify each unread thread as exactly one:
 
 - `ready_to_mark_read`: all eligibility checks pass.
 - `keep_unread_active`: thread is still running, waiting, or mid-validation.
-- `keep_unread_needs_preston`: Preston decision, approval, review, send,
+- `keep_unread_needs_the user`: the user decision, approval, review, send,
   deploy, commit, or prioritization is still needed.
 - `keep_unread_failed_or_not_green`: finish-line, dev, hosted, or production
   validation failed or is incomplete.
@@ -158,14 +158,14 @@ hotfix remains.
 
 ## Cleanup Actions
 
-Default to read-only classification unless Preston explicitly asks to clean.
+Default to read-only classification unless the user explicitly asks to clean.
 
 ## Durable Run Artifact
 
 Every clean-unreads run must save a local report before returning:
 
 ```text
-/Users/preston/.codex/portfolio/reports/clean-unreads/YYYY-MM-DD-HHMM.md
+$CODEX_HOME/portfolio/reports/clean-unreads/YYYY-MM-DD-HHMM.md
 ```
 
 The report is the local ledger surface for unread observations. It must include:
@@ -181,13 +181,13 @@ The report is the local ledger surface for unread observations. It must include:
 - dedupe keys for every reported thread:
   `pm:unread:<project-or-source>:<thread_id>:<classification-or-work-slug>`
 
-Use `/Users/preston/.codex/portfolio/templates/clean-unreads-report.md` as the
+Use `$CODEX_HOME/portfolio/templates/clean-unreads-report.md` as the
 required section template when writing the report.
 
 Do not create ClickUp tasks for `ready_to_mark_read`, passive active/waiting
 status, duplicate observations, completed/no-op threads, or items with no next
 action. Only create or propose ClickUp tasks when the kept-unread item has an
-actionable follow-up: Preston decision, worker/project follow-up,
+actionable follow-up: the user decision, worker/project follow-up,
 failed/not-green validation, blocked escalation, or communication response.
 If ClickUp creation is not explicitly authorized or fails, keep the report as
 source of truth and write `ClickUp not created`.
@@ -217,7 +217,7 @@ a glance. Keep the canonical label text after the icon.
 🧹 CLEAN UNREADS STATUS:
 ✅ READY TO MARK READ:
 🟡 KEEP UNREAD - ACTIVE:
-⚠️ KEEP UNREAD - NEEDS PRESTON:
+⚠️ KEEP UNREAD - NEEDS USER:
 🔴 KEEP UNREAD - FAILED OR NOT GREEN:
 ❓ KEEP UNREAD - UNCLEAR:
 📥 NOT PROJECT WORK:

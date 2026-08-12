@@ -3,7 +3,8 @@
 This folder documents the SGS/Codex project-management operating system: how
 the PM thread, project threads, workers, skills, ledgers, approvals,
 communication monitors, dashboard, and dispatcher outcome scorecards work
-together.
+together. The examples are tool-agnostic patterns; replace the named connectors
+or task systems with the ones your organization actually uses.
 
 ## Files
 

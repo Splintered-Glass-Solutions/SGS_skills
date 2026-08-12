@@ -10,7 +10,7 @@ The user invoked this command with: $ARGUMENTS
 ## Preflight
 
 1. Read and follow the local skill at
-   `/Users/preston/.codex/skills/close-thread/SKILL.md`.
+   `$CODEX_HOME/skills/close-thread/SKILL.md`.
 2. Treat `$ARGUMENTS` as optional closeout context to consider in the final
    synopsis.
 3. Rename only the current thread title by adding the leading `－` marker when

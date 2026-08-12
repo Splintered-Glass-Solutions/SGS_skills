@@ -38,12 +38,12 @@ Briefing rules:
 - Prefer links/artifact paths over pasted logs.
 - Separate safe next actions from gated next actions.
 - Pull persistent approval/decision items from
-  `/Users/preston/.codex/portfolio/approval-ledger.md`.
+  `$CODEX_HOME/portfolio/approval-ledger.md`.
 - Pull operational work lifecycle from
-  `/Users/preston/.codex/portfolio/work-ledger.jsonl` and append compact events
+  `$CODEX_HOME/portfolio/work-ledger.jsonl` and append compact events
   for picked-up, delegated, blocked, waiting, completed, resumed, superseded,
   cancelled, or no-new-signal work.
-- Apply `/Users/preston/.codex/portfolio/standards-registry.md` for quality
+- Apply `$CODEX_HOME/portfolio/standards-registry.md` for quality
   bars, proof standards, approval gates, delegation standards, automation
   standards, and project-specific preferences.
 - Report access blockers plainly.

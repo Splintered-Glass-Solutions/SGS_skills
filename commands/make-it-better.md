@@ -9,12 +9,12 @@ The user invoked this command with: $ARGUMENTS
 
 ## Preflight
 
-1. Read and follow the local skill at `/Users/preston/.codex/skills/make-it-better/SKILL.md`.
+1. Read and follow the local skill at `$CODEX_HOME/skills/make-it-better/SKILL.md`.
 2. Treat `$ARGUMENTS` as project context, repo scope, product direction,
    permission boundary, or implementation approval details.
 3. If `$ARGUMENTS` is empty, infer the project context from the current
    conversation and working directory.
-4. Use `$orchestratror-mode`, `$codex-safe-run`, and, when implementation is
+4. Use `$orchestrator-mode`, `$codex-safe-run`, and, when implementation is
    allowed, `$autonomous-feature-build`.
 
 ## Required Behavior

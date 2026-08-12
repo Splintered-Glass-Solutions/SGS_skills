@@ -2,7 +2,7 @@
 
 Primary source: Nate B. Jones, [“15 Ways to Cut Token Waste in Codex and Claude”](https://unlock-ai.natebjones.com/guides/cut-token-waste), last verified by the publisher on 2026-07-28 and retrieved for this skill on 2026-08-05.
 
-Earlier source: “Paste This Into Claude, Never Hit a Token Limit Again,” published 2026-07-29. Local transcript: `/Users/preston/Code/personal/output/youtube-Y8vAQ1FgNbM-transcript.md`.
+Earlier source: “Paste This Into Claude, Never Hit a Token Limit Again,” published 2026-07-29. Local transcript: `<workspace-root>/personal/output/youtube-Y8vAQ1FgNbM-transcript.md`.
 
 The web guide provides the authoritative fifteen-move ordering and clearer evidence boundaries than the auto-caption transcript. This local skill is an adapted implementation, not a copy of the publisher’s downloadable skill.
 

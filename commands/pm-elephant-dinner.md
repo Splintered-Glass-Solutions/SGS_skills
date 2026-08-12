@@ -7,7 +7,7 @@ argument-hint: [project-or-overload-context]
 
 The user invoked this command with: $ARGUMENTS
 
-1. Read and follow `/Users/preston/.codex/skills/elephant-dinner/SKILL.md`.
+1. Read and follow `$CODEX_HOME/skills/pm-elephant-dinner/SKILL.md`.
 2. Treat `$ARGUMENTS`, selected text, and current project context as the seed.
 3. Identify whether the work is software, client delivery, creative,
    operational, research, event, personal, or hybrid, and use only the relevant

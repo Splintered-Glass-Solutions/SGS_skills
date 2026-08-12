@@ -37,13 +37,13 @@ Default authority limits:
 - Do not revert unrelated user or worker changes.
 - If live code, data, or source state contradicts the packet, stop and report
   the discrepancy before continuing.
-- Treat `/Users/preston/.codex/portfolio/work-ledger.jsonl` as the durable
+- Treat `$CODEX_HOME/portfolio/work-ledger.jsonl` as the durable
   operational state log. If this packet changes lifecycle state, return the
   exact work-ledger event that should be appended.
-- Apply `/Users/preston/.codex/portfolio/standards-registry.md`, especially the
+- Apply `$CODEX_HOME/portfolio/standards-registry.md`, especially the
   proof standards, approval gates, delegation standards, and any project-specific
   preferences relevant to this task.
-- If the worker discovers a Preston-gated decision, return
+- If the worker discovers a the user-gated decision, return
   `STATUS: needs_approval` and include the exact approval ledger item that
   should be created or updated.
 - For any proposed send, deploy, DB change, thread creation/messaging, purchase,
@@ -52,4 +52,4 @@ Default authority limits:
   proof_ready, approval_needed, and rollback_or_undo. Do not perform the action.
 
 Default return format: use
-`/Users/preston/.codex/portfolio/templates/worker-closeout-contract.md`.
+`$CODEX_HOME/portfolio/templates/worker-closeout-contract.md`.

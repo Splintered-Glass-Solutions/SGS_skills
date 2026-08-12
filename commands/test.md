@@ -9,7 +9,7 @@ The user invoked this command with: $ARGUMENTS
 
 ## Preflight
 
-1. Read and follow `/Users/preston/.codex/skills/test/SKILL.md` completely.
+1. Read and follow `$CODEX_HOME/skills/test/SKILL.md` completely.
 2. Treat `$ARGUMENTS` as explicit feature, file, issue, or environment scope.
 3. If `$ARGUMENTS` is empty, infer the latest coherent implementation work from
    the current task using the skill's scope precedence.

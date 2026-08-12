@@ -9,7 +9,7 @@ The user invoked this command with: $ARGUMENTS
 
 ## Preflight
 
-1. Read and follow the local skill at `/Users/preston/.codex/skills/recap/SKILL.md`.
+1. Read and follow the local skill at `$CODEX_HOME/skills/recap/SKILL.md`.
 2. Treat `$ARGUMENTS` as optional focus for the recap.
 3. If `$ARGUMENTS` is empty, infer the scope from the current conversation,
    active objective, repo state, tool output, and latest validation/deploy/QA
@@ -17,7 +17,7 @@ The user invoked this command with: $ARGUMENTS
 4. Produce a concise recap with objective, current state, what happened,
    evidence, decisions made, open decisions, and next action paths A/B/C/D.
 5. If the paths should be done sequentially, say "do all in order"; otherwise
-   make clear that Preston should choose one.
+   make clear that the user should choose one.
 
 ## Guardrails
 

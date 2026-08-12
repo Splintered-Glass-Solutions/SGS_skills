@@ -59,6 +59,11 @@ def write_file(path, content)
   File.write(path, content)
 end
 
+def write_binary_file(path, content)
+  FileUtils.mkdir_p(File.dirname(path))
+  File.binwrite(path, content)
+end
+
 FileUtils.rm_rf(OUT_DIR)
 FileUtils.mkdir_p(OUT_DIR)
 FileUtils.mkdir_p(File.join(OUT_DIR, "playbooks"))
@@ -70,6 +75,7 @@ skills = Dir[File.join(SKILLS_DIR, "*", "SKILL.md")].sort.map do |path|
   description = portable_text(data["description"].to_s.strip.gsub(/\s+/, " "))
   title = slug_title(name)
   playbook_dir = File.join(OUT_DIR, "playbooks", name)
+  portable_body = portable_text(body).strip
 
   agent_body = <<~MARKDOWN
     # #{title} Agent Playbook
@@ -99,7 +105,7 @@ skills = Dir[File.join(SKILLS_DIR, "*", "SKILL.md")].sort.map do |path|
 
     ## Instructions
 
-    #{portable_text(body)}
+    #{portable_body}
   MARKDOWN
 
   manifest = {
@@ -115,6 +121,22 @@ skills = Dir[File.join(SKILLS_DIR, "*", "SKILL.md")].sort.map do |path|
   write_file(File.join(playbook_dir, "AGENT.md"), agent_body)
   write_file(File.join(playbook_dir, "manifest.yaml"), manifest.to_yaml)
 
+  source_root = File.dirname(path)
+  Dir[File.join(source_root, "**", "*")].sort.each do |source_file|
+    next unless File.file?(source_file)
+
+    relative = source_file.delete_prefix("#{source_root}/")
+    next if relative == "SKILL.md" || relative.start_with?("agents/")
+
+    destination = File.join(playbook_dir, relative)
+    if relative.match?(/\.(md|markdown|txt|yaml|yml|json|sh|bash|rb|py|js|mjs|ts|tsx|toml)\z/i)
+      text = File.read(source_file).gsub("\r\n", "\n")
+      write_file(destination, portable_text(text))
+    else
+      write_binary_file(destination, File.binread(source_file))
+    end
+  end
+
   { "name" => name, "display_name" => title, "description" => description }
 end
 
@@ -124,6 +146,15 @@ index = <<~MARKDOWN
   These are generalized, platform-neutral versions of the SGS custom agent
   skills. They are meant to be usable in Claude, Claude Code, Cursor,
   OpenAI agents, or other agent platforms.
+
+  Start with the [SGS resource library](../README.md) or the [AI Best
+  Practices package](../packages/ai-best-practices/README.md). For AI
+  implementation guidance, visit [Splintered Glass Solutions](https://splinteredglass.solutions/)
+  or [start a conversation](https://splinteredglass.solutions/contact).
+
+  This generated directory contains generalized workflows only. Do not add
+  customer data, credentials, private project state, or environment-specific
+  operating instructions.
 
   ## How To Use
 

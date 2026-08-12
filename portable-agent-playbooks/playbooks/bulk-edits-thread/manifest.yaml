@@ -1,0 +1,17 @@
+---
+name: bulk-edits-thread
+display_name: Bulk Edits Thread
+description: Prepare one scoped the agent editing task and isolated local worktree
+  from the confirmed dev baseline, using an approved Batch Brief and a committed Batch
+  Manifest. Use when the user says "bulk edits thread", wants one focused task ready
+  to receive many related edits, or asks to start an isolated local editing lane.
+  Always enforce agent-safe-run throughout.
+source: skills/bulk-edits-thread/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

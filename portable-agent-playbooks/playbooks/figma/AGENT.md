@@ -62,4 +62,3 @@ These rules define how to translate Figma inputs into code for this project and 
 ## References
 - `references/figma-mcp-config.md` — setup, verification, troubleshooting, and link-based usage reminders.
 - `references/figma-tools-and-prompts.md` — tool catalog and prompt patterns for selecting frameworks/components and fetching metadata.
-

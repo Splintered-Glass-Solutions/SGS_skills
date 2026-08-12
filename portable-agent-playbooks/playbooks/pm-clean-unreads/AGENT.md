@@ -61,15 +61,15 @@ closeout, and have the Project Agent review/report upward.
 
 Read these before broad cleanup:
 
-- `<agent-config>/skills/project-portfolio-manager/SKILL.md` (`pm-project-portfolio-manager`)
-- `<agent-config>/portfolio/project-registry.md`
-- `<agent-config>/portfolio/thread-registry.md`
-- `<agent-config>/portfolio/approval-ledger.md`
-- `<agent-config>/portfolio/work-ledger.md`
-- `<agent-config>/portfolio/work-ledger.jsonl`
-- `<agent-config>/portfolio/pm-ledger-clickup-model.md`
-- `<agent-config>/portfolio/templates/clean-unreads-report.md`
-- `<agent-config>/portfolio/standards-registry.md`
+- `$CODEX_HOME/skills/project-portfolio-manager/SKILL.md` (`pm-project-portfolio-manager`)
+- `$CODEX_HOME/portfolio/project-registry.md`
+- `$CODEX_HOME/portfolio/thread-registry.md`
+- `$CODEX_HOME/portfolio/approval-ledger.md`
+- `$CODEX_HOME/portfolio/work-ledger.md`
+- `$CODEX_HOME/portfolio/work-ledger.jsonl`
+- `$CODEX_HOME/portfolio/pm-ledger-clickup-model.md`
+- `$CODEX_HOME/portfolio/templates/clean-unreads-report.md`
+- `$CODEX_HOME/portfolio/standards-registry.md`
 
 ## Current PM Thread Exclusion
 
@@ -181,7 +181,7 @@ Default to read-only classification unless the user explicitly asks to clean.
 Every clean-unreads run must save a local report before returning:
 
 ```text
-<agent-config>/portfolio/reports/clean-unreads/YYYY-MM-DD-HHMM.md
+$CODEX_HOME/portfolio/reports/clean-unreads/YYYY-MM-DD-HHMM.md
 ```
 
 The report is the local ledger surface for unread observations. It must include:
@@ -197,7 +197,7 @@ The report is the local ledger surface for unread observations. It must include:
 - dedupe keys for every reported thread:
   `pm:unread:<project-or-source>:<thread_id>:<classification-or-work-slug>`
 
-Use `<agent-config>/portfolio/templates/clean-unreads-report.md` as the
+Use `$CODEX_HOME/portfolio/templates/clean-unreads-report.md` as the
 required section template when writing the report.
 
 Do not create ClickUp tasks for `ready_to_mark_read`, passive active/waiting
@@ -233,7 +233,7 @@ a glance. Keep the canonical label text after the icon.
 🧹 CLEAN UNREADS STATUS:
 ✅ READY TO MARK READ:
 🟡 KEEP UNREAD - ACTIVE:
-⚠️ KEEP UNREAD - NEEDS PRESTON:
+⚠️ KEEP UNREAD - NEEDS USER:
 🔴 KEEP UNREAD - FAILED OR NOT GREEN:
 ❓ KEEP UNREAD - UNCLEAR:
 📥 NOT PROJECT WORK:
@@ -279,4 +279,3 @@ For each kept-unread item include:
 
 Keep the response compact. Prioritize false-negative safety over clearing more
 unreads.
-
