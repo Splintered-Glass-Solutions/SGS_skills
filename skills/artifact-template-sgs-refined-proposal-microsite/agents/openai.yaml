@@ -1,0 +1,7 @@
+interface:
+  display_name: "SGS Refined Proposal Microsite"
+  short_description: "Create Sites with the SGS Refined Proposal Microsite template"
+  icon_large: "./assets/preview.png"
+  default_prompt: "Use $artifact-template-sgs-refined-proposal-microsite to create a Site with this template."
+policy:
+  allow_implicit_invocation: true

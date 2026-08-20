@@ -21,6 +21,7 @@ SGS resource library. Each entry links to its Codex-native `SKILL.md`.
 - [`local-dev-consolidation`](../skills/local-dev-consolidation/SKILL.md): reconcile local branches and worktrees into a clean testable state.
 - [`spin-up-local`](../skills/spin-up-local/SKILL.md): start the exact local project state needed for testing.
 - [`develop-web-game`](../skills/develop-web-game/SKILL.md): iterate on a browser game with a repeatable visual loop.
+- [`artifact-template-sgs-refined-proposal-microsite`](../skills/artifact-template-sgs-refined-proposal-microsite/SKILL.md): create proposal microsites with the SGS refined layout, value-led cards, pricing options, and responsive behavior.
 
 ## Validate and improve
 

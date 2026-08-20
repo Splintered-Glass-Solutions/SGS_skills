@@ -1,0 +1,18 @@
+---
+name: artifact-template-sgs-refined-proposal-microsite
+display_name: Artifact Template Sgs Refined Proposal Microsite
+description: 'Create a Site using the SGS Refined Proposal Microsite template and
+  its retained source directory. Use when the user selects this template, names SGS
+  Refined Proposal Microsite, or explicitly invokes $artifact-template-sgs-refined-proposal-microsite.
+  Create client proposal microsites with the refined SGS layout: front-loaded value,
+  icon-led cards, three pacing options, a highlighted recommendation, and responsive
+  mobile behavior.'
+source: skills/artifact-template-sgs-refined-proposal-microsite/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions
