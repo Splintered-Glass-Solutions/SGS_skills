@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Privacy Trust"
+  short_description: "Scan privacy promises and trust boundaries"
+  default_prompt: "Use $discovery-scan-privacy-trust to scan bounded privacy, consent, and trust behavior."

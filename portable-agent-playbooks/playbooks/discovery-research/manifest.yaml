@@ -1,0 +1,13 @@
+---
+name: discovery-research
+display_name: Discovery Research
+description: Gather bounded evidence for Discovery work
+source: skills/discovery-research/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

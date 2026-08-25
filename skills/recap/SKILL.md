@@ -44,7 +44,11 @@ Inspect only enough context to produce an accurate recap:
    PRs, tasks, or artifacts mentioned in the thread.
 6. Durable artifacts created or consulted during the thread, such as reports,
    logs, notes, queues, checkpoints, or generated files.
-7. If a command/session may still be running, inspect it before stating final
+7. Relevant Showme proof packages, screenshots, annotated images, branded
+   presentation candidates, and their manifests. Prefer artifacts created for
+   the current feature in the current thread; do not search broadly for
+   unrelated project images.
+8. If a command/session may still be running, inspect it before stating final
    status.
 
 Do not do broad repo archaeology just to make a recap more complete. If a fact
@@ -65,6 +69,10 @@ What Happened:
 Evidence:
 - <tests, deploys, logs, files, URLs, commands, timestamps, or exact artifacts>
 
+Visual Proof:
+- <one to three relevant Showme images rendered with absolute Markdown image paths>
+- <short caption stating what each image proves and its proof boundary>
+
 Decisions Made:
 - <explicit decisions or assumptions that now guide the work>
 
@@ -84,6 +92,35 @@ Recommended Order:
 
 Keep the recap concise. Expand only when the thread contains multiple repos,
 deployments, production/live evidence, or unresolved decisions.
+
+## Showme Visual Proof
+
+When the thread contains relevant Showme images, display the clearest one to
+three artifacts directly in the recap using absolute paths:
+
+```md
+![<feature and state>](<absolute-path-to-image.png>)
+```
+
+Select images in this order when available:
+
+1. A selected or release-ready branded proof image when the recap is intended
+   for product or release communication.
+2. An annotated proof screenshot when the recap is intended for engineering or
+   QA handoff.
+3. The raw screenshot when it is the only readable or relevant evidence.
+
+For each displayed image, add a brief caption identifying the feature surface
+and boundary, such as local, preview, Dev, staging, production, or
+customer-visible. Do not display generated artwork, stale candidates, or
+unrelated screenshots as proof. A branded Showme image may be displayed as
+presentation collateral, but it must not upgrade the underlying evidence
+boundary. Preserve any manifest status such as candidate, selected template,
+release-ready, or blocked.
+
+If no relevant Showme image exists, omit the image block rather than inventing
+one or linking to an unrelated artifact. If the thread contains Showme runtime
+evidence but no image, summarize that evidence under `Evidence` instead.
 
 ## Next Action Paths
 

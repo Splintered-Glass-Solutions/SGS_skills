@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bulk auto build"
+  short_description: "Autonomously build each bulk-edit feature"
+  default_prompt: "Use $bulk-auto-build to implement, polish, test, document, and locally finish each feature in the current bulk edits batch."

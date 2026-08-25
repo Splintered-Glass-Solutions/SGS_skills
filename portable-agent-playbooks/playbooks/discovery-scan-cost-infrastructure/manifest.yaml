@@ -1,0 +1,13 @@
+---
+name: discovery-scan-cost-infrastructure
+display_name: Discovery Scan Cost Infrastructure
+description: Scan infrastructure cost and capacity
+source: skills/discovery-scan-cost-infrastructure/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

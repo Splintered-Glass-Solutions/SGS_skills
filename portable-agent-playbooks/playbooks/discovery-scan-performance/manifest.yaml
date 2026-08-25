@@ -1,0 +1,13 @@
+---
+name: discovery-scan-performance
+display_name: Discovery Scan Performance
+description: Scan latency, throughput, and resource use
+source: skills/discovery-scan-performance/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

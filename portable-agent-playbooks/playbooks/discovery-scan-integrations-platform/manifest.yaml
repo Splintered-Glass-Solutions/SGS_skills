@@ -1,0 +1,13 @@
+---
+name: discovery-scan-integrations-platform
+display_name: Discovery Scan Integrations Platform
+description: Scan integration seams and platform fit
+source: skills/discovery-scan-integrations-platform/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

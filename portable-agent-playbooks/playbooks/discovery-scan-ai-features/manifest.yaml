@@ -1,0 +1,13 @@
+---
+name: discovery-scan-ai-features
+display_name: Discovery Scan Ai Features
+description: Scan AI feature opportunities and risks
+source: skills/discovery-scan-ai-features/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

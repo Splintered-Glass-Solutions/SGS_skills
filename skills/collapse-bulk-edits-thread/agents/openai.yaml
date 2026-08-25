@@ -1,4 +1,4 @@
 interface:
   display_name: "Collapse Bulk Edits"
-  short_description: "Reconcile and close a bulk-edit worktree"
-  default_prompt: "Use $collapse-bulk-edits-thread to audit, merge, verify, and safely close this bulk-edit worktree."
+  short_description: "Merge bulk edits safely into dirty local Dev"
+  default_prompt: "Use $collapse-bulk-edits-thread to audit, merge into the expected dirty local Dev branch without disturbing unrelated work, verify, and safely close this bulk-edit worktree."

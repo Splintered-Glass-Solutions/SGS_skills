@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Content Retrieval"
+  short_description: "Scan content coverage and retrieval quality"
+  default_prompt: "Use $discovery-scan-content-retrieval to scan bounded content coverage and retrieval behavior."

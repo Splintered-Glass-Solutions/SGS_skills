@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Research"
+  short_description: "Gather bounded evidence for Discovery work"
+  default_prompt: "Use $discovery-research to gather bounded, privacy-safe evidence for a Discovery question."

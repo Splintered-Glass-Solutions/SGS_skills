@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Clean Old Proposals"
+  short_description: "Archive stale proposals safely and visibly"
+  default_prompt: "Use $discovery-clean-old-proposals to review and archive stale Discovery proposals safely."

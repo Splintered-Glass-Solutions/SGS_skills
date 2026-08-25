@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Analytics Measurement"
+  short_description: "Scan metrics, instrumentation, and decisions"
+  default_prompt: "Use $discovery-scan-analytics-measurement to scan bounded analytics and measurement quality."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Efficiency"
+  short_description: "Scan workflows for time and effort waste"
+  default_prompt: "Use $discovery-scan-efficiency to scan a bounded workflow for avoidable effort and delay."

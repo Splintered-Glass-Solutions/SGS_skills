@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Simplification Retirement"
+  short_description: "Scan for safe simplification and retirement"
+  default_prompt: "Use $discovery-scan-simplification-retirement to scan bounded surfaces for safe simplification or retirement."

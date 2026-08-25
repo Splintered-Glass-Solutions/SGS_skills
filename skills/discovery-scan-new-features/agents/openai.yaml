@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - New Features"
+  short_description: "Scan for validated new product capabilities"
+  default_prompt: "Use $discovery-scan-new-features to scan bounded evidence for worthwhile new capabilities."

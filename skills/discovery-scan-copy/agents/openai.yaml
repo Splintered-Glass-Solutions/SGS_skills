@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Copy"
+  short_description: "Scan product language for clarity and trust"
+  default_prompt: "Use $discovery-scan-copy to scan bounded product copy for clarity, accuracy, and trust."

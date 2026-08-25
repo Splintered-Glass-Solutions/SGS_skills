@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Reliability Observability"
+  short_description: "Scan reliability signals and operational insight"
+  default_prompt: "Use $discovery-scan-reliability-observability to scan bounded reliability and observability controls."

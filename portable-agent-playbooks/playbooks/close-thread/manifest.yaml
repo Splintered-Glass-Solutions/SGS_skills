@@ -1,9 +1,10 @@
 ---
 name: close-thread
 display_name: Close Thread
-description: Close the current agent thread by renaming it with a leading fullwidth
-  dash marker only. Use when the user asks to close out, mark closed, or run the close-thread
-  slash command for the current thread.
+description: "Close the current agent thread by unpinning it when needed and renaming
+  it with a leading fullwidth dash marker. Preserve the reserved `\U0001F5C4️` marker
+  when closing a sidelined feature task. Use when the user asks to close out, mark
+  closed, or run the close-thread slash command for the current thread."
 source: skills/close-thread/SKILL.md
 entrypoint: AGENT.md
 target_platforms:

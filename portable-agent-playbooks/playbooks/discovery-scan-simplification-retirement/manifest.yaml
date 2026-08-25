@@ -1,0 +1,13 @@
+---
+name: discovery-scan-simplification-retirement
+display_name: Discovery Scan Simplification Retirement
+description: Scan for safe simplification and retirement
+source: skills/discovery-scan-simplification-retirement/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

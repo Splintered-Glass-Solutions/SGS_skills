@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Validate Proposals"
+  short_description: "Test proposal evidence and feasibility"
+  default_prompt: "Use $discovery-validate-proposals to validate numbered proposals against current evidence and constraints."

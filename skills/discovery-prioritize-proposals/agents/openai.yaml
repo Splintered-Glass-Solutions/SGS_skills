@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Prioritize Proposals"
+  short_description: "Rank proposals under portfolio constraints"
+  default_prompt: "Use $discovery-prioritize-proposals to rank Discovery proposals with evidence and portfolio controls."

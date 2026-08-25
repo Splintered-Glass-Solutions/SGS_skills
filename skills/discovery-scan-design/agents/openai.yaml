@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Design"
+  short_description: "Scan product and service design quality"
+  default_prompt: "Use $discovery-scan-design to scan a bounded surface for design opportunities and risks."

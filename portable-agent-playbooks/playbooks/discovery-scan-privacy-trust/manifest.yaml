@@ -1,0 +1,13 @@
+---
+name: discovery-scan-privacy-trust
+display_name: Discovery Scan Privacy Trust
+description: Scan privacy promises and trust boundaries
+source: skills/discovery-scan-privacy-trust/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

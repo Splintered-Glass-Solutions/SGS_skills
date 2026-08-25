@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Code Quality"
+  short_description: "Scan maintainability and implementation quality"
+  default_prompt: "Use $discovery-scan-code-quality to scan a bounded implementation for maintainability risks."

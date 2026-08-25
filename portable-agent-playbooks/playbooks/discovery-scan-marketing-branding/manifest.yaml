@@ -1,0 +1,13 @@
+---
+name: discovery-scan-marketing-branding
+display_name: Discovery Scan Marketing Branding
+description: Scan brand, positioning, and growth surfaces
+source: skills/discovery-scan-marketing-branding/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

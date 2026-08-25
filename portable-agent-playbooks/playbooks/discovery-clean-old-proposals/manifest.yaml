@@ -1,0 +1,13 @@
+---
+name: discovery-clean-old-proposals
+display_name: Discovery Clean Old Proposals
+description: Archive stale proposals safely and visibly
+source: skills/discovery-clean-old-proposals/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

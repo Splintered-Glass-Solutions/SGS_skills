@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Onboarding Activation"
+  short_description: "Scan onboarding and activation friction"
+  default_prompt: "Use $discovery-scan-onboarding-activation to scan a bounded onboarding journey."

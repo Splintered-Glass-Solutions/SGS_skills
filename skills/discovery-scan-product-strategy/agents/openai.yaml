@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Product Strategy"
+  short_description: "Scan product direction and strategic fit"
+  default_prompt: "Use $discovery-scan-product-strategy to scan bounded evidence for product direction and tradeoffs."

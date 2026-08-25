@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - API Architecture"
+  short_description: "Scan API contracts and service boundaries"
+  default_prompt: "Use $discovery-scan-api-architecture to scan bounded API contracts and service boundaries."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - AI Utilization"
+  short_description: "Scan practical AI leverage and constraints"
+  default_prompt: "Use $discovery-scan-ai-utilization to identify bounded, practical AI leverage and constraints."

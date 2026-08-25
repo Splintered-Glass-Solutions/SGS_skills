@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prep Collapse Bulk Edits"
+  short_description: "Finish, verify, and stage bulk edits for collapse"
+  default_prompt: "Use $prep-collapse-bulk-edits to finish, verify, and prepare this thread for safe local bulk-edit collapse."

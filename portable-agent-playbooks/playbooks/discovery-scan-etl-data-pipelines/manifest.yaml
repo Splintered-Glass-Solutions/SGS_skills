@@ -1,0 +1,13 @@
+---
+name: discovery-scan-etl-data-pipelines
+display_name: Discovery Scan Etl Data Pipelines
+description: Scan ingestion, transformation, and freshness
+source: skills/discovery-scan-etl-data-pipelines/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

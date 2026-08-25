@@ -1,0 +1,13 @@
+---
+name: discovery-scan-uiux
+display_name: Discovery Scan Uiux
+description: Scan UI and UX friction across flows
+source: skills/discovery-scan-uiux/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

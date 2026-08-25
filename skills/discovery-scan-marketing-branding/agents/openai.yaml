@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Marketing Branding"
+  short_description: "Scan brand, positioning, and growth surfaces"
+  default_prompt: "Use $discovery-scan-marketing-branding to scan bounded brand and growth surfaces."

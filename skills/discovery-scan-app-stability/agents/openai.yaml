@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - App Stability"
+  short_description: "Scan runtime stability and failure recovery"
+  default_prompt: "Use $discovery-scan-app-stability to scan a bounded app surface for stability risks."

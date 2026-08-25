@@ -5,7 +5,9 @@ description: Decide and execute the most reasonable next safe step after a compl
   run, plan, QA pass, deploy, investigation, or phased feature discussion. Use when
   the user asks "next", "next step", "what now", "continue with the next phase", "work
   the next most reasonable step", or wants autonomous continuation with gated safety
-  logic.
+  logic. Never deploy, promote, roll back, shift traffic, or publish a release through
+  this skill. Safe, bounded database migrations may be applied when their dedicated
+  migration gate passes.
 source: skills/next-step/SKILL.md
 entrypoint: AGENT.md
 target_platforms:

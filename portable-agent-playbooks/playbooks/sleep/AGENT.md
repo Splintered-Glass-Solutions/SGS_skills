@@ -31,7 +31,7 @@ Pause execution using an external timer so the model does not spend the delay re
 
 ## Workflow
 
-1. Parse the requested duration. Use five minutes only when the user invokes the skill without specifying a duration.
+1. Parse the requested duration. Use five minutes when the user invokes the skill without specifying a duration. Treat a bare numeric duration as minutes, so `/sleep 5` means five minutes. Preserve explicit units such as `5s`, `5m`, `1h`, and `1h30m`.
 2. Record the target wake time before starting the wait.
 3. Run `scripts/wait.py <duration>` through a long-running execution session. Yield control quickly and retain the session handle.
 4. Use the environment's wait/resume primitive while the timer runs. Respect any platform limit on a single wait call; use the longest permitted interval and do not simulate waiting with reasoning loops.
@@ -49,7 +49,7 @@ Pause execution using an external timer so the model does not spend the delay re
 
 ## Duration Format
 
-The bundled timer accepts bare seconds or compound values such as `30s`, `5m`, `1h`, and `1h30m`. It rejects negative, malformed, and longer-than-24-hour waits to prevent accidental orphaned sessions.
+The bundled timer accepts durations such as `30s`, `5m`, `1h`, and `1h30m`. Before invoking it, convert a bare positive number to minutes: `/sleep 5` becomes `5m`. Reject negative, malformed, and longer-than-24-hour waits to prevent accidental orphaned sessions.
 
 ```bash
 python3 scripts/wait.py 5m

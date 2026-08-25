@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Integrations Platform"
+  short_description: "Scan integration seams and platform fit"
+  default_prompt: "Use $discovery-scan-integrations-platform to scan bounded integrations and platform dependencies."

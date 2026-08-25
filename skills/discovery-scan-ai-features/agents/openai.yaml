@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - AI Features"
+  short_description: "Scan AI feature opportunities and risks"
+  default_prompt: "Use $discovery-scan-ai-features to scan a bounded product surface for AI feature opportunities."

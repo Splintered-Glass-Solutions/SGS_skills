@@ -1,0 +1,13 @@
+---
+name: discovery-scan-onboarding-activation
+display_name: Discovery Scan Onboarding Activation
+description: Scan onboarding and activation friction
+source: skills/discovery-scan-onboarding-activation/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

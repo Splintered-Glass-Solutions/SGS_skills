@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Database"
+  short_description: "Scan data models, queries, and integrity"
+  default_prompt: "Use $discovery-scan-database to scan a bounded data surface for integrity and operability risks."

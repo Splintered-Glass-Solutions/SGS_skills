@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Performance"
+  short_description: "Scan latency, throughput, and resource use"
+  default_prompt: "Use $discovery-scan-performance to scan a bounded surface for performance opportunities and regressions."

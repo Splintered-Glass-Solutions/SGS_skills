@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Developer Experience"
+  short_description: "Scan developer workflows and feedback loops"
+  default_prompt: "Use $discovery-scan-developer-experience to scan bounded developer workflows and tooling."

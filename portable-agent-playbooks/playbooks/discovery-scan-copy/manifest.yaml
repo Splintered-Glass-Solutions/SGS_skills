@@ -1,0 +1,13 @@
+---
+name: discovery-scan-copy
+display_name: Discovery Scan Copy
+description: Scan product language for clarity and trust
+source: skills/discovery-scan-copy/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

@@ -61,6 +61,23 @@ Inspect only what is needed to recover momentum:
 - any persistent PTY, browser, server, OAuth, or auth session IDs and current
   state
 
+### Pause Recovery
+
+If the visible thread contains a `$pause` checkpoint:
+
+1. Treat its `Objective`, `Current state`, `Preserved state`, `Resume at`, and
+   `Waiting on` fields as the primary recovery index, then verify any
+   drift-prone state that is cheap to recheck.
+2. Resume from `Resume at`; do not repeat completed work merely because the
+   thread was paused.
+3. After recovery succeeds, inspect the current thread title. If and only if it
+   begins with `🛑 `, remove that single leading marker and preserve every other
+   character in the title.
+4. Do not remove a stop-sign emoji located elsewhere in the title, and do not
+   alter the thread's pin, archive, or ownership state.
+5. If title renaming fails, continue the recovered task and report that the
+   visual pause marker remains.
+
 If a command/session may still be running, inspect it before starting duplicate
 work. If a server is already running and useful, reuse it.
 

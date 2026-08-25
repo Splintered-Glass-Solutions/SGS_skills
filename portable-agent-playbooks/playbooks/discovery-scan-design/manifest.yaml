@@ -1,0 +1,13 @@
+---
+name: discovery-scan-design
+display_name: Discovery Scan Design
+description: Scan product and service design quality
+source: skills/discovery-scan-design/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

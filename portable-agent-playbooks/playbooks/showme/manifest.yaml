@@ -1,0 +1,17 @@
+---
+name: showme
+display_name: Showme
+description: Show real, feature-scoped proof that an implemented change works, then
+  prepare reusable proof images for web, social, presentation, email, and team sharing.
+  Use after a test or QA pass and before collapse or closeout, especially when the
+  user asks to see highlighted screenshots for frontend work or live execution evidence
+  for a non-frontend feature.
+source: skills/showme/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

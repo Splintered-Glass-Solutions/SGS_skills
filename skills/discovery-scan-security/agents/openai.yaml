@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Security"
+  short_description: "Scan security controls and attack surfaces"
+  default_prompt: "Use $discovery-scan-security to scan a bounded surface for security risks and controls."

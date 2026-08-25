@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Accept Proposal"
+  short_description: "Prepare human-gated proposal acceptance"
+  default_prompt: "Use $discovery-accept-proposal to prepare a numbered proposal for explicit human acceptance."

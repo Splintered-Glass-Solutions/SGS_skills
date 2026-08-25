@@ -1,0 +1,4 @@
+interface:
+  display_name: "Show Me"
+  short_description: "Show proof and reusable feature images"
+  default_prompt: "Show me real feature-completion proof from the current working tree or named environment. Use rendered HTML screenshots for frontend changes, live execution evidence for non-frontend changes, and reusable branded outputs across web, social, presentation, and sharing formats when requested."

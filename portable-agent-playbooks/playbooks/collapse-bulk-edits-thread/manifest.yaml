@@ -2,11 +2,12 @@
 name: collapse-bulk-edits-thread
 display_name: Collapse Bulk Edits Thread
 description: Close out a completed bulk-edits task by auditing the full thread and
-  its worktree for unfinished work, migrations, conflicts, and validation gaps; merging
-  the completed branch into the local dev branch; verifying the result; and removing
-  only the temporary worktree after successful reconciliation. Use when the user says
-  to collapse, close, wrap up, or merge back a bulk-edit thread or worktree, including
-  coordinated work across multiple repositories.
+  its worktree for unfinished work, migrations, conflicts, and validation gaps; safely
+  merging the completed branch into the usually dirty local dev branch while preserving
+  unrelated changes; verifying the result; and removing only the temporary worktree
+  after successful reconciliation. Use when the user says to collapse, close, wrap
+  up, or merge back a bulk-edit thread or worktree, including coordinated work across
+  multiple repositories.
 source: skills/collapse-bulk-edits-thread/SKILL.md
 entrypoint: AGENT.md
 target_platforms:

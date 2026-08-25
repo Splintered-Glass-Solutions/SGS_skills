@@ -1,0 +1,13 @@
+---
+name: discovery-prioritize-proposals
+display_name: Discovery Prioritize Proposals
+description: Rank proposals under portfolio constraints
+source: skills/discovery-prioritize-proposals/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

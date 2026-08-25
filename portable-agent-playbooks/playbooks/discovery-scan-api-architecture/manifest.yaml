@@ -1,0 +1,13 @@
+---
+name: discovery-scan-api-architecture
+display_name: Discovery Scan Api Architecture
+description: Scan API contracts and service boundaries
+source: skills/discovery-scan-api-architecture/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

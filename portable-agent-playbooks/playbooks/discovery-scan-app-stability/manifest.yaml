@@ -1,0 +1,13 @@
+---
+name: discovery-scan-app-stability
+display_name: Discovery Scan App Stability
+description: Scan runtime stability and failure recovery
+source: skills/discovery-scan-app-stability/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

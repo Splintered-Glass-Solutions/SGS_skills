@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Cost Infrastructure"
+  short_description: "Scan infrastructure cost and capacity"
+  default_prompt: "Use $discovery-scan-cost-infrastructure to scan bounded infrastructure cost and capacity choices."

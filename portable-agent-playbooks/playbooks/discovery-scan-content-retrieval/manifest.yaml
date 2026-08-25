@@ -1,0 +1,13 @@
+---
+name: discovery-scan-content-retrieval
+display_name: Discovery Scan Content Retrieval
+description: Scan content coverage and retrieval quality
+source: skills/discovery-scan-content-retrieval/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

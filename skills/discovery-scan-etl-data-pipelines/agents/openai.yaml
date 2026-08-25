@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - ETL Data Pipelines"
+  short_description: "Scan ingestion, transformation, and freshness"
+  default_prompt: "Use $discovery-scan-etl-data-pipelines to scan bounded ingestion and data pipeline behavior."

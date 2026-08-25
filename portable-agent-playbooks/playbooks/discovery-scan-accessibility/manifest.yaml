@@ -1,0 +1,13 @@
+---
+name: discovery-scan-accessibility
+display_name: Discovery Scan Accessibility
+description: Scan inclusive access and interaction
+source: skills/discovery-scan-accessibility/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

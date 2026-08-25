@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - Accessibility"
+  short_description: "Scan inclusive access and interaction"
+  default_prompt: "Use $discovery-scan-accessibility to scan a bounded experience for accessibility barriers."

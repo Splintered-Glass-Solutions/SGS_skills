@@ -1,0 +1,13 @@
+---
+name: discovery-accept-proposal
+display_name: Discovery Accept Proposal
+description: Prepare human-gated proposal acceptance
+source: skills/discovery-accept-proposal/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

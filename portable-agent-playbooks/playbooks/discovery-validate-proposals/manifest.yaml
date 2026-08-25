@@ -1,0 +1,13 @@
+---
+name: discovery-validate-proposals
+display_name: Discovery Validate Proposals
+description: Test proposal evidence and feasibility
+source: skills/discovery-validate-proposals/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

@@ -1,0 +1,18 @@
+---
+name: prep-collapse-bulk-edits
+display_name: Prep Collapse Bulk Edits
+description: Prepare the current agent thread for safe collapse of bulk edits by auditing
+  every requested change, finding unfinished work and broken fixes, repairing authorized
+  feature defects, rerunning focused validation, completing the finish-line evidence,
+  and producing a collapse-ready handoff. Use before $bulk-edits-thread or $collapse-bulk-edits-thread
+  when a thread contains several edits, tests, migrations, branches, or worktrees
+  that must be brought to one verified state.
+source: skills/prep-collapse-bulk-edits/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

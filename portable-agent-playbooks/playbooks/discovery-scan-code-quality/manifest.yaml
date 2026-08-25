@@ -1,0 +1,13 @@
+---
+name: discovery-scan-code-quality
+display_name: Discovery Scan Code Quality
+description: Scan maintainability and implementation quality
+source: skills/discovery-scan-code-quality/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

@@ -1,0 +1,13 @@
+---
+name: discovery-scan-security
+display_name: Discovery Scan Security
+description: Scan security controls and attack surfaces
+source: skills/discovery-scan-security/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

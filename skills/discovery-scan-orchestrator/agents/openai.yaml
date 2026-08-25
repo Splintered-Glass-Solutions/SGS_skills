@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan Orchestrator"
+  short_description: "Coordinate bounded specialist Discovery scans"
+  default_prompt: "Use $discovery-scan-orchestrator to coordinate a bounded, evidence-backed Discovery scan."

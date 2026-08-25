@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discovery: Scan - UI UX"
+  short_description: "Scan UI and UX friction across flows"
+  default_prompt: "Use $discovery-scan-uiux to scan a bounded user flow for UI and UX friction."

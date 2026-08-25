@@ -1,0 +1,19 @@
+---
+name: bulk-auto-build
+display_name: Bulk Auto Build
+description: Autonomously implement every feature in a prepared bulk-edits thread,
+  one feature at a time, including safe required migrations, finish-line hardening,
+  three focused make-it-better polish passes, documentation, feature-scoped testing,
+  local hot-fix loops, and a clean handoff ready for local collapse back into the
+  integration branch. Use when a bulk-edits manifest or to-do list contains multiple
+  accepted features and the user wants them built end to end without routine decision
+  checkpoints.
+source: skills/bulk-auto-build/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

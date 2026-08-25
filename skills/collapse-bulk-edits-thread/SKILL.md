@@ -3,8 +3,9 @@ name: collapse-bulk-edits-thread
 description: >-
   Close out a completed bulk-edits task by auditing the full thread and its
   worktree for unfinished work, migrations, conflicts, and validation gaps;
-  merging the completed branch into the local dev branch; verifying the result;
-  and removing only the temporary worktree after successful reconciliation.
+  safely merging the completed branch into the usually dirty local dev branch
+  while preserving unrelated changes; verifying the result; and removing only
+  the temporary worktree after successful reconciliation.
   Use when the user says to collapse, close, wrap up, or merge back a bulk-edit
   thread or worktree, including coordinated work across multiple repositories.
 ---
@@ -18,6 +19,12 @@ branch (or the explicitly confirmed local dev-equivalent), not a remote branch,
 hosted deployment, `main`, or production. The temporary bulk-edit worktree and
 branch are disposable only after all required work has been reconciled and
 verified.
+
+Assume the local `dev` worktree is dirty. the user gives standing authorization
+to merge into it while it contains unrelated modified, staged, or untracked
+work. A dirty local `dev` status is normal and is not a blocker, warning that
+requires approval, or reason to postpone the closeout. Preserve that work and
+continue autonomously with a dirty-worktree-safe integration method.
 
 Treat several repositories as one coordinated closeout when the thread changed
 more than one repo. Maintain a per-repository result and do not claim the batch
@@ -43,11 +50,17 @@ is closed while any affected repository remains unresolved.
    risky, unrelated, or unclear.
 4. Stop before merging or deleting anything if the audit finds unfinished
    requested work, unresolved conflicts, unapplied or ambiguous migrations,
-   failing required validation, unclear cross-repo ordering, risky database or
-   permission changes, or a dirty/untracked file with unclear ownership.
+   failing required validation, unclear cross-repo ordering, or a genuinely
+   unsafe database operation. A dirty local `dev` tree—including a task-
+   overlapping modified file—is never, by itself, a blocker. Inspect the
+   local diff, incoming diff, tests, and surrounding code, then reconcile both
+   intents using best judgment. Stop only when the two intents are semantically
+   incompatible or another concrete safety boundary remains. Do not stop
+   merely because modified, staged, or untracked work exists.
 5. Report a concise **Closeout Audit** with the exact outstanding items,
-   evidence, affected repo/worktree, and the decision needed. A clean audit is
-   required before continuing.
+   evidence, affected repo/worktree, and any genuine decision needed. The audit
+   must show that integration is safely reconcilable; the target worktree does
+   not need to be clean.
 
 ## Phase 2: Reconcile into local dev
 
@@ -58,28 +71,41 @@ reported decision item.
    refresh references; do not push or deploy.
 2. Confirm the exact local `dev` target and record its pre-merge SHA. Never
    assume the current checkout is the target.
-3. Preserve unrelated dirty work and user-created untracked files. Do not use
-   destructive reset, blanket stash, `ours`, or `theirs` resolution.
-4. For each affected repository, merge the bulk-edit branch into local `dev`
-   one logical unit at a time, preserving both existing dev behavior and the
-   completed bulk-edit behavior. Resolve conflicts by reading both sides and
-   run focused validation after each conflict or logical unit.
-5. For cross-repo features, follow the dependency order established by the
+3. Treat unrelated modified, staged, and untracked files on local `dev` as
+   expected protected work. Inventory them before mutation and preserve their
+   content and index state. Do not use destructive reset, blanket stash,
+   blanket checkout, or blind `ours`/`theirs` resolution.
+4. Attempt an ordinary local merge only when Git can do so without overwriting
+   protected dirty files. If Git refuses because local `dev` is dirty, do not
+   ask the user to clean or stash it. Create a disposable clean integration
+   worktree or equivalent isolated branch from the recorded local `dev` SHA,
+   merge and resolve there, then reconcile that integration result back into
+   the real dirty local `dev` worktree while preserving its pre-existing file
+   contents and staged/unstaged state.
+5. Merge one logical unit at a time. For task-overlapping dirty files, combine
+   both intents by reading the local diff, incoming diff, tests, and surrounding
+   code. If both cannot coexist safely, stop only for that concrete semantic
+   conflict and report the exact decision required. Unrelated dirty files must
+   remain untouched.
+6. For cross-repo features, follow the dependency order established by the
    thread and verify that contracts, migrations, generated clients, shared
    types, API routes, and UI consumers remain compatible. If the order or
    contract is unclear, stop and report it instead of guessing.
-6. Run the strongest practical local checks for every touched repo: diff
+7. Run the strongest practical local checks for every touched repo: diff
    checks, focused tests, typecheck/lint/build, and relevant integration or
-   browser checks. Validate migrations/schema syntax without applying changes
-   to shared databases unless the user separately authorizes that exact action.
-7. Re-read the final local `dev` tree and verify that each requested completed
+   browser checks. Apply and verify reviewed, feature-required migrations
+   through the project's standard path when the current task authorizes the
+   target; do not defer them merely because the local `dev` tree is dirty.
+8. Re-read the final local `dev` tree and verify that each requested completed
    item is present, no pre-existing dev feature was removed unintentionally,
    and no unresolved conflict markers or accidental generated/secrets files
    remain.
-8. Update the committed Batch Manifest with the pre-recording local `dev`
+9. Update the committed Batch Manifest with the pre-recording local `dev`
    integration SHA, closeout validation, and any deferred work. Commit that
-   closeout record on local `dev` before considering temporary-worktree
-   cleanup, and report the resulting final local `dev` SHA separately.
+   closeout record and task-owned integration changes on local `dev` without
+   staging unrelated work. Before committing, inspect the staged diff and prove
+   that pre-existing staged changes were neither absorbed nor altered. Report
+   the resulting final local `dev` SHA separately.
 
 ## Phase 3: Remove the temporary worktree
 
@@ -87,7 +113,8 @@ Remove the temporary bulk-edit worktree and its branch only after all of the
 following are proven for that repository:
 
 - the completed work is reachable from local `dev`;
-- the final local `dev` SHA and status are recorded;
+- the final local `dev` SHA and status are recorded, including unrelated dirty
+  work that remains intentionally present;
 - focused and required broad validation passed or every skipped check is named;
 - no unresolved merge, migration, conflict, or follow-up item remains;
 - excluded work is preserved on its original branch/worktree;
@@ -105,6 +132,9 @@ bulk-edit thread. If cleanup is not safe, leave it in place and report it.
 
 - Local only by default: no push, PR, hosted deployment, remote branch update,
   `main` merge, production action, or shared-database mutation.
+- Dirty local `dev` is the expected destination. Do not require a clean target,
+  ask the user to stash unrelated work, or treat preserved unrelated changes as
+  an incomplete closeout.
 - Never hide incomplete work to produce a clean report.
 - Never claim the task is closed based only on branch ancestry; prove final
   content, validation, and readback from local `dev`.
@@ -122,6 +152,8 @@ For each repository, report:
 - repo path;
 - bulk-edit worktree/branch and pre-merge SHA;
 - local `dev` target and final SHA;
+- unrelated dirty/staged/untracked work observed and confirmation it was
+  preserved rather than included in the task commit;
 - included work and proof it is present;
 - deferred/excluded work and where it remains;
 - conflicts or migrations reviewed;
