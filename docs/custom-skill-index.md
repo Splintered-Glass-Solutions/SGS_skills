@@ -101,3 +101,7 @@ SGS resource library. Each entry links to its Codex-native `SKILL.md`.
 - [`codex-safe-run`](../skills/codex-safe-run/SKILL.md): run Codex Desktop with safer resource and process guardrails.
 - [`soundtrack-prompt-planner`](../skills/soundtrack-prompt-planner/SKILL.md): structure reusable prompts for generated soundtrack work.
 - [`token-saver`](../skills/token-saver/SKILL.md): reduce avoidable context, output, tool, and retry waste.
+
+## Demo production
+
+- [`demo-video-production`](../skills/demo-video-production/SKILL.md): record real product footage and produce one narrated Remotion/ElevenLabs/FFmpeg demo for review before continuing a series. Includes voice audition guidance and capture verification; does not publish or send.

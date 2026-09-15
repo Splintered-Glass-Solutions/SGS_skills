@@ -1,0 +1,4 @@
+interface:
+  display_name: "Demo Video Production"
+  short_description: "Create narrated demos with a first-video review"
+  default_prompt: "Use $demo-video-production to produce one narrated product demo for review before continuing the series."

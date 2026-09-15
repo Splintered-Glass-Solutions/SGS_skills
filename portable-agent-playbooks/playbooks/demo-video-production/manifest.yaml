@@ -1,0 +1,15 @@
+---
+name: demo-video-production
+display_name: Demo Video Production
+description: Produce narrated product demos from real browser footage using Arc, Remotion,
+  FFmpeg, and ElevenLabs. Use for recording, editing, or revising walkthrough videos
+  with a first-demo review before batch production.
+source: skills/demo-video-production/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions
