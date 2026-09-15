@@ -33,6 +33,10 @@ Read [capture-and-edit.md](references/capture-and-edit.md) when recording or ren
 
 ## Narration and voice choice
 
+For demos narrated as Preston, use his communication style: direct, practical, conversational, with natural contractions and short spoken sentences. Explain the task as if walking a customer through it together. Avoid corporate sales language, forced enthusiasm, repeated summaries, and em dashes. Do not imitate typing mistakes or invent personal anecdotes. Keep necessary qualifications brief and attached to what the viewer sees. Use `preston-communication` for additional voice guidance when available. A cloned voice alone does not make a script sound like its speaker.
+
+Keep script revisions separate from already-rendered delivery packages until the corresponding audio, captions, and timing are updated. When only wording is requested, prepare reviewable scripts without automatically regenerating paid audio or resuming a paused series.
+
 - Preston is the selected voice for the current FCA demo. Verify its identity in the connected ElevenLabs account; do not infer a voice ID from its display name.
 - Optional future-demo candidate: **Hallie - Fun, Young & Feminine**, shown by the user in ElevenLabs with the description beginning “Cute, high-energy feminine voice…”. This is a candidate to audition, not an approved replacement or a verified voice ID. Use a short representative sample before committing a full video to a new voice.
 - Confirm account access, usage allowance, voice availability, and applicable licensing before paid generation. Prior plan and company-size confirmations are dated facts, not permanent license guarantees.
