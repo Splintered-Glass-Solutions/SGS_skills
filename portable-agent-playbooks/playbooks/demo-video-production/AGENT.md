@@ -41,6 +41,9 @@ Produce one demo for review before continuing the remaining series. A 30–45 se
 - Script each scene with narration, exact browser actions, expected result, approximate duration, and annotation. Narration should explain purpose and value rather than every click.
 - Start with the useful finished result, explain the task briefly, demonstrate the essential steps, inspect the actual output, and end with a practical next step.
 - Verify actual logo pixels and the saved brand palette in the generated PDF, both inline and downloaded. A brand name, colored heading, assistant success message, or working logo in Settings does not prove the PDF is branded. Treat broken or missing marks as recording blockers.
+- Test a few exact source facts (times, locations, team assignments) against the generated artifact. Selected file chips or a successful ingestion status do not prove the generator received the source text. After a conversational revision, inspect both the intended change and a nearby fact that should stay unchanged.
+- For automation demos, exercise the matching path, nonmatching path, missing-context path, and date progression or end condition where relevant. Missing evidence must not be presented as a completed plan. Show real saved resources or provider drafts; a dry-run result or healthy workflow map is not end-to-end proof. Keep temporary schedules inactive outside bounded rehearsal.
+- For printable HTML, test in-preview section links and inspect the actual exported PDF for the same content, branding, expanded sections, clipping, and excessive pagination.
 - Rehearse through the final result. Fix product blockers only within current authorization; capture and product repair are distinct scopes.
 
 ## Capture and edit
