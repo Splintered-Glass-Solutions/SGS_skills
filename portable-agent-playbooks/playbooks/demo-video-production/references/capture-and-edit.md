@@ -44,3 +44,6 @@ pnpm exec remotion render remotion/index.ts FcaDemo review-render.mp4 \
 Final processing can use H.264 video, 48 kHz AAC, faststart, and loudness normalization targeting roughly -16 LUFS with -1.5 dBTP. Prefer measured two-pass normalization for a final delivery master. Preserve a pre-normalized render and verify the actual final file.
 
 Inspect with `ffprobe`, decode the complete output with FFmpeg, and inspect frames at scene boundaries as well as within scenes. A successful render or transcript match is not a listening review.
+
+- Verify exact source timestamps at important cuts. Low-frequency contact sheets can sample between nominal intervals; do not infer precise transitions solely from their grid position. Check the actual frame where narration names a result.
+- Distinguish labels for accelerated navigation ("Time shortened") and real processing waits ("Processing time shortened"). Insert short sentence-boundary pauses when narration would otherwise announce a result before it appears.
