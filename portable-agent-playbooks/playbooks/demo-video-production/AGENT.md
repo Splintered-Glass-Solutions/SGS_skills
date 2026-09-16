@@ -40,6 +40,7 @@ Produce one demo for review before continuing the remaining series. A 30–45 se
 - Write short, natural prompts a customer would actually type. For example: “Can you suggest six devotional topics for our flag-football camp?” followed by “Can you make a PDF for each one?” Keep internal IDs and technical instructions out of customer prompts.
 - Script each scene with narration, exact browser actions, expected result, approximate duration, and annotation. Narration should explain purpose and value rather than every click.
 - Start with the useful finished result, explain the task briefly, demonstrate the essential steps, inspect the actual output, and end with a practical next step.
+- Verify actual logo pixels and the saved brand palette in the generated PDF, both inline and downloaded. A brand name, colored heading, assistant success message, or working logo in Settings does not prove the PDF is branded. Treat broken or missing marks as recording blockers.
 - Rehearse through the final result. Fix product blockers only within current authorization; capture and product repair are distinct scopes.
 
 ## Capture and edit
@@ -62,6 +63,7 @@ Keep script revisions separate from already-rendered delivery packages until the
 - the user is the selected voice for the current FCA demo. Verify its identity in the connected ElevenLabs account; do not infer a voice ID from its display name.
 - Optional future-demo candidate: **Hallie - Fun, Young & Feminine**, shown by the user in ElevenLabs with the description beginning “Cute, high-energy feminine voice…”. This is a candidate to audition, not an approved replacement or a verified voice ID. Use a short representative sample before committing a full video to a new voice.
 - Confirm account access, usage allowance, voice availability, and applicable licensing before paid generation. Prior plan and company-size confirmations are dated facts, not permanent license guarantees.
+- For the user demos, favor brisk conversational delivery over a slow read. Audition a short excerpt with explicit speed and expressiveness settings before regenerating the full narration. Compare actual clip duration as well as voice quality; a faster requested speed does not guarantee a faster take. Save the selected settings and user feedback, and do not label an audition approved before listening feedback.
 - Generate scene by scene and reuse unchanged audio. Store narration text and timing alignment alongside each clip; never store credentials in source, logs, or packages.
 - Check pronunciation of FCA, Bonfire, and example names. Synchronize visuals to the spoken words, and derive captions from final audio timing. Re-time captions after speed changes.
 
