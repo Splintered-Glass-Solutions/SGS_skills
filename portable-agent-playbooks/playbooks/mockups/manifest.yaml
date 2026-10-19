@@ -1,0 +1,16 @@
+---
+name: mockups
+display_name: Mockups
+description: Generate three to five realistic image mockups of a planned feature in
+  its actual product UI to compare layout, style, hierarchy, and user experience before
+  implementation. Use for visual alignment or alternative UI directions from a feature
+  discussion, plan, or reference screenshot.
+source: skills/mockups/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

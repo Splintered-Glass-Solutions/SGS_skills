@@ -1,0 +1,17 @@
+---
+name: conditional
+display_name: Conditional
+description: Evaluate the immediately preceding the agent result and conditionally
+  execute any explicitly requested next action or ordered action chain only when that
+  result clearly succeeded; otherwise return a compact blocker-and-decision recap.
+  Use for gated commands, skills, reviews, deployments, communications, or closeout
+  workflows.
+source: skills/conditional/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

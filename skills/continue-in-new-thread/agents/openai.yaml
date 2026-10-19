@@ -1,0 +1,3 @@
+interface:
+  display_name: "Continue in New Thread"
+  short_description: "Continue work in a fresh thread"

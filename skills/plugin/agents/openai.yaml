@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plugin"
+  short_description: "Review progress, visuals, and decisions before the next batch"
+  default_prompt: "Use $plugin to help me plug back into this thread: recap the goal and progress, show relevant UI screenshots, and batch the decisions needed for the next autonomous work."

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{DOCUMENT_TITLE}}</title>
+  <style>
+    :root { --brand:{{BRAND}}; --header:{{HEADER}}; --header-ink:{{HEADER_INK}}; --ink:{{INK}}; --muted:{{MUTED}}; --canvas:{{CANVAS}}; --soft:{{SOFT}}; --line:{{LINE}}; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--canvas); color:var(--ink); font-family:Arial,Helvetica,sans-serif; font-size:18px; line-height:1.45; }
+    .masthead { background:var(--header); color:var(--header-ink); }
+    .masthead-inner { max-width:1480px; margin:auto; padding:3px 52px; display:flex; align-items:center; justify-content:space-between; gap:24px; min-height:116px; }
+    .logo { display:block; width:370px; max-width:100%; height:110px; object-fit:contain; object-position:left center; }
+    .wordmark { font-size:26px; font-weight:700; }
+    .masthead-actions { display:flex; align-items:center; gap:30px; font-size:15px; }
+    .print { padding:12px 25px; color:inherit; background:transparent; border:1px solid currentColor; border-radius:7px; font:inherit; cursor:pointer; }
+    .print:hover { background:rgb(255 255 255 / 10%); }
+    :focus-visible { outline:3px solid var(--brand); outline-offset:4px; }
+    .print:focus-visible { outline-color:var(--header-ink); }
+    main { max-width:1480px; margin:auto; padding:28px 52px 22px; }
+    h1 { font-size:clamp(36px,5.4vw,72px); letter-spacing:-.04em; line-height:1.12; margin:0 0 12px; }
+    .focus { font-size:clamp(18px,2vw,26px); color:var(--muted); margin:0 0 28px; }
+    .board-head,.workstream { display:grid; grid-template-columns:20% 29% 26% 25%; }
+    .board-head { align-items:center; margin-bottom:4px; font-size:20px; font-weight:700; }
+    .board-head span { padding:12px 24px; }
+    .board-head .sr-only { padding:0; }
+    .workstreams { position:relative; }
+    .workstreams::before { content:""; position:absolute; left:12px; top:28px; bottom:72px; width:2px; background:var(--brand); }
+    .workstream { position:relative; padding:18px 0; border-bottom:1px solid var(--line); }
+    .workstream:last-child { border-bottom:0; }
+    .workstream h2 { font-size:23px; line-height:1.25; margin:0; padding:2px 24px 0 52px; letter-spacing:-.025em; }
+    .workstream h2::before { content:""; position:absolute; left:3px; top:24px; width:20px; height:20px; border-radius:50%; background:var(--brand); border:2px solid var(--canvas); }
+    .cell { padding:0 24px; border-left:1px solid var(--line); min-width:0; }
+    .cell p { margin:0; color:var(--muted); overflow-wrap:break-word; }
+    .cell-label { display:none; }
+    .checkpoint { margin-top:22px; padding:17px 24px; background:var(--soft); }
+    .checkpoint p { margin:0; }
+    .validation { margin:12px 8px; color:var(--muted); font-size:16px; }
+    footer { padding:12px 8px 0; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+    @media(max-width:1000px) { body { font-size:16px; } .masthead-inner { padding:20px 28px; } main { padding:26px 28px; } .logo { width:300px; } .board-head { font-size:17px; } .board-head span,.cell { padding-left:16px; padding-right:16px; } .workstream h2 { font-size:20px; padding-left:40px; padding-right:16px; } }
+    @media(max-width:760px) {
+      .masthead-inner { padding:18px 20px; flex-wrap:wrap; gap:14px; min-height:0; }
+      .logo { width:280px; height:60px; } .masthead-actions { flex:1 1 100%; justify-content:space-between; gap:12px; font-size:13px; }
+      .print { padding:9px 18px; } main { padding:24px 20px; } .focus { margin-bottom:18px; }
+      .board-head { display:none; } .workstreams::before { top:26px; bottom:30px; left:9px; }
+      .workstream { display:block; padding:20px 0 20px 36px; }
+      .workstream h2 { padding:0; font-size:23px; margin-bottom:18px; } .workstream h2::before { left:0; top:22px; }
+      .cell { padding:0; border:0; margin:16px 0 0; } .cell-label { display:block; font-size:13px; color:var(--ink); font-weight:700; margin-bottom:4px; }
+      .checkpoint { margin-top:18px; padding:16px; } .validation { margin:14px 0; font-size:14px; } footer { padding:12px 0 0; }
+    }
+    @media print {
+      @page { size:A4 landscape; margin:12mm; }
+      body { background:white; font-size:11px; color:#111; }
+      .masthead { background:white; color:#111; border-bottom:1px solid #bbb; }
+      .masthead-inner { padding:0 0 12px; min-height:0; } .logo { height:48px; width:250px; } .masthead-actions { font-size:10px; }
+      .print { display:none; } main { padding:16px 0 0; } h1 { font-size:34px; } .focus { font-size:15px; margin-bottom:14px; }
+      .board-head { display:grid; font-size:12px; } .board-head span,.cell { padding-left:12px; padding-right:12px; }
+      .workstream { display:grid; padding:12px 0; break-inside:avoid; } .workstream h2 { padding-left:32px; font-size:14px; }
+      .workstreams::before { left:8px; } .workstream h2::before { left:0; top:15px; width:18px; height:18px; }
+      .cell { margin:0; border-left:1px solid #bbb; } .cell-label { display:none; } .cell p,.focus,.validation,footer { color:#333; }
+      .checkpoint { padding:12px; margin-top:14px; border:1px solid #bbb; } .validation { font-size:10px; margin:10px 0; } footer { font-size:9px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead"><div class="masthead-inner">
+    {{BRAND_MARK}}
+    <div class="masthead-actions"><span>{{PREPARED_BY}}</span><button class="print" type="button" onclick="window.print()">Print</button></div>
+  </div></header>
+  <main>
+    <h1>{{TITLE}}</h1>
+    <p class="focus">{{FOCUS}}</p>
+    <div class="board-head" aria-hidden="true"><span></span><span>Done</span><span>Upcoming · planned</span><span>Needed from your team</span></div>
+    <div class="workstreams">{{WORKSTREAMS}}</div>
+    <section class="checkpoint" aria-label="Next checkpoint"><p><strong>Next checkpoint:</strong> {{CHECKPOINT}}</p></section>
+    {{VALIDATION}}
+    {{LATER_SCOPE}}
+  </main>
+</body>
+</html>

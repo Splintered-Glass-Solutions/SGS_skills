@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cleanup Worktrees"
+  short_description: "Preserve inactive chat work and reclaim disk space"
+  default_prompt: "Use $cleanup-worktrees to audit inactive chats, sideline their work, close them, and remove safely preserved worktrees."

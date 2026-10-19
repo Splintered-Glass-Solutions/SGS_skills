@@ -46,3 +46,12 @@ The archive workflow must not copy secrets, `.env` files, token-bearing logs,
 production data, portfolio ledgers, or private client artifacts. It does not
 deploy, send messages, mutate production systems, change permissions, or
 perform protected-branch operations.
+
+## October 2026 archive update
+
+Added 41 reusable workflows and matching portable playbooks. Local-only client
+skills, account registries, personal communication rules, and deployment maps
+remain outside the public archive. Existing independently generalized skills
+were preserved. New archive entries use placeholders for private bindings;
+those examples do not carry standing permission into another project. Missing
+agent metadata was generated in the archive, without changing installed skills.

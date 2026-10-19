@@ -1,0 +1,16 @@
+---
+name: loose-ends
+display_name: Loose Ends
+description: Reconcile and finish unfinished project work across code, data, review,
+  release, and closeout. Use when asked to complete loose ends, finish work started
+  in a prior thread, or bring an in-progress project through its authorized delivery
+  path.
+source: skills/loose-ends/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

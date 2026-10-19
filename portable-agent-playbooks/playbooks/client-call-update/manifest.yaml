@@ -1,0 +1,15 @@
+---
+name: client-call-update
+display_name: Client Call Update
+description: Prepare an evidence-based client project update and a branded, shareable
+  HTML report covering progress, upcoming work, client inputs, and blockers. Use before
+  client calls or for project progress summaries; does not send communications.
+source: skills/client-call-update/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

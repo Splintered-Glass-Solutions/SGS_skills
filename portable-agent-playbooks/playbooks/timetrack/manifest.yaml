@@ -1,0 +1,16 @@
+---
+name: timetrack
+display_name: Timetrack
+description: Track the work completed in the current agent thread in the correct local
+  client ledger. Use for /timetrack duration requests such as 2hr, 90m, or 1h30m.
+  Infer the active project and work items from the thread, and split longer durations
+  into gradual local records. Never create new ClickUp time.
+source: skills/timetrack/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

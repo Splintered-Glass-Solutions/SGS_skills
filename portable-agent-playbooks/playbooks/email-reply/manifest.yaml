@@ -1,0 +1,15 @@
+---
+name: email-reply
+display_name: Email Reply
+description: Find and review an email, then outline reply options or prepare a draft.
+  Always show the original message in chat so the user can read it before the reply
+  guidance.
+source: skills/email-reply/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

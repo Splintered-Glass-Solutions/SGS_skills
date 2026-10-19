@@ -1,0 +1,14 @@
+---
+name: astra-review
+display_name: Astra Review
+description: Independently review one implemented build item with a fresh Astra 6
+  low reviewer; return evidence-backed findings without editing.
+source: skills/astra-review/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

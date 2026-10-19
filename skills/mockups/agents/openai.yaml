@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mockups"
+  short_description: "Explore realistic UI layouts before implementation"
+  default_prompt: "Use $mockups to generate three realistic variations of this feature in the existing product UI so we can choose a design direction."

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Autonomous"
+  short_description: "Build a requested feature through implementation and verification"
+  default_prompt: "Use $autonomous to complete this feature or function, making reasonable decisions and verifying the result without routine approval pauses."
+
+policy:
+  allow_implicit_invocation: true

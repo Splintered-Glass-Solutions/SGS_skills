@@ -1,0 +1,16 @@
+---
+name: property-investment-screening
+display_name: Property Investment Screening
+description: Screen a property purchase using sale evidence, short-term-rental comps,
+  underwriting and startup costs, then prepare a source-linked decision brief or public
+  report. Use for vacation-rental and similar property investment reviews; do not
+  treat the screen as an appraisal or purchase recommendation.
+source: skills/property-investment-screening/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

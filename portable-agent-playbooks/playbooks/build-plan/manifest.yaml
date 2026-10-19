@@ -1,0 +1,14 @@
+---
+name: build-plan
+display_name: Build Plan
+description: Plan one build item with a bounded subagent; route simple designs to
+  Luna high and complex designs to Sol 6.1 low.
+source: skills/build-plan/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

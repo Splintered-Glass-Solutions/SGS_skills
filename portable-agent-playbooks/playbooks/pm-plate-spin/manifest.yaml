@@ -1,0 +1,17 @@
+---
+name: pm-plate-spin
+display_name: PM Plate Spin
+description: 'PM plate spin: run a project-local "spin the plates" pass for the project
+  where the skill was invoked. Identify idle work, stale delegated work, and small
+  safe next moves only within that project. Never scan or route other projects unless
+  the user explicitly invokes a separate portfolio-wide workflow. Always pair with
+  pm-project-portfolio-manager and orchestrator-mode.'
+source: skills/pm-plate-spin/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

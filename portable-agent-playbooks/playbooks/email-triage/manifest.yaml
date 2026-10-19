@@ -1,0 +1,15 @@
+---
+name: email-triage
+display_name: Email Triage
+description: Review connected email accounts for messages that need a reply today,
+  rank them, and prepare reply guidance for the highest-priority messages without
+  sending.
+source: skills/email-triage/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

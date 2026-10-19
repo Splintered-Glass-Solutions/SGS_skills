@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Plan"
+  short_description: "Route a bounded item plan to Luna or Sol 6.1"
+  default_prompt: "Use $build-plan for this bounded build item."

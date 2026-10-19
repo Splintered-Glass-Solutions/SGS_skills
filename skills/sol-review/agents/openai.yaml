@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sol Review"
+  short_description: "Independent code review by fresh Sol medium"
+  default_prompt: "Use $sol-review for this bounded build item."

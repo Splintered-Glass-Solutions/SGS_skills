@@ -1,0 +1,4 @@
+interface:
+  display_name: "Client Call Update"
+  short_description: "Create client updates and branded shareable HTML"
+  default_prompt: "Use $client-call-update to prepare an evidence-based client update and a shareable HTML report using the project's own branding."

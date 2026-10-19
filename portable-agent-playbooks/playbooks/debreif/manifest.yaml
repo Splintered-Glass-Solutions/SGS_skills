@@ -1,0 +1,18 @@
+---
+name: debreif
+display_name: Debreif
+description: "Debrief a call from Fathom, with connected email/calendar recaps or
+  emailed transcripts as fallback. Use when the user invokes /debreif or asks to name,
+  summarize, contextualize, or extract follow-up work from a meeting. Rename the current
+  thread with a \U0001F4DE prefix, gather project and prior-call context, separate
+  discussed commitments from suggested follow-ups, and create a reviewable to-do-list
+  capture note."
+source: skills/debreif/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

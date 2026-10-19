@@ -1,0 +1,4 @@
+interface:
+  display_name: "Loose Ends"
+  short_description: "Find and finish in-progress project work safely"
+  default_prompt: "Use $loose-ends to inventory unfinished work in this project, preserve newer branch work while integrating, and finish the authorized release path."

@@ -1,0 +1,18 @@
+---
+name: authenticated-browser-testing
+display_name: Authenticated Browser Testing
+description: Use the the agent internal browser as the user's required default browser
+  for authenticated live UI testing, hosted QA, user-story walkthroughs, and Computer
+  Use checks that depend on an existing signed-in session. Trigger for signed-in Dev,
+  staging, or production browser validation across example-project-13, example-project-12,
+  example-project-14, and other the user projects; for login/session blockers; and
+  whenever another testing skill needs authenticated rendered-UI proof.
+source: skills/authenticated-browser-testing/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

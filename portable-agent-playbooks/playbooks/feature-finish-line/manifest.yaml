@@ -1,0 +1,14 @@
+---
+name: feature-finish-line
+display_name: Feature Finish Line
+description: Finish accepted feature work with meaningful coverage, required data
+  gates, QA records and docs. Marketing is opt-in; full-app testing is separate.
+source: skills/feature-finish-line/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

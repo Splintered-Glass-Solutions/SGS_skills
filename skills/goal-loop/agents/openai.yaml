@@ -1,0 +1,4 @@
+interface:
+  display_name: "Goal Loop"
+  short_description: "Keep current work moving to completion with Sol review"
+  default_prompt: "Use $goal-loop to set a goal for this work and carry it through completion, using Sol review for code changes."

@@ -1,0 +1,16 @@
+---
+name: plugin
+display_name: Plugin
+description: Help the user plug back into an ongoing thread with a concise plain-language
+  recap, relevant UI screenshots, and one batch of validated A/B/C decisions that
+  unlock the next autonomous work. Use when he returns to review progress, clear blockers,
+  give direction, or provide permissions. Not for installing software plugins.
+source: skills/plugin/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

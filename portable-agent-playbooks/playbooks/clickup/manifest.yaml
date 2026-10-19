@@ -1,0 +1,16 @@
+---
+name: clickup
+display_name: Clickup
+description: Use when creating, updating, finding, summarizing, or organizing ClickUp
+  tasks, lists, priorities, statuses, due dates, assignees, comments, or task descriptions.
+  Provides the general ClickUp workflow; use a more specific company/project ClickUp
+  skill when one applies.
+source: skills/clickup/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

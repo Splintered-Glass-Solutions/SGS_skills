@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repo Worktree Lifecycle"
+  short_description: "Run the repo-worktree-lifecycle workflow"
+  default_prompt: "Use $repo-worktree-lifecycle for the requested workflow."

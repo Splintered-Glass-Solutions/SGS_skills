@@ -1,0 +1,15 @@
+---
+name: repo-worktree-lifecycle
+display_name: Repo Worktree Lifecycle
+description: Coordinate isolated Git worktrees across parallel coding, integration,
+  release, handoff, and cleanup. Use when creating or reusing worktrees, merging parallel
+  changes, deploying from a worktree, or preventing stranded local work.
+source: skills/repo-worktree-lifecycle/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

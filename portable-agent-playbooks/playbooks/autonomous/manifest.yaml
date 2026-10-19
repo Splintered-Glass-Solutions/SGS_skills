@@ -1,0 +1,15 @@
+---
+name: autonomous
+display_name: Autonomous
+description: Use with a feature or function request to build it through implementation
+  and relevant verification without pausing for routine approval. Infer ordinary decisions
+  from the request, project conventions, and available history.
+source: skills/autonomous/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

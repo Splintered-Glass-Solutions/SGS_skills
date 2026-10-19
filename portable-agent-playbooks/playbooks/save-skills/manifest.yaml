@@ -1,0 +1,18 @@
+---
+name: save-skills
+display_name: Save Skills
+description: Analyze the current the agent conversation or selected text for repeated,
+  reusable workflows that should become skills, dedupe candidates against the installed
+  skill catalog, and create or improve high-confidence user-level agent skills with
+  picker metadata and slash-command wrappers. Use when the user asks to save patterns
+  from a thread as skills, mine a conversation for reusable commands, create skills
+  from repeated instructions, or invokes the save-skills slash command.
+source: skills/save-skills/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

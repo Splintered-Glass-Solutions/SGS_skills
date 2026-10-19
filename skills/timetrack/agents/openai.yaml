@@ -1,0 +1,7 @@
+interface:
+  display_name: "Time Track"
+  short_description: "Track this thread in the local client ledger"
+  default_prompt: "Use $timetrack to log the current thread's work in the correct local ledger."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Implement"
+  short_description: "Build and verify one item with Luna high"
+  default_prompt: "Use $build-implement for this bounded build item."

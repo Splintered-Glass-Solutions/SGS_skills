@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build It"
+  short_description: "Run the build-it workflow"
+  default_prompt: "Use $build-it for the requested workflow."

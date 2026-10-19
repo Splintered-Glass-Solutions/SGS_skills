@@ -1,0 +1,17 @@
+---
+name: fresh-perspective
+display_name: Fresh Perspective
+description: Bring in an independent Astra agent to assess whether the current chat
+  is making progress toward the user's goal, diagnose loops or misplaced effort, and
+  course-correct the next action. Use when the user asks for a fresh perspective,
+  asks whether we are going down the right path, or questions an apparent rabbit hole
+  or repeated unproductive attempts.
+source: skills/fresh-perspective/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

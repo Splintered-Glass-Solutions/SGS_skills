@@ -1,0 +1,16 @@
+---
+name: cleanup-worktrees
+display_name: Cleanup Worktrees
+description: Audit agent worktrees by actual chat inactivity, preserve unfinished
+  work with sideline-feature, close inactive chats, and remove verified recoverable
+  worktrees. Use for stale worktree or disk cleanup; skill creation and audit requests
+  do not authorize deletion.
+source: skills/cleanup-worktrees/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

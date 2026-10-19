@@ -1,0 +1,4 @@
+interface:
+  display_name: "Astra Review"
+  short_description: "Independent code review by fresh Sol 6.1 low"
+  default_prompt: "Use $astra-review for this bounded build item."

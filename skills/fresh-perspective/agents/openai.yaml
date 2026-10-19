@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fresh Perspective"
+  short_description: "Astra reviews progress and corrects the course"
+  default_prompt: "Use $fresh-perspective to assess whether this chat is on the right path and take the best next step."

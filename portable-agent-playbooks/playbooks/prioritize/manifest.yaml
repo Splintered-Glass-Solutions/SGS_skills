@@ -1,0 +1,15 @@
+---
+name: prioritize
+display_name: Prioritize
+description: Mark the current the agent task as a native priority by pinning it and
+  setting its single leading title-status marker to a star. Use when the user invokes
+  /prioritize, asks to prioritize, star, flag, pin, or elevate the current task.
+source: skills/prioritize/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

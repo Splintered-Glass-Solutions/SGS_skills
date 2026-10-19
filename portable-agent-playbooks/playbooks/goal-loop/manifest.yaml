@@ -1,0 +1,14 @@
+---
+name: goal-loop
+display_name: Goal Loop
+description: Turn current work into an explicit goal and keep going to completion,
+  using independent Sol review to guide code changes toward release readiness.
+source: skills/goal-loop/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

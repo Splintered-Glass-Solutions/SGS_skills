@@ -1,0 +1,7 @@
+interface:
+  display_name: "Conditional Gate"
+  short_description: "Gate any next action on the prior result"
+  default_prompt: "Use $conditional to run the requested action only if the previous step passed."
+
+policy:
+  allow_implicit_invocation: false

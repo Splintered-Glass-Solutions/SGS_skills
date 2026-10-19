@@ -1,0 +1,4 @@
+interface:
+  display_name: "Authenticated Browser Testing"
+  short_description: "Use internal browser and 1Password for browser QA"
+  default_prompt: "Use $authenticated-browser-testing to verify this signed-in workflow in the Codex internal browser, using the matching 1Password credentials when login is needed."

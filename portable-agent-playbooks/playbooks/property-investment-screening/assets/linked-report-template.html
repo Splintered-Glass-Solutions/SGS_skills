@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183734">
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <title>{{SUBJECT_ADDRESS}} | Buyer-Side Investment Screen</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #183734;
+      --ink-2: #34504a;
+      --paper: #f3f0e8;
+      --surface: #fffdf8;
+      --line: #d8d7cb;
+      --sage: #dfe7db;
+      --moss: #536b48;
+      --rust: #a84f34;
+      --muted: #536158;
+      --shadow: 0 18px 54px rgba(31, 47, 38, .12);
+      font-family: Inter, "Avenir Next", Avenir, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); line-height: 1.55; }
+    a { color: inherit; text-underline-offset: .16em; }
+    a:hover { text-decoration-thickness: 2px; }
+    :focus-visible { outline: 3px solid #8d3d29; outline-offset: 3px; }
+    .page-shell { max-width: 1320px; margin: 0 auto; padding: 24px clamp(18px, 4vw, 56px) 48px; }
+    .masthead { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 2px 0 20px; color: var(--muted); font-size: .74rem; font-weight: 750; letter-spacing: .13em; text-transform: uppercase; }
+    .brand { display: flex; align-items: center; gap: 11px; }
+    .brand-mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: var(--ink); color: var(--surface); font-size: .72rem; letter-spacing: 0; }
+    .edition { max-width: 240px; color: var(--moss); text-align: right; }
+    .section-nav { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 16px; padding: 0 2px; }
+    .section-nav a { padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 253, 248, .75); color: var(--ink-2); font-size: .78rem; font-weight: 700; text-decoration: none; }
+    .section-nav a:hover, .section-nav a:focus-visible { border-color: var(--moss); background: var(--sage); }
+    .hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(270px, .72fr); gap: 34px; align-items: center; padding: clamp(28px, 5vw, 68px); border-radius: 18px; background: var(--ink); color: #f5f2e9; box-shadow: var(--shadow); }
+    .eyebrow, .section-kicker, .overline { margin: 0 0 10px; color: var(--moss); font-size: .72rem; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+    .hero .eyebrow { color: #d4ddca; }
+    .hero h1 { max-width: 760px; margin: 0; font: 500 clamp(2.8rem, 6.7vw, 6.1rem)/1 Georgia, "Times New Roman", serif; letter-spacing: -.05em; }
+    .hero-intro { max-width: 690px; margin: 24px 0 0; color: #e4e8df; font-size: clamp(1rem, 1.7vw, 1.15rem); }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 24px; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 7px 11px; border: 1px solid rgba(237, 239, 228, .28); border-radius: 999px; color: #edf0e6; font-size: .78rem; font-weight: 650; }
+    .hero-stat { width: 100%; max-width: 360px; justify-self: end; padding: 25px; border: 1px solid rgba(25, 45, 37, .08); border-radius: 14px; background: var(--surface); color: var(--ink); }
+    .hero-stat .overline { color: var(--moss); }
+    .hero-stat strong { display: block; margin: 8px 0 0; font: 500 clamp(2.7rem, 5vw, 4.3rem)/1 Georgia, "Times New Roman", serif; letter-spacing: -.05em; }
+    .stat-note { margin: 8px 0 0; color: var(--muted); font-size: .86rem; }
+    .snapshot { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0 0; }
+    .snapshot-card, .panel { border: 1px solid var(--line); border-radius: 13px; background: var(--surface); }
+    .snapshot-card { min-height: 126px; padding: 21px 23px; }
+    .snapshot-label { margin: 0; color: var(--muted); font-size: .7rem; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; }
+    .snapshot-value { margin: 8px 0 0; font: 500 clamp(1.55rem, 3vw, 2.15rem)/1.08 Georgia, "Times New Roman", serif; letter-spacing: -.03em; }
+    .snapshot-detail { margin: 8px 0 0; color: var(--muted); font-size: .81rem; }
+    .content-section { margin-top: 62px; scroll-margin-top: 22px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 22px; }
+    .section-heading h2 { max-width: 760px; margin: 0; font: 500 clamp(2rem, 4vw, 3.3rem)/1.05 Georgia, "Times New Roman", serif; letter-spacing: -.04em; }
+    .section-heading p { max-width: 440px; margin: 0; color: var(--muted); font-size: .9rem; }
+    .panel { padding: clamp(19px, 3vw, 30px); }
+    .panel h3 { margin: 0 0 10px; font-size: 1.02rem; }
+    .panel p { color: var(--ink-2); }
+    .two-col, .three-col, .model-grid, .diligence-grid, .source-grid { display: grid; gap: 13px; }
+    .two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .three-col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .callout { padding: 24px; border-radius: 13px; background: var(--ink); color: var(--surface); }
+    .callout .overline { color: #d7e0d0; }
+    .callout strong { display: block; margin: 10px 0; font: 500 clamp(2.1rem, 4.5vw, 3.3rem)/1 Georgia, "Times New Roman", serif; letter-spacing: -.05em; }
+    .callout p { margin: 0; color: #e7ece3; font-size: .88rem; }
+    .comp-card, .fact-card, .method-card, .package-card, .diligence-card { padding: 18px 19px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+    .comp-card h3, .fact-card h3, .package-card h3, .diligence-card h3 { margin: 0 0 7px; }
+    .comp-card p, .fact-card p, .method-card p, .package-card p, .diligence-card p { margin: 7px 0 0; color: var(--muted); font-size: .83rem; }
+    .tag { display: inline-block; margin-top: 10px; padding: 5px 8px; border-radius: 5px; background: var(--sage); color: var(--ink); font-size: .7rem; font-weight: 800; text-transform: uppercase; }
+    .revenue-card { padding: clamp(20px, 4vw, 36px); background: #e6ebe1; }
+    .revenue-head { display: grid; grid-template-columns: 1fr minmax(230px, .7fr); gap: 23px; align-items: start; }
+    .revenue-head h3 { margin: 0; font: 500 clamp(1.6rem, 3.4vw, 2.45rem)/1.12 Georgia, "Times New Roman", serif; }
+    .revenue-head p { margin: 0; color: var(--ink-2); font-size: .86rem; }
+    .revenue-bars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 25px; }
+    .revenue-bar { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; align-items: end; }
+    .revenue-bar span { color: var(--muted); font-size: .73rem; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
+    .revenue-bar strong { font: 500 clamp(1.15rem, 2.5vw, 1.55rem) Georgia, "Times New Roman", serif; white-space: nowrap; }
+    .bar-track { grid-column: 1 / -1; height: 8px; overflow: hidden; border-radius: 99px; background: rgba(36, 64, 51, .13); }
+    .bar-fill { width: var(--bar-width); height: 100%; border-radius: inherit; background: var(--moss); }
+    .revenue-bar:nth-child(2) .bar-fill { background: #8a6533; }
+    .revenue-bar:nth-child(3) .bar-fill { background: var(--rust); }
+    .caption, .tiny-note { margin: 13px 0 0; color: var(--muted); font-size: .77rem; }
+    .method-card strong { display: block; color: var(--moss); font-size: .77rem; letter-spacing: .07em; text-transform: uppercase; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    caption { padding: 15px 17px 9px; color: var(--muted); font-size: .77rem; text-align: left; }
+    th, td { padding: 12px 14px; border-top: 1px solid var(--line); vertical-align: top; font-size: .81rem; }
+    th { background: #e7ece3; color: var(--ink); font-size: .7rem; font-weight: 850; letter-spacing: .06em; text-transform: uppercase; }
+    td { color: var(--ink-2); }
+    .wide-table { min-width: 760px; }
+    .model-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .model-panel { padding: 0; overflow: hidden; }
+    .model-panel table { min-width: 480px; }
+    .model-panel header { padding: 20px 21px 6px; }
+    .model-panel header p { margin: 0; color: var(--muted); font-size: .78rem; }
+    .positive { color: #356344; font-weight: 800; }
+    .negative { color: #913c29; font-weight: 800; }
+    details { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+    summary { cursor: pointer; color: var(--ink); font-weight: 800; }
+    summary::marker { color: var(--rust); }
+    details > summary { padding: 17px 20px; background: #e8ebe2; }
+    .details-body { padding: 4px 20px 21px; }
+    .range-line { display: grid; grid-template-columns: 52px 1fr 95px; gap: 12px; align-items: center; margin-top: 15px; }
+    .range-line span, .range-line strong { font-size: .82rem; font-weight: 800; }
+    .range-line strong { text-align: right; }
+    .range-track { height: 8px; border-radius: 99px; background: #e3e5dc; }
+    .range-track i { display: block; width: var(--range-width); height: 100%; border-radius: inherit; background: var(--rust); }
+    .package-card .amount { display: block; margin: 10px 0; font: 500 1.42rem Georgia, "Times New Roman", serif; }
+    .diligence-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .diligence-card { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; }
+    .number { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--sage); color: var(--ink); font: 700 .8rem Georgia, "Times New Roman", serif; }
+    .source-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 18px 20px 21px; }
+    .source-grid h3 { margin: 0 0 8px; font-size: .88rem; }
+    .source-grid ul { margin: 0; padding-left: 18px; }
+    .source-grid li { margin: 8px 0; color: var(--muted); font-size: .79rem; }
+    .source-grid a { color: var(--ink-2); }
+    .footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 48px; padding-top: 17px; border-top: 1px solid var(--line); color: var(--muted); font-size: .76rem; }
+    .footer p { max-width: 760px; margin: 0; }
+    .footer-mark { color: var(--moss); font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+    @media (max-width: 850px) {
+      .hero { grid-template-columns: 1fr; gap: 25px; min-height: 0; }
+      .hero-stat { justify-self: start; max-width: 440px; }
+      .snapshot { grid-template-columns: 1fr; }
+      .snapshot-card { min-height: 0; }
+      .section-heading { display: block; }
+      .section-heading p { margin-top: 11px; }
+      .revenue-head, .model-grid { grid-template-columns: 1fr; }
+      .three-col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .source-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 600px) {
+      .page-shell { padding: 13px 14px 30px; }
+      .masthead { padding: 5px 2px 14px; font-size: .64rem; }
+      .edition { max-width: 145px; }
+      .hero { padding: 27px 21px; }
+      .hero h1 { font-size: clamp(2.25rem, 9.5vw, 3.65rem); }
+      .content-section { margin-top: 48px; }
+      .two-col, .three-col, .revenue-bars, .diligence-grid, .source-grid { grid-template-columns: 1fr; }
+      .section-nav { gap: 6px; }
+      .section-nav a { padding: 7px 9px; font-size: .7rem; }
+      .range-line { grid-template-columns: 42px 1fr 82px; gap: 9px; }
+      .footer { display: block; }
+      .footer-mark { display: block; margin-top: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="masthead">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">{{BRAND_MARK}}</span><span>Buyer-Side Investment Screen</span></div>
+      <div class="edition">{{CITY_STATE}} · {{REVIEW_DATE}}</div>
+    </header>
+
+    <nav class="section-nav" aria-label="Report sections">
+      <a href="#property">Property &amp; price</a>
+      <a href="#rental">Rental evidence</a>
+      <a href="#underwriting">Cash flow</a>
+      <a href="#capital">Capital plan</a>
+      <a href="#diligence">Diligence</a>
+    </nav>
+
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">{{SUBJECT_ADDRESS}} · Property review</p>
+        <h1 id="page-title">{{HERO_HEADLINE}}</h1>
+        <p class="hero-intro">{{HERO_SUMMARY}}</p>
+        <div class="hero-meta">
+          <span class="pill">{{LISTING_STATUS_LABEL}}</span>
+          <span class="pill">{{BED_BATH_AREA_LAND_SUMMARY}}</span>
+        </div>
+      </div>
+      <aside class="hero-stat" aria-label="Central rental comp proxy">
+        <p class="overline">{{COMP_COUNT}} comparable listings · {{COHORT_LABEL}}</p>
+        <strong>{{P50_ANNUAL_GROSS}}</strong>
+        <div>{{REVENUE_METRIC_LABEL}}</div>
+        <p class="stat-note">Comparable listings, not subject bookings. {{REVENUE_LIMIT_NOTE}}</p>
+      </aside>
+    </section>
+
+    <section class="snapshot" id="snapshot" aria-label="Decision snapshot">
+      <article class="snapshot-card"><p class="snapshot-label">Price to screen</p><p class="snapshot-value">{{SCREENING_PRICE_RANGE}}</p><p class="snapshot-detail">{{SCREENING_RANGE_BASIS}}</p></article>
+      <article class="snapshot-card"><p class="snapshot-label">Public ask / terms</p><p class="snapshot-value">{{PUBLIC_ASK_OR_UNKNOWN}}</p><p class="snapshot-detail">{{ASK_STATUS_AND_DATE}}</p></article>
+      <article class="snapshot-card"><p class="snapshot-label">Routine make-ready</p><p class="snapshot-value">{{MAKE_READY_RANGE}}</p><p class="snapshot-detail">{{MAKE_READY_BASE_AND_RESERVE}}</p></article>
+    </section>
+
+    <section class="content-section" id="property" aria-labelledby="property-heading">
+      <div class="section-heading">
+        <div><p class="section-kicker">01 · Property &amp; price</p><h2 id="property-heading">{{PROPERTY_SECTION_HEADLINE}}</h2></div>
+        <p>{{PROPERTY_SECTION_SUMMARY}}</p>
+      </div>
+      <div class="two-col">
+        <aside class="callout"><p class="overline">Buyer-side screening judgment</p><strong>{{SCREENING_PRICE_RANGE}}</strong><p>{{SCREENING_JUDGMENT_CAVEAT}}</p></aside>
+        <div class="panel">
+          <h3>Closest reported closed events</h3>
+          <div class="three-col">
+            <!-- Duplicate this card for each relevant closed event; keep last ask separate from consideration. -->
+            <article class="comp-card"><h3>{{CLOSED_COMP_1_NAME}}</h3><p>{{CLOSED_COMP_1_DATE_AND_SOURCE}}</p><p>{{CLOSED_COMP_1_CONSIDERATION_STATUS_AND_LAST_ASK}}</p><p>{{CLOSED_COMP_1_DIFFERENCES}}</p></article>
+            <article class="comp-card"><h3>{{CLOSED_COMP_2_NAME}}</h3><p>{{CLOSED_COMP_2_DATE_AND_SOURCE}}</p><p>{{CLOSED_COMP_2_CONSIDERATION_STATUS_AND_LAST_ASK}}</p><p>{{CLOSED_COMP_2_DIFFERENCES}}</p></article>
+          </div>
+        </div>
+      </div>
+      <h3 style="margin:28px 0 13px">Asking references and listing facts</h3>
+      <div class="three-col">
+        <!-- Duplicate or remove cards to fit the evidence; label status and checked date. -->
+        <article class="comp-card"><h3>{{ASK_COMP_1_NAME_AND_PRICE}}</h3><p>{{ASK_COMP_1_STATUS_DATE}}</p><p>{{ASK_COMP_1_ATTRIBUTES_AND_LIMITS}}</p></article>
+        <article class="comp-card"><h3>{{ASK_COMP_2_NAME_AND_PRICE}}</h3><p>{{ASK_COMP_2_STATUS_DATE}}</p><p>{{ASK_COMP_2_ATTRIBUTES_AND_LIMITS}}</p></article>
+        <article class="fact-card"><h3>Subject facts to resolve</h3><p>{{SUBJECT_FACTS_AND_DISCREPANCIES}}</p><span class="tag">{{MOST_IMPORTANT_UNKNOWN}}</span></article>
+      </div>
+      <p class="tiny-note">{{VALUE_RANGE_LIMIT_NOTE}} Do not describe an ask, portal range or undisclosed close as verified sale consideration.</p>
+    </section>
+
+    <section class="content-section" id="rental" aria-labelledby="rental-heading">
+      <div class="section-heading">
+        <div><p class="section-kicker">02 · Rental evidence</p><h2 id="rental-heading">{{RENTAL_SECTION_HEADLINE}}</h2></div>
+        <p>{{RENTAL_SECTION_CAVEAT}}</p>
+      </div>
+      <article class="panel revenue-card">
+        <div class="revenue-head">
+          <div><p class="overline">{{REVENUE_METRIC_LABEL}} · {{COMP_COUNT}} listings</p><h3>Central case: {{P50_ANNUAL_GROSS}} before operating costs</h3></div>
+          <p>{{COHORT_FILTERS_AND_ANNUALIZATION}}</p>
+        </div>
+        <div class="revenue-bars" aria-label="Annual gross revenue percentiles for the comparable listing cohort">
+          <div class="revenue-bar"><span>P50 · Central</span><strong>{{P50_ANNUAL_GROSS}}</strong><div class="bar-track"><div class="bar-fill" style="--bar-width:{{P50_BAR_WIDTH}}%"></div></div></div>
+          <div class="revenue-bar"><span>P75 · Upper quartile</span><strong>{{P75_ANNUAL_GROSS}}</strong><div class="bar-track"><div class="bar-fill" style="--bar-width:{{P75_BAR_WIDTH}}%"></div></div></div>
+          <div class="revenue-bar"><span>P90 · Upside</span><strong>{{P90_ANNUAL_GROSS}}</strong><div class="bar-track"><div class="bar-fill" style="--bar-width:{{P90_BAR_WIDTH}}%"></div></div></div>
+        </div>
+        <p class="caption">{{PERCENTILE_INTERPRETATION_AND_LIMITS}}</p>
+      </article>
+      <div class="three-col" style="margin-top:13px">
+        <article class="method-card"><strong>Cohort construction</strong><p>{{COHORT_COUNT_AND_QUERY_LIMITS}}</p></article>
+        <article class="method-card"><strong>Discount and location</strong><p>{{DISCOUNT_AND_LOCATION_METHOD}}</p></article>
+        <article class="method-card"><strong>What is missing</strong><p>{{SUBJECT_RESULT_AND_DATA_GAPS}}</p></article>
+      </div>
+      <h3 style="margin:26px 0 10px">Nearest high-fit listing pages</h3>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Rental comparable listings table; scroll horizontally if needed">
+        <table class="wide-table">
+          <caption>{{RENTAL_TABLE_SORT_AND_DISTANCE_NOTE}}</caption>
+          <thead><tr><th scope="col">Rank / distance</th><th scope="col">Rental listing</th><th scope="col">Annualized measure</th><th scope="col">Page evidence and caveat</th></tr></thead>
+          <tbody>
+            <!-- Duplicate one row per reviewed listing; keep inaccessible-page counts explicit. -->
+            <tr><th scope="row">{{LISTING_1_RANK_AND_DISTANCE}}</th><td><a href="{{LISTING_1_URL}}">{{LISTING_1_NAME}}</a></td><td>{{LISTING_1_ANNUAL_VALUE}}</td><td>{{LISTING_1_PAGE_FACTS_AND_CAVEATS}}</td></tr>
+            <tr><th scope="row">{{LISTING_2_RANK_AND_DISTANCE}}</th><td><a href="{{LISTING_2_URL}}">{{LISTING_2_NAME}}</a></td><td>{{LISTING_2_ANNUAL_VALUE}}</td><td>{{LISTING_2_PAGE_FACTS_AND_CAVEATS}}</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tiny-note">{{AMENITY_SAMPLE_DENOMINATOR_AND_NON_CAUSALITY_NOTE}}</p>
+    </section>
+
+    <section class="content-section" id="underwriting" aria-labelledby="underwriting-heading">
+      <div class="section-heading">
+        <div><p class="section-kicker">03 · Leveraged scenarios</p><h2 id="underwriting-heading">{{UNDERWRITING_SECTION_HEADLINE}}</h2></div>
+        <p>{{UNDERWRITING_SECTION_SCOPE}}</p>
+      </div>
+      <div class="panel" style="margin-bottom:14px">
+        <p><strong>Financing assumptions:</strong> {{DOWN_PAYMENT}} down · {{INTEREST_RATE}} · {{LOAN_TERM}} · {{CLOSING_COST_ASSUMPTION}} closing · {{PMI_ASSUMPTION}}</p>
+        <h3>Modeled cash to close: {{CASH_TO_CLOSE}}</h3>
+        <p>{{CASH_TO_CLOSE_BREAKDOWN_AND_DEBT_SERVICE}}</p>
+      </div>
+      <div class="model-grid">
+        <article class="panel model-panel">
+          <header><h3>{{MODEL_PATH_A_NAME_AND_VERSION}}</h3><p>Monthly cash flow after stated operating costs and P&amp;I · USD</p></header>
+          <div class="table-wrap" tabindex="0" role="region" aria-label="{{MODEL_PATH_A_NAME_AND_VERSION}} cash-flow table"><table>
+            <caption>{{MODEL_PATH_A_SCOPE}}</caption>
+            <thead><tr><th scope="col">Revenue tier</th><th scope="col">{{MANAGEMENT_CASE_1_LABEL}}</th><th scope="col">{{MANAGEMENT_CASE_2_LABEL}}</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">P50 · {{P50_ANNUAL_GROSS}}</th><td class="{{MODEL_A_P50_CASE_1_CLASS}}">{{MODEL_A_P50_CASE_1_CF}}</td><td class="{{MODEL_A_P50_CASE_2_CLASS}}">{{MODEL_A_P50_CASE_2_CF}}</td></tr>
+              <tr><th scope="row">P75 · {{P75_ANNUAL_GROSS}}</th><td class="{{MODEL_A_P75_CASE_1_CLASS}}">{{MODEL_A_P75_CASE_1_CF}}</td><td class="{{MODEL_A_P75_CASE_2_CLASS}}">{{MODEL_A_P75_CASE_2_CF}}</td></tr>
+              <tr><th scope="row">P90 · {{P90_ANNUAL_GROSS}}</th><td class="{{MODEL_A_P90_CASE_1_CLASS}}">{{MODEL_A_P90_CASE_1_CF}}</td><td class="{{MODEL_A_P90_CASE_2_CLASS}}">{{MODEL_A_P90_CASE_2_CF}}</td></tr>
+            </tbody>
+          </table></div>
+          <p class="tiny-note">{{MODEL_PATH_A_INPUTS_AND_EXCLUSIONS}}</p>
+        </article>
+        <article class="panel model-panel">
+          <header><h3>{{MODEL_PATH_B_NAME_AND_VERSION}}</h3><p>Separate expense path · monthly cash flow after P&amp;I</p></header>
+          <div class="table-wrap" tabindex="0" role="region" aria-label="{{MODEL_PATH_B_NAME_AND_VERSION}} cash-flow table"><table>
+            <caption>{{MODEL_PATH_B_SCOPE}}</caption>
+            <thead><tr><th scope="col">Revenue tier</th><th scope="col">{{MANAGEMENT_CASE_1_LABEL}}</th><th scope="col">{{MANAGEMENT_CASE_2_LABEL}}</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">P50 · {{P50_ANNUAL_GROSS}}</th><td class="{{MODEL_B_P50_CASE_1_CLASS}}">{{MODEL_B_P50_CASE_1_CF}}</td><td class="{{MODEL_B_P50_CASE_2_CLASS}}">{{MODEL_B_P50_CASE_2_CF}}</td></tr>
+              <tr><th scope="row">P75 · {{P75_ANNUAL_GROSS}}</th><td class="{{MODEL_B_P75_CASE_1_CLASS}}">{{MODEL_B_P75_CASE_1_CF}}</td><td class="{{MODEL_B_P75_CASE_2_CLASS}}">{{MODEL_B_P75_CASE_2_CF}}</td></tr>
+              <tr><th scope="row">P90 · {{P90_ANNUAL_GROSS}}</th><td class="{{MODEL_B_P90_CASE_1_CLASS}}">{{MODEL_B_P90_CASE_1_CF}}</td><td class="{{MODEL_B_P90_CASE_2_CLASS}}">{{MODEL_B_P90_CASE_2_CF}}</td></tr>
+            </tbody>
+          </table></div>
+          <p class="tiny-note">{{MODEL_PATH_B_INPUTS_AND_EXCLUSIONS}}</p>
+        </article>
+      </div>
+      <details style="margin-top:14px"><summary>View price sensitivity and model limits</summary><div class="details-body">
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Price sensitivity table; scroll horizontally if needed"><table class="wide-table"><caption>{{PRICE_SENSITIVITY_SCOPE}}</caption><thead><tr><th scope="col">Purchase price</th><th scope="col">Cash to close</th><th scope="col">{{SENSITIVITY_COLUMN_A}}</th><th scope="col">{{SENSITIVITY_COLUMN_B}}</th></tr></thead><tbody>{{PRICE_SENSITIVITY_ROWS}}</tbody></table></div>
+        <p class="tiny-note">{{UNDERWRITING_EXCLUSIONS_AND_VERSION_LIMITS}}</p>
+      </div></details>
+    </section>
+
+    <section class="content-section" id="capital" aria-labelledby="capital-heading">
+      <div class="section-heading">
+        <div><p class="section-kicker">04 · Capital plan</p><h2 id="capital-heading">Keep make-ready, furnishings and optional amenities separate.</h2></div>
+        <p>Planning allowances are not bids or a finding that the property needs this work. Verify condition, scope and overlap before relying on a total.</p>
+      </div>
+      <div class="two-col">
+        <aside class="callout"><p class="overline">Routine make-ready · base estimate</p><strong>{{MAKE_READY_BASE}}</strong><p>{{MAKE_READY_RANGE_AND_CONTINGENCY}}</p></aside>
+        <article class="panel"><h3>Integrated routine scope</h3><p>{{ROUTINE_SCOPE_AND_EXCLUSIONS}}</p>
+          <div class="range-line"><span>Low</span><div class="range-track"><i style="--range-width:{{MAKE_READY_LOW_BAR}}%"></i></div><strong>{{MAKE_READY_LOW}}</strong></div>
+          <div class="range-line"><span>Base</span><div class="range-track"><i style="--range-width:{{MAKE_READY_BASE_BAR}}%"></i></div><strong>{{MAKE_READY_BASE}}</strong></div>
+          <div class="range-line"><span>High</span><div class="range-track"><i style="--range-width:{{MAKE_READY_HIGH_BAR}}%"></i></div><strong>{{MAKE_READY_HIGH}}</strong></div>
+        </article>
+      </div>
+      <h3 style="margin:26px 0 10px">Optional revenue-positioning packages</h3>
+      <div class="three-col">
+        <!-- Keep packages optional; do not infer an income premium from competitor amenity counts. -->
+        <article class="package-card"><h3>{{PACKAGE_1_NAME}}</h3><span class="amount">{{PACKAGE_1_BASE}}</span><p>{{PACKAGE_1_SCOPE_RANGE_AND_LIMITS}}</p></article>
+        <article class="package-card"><h3>{{PACKAGE_2_NAME}}</h3><span class="amount">{{PACKAGE_2_BASE}}</span><p>{{PACKAGE_2_SCOPE_RANGE_AND_LIMITS}}</p></article>
+        <article class="package-card"><h3>{{PACKAGE_3_NAME}}</h3><span class="amount">{{PACKAGE_3_BASE}}</span><p>{{PACKAGE_3_SCOPE_RANGE_AND_LIMITS}}</p></article>
+      </div>
+      <p class="tiny-note">{{AMENITY_SITING_SAFETY_PERMIT_AND_OPERATING_COST_NOTE}}</p>
+      <h3 style="margin:26px 0 10px">Illustrative startup capital</h3>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Illustrative startup capital table">
+        <table>
+        <caption>{{STARTUP_STACK_FORMULA_AND_LIMITS}}</caption>
+        <thead><tr><th scope="col">Tier</th><th scope="col">Furnishing range</th><th scope="col">Amenity base</th><th scope="col">Illustrative subtotal</th></tr></thead>
+        <tbody>{{STARTUP_STACK_ROWS}}</tbody>
+      </table></div>
+    </section>
+
+    <section class="content-section" id="diligence" aria-labelledby="diligence-heading">
+      <div class="section-heading">
+        <div><p class="section-kicker">05 · Before relying on the screen</p><h2 id="diligence-heading">Resolve the facts that change the decision.</h2></div>
+        <p>{{DILIGENCE_SECTION_INTRO}}</p>
+      </div>
+      <div class="diligence-grid">
+        <!-- Duplicate, re-rank and edit these cards for the subject's actual highest-value next steps. -->
+        <article class="diligence-card"><span class="number">01</span><div><h3>{{DILIGENCE_1_TITLE}}</h3><p>{{DILIGENCE_1_ACTION_AND_EVIDENCE}}</p></div></article>
+        <article class="diligence-card"><span class="number">02</span><div><h3>{{DILIGENCE_2_TITLE}}</h3><p>{{DILIGENCE_2_ACTION_AND_EVIDENCE}}</p></div></article>
+        <article class="diligence-card"><span class="number">03</span><div><h3>{{DILIGENCE_3_TITLE}}</h3><p>{{DILIGENCE_3_ACTION_AND_EVIDENCE}}</p></div></article>
+        <article class="diligence-card"><span class="number">04</span><div><h3>{{DILIGENCE_4_TITLE}}</h3><p>{{DILIGENCE_4_ACTION_AND_EVIDENCE}}</p></div></article>
+      </div>
+      <details style="margin-top:14px"><summary>Open property, comp, rental and cost sources</summary>
+        <div class="source-grid">
+          <section><h3>Property and official records</h3><ul>{{PROPERTY_SOURCE_LINKS}}</ul></section>
+          <section><h3>Sale evidence</h3><ul>{{SALE_SOURCE_LINKS}}</ul></section>
+          <section><h3>Rental, rules and cost context</h3><ul>{{RENTAL_RULE_AND_COST_SOURCE_LINKS}}</ul></section>
+        </div>
+      </details>
+    </section>
+
+    <footer class="footer">
+      <p>{{SCOPE_DISCLAIMER}} Evidence checked {{REVIEW_DATE}}; refresh before a transaction decision. Figures are nominal {{CURRENCY}} unless noted. {{DATA_CHANGE_AND_SCREENING_LIMIT_NOTE}}</p>
+      <span class="footer-mark">{{REPORT_SERIES_OR_BRAND}} · {{REPORT_NUMBER}}</span>
+    </footer>
+  </main>
+</body>
+</html>

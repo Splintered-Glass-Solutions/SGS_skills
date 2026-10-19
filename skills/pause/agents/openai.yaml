@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pause"
+  short_description: "Pause a task with a resumable checkpoint"
+  default_prompt: "Use $pause to preserve this task exactly where it is and mark it for later resumption."

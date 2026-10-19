@@ -1,0 +1,4 @@
+interface:
+  display_name: "PM Plate Spin"
+  short_description: "PM spin one project's idle lanes with safe next moves"
+  default_prompt: "Use $pm-plate-spin to scan only the current project and route small safe next moves with $pm-project-portfolio-manager and $orchestrator-mode. Do not scan other projects."

@@ -1,0 +1,14 @@
+---
+name: build-it
+display_name: Build It
+description: Carry a bounded feature batch through model-routed planning, sequential
+  implementation, review, local integration, authorized deployment and proof.
+source: skills/build-it/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

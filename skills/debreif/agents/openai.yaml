@@ -1,0 +1,4 @@
+interface:
+  display_name: "Call Debreif"
+  short_description: "Summarize calls and surface follow-through"
+  default_prompt: "Use $debreif to find the requested call, summarize it, add project context, and prepare a reviewable to-do list."

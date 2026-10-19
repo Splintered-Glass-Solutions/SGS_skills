@@ -1,0 +1,14 @@
+---
+name: build-implement
+display_name: Build Implement
+description: Implement and test one accepted build item with a Luna high subagent
+  in the existing batch worktree.
+source: skills/build-implement/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Local Time Tracking"
+  short_description: "Append time to the local client ledger"
+  default_prompt: "Use $local-time-tracking to log this work in the correct local project ledger."
+
+policy:
+  allow_implicit_invocation: true

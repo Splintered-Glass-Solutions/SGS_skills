@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prioritize Task"
+  short_description: "Mark this task as prioritized"
+  default_prompt: "Use $prioritize to mark this task as prioritized."
