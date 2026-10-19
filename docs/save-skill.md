@@ -30,7 +30,7 @@ wrapper, portable playbook, and catalog entry aligned.
 2. Check the repository for unrelated dirty work.
 3. Validate the skill structure and publication boundary.
 4. Archive the generalized skill and matching command wrapper.
-5. Regenerate portable playbooks:
+5. Update the skill catalog and applicable README/usage documentation using the documentation contract below. Regenerate portable playbooks:
 
    ```bash
    ruby scripts/generate-portable-playbooks.rb
@@ -54,3 +54,28 @@ remain outside the public archive. Existing independently generalized skills
 were preserved. New archive entries use placeholders for private bindings;
 those examples do not carry standing permission into another project. Missing
 agent metadata was generated in the archive, without changing installed skills.
+
+## Documentation contract for every sync
+
+For each new or materially changed skill, document:
+
+- its purpose and when to choose it;
+- installation/runtime prerequisites and required tools;
+- inputs and project configuration the user must supply;
+- a realistic, generalized invocation example;
+- expected outputs, verification and common blockers;
+- action limits, permissions and any incompatible behavior changes.
+
+Keep the procedure in `SKILL.md` and supporting references. Give every skill a
+catalog link and useful purpose description. Update the root README, getting-started
+guide, documentation hub, relevant package/readme and command map when their
+installation, selection, invocation or workflow guidance changes. Do not add a
+separate README for every skill unless it improves use; update existing canonical
+guides and link them. Keep examples public-safe and free of private setup.
+
+Regenerate portable README/playbooks from their source; do not hand-edit generated
+files. Check that examples refer to existing entrypoints and documented options,
+that prerequisites match the implementation, and that links resolve. Record which
+docs changed or were reviewed and remain accurate in the local sync checkpoint.
+Unchanged guidance need not receive a cosmetic edit, but missing or stale usage
+documentation blocks publication just like a failed privacy check.

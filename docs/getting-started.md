@@ -18,6 +18,34 @@ You do not need the publisher’s private workspace, automation or portfolio rec
 markers are placeholders, not runnable shell paths. Replace them before use.
 Use supported runtime tools and current installed CLI help to resolve commands.
 
+## Invoke a skill and check its result
+
+After installation, name the skill and give it a concrete objective. Include the
+repository or artifact, scope, expected result and any action limits. Examples:
+
+```text
+Use $interview-spec to clarify a customer support portal idea.
+Produce a decision-ready spec; do not implement it.
+
+Use $qa-run to check the sign-in flow in this local project.
+Use the configured disposable test account and save a local run report.
+
+Use $product-demo-prep to rehearse three onboarding tasks in staging.
+Use synthetic records; do not deploy, publish or send anything.
+```
+
+A `$name` reference is a chat instruction, not a shell command. If your runtime
+has no skill picker, attach or open the corresponding `SKILL.md` or portable
+`AGENT.md` and ask it to follow that workflow. Confirm the runtime can load the
+instructions before expecting a tool action. Only use a slash-command wrapper
+when it is included and supported by your installed runtime.
+
+Use the [catalog](custom-skill-index.md) to find the purpose and source of a skill.
+The source defines its procedure, prerequisites and expected output; follow linked
+references only when the relevant phase needs them. Verify the reported output
+against the actual artifact, test evidence or provider readback appropriate to
+your task. Missing tools or permissions should produce an exact blocker.
+
 ## Configure only what the selected workflow needs
 
 | Workflow | Supply | If it is missing |

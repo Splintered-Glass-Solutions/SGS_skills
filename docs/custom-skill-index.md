@@ -110,44 +110,44 @@ SGS resource library. Each entry links to its Codex-native `SKILL.md`.
 
 ## Additional workflows (October 2026)
 
-- [`astra-review`](../skills/astra-review/SKILL.md)
-- [`authenticated-browser-testing`](../skills/authenticated-browser-testing/SKILL.md)
-- [`autonomous`](../skills/autonomous/SKILL.md)
-- [`build-implement`](../skills/build-implement/SKILL.md)
-- [`build-it`](../skills/build-it/SKILL.md)
-- [`build-plan`](../skills/build-plan/SKILL.md)
-- [`cleanup-worktrees`](../skills/cleanup-worktrees/SKILL.md)
-- [`clickup`](../skills/clickup/SKILL.md)
-- [`client-call-update`](../skills/client-call-update/SKILL.md)
-- [`codex-slash-command-skill`](../skills/codex-slash-command-skill/SKILL.md)
-- [`conditional`](../skills/conditional/SKILL.md)
-- [`continue-in-new-thread`](../skills/continue-in-new-thread/SKILL.md)
-- [`debreif`](../skills/debreif/SKILL.md)
-- [`email-reply`](../skills/email-reply/SKILL.md)
-- [`email-triage`](../skills/email-triage/SKILL.md)
-- [`fathom-notes-api`](../skills/fathom-notes-api/SKILL.md)
-- [`feature-finish-line`](../skills/feature-finish-line/SKILL.md)
-- [`fresh-perspective`](../skills/fresh-perspective/SKILL.md)
-- [`full-suite-tests`](../skills/full-suite-tests/SKILL.md)
-- [`goal-loop`](../skills/goal-loop/SKILL.md)
-- [`group-testing-thread`](../skills/group-testing-thread/SKILL.md)
-- [`local-time-tracking`](../skills/local-time-tracking/SKILL.md)
-- [`loose-ends`](../skills/loose-ends/SKILL.md)
-- [`mockups`](../skills/mockups/SKILL.md)
-- [`pause`](../skills/pause/SKILL.md)
-- [`plugin`](../skills/plugin/SKILL.md)
-- [`pm-comms-sync`](../skills/pm-comms-sync/SKILL.md)
-- [`pm-delegate`](../skills/pm-delegate/SKILL.md)
-- [`pm-plate-spin`](../skills/pm-plate-spin/SKILL.md)
-- [`pm-thread-sweep`](../skills/pm-thread-sweep/SKILL.md)
-- [`prioritize`](../skills/prioritize/SKILL.md)
-- [`property-investment-screening`](../skills/property-investment-screening/SKILL.md)
-- [`qa-run`](../skills/qa-run/SKILL.md)
-- [`reanme-chat`](../skills/reanme-chat/SKILL.md)
-- [`repo-worktree-lifecycle`](../skills/repo-worktree-lifecycle/SKILL.md)
-- [`run-user-story`](../skills/run-user-story/SKILL.md)
-- [`save-skill`](../skills/save-skill/SKILL.md)
-- [`save-skills`](../skills/save-skills/SKILL.md)
-- [`sideline-feature`](../skills/sideline-feature/SKILL.md)
-- [`sol-review`](../skills/sol-review/SKILL.md)
-- [`timetrack`](../skills/timetrack/SKILL.md)
+- [`astra-review`](../skills/astra-review/SKILL.md): Independently review one implemented build item with a fresh Astra 6 low reviewer; return evidence-backed findings without editing.
+- [`authenticated-browser-testing`](../skills/authenticated-browser-testing/SKILL.md): Verify authenticated rendered UI using an approved browser session, test identity and secure credential path.
+- [`autonomous`](../skills/autonomous/SKILL.md): Use with a feature or function request to build it through implementation and relevant verification without pausing for routine approval.
+- [`build-implement`](../skills/build-implement/SKILL.md): Implement and test one accepted build item with a Luna high subagent in the existing batch worktree.
+- [`build-it`](../skills/build-it/SKILL.md): Carry a bounded feature batch through model-routed planning, sequential implementation, review, local integration, authorized deployment and proof.
+- [`build-plan`](../skills/build-plan/SKILL.md): Plan one build item with a bounded subagent; route simple designs to Luna high and complex designs to Sol 6.1 low.
+- [`cleanup-worktrees`](../skills/cleanup-worktrees/SKILL.md): Audit Codex worktrees by actual chat inactivity, preserve unfinished work with sideline-feature, close inactive chats, and remove verified recoverable worktrees.
+- [`clickup`](../skills/clickup/SKILL.md): Use when creating, updating, finding, summarizing, or organizing ClickUp tasks, lists, priorities, statuses, due dates, assignees, comments, or task descriptions.
+- [`client-call-update`](../skills/client-call-update/SKILL.md): Prepare an evidence-based client project update and a branded, shareable HTML report covering progress, upcoming work, client inputs, and blockers.
+- [`codex-slash-command-skill`](../skills/codex-slash-command-skill/SKILL.md): Create or repair user-level Codex skills that should appear in the slash picker or behave like slash commands.
+- [`conditional`](../skills/conditional/SKILL.md): Evaluate the immediately preceding Codex result and conditionally execute any explicitly requested next action or ordered action chain only when that result clearly succeeded; otherwise return a compact blocker-and-decision recap.
+- [`continue-in-new-thread`](../skills/continue-in-new-thread/SKILL.md): Continue a context-heavy Codex task in a new thread by transferring its essential decisions, evidence, constraints, and next actions.
+- [`debreif`](../skills/debreif/SKILL.md): Debrief a call from Fathom, with connected email/calendar recaps or emailed transcripts as fallback.
+- [`email-reply`](../skills/email-reply/SKILL.md): Find and review an email, then outline reply options or prepare a draft.
+- [`email-triage`](../skills/email-triage/SKILL.md): Review connected email accounts for messages that need a reply today, rank them, and prepare reply guidance for the highest-priority messages without sending.
+- [`fathom-notes-api`](../skills/fathom-notes-api/SKILL.md): Use when accessing the user's Fathom meeting notes, summaries, action items, transcripts, or Fathom-recorded meeting archives; especially when the ChatGPT/Fathom connector is connected in the UI but no callable Fathom tool is exposed.
+- [`feature-finish-line`](../skills/feature-finish-line/SKILL.md): Finish accepted feature work with meaningful coverage, required data gates, QA records and docs.
+- [`fresh-perspective`](../skills/fresh-perspective/SKILL.md): Bring in an independent Astra agent to assess whether the current chat is making progress toward the user's goal, diagnose loops or misplaced effort, and course-correct the next action.
+- [`full-suite-tests`](../skills/full-suite-tests/SKILL.md): Run or plan a repository's complete environment-scoped test and QA suite, including its durable QA/QC catalog, and persist per-check results to the configured QA dashboard/database or local run store.
+- [`goal-loop`](../skills/goal-loop/SKILL.md): Turn current work into an explicit goal and keep going to completion, using independent Sol review to guide code changes toward release readiness.
+- [`group-testing-thread`](../skills/group-testing-thread/SKILL.md): Monitor a shared testing or QA discussion thread with a temporary recurring automation, usually every hour for about one day, extract new bug reports, mark each accepted report with 👀, advance locally resolved reports to 🔵, advance dev-deployed and hosted-verified reports to ✅, use orchestrator-mode to dispatch parallel triage and fix slices, batch fixes across one or more repos, run full-suite-tests locally and in the requested hosted environment, deploy through PRs to dev or another non-production target, and post release notes back to the relevant thread.
+- [`local-time-tracking`](../skills/local-time-tracking/SKILL.md): Log, append, report, or backfill work time in a local per-project JSONL ledger.
+- [`loose-ends`](../skills/loose-ends/SKILL.md): Reconcile and finish unfinished project work across code, data, review, release, and closeout.
+- [`mockups`](../skills/mockups/SKILL.md): Generate three to five realistic image mockups of a planned feature in its actual product UI to compare layout, style, hierarchy, and user experience before implementation.
+- [`pause`](../skills/pause/SKILL.md): Temporarily stop the current Codex task while preserving a concise, resumable checkpoint and marking the thread title with a leading stop-sign emoji.
+- [`plugin`](../skills/plugin/SKILL.md): Help the user plug back into an ongoing thread with a concise plain-language recap, relevant UI screenshots, and one batch of validated A/B/C decisions that unlock the next autonomous work.
+- [`pm-comms-sync`](../skills/pm-comms-sync/SKILL.md): PM comms sync: manually run the communication safety-net scan across registered Slack, text, email, ClickUp, Teams, Skool, and client-contact surfaces.
+- [`pm-delegate`](../skills/pm-delegate/SKILL.md): PM delegate: delegate highlighted or selected portfolio work to the correct Codex project agent, bounded worker, or approval queue.
+- [`pm-plate-spin`](../skills/pm-plate-spin/SKILL.md): PM plate spin: run a project-local "spin the plates" pass for the project where the skill was invoked.
+- [`pm-thread-sweep`](../skills/pm-thread-sweep/SKILL.md): PM thread sweep: review every open Codex thread for a named project, verify its work and required dev deployment, close only fully finished threads, continue incomplete work through autonomous, and consolidate the user decisions into numbered a/b/c questions.
+- [`prioritize`](../skills/prioritize/SKILL.md): Mark the current Codex task as a native priority by pinning it and setting its single leading title-status marker to a star.
+- [`property-investment-screening`](../skills/property-investment-screening/SKILL.md): Screen a property purchase using sale evidence, short-term-rental comps, underwriting and startup costs, then prepare a source-linked decision brief or public report.
+- [`qa-run`](../skills/qa-run/SKILL.md): Execute a scoped QA/QC pass, retain per-check attempts and evidence, and persist the run through an existing project store or a local artifact fallback.
+- [`reanme-chat`](../skills/reanme-chat/SKILL.md): Rename the current Codex chat or thread to a concise, relevant title based on how the conversation has evolved.
+- [`repo-worktree-lifecycle`](../skills/repo-worktree-lifecycle/SKILL.md): Coordinate isolated Git worktrees across parallel coding, integration, release, handoff, and cleanup.
+- [`run-user-story`](../skills/run-user-story/SKILL.md): Expand a short, high-level product scenario into a complete user-story hardening contract, then execute it end to end by testing each step, auditing the actual result, diagnosing defects, implementing authorized fixes, and retesting until the story passes or reaches a genuine blocker.
+- [`save-skill`](../skills/save-skill/SKILL.md): Save one or more local Codex skills into the public <skills-repo> GitHub repo, including skill files, agents metadata, slash-command wrappers, portable playbooks, docs/index updates, validation, commit, and push.
+- [`save-skills`](../skills/save-skills/SKILL.md): Analyze the current Codex conversation or selected text for repeated, reusable workflows that should become skills, dedupe candidates against the installed skill catalog, and create or improve high-confidence user-level Codex skills with picker metadata and slash-command wrappers.
+- [`sideline-feature`](../skills/sideline-feature/SKILL.md): Capture and preserve scoped feature ideas, feature plans, product explorations, technical designs, or deferred implementation context into a dedicated sidelined-features folder, mark the current task with a 🗄️ sidelined prefix, and close the thread.
+- [`sol-review`](../skills/sol-review/SKILL.md): Independently review one implemented build item with a fresh Sol 6.1 medium reviewer; return evidence-backed findings without editing.
+- [`timetrack`](../skills/timetrack/SKILL.md): Track the work completed in the current Codex thread in the correct local client ledger.

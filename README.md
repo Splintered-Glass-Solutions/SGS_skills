@@ -25,6 +25,43 @@ actually adopt. This repository is the public library behind that approach.
 | `portfolio/templates/` | Reusable task packets, closeout contracts, and operating briefs | [Template guide](portfolio/templates/README.md) |
 | `docs/` | Operating model, safety gates, contribution guidance, and publication rules | [Documentation hub](docs/README.md) |
 
+## Quick start
+
+From the downloaded or cloned repository, install one skill into Codex:
+
+```sh
+mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
+cp -R skills/recap "${CODEX_HOME:-$HOME/.codex}/skills/"
+```
+
+Inspect any existing installation before copying; matching files may be updated.
+Then, in your agent chat, name the skill and describe the task:
+
+```text
+Use $recap to summarize this project's current state, verified work,
+remaining blockers and next action.
+```
+
+| You want to… | Start with |
+| --- | --- |
+| Shape an idea before building | [interview-spec](skills/interview-spec/SKILL.md) |
+| Plan a defined change | [expansive-planning](skills/expansive-planning/SKILL.md) |
+| Build an accepted feature | [build-it](skills/build-it/SKILL.md) |
+| Run and record scoped QA | [qa-run](skills/qa-run/SKILL.md) |
+| Improve project documentation | [doc-sync](skills/doc-sync/SKILL.md) |
+| Prepare a product demonstration | [product-demo-prep](skills/product-demo-prep/SKILL.md) |
+
+Read the selected skill's prerequisites and provide your own project, target,
+accounts and limits. Start with local or planning scope when evaluating a workflow.
+For example, a build request may explicitly say "local only; no deployment."
+
+For another agent runtime, open the matching
+[portable playbook](portable-agent-playbooks/README.md) and say:
+`Use the recap playbook for this project.` Provide the playbook and its supporting
+files through that runtime's instructions or file tools. See
+[Getting started](docs/getting-started.md) for setup, required capabilities and
+configuration; see the [catalog](docs/custom-skill-index.md) for every skill.
+
 ## Featured resources
 
 ### Learn the operating model

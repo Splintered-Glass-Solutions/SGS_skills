@@ -70,8 +70,14 @@ slash command. If multiple skills are named, process them in one commit.
      files, node_modules, build artifacts, or unrelated local files.
 5. Update docs and portable playbooks.
    - Add the skill name to `docs/custom-skill-index.md` if absent.
-   - Add or update a short usage section when the request asks for docs or when
-     the skill is operationally important.
+   - For every new or materially changed skill, ensure public usage instructions
+     cover purpose, prerequisites, required inputs, a realistic invocation,
+     expected outputs, verification, common blockers and action limits.
+   - Update the root README, onboarding guide, relevant package/readme and
+     command map whenever selection, installation or usage changes. Keep the
+     catalog purpose descriptions current. Review unchanged guidance without
+     manufacturing edits; missing or stale usage docs block publication.
+   - Prefer existing canonical docs and links over a new README per skill.
    - Run the portable generator so generalized playbooks stay in sync:
 
 ```bash

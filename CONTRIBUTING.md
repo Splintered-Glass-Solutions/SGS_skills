@@ -20,6 +20,7 @@ safety, and operational discipline.
   context.
 - Run `ruby scripts/generate-portable-playbooks.rb` when a skill changes.
 - Run the [public-library checks](docs/publication-boundary.md#required-publication-checks) and review whether a new user can configure the workflow.
+- Keep [usage documentation](docs/save-skill.md#documentation-contract-for-every-sync) current for every new or changed skill.
 - Report validation results and any remaining uncertainty in the pull request.
 
 ## Scope and licensing
