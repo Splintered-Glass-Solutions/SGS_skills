@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Use when the agent is building or iterating on a web game (HTML/JS) and needs a reliable development + testing loop: implement small changes, run a Playwright-based test script with short input bursts and intentional pauses, inspect screenshots/text, and review console errors with render_game_to_text.
+Use when Codex is building or iterating on a web game (HTML/JS) and needs a reliable development + testing loop: implement small changes, run a Playwright-based test script with short input bursts and intentional pauses, inspect screenshots/text, and review console errors with render_game_to_text.
 
 ## Portability Notes
 
@@ -32,12 +32,12 @@ Build games in small steps and validate every change. Treat each iteration as: i
 ## Skill paths (set once)
 
 ```bash
-export CODEX_HOME="${CODEX_HOME:-$HOME/.agent}"
+export CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
 export WEB_GAME_CLIENT="$CODEX_HOME/skills/develop-web-game/scripts/web_game_playwright_client.js"
 export WEB_GAME_ACTIONS="$CODEX_HOME/skills/develop-web-game/references/action_payloads.json"
 ```
 
-User-scoped skills install under `$CODEX_HOME/skills` (default: `~/.agent/skills`).
+User-scoped skills install under `$CODEX_HOME/skills` (default: `~/.codex/skills`).
 
 ## Workflow
 

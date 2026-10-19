@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Use when the agent is asked to plan, use planning mode, draft an implementation plan, shape scope, design an automation or workflow, challenge assumptions, or turn an underspecified goal into a decision-complete spec. Push for leverage by asking practical prodding questions, surfacing hidden tradeoffs, calling out breaking changes, major architecture shifts, deviations from existing patterns, and cross-repo implications, and recommending a tight path that avoids unnecessary scope creep.
+Use when Codex is asked to plan, use planning mode, draft an implementation plan, shape scope, design an automation or workflow, challenge assumptions, or turn an underspecified goal into a decision-complete spec. Push for leverage by asking practical prodding questions, surfacing hidden tradeoffs, calling out breaking changes, major architecture shifts, deviations from existing patterns, and cross-repo implications, and recommending a tight path that avoids unnecessary scope creep.
 
 ## Portability Notes
 

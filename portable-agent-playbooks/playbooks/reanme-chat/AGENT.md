@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Rename the current the agent chat or thread to a concise, relevant title based on how the conversation has evolved. Use when the user asks to rename, retitle, title, summarize the thread name, or change the chat/thread name from its initial auto-generated title to something more accurate.
+Rename the current Codex chat or thread to a concise, relevant title based on how the conversation has evolved. Use when the user asks to rename, retitle, title, summarize the thread name, or change the chat/thread name from its initial auto-generated title to something more accurate.
 
 ## Portability Notes
 
@@ -24,11 +24,6 @@ Rename the current the agent chat or thread to a concise, relevant title based o
   actions.
 
 ## Instructions
-
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
 
 # Reanme Chat
 
@@ -76,8 +71,8 @@ Do not create a new thread. Do not archive, pin, fork, or hand off the thread un
 
 ## Title Examples
 
-- `example-project-13 AI Market Context Plan`
-- `example-project-12 Dev QA Repair`
+- `sample-app AI Market Context Plan`
+- `sample-app Dev QA Repair`
 - `B2B API Pilot Packaging`
 - `Weekly Fathom Action Items`
 - `Revenue Comps Trust Roadmap`

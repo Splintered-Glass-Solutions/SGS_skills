@@ -1,6 +1,3 @@
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
 # QA/QC Catalog Adapters
 
 Read this file completely when `$qaqc-record-upsert` is unavailable.
@@ -46,7 +43,7 @@ Preserve these concepts even when field names differ:
 - implementation/test/source evidence;
 - readiness, fixture-mapping, or product-intent status.
 
-Use `NONE`, null, or field omission according to the project contract when a fixture type is not applicable. Never invent example-project-12-style account, organization, agent, or KB fields in projects that do not use them.
+Use `NONE`, null, or field omission according to the project contract when a fixture type is not applicable. Never invent sample-app-style account, organization, agent, or KB fields in projects that do not use them.
 
 ## Existing catalog adapter
 

@@ -35,9 +35,9 @@ def contains_path(path,root):
     return False
 
 def main():
-    a=argparse.ArgumentParser();a.add_argument('--root',type=Path,default=Path.home()/'.agent/worktrees');a.add_argument('--days',type=float,default=30);a.add_argument('--database',type=Path);a.add_argument('--output',type=Path,required=True);args=a.parse_args()
+    a=argparse.ArgumentParser();a.add_argument('--root',type=Path,default=Path.home()/'.codex/worktrees');a.add_argument('--days',type=float,default=30);a.add_argument('--database',type=Path);a.add_argument('--output',type=Path,required=True);args=a.parse_args()
     if args.days<=0:a.error('--days must be positive')
-    databases=sorted((Path.home()/'.agent').glob('state_*.sqlite'),key=lambda p:int(re.search(r'state_(\d+)',p.name)[1]),reverse=True)
+    databases=sorted((Path.home()/'.codex').glob('state_*.sqlite'),key=lambda p:int(re.search(r'state_(\d+)',p.name)[1]),reverse=True)
     database=args.database or (databases[0] if databases else None)
     if not database:raise SystemExit('Local metadata unavailable; use app tools and preserve unknown ownership.')
     conn=sqlite3.connect('file:'+str(database)+'?mode=ro',uri=True)

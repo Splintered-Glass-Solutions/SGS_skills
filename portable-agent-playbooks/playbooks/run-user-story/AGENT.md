@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Expand a short, high-level product scenario into a complete user-story hardening contract, then execute it end to end by testing each step, auditing the actual result, diagnosing defects, implementing authorized fixes, and retesting until the story passes or reaches a genuine blocker. Use when the user asks the agent to create and run a user story, exercise a realistic workflow, test and harden a multi-step journey, turn an example into an autonomous QA run, or produce the same audit-repair-retest style of workflow used in prior example-project-12 business or ministry testing. If no story is supplied, infer the latest coherent feature scope from the current task and draft a complete executable story that exercises its user journey and direct integration boundaries before running it.
+Expand a short, high-level product scenario into a complete user-story hardening contract, then execute it end to end by testing each step, auditing the actual result, diagnosing defects, implementing authorized fixes, and retesting until the story passes or reaches a genuine blocker. Use when the user asks Codex to create and run a user story, exercise a realistic workflow, test and harden a multi-step journey, turn an example into an autonomous QA run, or produce the same audit-repair-retest style of workflow used in prior sample-app business or ministry testing. If no story is supplied, infer the latest coherent feature scope from the current task and draft a complete executable story that exercises its user journey and direct integration boundaries before running it.
 
 ## Portability Notes
 
@@ -25,14 +25,9 @@ Expand a short, high-level product scenario into a complete user-story hardening
 
 ## Instructions
 
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
-
 # Run User Story
 
-When login is needed, find the matching approved account in 1Password by site/domain and username, and use its credentials in the the agent internal browser. Prefer secure autofill; never expose passwords, OTPs, tokens, or recovery codes in chat, logs, screenshots, or saved artifacts. If 1Password needs unlocking or the matching login is unavailable, report the precise blocker.
+When login is needed, use the project-approved identity and secure credential manager or login flow. Prefer secure autofill. Never expose passwords, OTPs, tokens, recovery codes or session storage in chat, logs, screenshots or public artifacts. If credentials or login tooling are unavailable, report the precise blocker.
 
 Turn shorthand into an executable contract and run it. Do not stop after writing
 the story unless the user explicitly asks for `draft only`, `prompt only`, or
@@ -71,10 +66,10 @@ Before execution, load and follow these skills when available:
 
 - `$test` for feature-scoped coverage and evidence
 - `$autonomous` for authorized diagnosis, repair, and retesting
-- `$agent-safe-run` for browser-heavy, multi-surface, or noisy work
+- `$codex-safe-run` for browser-heavy, multi-surface, or noisy work
 - `$session-budget` for durable checkpoints on long runs
 - `$authenticated-browser-testing` for every authenticated live UI step; use
-  the the agent internal browser and use 1Password credentials when login is needed
+  the Codex internal browser and use 1Password credentials when login is needed
 
 Minimize token and log overhead, but impose no arbitrary token cap and never stop
 merely to conserve tokens.
@@ -150,7 +145,7 @@ Unless the user asked for draft-only output:
 1. Inspect the current implementation and establish the narrow feature scope.
 2. Verify prerequisites, identities, tenant, connectors, and source records.
 3. Execute one story step through the real user surface. For authenticated live
-   browser steps, use the the agent internal browser and find the approved login credentials in 1Password when needed.
+   browser steps, use the Codex internal browser and find the approved login credentials in 1Password when needed.
 4. Compare actual versus expected behavior and inspect downstream state.
 5. If the step fails or quality is weak, record evidence and state a concrete
    root-cause hypothesis before editing.

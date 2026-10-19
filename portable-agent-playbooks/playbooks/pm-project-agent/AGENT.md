@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-PM project agent: use for persistent the agent Project Agent threads that should operate as project managers/orchestrators, not as implementation workers. Defines how project agents receive delegated work, create or route bounded worker threads, monitor worker progress, review closeouts, and report status back to the portfolio PM layer.
+PM project agent: use for persistent Codex Project Agent threads that should operate as project managers/orchestrators, not as implementation workers. Defines how project agents receive delegated work, create or route bounded worker threads, monitor worker progress, review closeouts, and report status back to the portfolio PM layer.
 
 ## Portability Notes
 

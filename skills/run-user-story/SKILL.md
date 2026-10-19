@@ -8,19 +8,14 @@ description: >-
   user asks Codex to create and run a user story, exercise a realistic workflow,
   test and harden a multi-step journey, turn an example into an autonomous QA
   run, or produce the same audit-repair-retest style of workflow used in prior
-  example-project-12 business or ministry testing. If no story is supplied, infer the
+  sample-app business or ministry testing. If no story is supplied, infer the
   latest coherent feature scope from the current task and draft a complete
   executable story that exercises its user journey and direct integration
   boundaries before running it.
 ---
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
-
 # Run User Story
 
-When login is needed, find the matching approved account in 1Password by site/domain and username, and use its credentials in the Codex internal browser. Prefer secure autofill; never expose passwords, OTPs, tokens, or recovery codes in chat, logs, screenshots, or saved artifacts. If 1Password needs unlocking or the matching login is unavailable, report the precise blocker.
+When login is needed, use the project-approved identity and secure credential manager or login flow. Prefer secure autofill. Never expose passwords, OTPs, tokens, recovery codes or session storage in chat, logs, screenshots or public artifacts. If credentials or login tooling are unavailable, report the precise blocker.
 
 Turn shorthand into an executable contract and run it. Do not stop after writing
 the story unless the user explicitly asks for `draft only`, `prompt only`, or

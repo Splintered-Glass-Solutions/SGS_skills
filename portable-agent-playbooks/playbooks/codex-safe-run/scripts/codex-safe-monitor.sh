@@ -8,10 +8,10 @@ once=0
 usage() {
   cat <<'USAGE'
 Usage:
-  agent-safe-monitor.sh --once
-  agent-safe-monitor.sh [--log /tmp/agent-safe-monitor.log] [--interval 5]
+  codex-safe-monitor.sh --once
+  codex-safe-monitor.sh [--log /tmp/codex-safe-monitor.log] [--interval 5]
 
-Writes compact the agent memory/process snapshots. It does not kill processes.
+Writes compact Codex memory/process snapshots. It does not kill processes.
 USAGE
 }
 
@@ -49,17 +49,17 @@ snapshot() {
   ps -axo pid,ppid,%cpu,rss,etime,command |
     awk '
       BEGIN { IGNORECASE=1 }
-      /the agent|agent|mcp\/server|node_repl|playwright-mcp|SkyComputerUse|Computer Use/ && !/awk/ {
+      /Codex|codex|mcp\/server|node_repl|playwright-mcp|SkyComputerUse|Computer Use/ && !/awk/ {
         label=$0
         sub(/^ *[0-9]+ +[0-9]+ +[0-9.]+ +[0-9]+ +[^ ]+ +/, "", label)
-        if (label ~ /app-server --analytics-default-enabled/) label="agent app-server analytics"
-        else if (label ~ /app-server --listen/) label="agent app-server thread"
-        else if (label ~ /the agent \(Renderer\)/) label="the agent Renderer"
-        else if (label ~ /the agent \(Service\)/) label="the agent Service"
+        if (label ~ /app-server --analytics-default-enabled/) label="codex app-server analytics"
+        else if (label ~ /app-server --listen/) label="codex app-server thread"
+        else if (label ~ /Codex \(Renderer\)/) label="Codex Renderer"
+        else if (label ~ /Codex \(Service\)/) label="Codex Service"
         else if (label ~ /mcp\/server/) label="MCP server"
         else if (label ~ /node_repl/) label="node_repl"
         else if (label ~ /SkyComputerUse|Computer Use/) label="Computer Use helper"
-        else if (label ~ /Contents\/MacOS\/the agent$/) label="the agent main"
+        else if (label ~ /Contents\/MacOS\/Codex$/) label="Codex main"
         printf "%-8s %-8s %-8s %-10.1f %-10s %s\n", $1, $2, $3, $4/1024, $5, label
       }
     ' |
@@ -73,7 +73,7 @@ if [[ "$once" -eq 1 ]]; then
 fi
 
 if [[ -z "$log_file" ]]; then
-  log_file="/tmp/agent-safe-monitor.log"
+  log_file="/tmp/codex-safe-monitor.log"
 fi
 
 while true; do

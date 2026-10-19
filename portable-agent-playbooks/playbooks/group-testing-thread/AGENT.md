@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Monitor a shared testing or QA discussion thread with a temporary recurring automation, usually every hour for about one day, extract new bug reports, mark each accepted report with 👀, advance locally resolved reports to 🔵, advance dev-deployed and hosted-verified reports to ✅, use orchestrator-mode to dispatch parallel triage and fix slices, batch fixes across one or more repos, run full-suite-tests locally and in the requested hosted environment, deploy through PRs to dev or another non-production target, and post release notes back to the relevant thread. Use when the user asks the agent to watch a group text, Slack, Teams, email, or other testing thread during a coordinated test sweep and fix reported bugs until the temporary testing window ends.
+Monitor a shared testing or QA discussion thread with a temporary recurring automation, usually every hour for about one day, extract new bug reports, mark each accepted report with 👀, advance locally resolved reports to 🔵, advance dev-deployed and hosted-verified reports to ✅, use orchestrator-mode to dispatch parallel triage and fix slices, batch fixes across one or more repos, run full-suite-tests locally and in the requested hosted environment, deploy through PRs to dev or another non-production target, and post release notes back to the relevant thread. Use when the user asks Codex to watch a group text, Slack, Teams, email, or other testing thread during a coordinated test sweep and fix reported bugs until the temporary testing window ends.
 
 ## Portability Notes
 
@@ -25,16 +25,11 @@ Monitor a shared testing or QA discussion thread with a temporary recurring auto
 
 ## Instructions
 
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
-
 # Group Testing Thread
 
 Use this skill to run a temporary QA-response loop during a coordinated testing window. Treat the discussion thread as the intake source, create a disposable monitor, keep a durable checkpoint so reports are not duplicated, fix actionable bugs in batches, validate locally and in the hosted target, and update the same thread with release notes after dev deployment.
 
-Pair this skill with `$orchestrator-mode` to coordinate multiple parallel agents, `$autonomous` for each bug fix, and `$full-suite-tests` for local and hosted validation. For broad, noisy, or multi-repo work, use `$session-budget` and `$agent-safe-run` as appropriate.
+Pair this skill with `$orchestrator-mode` to coordinate multiple parallel agents, `$autonomous` for each bug fix, and `$full-suite-tests` for local and hosted validation. For broad, noisy, or multi-repo work, use `$session-budget` and `$codex-safe-run` as appropriate.
 
 ## Inputs
 
@@ -62,7 +57,7 @@ When the user asks for monitoring, create or update a temporary recurring automa
 - Search for the `automation_update` tool first, then use the available automation tool for creation, update, inspection, and deletion.
 - Set the cadence from the request, defaulting to every hour.
 - Set an explicit expiry or kill condition, defaulting to 24 hours after creation.
-- Name the automation with the project and testing thread, for example `example-project-12 dev group testing thread monitor`.
+- Name the automation with the project and testing thread, for example `sample-app dev group testing thread monitor`.
 - Include the source thread, target environment, repos, checkpoint path or memory key, and release-notes destination in the automation prompt.
 - Require the automation to delete, archive, or disable itself after the expiry time, or to stop after a user-specified end condition.
 - Preserve a checkpoint after every run so overlapping runs do not duplicate bug intake or repeated release notes.

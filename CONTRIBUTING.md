@@ -19,6 +19,7 @@ safety, and operational discipline.
 - Check for stale links, duplicate names, broken command wrappers, and private
   context.
 - Run `ruby scripts/generate-portable-playbooks.rb` when a skill changes.
+- Run the [public-library checks](docs/publication-boundary.md#required-publication-checks) and review whether a new user can configure the workflow.
 - Report validation results and any remaining uncertainty in the pull request.
 
 ## Scope and licensing

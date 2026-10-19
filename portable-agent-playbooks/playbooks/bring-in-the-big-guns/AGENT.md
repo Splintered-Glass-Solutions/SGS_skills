@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Escalate a stuck, looping, or repeatedly patched the agent task to the latest available frontier model at high reasoning, then repair the original problem and clean up damage from earlier attempts. Use when the user invokes this skill, says bring in the big guns, reports that Terra, Luna, or another smaller model is cycling, applying Band-Aids, producing half-built fixes, reopening failures, or making the workspace progressively messier.
+Escalate a stuck, looping, or repeatedly patched Codex task to the latest available frontier model at high reasoning, then repair the original problem and clean up damage from earlier attempts. Use when the user invokes this skill, says bring in the big guns, reports that Terra, Luna, or another smaller model is cycling, applying Band-Aids, producing half-built fixes, reopening failures, or making the workspace progressively messier.
 
 ## Portability Notes
 
@@ -67,7 +67,7 @@ Preserve evidence before cleanup:
   running processes or browser state
 - summarize attempted fixes, commits, uncommitted diffs, observed errors, and
   which validations actually passed
-- distinguish user-owned or pre-existing changes from the agent-created changes
+- distinguish user-owned or pre-existing changes from Codex-created changes
 - stop or interrupt smaller-model workers that are still changing the same
   scope, after retaining any useful output
 

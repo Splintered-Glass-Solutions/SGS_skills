@@ -150,7 +150,7 @@ and state which routes were selected.
      - Create a registry plan linking work ID, task/thread ID, repo, baseline
        SHA, branch, worktree, owner, overlap zone, validation artifact,
        closeout, integration status, and cleanup status.
-     - Use ASCII branches such as `agent/<batch-id>-<slug>`.
+     - Use ASCII branches such as `codex/<batch-id>-<slug>`.
      - Require `ready_to_integrate` before `$local-dev-consolidation` can include
        a lane.
      - Do not clean worktrees until integration and proof are recorded.

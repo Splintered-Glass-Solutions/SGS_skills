@@ -4,15 +4,10 @@ description: >-
   PM thread sweep: review every open Codex thread for a named project, verify
   its work and required dev deployment, close only fully finished threads,
   continue incomplete work through autonomous, and consolidate
-  the user decisions into numbered a/b/c questions. Use for example-project-12 or any
+  the user decisions into numbered a/b/c questions. Use for sample-app or any
   project when open threads need lifecycle review, finish-line coordination,
   decision triage, PM ledger updates, and safe closeout.
 ---
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
-
 # PM Thread Sweep
 
 ## Purpose
@@ -31,10 +26,9 @@ Accept a project name, repo family, saved project, batch, or explicit thread set
 
 Examples:
 
-- `/pm-thread-sweep example-project-12`
-- `/pm-thread-sweep example-project-13`
-- `/pm-thread-sweep BF-W29 only`
-- `Use PM Thread Sweep on all open example-project-12 threads; finish safe work and close complete tasks.`
+- `/pm-thread-sweep sample-app`
+- `/pm-thread-sweep <feature-id> only`
+- `Use PM Thread Sweep on all open sample-app threads; finish safe work and close complete tasks.`
 
 If scope is omitted, infer it only when one project is unambiguous. Otherwise ask
 for the project before inspecting or mutating threads.
@@ -318,7 +312,7 @@ Use icons for scanning, but keep labels stable:
 🛠️ CONTINUING WITH AUTONOMOUS BUILD:
 ⏳ KEEP OPEN / ACTIVE:
 🔴 BLOCKED:
-🧠 PRESTON DECISIONS:
+🧠 USER DECISIONS:
 🧾 LEDGER / CLICKUP:
 🔁 NEXT CHECKPOINT:
 ```

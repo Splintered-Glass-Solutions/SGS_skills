@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Create or repair user-level agent skills that should appear in the slash picker or behave like slash commands. Use when the user asks to make a workflow into a slash command, create a slash-command skill, expose a skill in the picker, fix a skill that is not showing up, or mirror an existing user-level agent command/skill pattern under ~/.agent.
+Create or repair user-level agent skills that should appear in the slash picker or behave like slash commands. Use when the user asks to make a workflow into a slash command, create a slash-command skill, expose a skill in the picker, fix a skill that is not showing up, or mirror an existing user-level Codex command/skill pattern under ~/.codex.
 
 ## Portability Notes
 
@@ -25,16 +25,11 @@ Create or repair user-level agent skills that should appear in the slash picker 
 
 ## Instructions
 
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
-
-# the agent Slash Command Skill
+# Codex Slash Command Skill
 
 ## Overview
 
-Use this skill to create a agent workflow that appears correctly in the slash picker the first time.
+Use this skill to create a Codex workflow that appears correctly in the slash picker the first time.
 
 On this machine, a picker-visible user-level skill requires the real skill folder under `<agent-config>/skills/<skill-name>/` with both `SKILL.md` and `agents/openai.yaml`. A Markdown wrapper under `<agent-config>/commands/<skill-name>.md` is useful when the user asks for a classic command wrapper, but it is not a substitute for skill UI metadata.
 
@@ -48,14 +43,14 @@ When the user asks for a `/command`, a slash command, or a skill that should sho
    - `agents/openai.yaml`
 3. Also create `<agent-config>/commands/<skill-name>.md` when the user says "slash command", "make it a / command", "command wrapper", or wants `$ARGUMENTS` behavior.
 4. Do not stop after creating only `SKILL.md`.
-5. Do not stop after creating only `~/.agent/commands/<skill-name>.md`.
+5. Do not stop after creating only `~/.codex/commands/<skill-name>.md`.
 6. Validate all YAML/frontmatter before reporting success.
 
 ## Naming
 
 - Use lowercase letters, digits, and hyphens only.
 - Keep the folder name, `SKILL.md` frontmatter `name`, `agents/openai.yaml` `default_prompt`, and optional command filename aligned.
-- Prefer the shortest clear name, such as `sideline-feature`, `interview-spec`, or `example-project-13-feature-release-update`.
+- Prefer the shortest clear name, such as `sideline-feature`, `interview-spec`, or `sample-app-feature-release-update`.
 - Preserve existing misspelled or older folders as aliases unless the user explicitly asks to rename or remove them.
 
 ## Required File Shapes
@@ -99,7 +94,7 @@ policy:
 
 Keep `default_prompt` short and include the literal `$skill-name`. Quote shell commands carefully so `$skill-name` is not expanded away while generating or patching metadata.
 
-### Optional `~/.agent/commands/<skill-name>.md`
+### Optional `~/.codex/commands/<skill-name>.md`
 
 Create this wrapper when the user explicitly asks for a `/command` or when the workflow needs `$ARGUMENTS`.
 

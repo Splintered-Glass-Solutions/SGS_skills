@@ -107,7 +107,7 @@ The end state should be:
    - Only units marked `ready_to_integrate` may move into the integration branch.
 
 5. Create a consolidation branch.
-   - Create a consolidation branch from the correct dev base, such as `agent/dev-consolidation-YYYYMMDD`.
+   - Create a consolidation branch from the correct dev base, such as `codex/dev-consolidation-YYYYMMDD`.
    - Fetch first when safe, then branch from the dev target.
    - Keep the consolidation branch local. Do not fast-forward, reset, merge into, or push the repository's local or remote `dev` ref merely because the request says “merge to dev.”
    - If the current working tree is dirty, avoid commands that would overwrite it. Use a temporary preservation branch or worktree instead of stashing blindly.

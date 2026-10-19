@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Create or repair the agent automations and scheduled monitors with thread hygiene: prefer same-thread heartbeat automations, prevent recurring cron thread spam, add an emoji-prefixed automation thread title, remove or pause duplicate standalone schedules, and preserve automation memory/checkpoints. Use when the user asks to create, schedule, update, repair, convert, or clean up a the agent automation, monitor, reminder, recurring run, heartbeat, or scheduled skill.
+Create or repair Codex automations and scheduled monitors with thread hygiene: prefer same-thread heartbeat automations, prevent recurring cron thread spam, add an emoji-prefixed automation thread title, remove or pause duplicate standalone schedules, and preserve automation memory/checkpoints. Use when the user asks to create, schedule, update, repair, convert, or clean up a Codex automation, monitor, reminder, recurring run, heartbeat, or scheduled skill.
 
 ## Portability Notes
 
@@ -27,7 +27,7 @@ Create or repair the agent automations and scheduled monitors with thread hygien
 
 # Automation Thread Scheduler
 
-Use this skill whenever creating or maintaining a the agent automation or scheduled
+Use this skill whenever creating or maintaining a Codex automation or scheduled
 monitor. The default is a visible, same-thread automation that does not create a
 new agent thread every run.
 
@@ -40,7 +40,7 @@ new agent thread every run.
   background run.
 - Every active same-thread automation must have a target thread title that
   starts with a distinguishing emoji.
-- The automation prompt must explicitly say to continue the existing the agent
+- The automation prompt must explicitly say to continue the existing Codex
   thread and not create, fork, hand off, or open new threads.
 - Preserve durable memory and checkpoints for every automation that has a
   memory path.

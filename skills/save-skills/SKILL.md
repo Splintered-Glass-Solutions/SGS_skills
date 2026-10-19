@@ -22,7 +22,7 @@ Do not confuse it with `$save-skill`:
 
 - `$save-skills` discovers and creates reusable skills from conversation
   patterns.
-- `$save-skill` archives already-created skills to the private `SGS_skills`
+- `$save-skill` archives already-created skills to the configured skills
   repository, commits, and pushes them.
 
 Do not push to Git from this skill unless the user explicitly also requests

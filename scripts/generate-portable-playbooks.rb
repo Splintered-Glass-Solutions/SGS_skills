@@ -3,36 +3,23 @@
 
 require "fileutils"
 require "yaml"
+require "pathname"
 
 ROOT = File.expand_path("..", __dir__)
 SKILLS_DIR = File.join(ROOT, "skills")
 OUT_DIR = File.join(ROOT, "portable-agent-playbooks")
 
 REPLACEMENTS = [
-  ["/Users/preston/.codex/skills", "<agent-config>/skills"],
-  ["/Users/preston/.codex/commands", "<agent-config>/commands"],
-  ["/Users/preston/.codex/portfolio", "<agent-config>/portfolio"],
-  ["/Users/preston/.codex", "<agent-config>"],
-  ["/Users/preston/Code", "<workspace>"],
-  ["Preston", "the user"],
-  ["preston", "the user"],
-  ["Codex skills", "agent skills"],
-  ["Codex skill", "agent skill"],
-  ["Codex commands", "agent commands"],
-  ["Codex command", "agent command"],
-  ["Codex work", "agent work"],
   ["Codex Desktop", "the agent runtime"],
-  ["Codex thread", "agent thread"],
   ["Codex threads", "agent threads"],
-  ["Codex", "the agent"],
-  ["codex", "agent"]
+  ["Codex thread", "agent thread"],
+  ["Codex skills", "agent skills"]
 ].freeze
 
 def slug_title(slug)
   title = slug.split("-").map { |part| part == "pm" ? "PM" : part.capitalize }.join(" ")
   title
     .gsub(/^Codex\b/, "Agent")
-    .gsub(/^Preston\b/, "User")
 end
 
 def load_skill(path)
@@ -51,6 +38,28 @@ end
 def portable_text(text)
   REPLACEMENTS.reduce(text) do |memo, (from, to)|
     memo.gsub(from, to)
+  end
+end
+
+def portable_markdown(text, source_path, destination_path)
+  portable_text(text).gsub(/(\]\()([^\)\n]+)(\))/) do
+    prefix, target, suffix = Regexp.last_match.captures
+    bare = target.delete_prefix("<").delete_suffix(">")
+    next "#{prefix}#{target}#{suffix}" if bare.match?(/\A[a-z][a-z0-9+.-]*:/i) || bare.match?(/[<>${}|]/)
+    file, anchor = bare.split("#", 2)
+    next "#{prefix}#{target}#{suffix}" if file.nil? || file.empty?
+    resolved = File.expand_path(file, File.dirname(source_path))
+    next "#{prefix}#{target}#{suffix}" unless File.exist?(resolved)
+    mapped = if resolved.start_with?("#{SKILLS_DIR}/")
+      relative = resolved.delete_prefix("#{SKILLS_DIR}/").sub(%r{/SKILL\.md\z}, "/AGENT.md")
+      File.join(OUT_DIR, "playbooks", relative)
+    else
+      resolved
+    end
+    link = Pathname.new(mapped).relative_path_from(Pathname.new(File.dirname(destination_path))).to_s
+    link += "##{anchor}" if anchor
+    link = "<#{link}>" if link.include?(" ")
+    "#{prefix}#{link}#{suffix}"
   end
 end
 
@@ -75,7 +84,7 @@ skills = Dir[File.join(SKILLS_DIR, "*", "SKILL.md")].sort.map do |path|
   description = portable_text(data["description"].to_s.strip.gsub(/\s+/, " "))
   title = slug_title(name)
   playbook_dir = File.join(OUT_DIR, "playbooks", name)
-  portable_body = portable_text(body).strip
+  portable_body = portable_markdown(body, path, File.join(playbook_dir, "AGENT.md")).strip
 
   agent_body = <<~MARKDOWN
     # #{title} Agent Playbook
@@ -129,9 +138,11 @@ skills = Dir[File.join(SKILLS_DIR, "*", "SKILL.md")].sort.map do |path|
     next if relative == "SKILL.md" || relative.start_with?("agents/")
 
     destination = File.join(playbook_dir, relative)
-    if relative.match?(/\.(md|markdown|txt|yaml|yml|json|sh|bash|rb|py|js|mjs|ts|tsx|toml)\z/i)
+    if relative.match?(/\.(md|markdown)\z/i)
       text = File.read(source_file).gsub("\r\n", "\n")
-      write_file(destination, portable_text(text))
+      write_file(destination, portable_markdown(text, source_file, destination))
+    elsif relative.match?(/\.(txt|yaml|yml|json|toml)\z/i)
+      write_file(destination, File.read(source_file).gsub("\r\n", "\n"))
     else
       write_binary_file(destination, File.binread(source_file))
     end

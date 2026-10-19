@@ -5,7 +5,7 @@ description: Run or plan a repository's complete environment-scoped test and QA 
 
 # Full Suite Tests
 
-When login is needed, find the matching approved account in 1Password by site/domain and username, and use its credentials in the Codex internal browser. Prefer secure autofill; never expose passwords, OTPs, tokens, or recovery codes in chat, logs, screenshots, or saved artifacts. If 1Password needs unlocking or the matching login is unavailable, report the precise blocker.
+When login is needed, use the project-approved identity and secure credential manager or login flow. Prefer secure autofill. Never expose passwords, OTPs, tokens, recovery codes or session storage in chat, logs, screenshots or public artifacts. If credentials or login tooling are unavailable, report the precise blocker.
 
 Use this skill when the user asks for a full test or QA pass scoped to an environment such as `local`, `dev`, `staging`, `preview`, or `prod`.
 
@@ -91,7 +91,7 @@ Mandatory orchestration, token-saving, and safe-run posture:
 Default meaning:
 
 1. Discover the project's own definition of full validation.
-2. Discover the QA/QC catalog and run store, then materialize the complete environment-applicable check scope with reviewer `Codey` through `$qa-run`.
+2. Discover the QA/QC catalog and run store, then materialize the complete environment-applicable check scope with the configured reviewer through `$qa-run`.
 3. Build a complete suite inventory for the repo before running: catalog checks, deterministic tests, build/type/lint, integration/API, browser/e2e/computer-use, environment canaries, and documented manual smoke checklists. Map executable tests to stable catalog check IDs/keys.
 4. Run deterministic automated checks first and persist only the catalog results they directly prove.
 5. Verify environment/deploy health for the requested target.
@@ -135,7 +135,7 @@ Use `rg` and targeted file reads. Avoid broad scans of generated folders such as
    - Produce a suite inventory before execution. Include every discovered script/check/config file and every finish-line ledger test, and classify each as in-scope, blocked, not applicable, or explicitly excluded by the user. Do not omit configured suites because they are slow, browser-heavy, or previously passing.
    - Complete the core-feature test traceability audit before running: verify the referenced test/assertion and runnable command for each cataloged core behavior, note fixture/environment prerequisites, and flag any missing or ambiguous coverage. Preserve this matrix in the run artifact or QA ledger.
    - Discover the project's QA catalog/checklist, current catalog revision, prior attempts, run/session writer, evidence store, reviewer representation, and stable check identity. Prefer an authenticated dashboard API over direct database writes.
-   - Create the parent QA run with reviewer display name `Codey`, snapshot every active check applicable to the environment, read the scope back, and reconcile its selected count before running tests. If the project has no QA store, initialize the local `qa-run` artifacts instead.
+   - Create the parent QA run with the configured reviewer display name, snapshot every active check applicable to the environment, read the scope back, and reconcile its selected count before running tests. If the project has no QA store, initialize the local `qa-run` artifacts instead.
 
 2. Automated checks
    - Run the repo's canonical full deterministic suite.
@@ -161,8 +161,8 @@ Use `rg` and targeted file reads. Avoid broad scans of generated folders such as
    - For any real app with login, dashboard, account, admin, settings, data, billing, or other authenticated surfaces, a full suite is incomplete and must be reported as failed unless browser/e2e/manual coverage logs in with an approved test or QA user.
    - First look for project docs that name approved QA users, seeded auth sessions, or test credentials. Then inspect safe local env names only, such as `PLAYWRIGHT_AUTH_SESSION_FILE`, `PLAYWRIGHT_AUTH_SESSION_JSON`, `PLAYWRIGHT_AUTH_EMAIL`, `PLAYWRIGHT_AUTH_PASSWORD`, `QA_EMAIL`, `TEST_USER_EMAIL`, or project-specific equivalents. Do not print secret values.
    - If no auth session exists, create or recover one only through approved, production-safe flows for the target environment: test-user signup in local/dev, passwordless or forgot-password flows for approved QA aliases, or an app-supported auth fixture. Use email access when available to complete the login/recovery flow.
-   - Prefer `preston@splinteredglass.solutions` as the user's general cross-app QA identity when a project does not document a better one and the account is approved for the target environment. This email is a common QA/test account across apps the user builds.
-   - Codex is allowed and expected to complete auth for this QA identity during full-suite validation when Gmail or Superhuman access is available: trigger the app's real login, retrieve the OTP/passcode or magic link from that mailbox, complete login, save/reuse the browser or Playwright auth state, and run the authenticated suite. Do not ask the user for the OTP or treat "no auth session was already present" as a blocker before attempting this path.
+   - Resolve the approved QA identity from current project configuration; never use a publisher or maintainer account by default.
+   - Complete OTP or magic-link authentication only through a currently authorized mailbox and login flow. If unavailable, record the exact access blocker.
    - For production, do not treat missing credentials as an acceptable pass. Report missing authenticated QA access as a full-suite failure/incomplete result, continue only with clearly labeled unauthenticated/public checks for supplemental evidence, and state plainly that most of the app was not tested.
    - Do not use real customer accounts, invite real users, reset passwords for non-approved accounts, or create/modify paid production subscriptions unless the user explicitly approves that exact action.
 
@@ -210,7 +210,7 @@ Use `rg` and targeted file reads. Avoid broad scans of generated folders such as
    - State whether authenticated coverage ran. If it did not, and the app has any authenticated surface, lead the report with a failure status and explicitly say that the suite did not test most of the app behind login. Do not bury this as a secondary blocker after public passes.
    - End with a high-level loop summary: total loops run out of the cap, failure groups found in each pass, what changed, what passed locally before deployment, deployment identifiers for hosted loops, hosted retest results, how the failures were solved or why they remain blocked, and any implications that should be reviewed to ensure the fixes did not unintentionally change app scope or functionality.
    - If a run-log convention exists, update it. Otherwise create a dated log only when the run is substantial or browser/manual coverage is performed.
-   - Include a "QA/QC persistence" section: storage mode, run/session ID or path, reviewer `Codey`, catalog revision, selected/result counts, per-outcome rollup, read-back proof, dashboard/local synchronization status, and any checks whose persistence failed.
+   - Include a "QA/QC persistence" section: storage mode, run/session ID or path, the configured reviewer, catalog revision, selected/result counts, per-outcome rollup, read-back proof, dashboard/local synchronization status, and any checks whose persistence failed.
 
 ## Safety Rules
 

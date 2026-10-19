@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Resume interrupted agent work after a limit, pause, network cutout, app reload, context compaction, or stalled thread. Use when the user invokes /continue, says continue, resume, pick back up, keep going, do not restart, or asks the agent to continue the exact work already underway without losing context, existing sessions, scoped approvals, proof layers, or the next action-time gate.
+Resume interrupted Codex work after a limit, pause, network cutout, app reload, context compaction, or stalled thread. Use when the user invokes /continue, says continue, resume, pick back up, keep going, do not restart, or asks Codex to continue the exact work already underway without losing context, existing sessions, scoped approvals, proof layers, or the next action-time gate.
 
 ## Portability Notes
 

@@ -1,7 +1,7 @@
 ---
 name: session-budget
 display_name: Session Budget
-description: Use when agent work is long, ambiguous, cross-repo, high-cost, repeatedly
+description: Use when Codex work is long, ambiguous, cross-repo, high-cost, repeatedly
   looping, or needs task-type budget rules; includes checkpoints for debugging, build
   work, planning, research/transcripts, QA/review, automation, and communication so
   sessions produce artifacts instead of open-ended token burn.

@@ -1,7 +1,7 @@
 ---
 name: sleep
 display_name: Sleep
-description: Pause the current the agent task for a requested duration before continuing
+description: Pause the current Codex task for a requested duration before continuing
   or processing queued user work. Use when the user says sleep, wait, pause for a
   specific amount of time, delay the next response, or asks for a prompt-level equivalent
   of sleep().

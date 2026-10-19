@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Save one or more local agent skills into the public SGS_skills GitHub repo, including skill files, agents metadata, slash-command wrappers, portable playbooks, docs/index updates, validation, commit, and push. Use when the user asks to save, archive, publish, commit, or push a custom skill to SGS_skills, or invokes the save-skill slash command for selected skill content.
+Save one or more local agent skills into the public <skills-repo> GitHub repo, including skill files, agents metadata, slash-command wrappers, portable playbooks, docs/index updates, validation, commit, and push. Use when the user asks to save, archive, publish, commit, or push a custom skill to <skills-repo>, or invokes the save-skill slash command for selected skill content.
 
 ## Portability Notes
 
@@ -30,12 +30,12 @@ Save one or more local agent skills into the public SGS_skills GitHub repo, incl
 ## Overview
 
 Use this skill to persist the user's custom agent skills into
-`<workspace>/SGS_skills` and push the result to GitHub. The output is a
+`<workspace>/<skills-repo>` and push the result to GitHub. The output is a
 repo commit containing the requested skill archive, command wrapper when
 available, index/docs updates, and regenerated portable playbooks.
 
 This is a repo-push workflow. It may mutate only local skill files when the user
-provides new skill content, and the `SGS_skills` repo. It must not deploy,
+provides new skill content, and the `<skills-repo>` repo. It must not deploy,
 message people, mutate production systems, change databases, alter protected
 branches, or touch unrelated work.
 
@@ -47,7 +47,7 @@ Accept any of these forms:
 - `$save-skill <agent-config>/skills/recap/SKILL.md`
 - `$save-skill <agent-config>/skills/recap`
 - selected/pasted `<skill>...</skill>` content with a `name` and `path`
-- "save this skill to SGS git"
+- "save this skill to the configured skills repository"
 
 If the user says `/save skill`, normalize that to the `save-skill` skill and
 slash command. If multiple skills are named, process them in one commit.
@@ -56,12 +56,12 @@ slash command. If multiple skills are named, process them in one commit.
 
 - Local skills root: `<agent-config>/skills`
 - Local commands root: `<agent-config>/commands`
-- Public archive repo: `<workspace>/SGS_skills`
-- Repo skills archive: `<workspace>/SGS_skills/skills`
-- Repo command archive: `<workspace>/SGS_skills/commands`
-- Repo skill index: `<workspace>/SGS_skills/docs/custom-skill-index.md`
+- Public archive repo: `<workspace>/<skills-repo>`
+- Repo skills archive: `<workspace>/<skills-repo>/skills`
+- Repo command archive: `<workspace>/<skills-repo>/commands`
+- Repo skill index: `<workspace>/<skills-repo>/docs/custom-skill-index.md`
 - Portable generator:
-  `<workspace>/SGS_skills/scripts/generate-portable-playbooks.rb`
+  `<workspace>/<skills-repo>/scripts/generate-portable-playbooks.rb`
 
 ## Workflow
 
@@ -72,7 +72,7 @@ slash command. If multiple skills are named, process them in one commit.
    - Do not guess among multiple plausible skills. Ask only when the target is
      ambiguous.
 2. Inspect repo state.
-   - Run `git status --short --branch` in `<workspace>/SGS_skills`.
+   - Run `git status --short --branch` in `<workspace>/<skills-repo>`.
    - If unrelated dirty work exists, do not stage it. If it overlaps the skill
      being saved, read it and work with it rather than reverting.
 3. Validate local skill structure.
@@ -92,7 +92,7 @@ slash command. If multiple skills are named, process them in one commit.
    - Run the portable generator so generalized playbooks stay in sync:
 
 ```bash
-ruby <workspace>/SGS_skills/scripts/generate-portable-playbooks.rb
+ruby <workspace>/<skills-repo>/scripts/generate-portable-playbooks.rb
 ```
 
 6. Validate changed files.
@@ -104,15 +104,20 @@ python3 <agent-config>/skills/.system/skill-creator/scripts/quick_validate.py <a
 
    - If Python YAML dependencies are unavailable, use Ruby YAML parsing for
      `SKILL.md`, `agents/openai.yaml`, and the command wrapper frontmatter.
-   - Run a targeted markdown sanity check over the changed docs/playbooks:
-     unmatched fenced code blocks, missing files, and trailing whitespace.
+   - Read the destination repository’s publication policy and run its checked-in
+     public-library validator and metadata checks when present.
+   - Review the actual text, scripts, metadata and assets for personal defaults,
+     named customers, private topology and historical approvals. Word replacement
+     alone is insufficient. Include explicit prerequisites and configurable inputs.
+   - Validate links, Markdown fences, whitespace, script syntax and regenerated
+     copies; do not publish until all required checks and semantic review pass.
 7. Commit and push.
    - Stage only files related to the saved skill(s), docs/index updates, and
      generated portable playbooks.
    - Use a clear commit message such as:
      `chore: archive <skill-name> skill`
-   - Push to `origin/main`.
-   - Verify `git status --short --branch` is clean against `origin/main`.
+   - Push only to the verified remote and branch authorized by the current request.
+   - Verify `git status --short --branch` is clean against the verified upstream.
 
 ## Documentation Expectations
 
@@ -131,7 +136,7 @@ skill, the canonical repo doc is `docs/save-skill.md`.
 ## Safety Rules
 
 - Never include secrets, `.env` files, token-bearing logs, private portfolio
-  ledgers, or production data in `SGS_skills`.
+  ledgers, or production data in `<skills-repo>`.
 - Never stage unrelated dirty work.
 - Never run deploys, external messages, production mutations, DB permission
   changes, or protected-branch operations as part of this skill.

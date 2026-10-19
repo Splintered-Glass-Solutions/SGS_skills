@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Connect the agent to Google Stitch through the remote MCP endpoint and use Stitch projects as design context across repos. Use when a user wants to pull from Stitch, authenticate a Stitch MCP client, inspect or operate on Stitch projects, translate Stitch designs into product or code work, or troubleshoot Stitch MCP setup in the agent, Cursor, VSCode, Claude Code, Antigravity, or Gemini CLI.
+Connect Codex to Google Stitch through the remote MCP endpoint and use Stitch projects as design context across repos. Use when a user wants to pull from Stitch, authenticate a Stitch MCP client, inspect or operate on Stitch projects, translate Stitch designs into product or code work, or troubleshoot Stitch MCP setup in Codex, Cursor, VSCode, Claude Code, Antigravity, or Gemini CLI.
 
 ## Portability Notes
 
@@ -37,8 +37,8 @@ Use Stitch as a remote MCP-backed design source. Prefer API-key auth for simpler
 2. If not exposed, help the user configure their MCP client against `https://stitch.googleapis.com/mcp`.
 3. Prefer API-key auth unless the user explicitly needs OAuth or project-billed access.
 4. Once connected, use Stitch as design context for implementation, review, export, or project discovery work.
-5. If setup or auth details are needed, read [authentication.md](./references/authentication.md).
-6. If tool capabilities or likely operations are needed, read [tools-and-usage.md](./references/tools-and-usage.md).
+5. If setup or auth details are needed, read [authentication.md](references/authentication.md).
+6. If tool capabilities or likely operations are needed, read [tools-and-usage.md](references/tools-and-usage.md).
 
 ## Default Approach
 
@@ -55,16 +55,16 @@ Use Stitch as a remote MCP-backed design source. Prefer API-key auth for simpler
 - Use OAuth when the client expects `Authorization: Bearer ...` and `X-Goog-User-Project`, or when the user explicitly wants the Google Cloud project flow.
 - If the user pasted a live API key or token into chat, warn them to rotate it after setup or after the turn if exposure risk matters.
 
-## the agent-Specific Guidance
+## Codex-Specific Guidance
 
 - Check available MCP resources/templates first. If Stitch is not exposed in-session, say so plainly and shift into setup guidance.
-- For agent work, prefer helping the user attach Stitch MCP at the client level rather than inventing unsupported in-thread access.
+- For Codex work, prefer helping the user attach Stitch MCP at the client level rather than inventing unsupported in-thread access.
 - If the user wants a reusable local setup, write config snippets that use placeholders or local secrets, not embedded live credentials.
 - If the user wants product or engineering work derived from Stitch, summarize what must be fetched from Stitch before implementation starts.
 
 ## Common Requests
 
-- "Connect the agent/Cursor/VSCode/Claude Code to my Stitch project."
+- "Connect Codex/Cursor/VSCode/Claude Code to my Stitch project."
 - "Pull the latest designs from Stitch and use them to implement this page."
 - "What Stitch MCP config do I need for API key auth?"
 - "Set up OAuth-based Stitch MCP access for my client."
@@ -80,5 +80,5 @@ Use Stitch as a remote MCP-backed design source. Prefer API-key auth for simpler
 
 ## References
 
-- [authentication.md](./references/authentication.md)
-- [tools-and-usage.md](./references/tools-and-usage.md)
+- [authentication.md](references/authentication.md)
+- [tools-and-usage.md](references/tools-and-usage.md)

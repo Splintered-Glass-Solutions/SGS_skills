@@ -29,7 +29,7 @@ PM project portfolio manager: use when the user asks to monitor, coordinate, pri
 
 ## Purpose
 
-Act as the user's the agent-native PM manager layer. Keep project work moving while
+Act as the user's Codex-native PM manager layer. Keep project work moving while
 protecting the user's attention for approvals, priority tradeoffs, customer-facing
 messages, production changes, and ambiguous strategic decisions.
 
@@ -62,7 +62,7 @@ messages, production changes, and ambiguous strategic decisions.
 - Closeout contract: `$CODEX_HOME/portfolio/templates/worker-closeout-contract.md`
 
 Read the project registry before broad project coordination. Read the thread
-registry before creating, reading, pinning, or messaging the agent project threads.
+registry before creating, reading, pinning, or messaging Codex project threads.
 The thread registry is also the routing contract for project-thread vs worker
 decisions. Each lane should be interpreted using:
 

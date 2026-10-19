@@ -19,7 +19,7 @@ The user invoked this command with: $ARGUMENTS
 
 ## Destination Rules
 
-- For example-project-12 ecosystem work, use `<workspace>/example-project-1/sideline_features/`.
+- Use the current project’s configured shared-docs folder for cross-system plans.
 - For other repositories, use `<repo-root>/sideline_features/` unless a clear local equivalent already exists.
 - Inspect existing folders and references before renaming anything.
 - Do not rename existing folders if it would break manifests, links, governance docs, automations, or unrelated work.

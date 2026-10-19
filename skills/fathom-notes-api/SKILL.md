@@ -1,6 +1,6 @@
 ---
 name: fathom-notes-api
-description: Use when accessing the user's Fathom meeting notes, summaries, action items, transcripts, or Fathom-recorded meeting archives; especially when the ChatGPT/Fathom connector is connected in the UI but no callable Fathom tool is exposed. Covers Fathom API key loading, meeting listing, transcript fetching, Eric-isms capture, Fathom Actions recovery, and safe handling of Fathom secrets.
+description: Use when accessing the user's Fathom meeting notes, summaries, action items, transcripts, or Fathom-recorded meeting archives; especially when the ChatGPT/Fathom connector is connected in the UI but no callable Fathom tool is exposed. Covers Fathom API key loading, meeting listing, transcript fetching, speaker-attributed quote capture, Fathom Actions recovery, and safe handling of Fathom secrets.
 metadata:
   short-description: Access Fathom notes via API
 ---
@@ -50,15 +50,15 @@ Use `include_transcript=true` only for small, targeted pulls. For broader scans,
 
 ## Standard Workflow
 
-1. Use the live local shell clock as date authority when the task has a time window.
-2. Convert local America/Chicago window boundaries to UTC for Fathom filters:
+1. Use the user-provided date and timezone context, or verify the local clock when the task has a time window.
+2. Convert window boundaries in the user-selected timezone to UTC for Fathom filters:
    - `created_after=...Z`
    - `created_before=...Z`
 3. Probe identity if needed:
    - Try `GET /team_members` and `GET /teams`.
-   - These may return empty for the user's key. If so, infer the user from successful `recorded_by[]=user@example.com` results.
+   - These may return empty for the user's key. If so, resolve the authorized recording owner from the request or configuration.
 4. List the user-recorded meetings:
-   - `GET /meetings?include_summary=true&include_action_items=true&created_after=...&created_before=...&recorded_by[]=user@example.com`
+   - `GET /meetings?include_summary=true&include_action_items=true&created_after=...&created_before=...&recorded_by[]=owner@example.com`
 5. Also list accessible meetings in the same window without `recorded_by[]`.
 6. De-duplicate by `recording_id`.
 7. Identify relevant meetings using multiple signals:
@@ -90,7 +90,7 @@ Use `scripts/fathom_api.mjs` for repeatable listing/fetching:
 node <agent-config>/skills/fathom-notes-api/scripts/fathom_api.mjs meetings \
   --start 2026-06-02T05:00:00Z \
   --end 2026-06-08T20:31:52Z \
-  --recorded-by user@example.com \
+  --recorded-by owner@example.com \
   --out /tmp/fathom/meetings.json
 ```
 

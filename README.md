@@ -7,6 +7,8 @@ SGS helps teams turn AI ambition into practical, governed work: clearer
 planning, better context, safer execution, stronger QA, and systems people can
 actually adopt. This repository is the public library behind that approach.
 
+**New here?** [Set up the library for your environment](docs/getting-started.md).
+
 **Start here:** [AI Best Practices](packages/ai-best-practices/README.md) ·
 [Skill catalog](docs/custom-skill-index.md) · [Portable playbooks](portable-agent-playbooks/README.md)
 

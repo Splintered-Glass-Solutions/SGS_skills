@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Use when the user asks to broadly improve a project, make it better, audit product quality, UI/UX, design, copy, code quality, testing gaps, graphics, polish, or user delight with orchestrator-mode, autonomous loops, agent-safe-run guardrails, bounded subagents or delegated project threads, active monitoring/review of delegated work, and queued checkpoints instead of early blocking.
+Use when the user asks to broadly improve a project, make it better, audit product quality, UI/UX, design, copy, code quality, testing gaps, graphics, polish, or user delight with orchestrator-mode, autonomous loops, codex-safe-run guardrails, bounded subagents or delegated project threads, active monitoring/review of delegated work, and queued checkpoints instead of early blocking.
 
 ## Portability Notes
 
@@ -38,7 +38,7 @@ Security is secondary. Flag only obvious trust, privacy, or safety issues that
 materially affect product confidence unless the user explicitly asks for a deep
 security audit.
 
-Default to pairing this skill with `$orchestrator-mode` and `$agent-safe-run`.
+Default to pairing this skill with `$orchestrator-mode` and `$codex-safe-run`.
 When changes are allowed, also pair it with `$autonomous-feature-build`. If the
 work is broad, high-cost, QA-heavy, multi-file, multi-repo, ambiguous, or likely
 to benefit from independent review, make an explicit delegation decision and use
@@ -127,7 +127,7 @@ inspect key artifacts before relying on them.
 
 ## Safe-Run Guardrails
 
-Follow `$agent-safe-run` throughout long or noisy work:
+Follow `$codex-safe-run` throughout long or noisy work:
 
 - keep the main thread lean
 - prefer targeted `rg`, bounded reads, and short command output

@@ -104,6 +104,8 @@ SGS resource library. Each entry links to its Codex-native `SKILL.md`.
 
 ## Demo production
 
+- [`product-demo-prep`](../skills/product-demo-prep/SKILL.md): rehearse a source-backed demo using your own product, environment and approved fixtures.
+
 - [`demo-video-production`](../skills/demo-video-production/SKILL.md): record real product footage and produce one narrated Remotion/ElevenLabs/FFmpeg demo for review before continuing a series. Includes voice audition guidance and capture verification; does not publish or send.
 
 ## Additional workflows (October 2026)

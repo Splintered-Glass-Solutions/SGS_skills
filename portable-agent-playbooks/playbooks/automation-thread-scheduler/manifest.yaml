@@ -1,11 +1,11 @@
 ---
 name: automation-thread-scheduler
 display_name: Automation Thread Scheduler
-description: 'Create or repair the agent automations and scheduled monitors with thread
+description: 'Create or repair Codex automations and scheduled monitors with thread
   hygiene: prefer same-thread heartbeat automations, prevent recurring cron thread
   spam, add an emoji-prefixed automation thread title, remove or pause duplicate standalone
   schedules, and preserve automation memory/checkpoints. Use when the user asks to
-  create, schedule, update, repair, convert, or clean up a the agent automation, monitor,
+  create, schedule, update, repair, convert, or clean up a Codex automation, monitor,
   reminder, recurring run, heartbeat, or scheduled skill.'
 source: skills/automation-thread-scheduler/SKILL.md
 entrypoint: AGENT.md

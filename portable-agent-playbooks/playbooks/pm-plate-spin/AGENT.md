@@ -25,11 +25,6 @@ PM plate spin: run a project-local "spin the plates" pass for the project where 
 
 ## Instructions
 
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
-
 # PM Plate Spin
 
 ## Overview
@@ -106,16 +101,8 @@ resolved invocation project:
 - Existing repo/docs artifacts in the current project only, as needed to confirm
   a safe next move.
 
-If the invocation project itself is a example-project-12 or example-project-13 shared-docs project, treat
-its shared docs as umbrella context for that project:
-
-- example-project-12 umbrella context: `<workspace>/example-project-1`
-- example-project-13 umbrella context: `<workspace>/example-project-3`
-
-Use implementation repos only when they are inside the resolved project scope
-and the task is scoped execution, validation, QA, or code changes. When the
-invocation project is not one of those shared-docs projects, do not reach into
-their docs or implementation repositories.
+Resolve umbrella context and implementation repositories from the project registry.
+Do not assume a particular company’s repository family.
 
 ## Idle Classification
 
@@ -128,7 +115,7 @@ Classify each lane with one status:
   escalation.
 - `continue_thread`: an open/unread or persistent thread has useful continuation
   context.
-- `ask_shared_docs`: example-project-12 or example-project-13 needs umbrella planning context before
+- `ask_shared_docs`: the project needs umbrella planning context before
   choosing work.
 - `safe_spin_ready`: a small bounded task can move the lane without approval.
 - `no_action`: no meaningful next move, duplicate, or too risky without more
@@ -224,7 +211,7 @@ Keep the canonical label text after the icon.
 🌀 PLATE SPIN STATUS:
 😴 IDLE LANES:
 🧵 OPEN/UNREAD THREADS:
-⚠️ WAITING ON PRESTON:
+⚠️ WAITING ON USER:
 🔴 BLOCKED / ESCALATE:
 🟢 SAFE SPINS:
 🧭 READY PROMPTS:

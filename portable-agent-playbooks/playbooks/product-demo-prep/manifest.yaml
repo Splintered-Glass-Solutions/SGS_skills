@@ -1,0 +1,14 @@
+---
+name: product-demo-prep
+display_name: Product Demo Prep
+description: Prepare a source-backed product demo, rehearse realistic customer tasks,
+  diagnose weak answers and produce a verified agenda without inventing product behavior.
+source: skills/product-demo-prep/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

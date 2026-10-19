@@ -63,7 +63,7 @@ branch, product change, deployment, or shared-database mutation.
 ## Handoff Contract
 
 The execution task must create a committed Batch Manifest from the accepted
-Batch Brief at `.agent/batches/<batch-id>.md` in each affected worktree. The
+Batch Brief at `.codex/batches/<batch-id>.md` in each affected worktree. The
 manifest carries the baseline SHA, planned items, touched areas, commits,
 validation, deferred work, and final closeout integration SHA through
 `collapse-bulk-edits-thread`.

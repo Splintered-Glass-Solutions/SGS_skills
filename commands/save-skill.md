@@ -1,5 +1,5 @@
 ---
-description: Save a local Codex skill into SGS_skills, regenerate playbooks, commit, and push.
+description: Save a local Codex skill into <skills-repo>, regenerate playbooks, commit, and push.
 argument-hint: [skill-name-or-path]
 ---
 
@@ -14,7 +14,7 @@ The user invoked this command with: $ARGUMENTS
    selected skill content to archive.
 3. If `$ARGUMENTS` is empty, infer the skill from selected text when it contains
    a clear `<skill>` block or path. Otherwise ask which skill to save.
-4. Archive the skill into `<workspace>/SGS_skills`, update docs/indexes,
+4. Archive the skill into `<workspace>/<skills-repo>`, update docs/indexes,
    regenerate portable playbooks, validate, commit, and push.
 
 ## Guardrails

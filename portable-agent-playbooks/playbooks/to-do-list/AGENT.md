@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Put the current the agent task into to-do-list gathering mode. Use when the user says to start a to-do list, wants to collect related tasks for later, or invokes $to-do-list. Capture each actionable item as a concise planning note without planning, implementing, messaging, or executing it.
+Put the current Codex task into to-do-list gathering mode. Use when the user says to start a to-do list, wants to collect related tasks for later, or invokes $to-do-list. Capture each actionable item as a concise planning note without planning, implementing, messaging, or executing it.
 
 ## Portability Notes
 
@@ -36,7 +36,7 @@ list.
 
 ## Gathering workflow
 
-1. Rename the current the agent task with the `📋` prefix. If this is the first
+1. Rename the current Codex task with the `📋` prefix. If this is the first
    message and the current name is only a generic or invocation-derived title,
    use `📋 <useful topic-specific name>` based on the first substantive to-do
    item. Otherwise, preserve the existing thread name exactly after the

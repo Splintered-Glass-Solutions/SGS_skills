@@ -2,11 +2,6 @@
 name: build-it
 description: Carry a bounded feature batch through model-routed planning, sequential implementation, review, local integration, authorized deployment and proof.
 ---
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
-
 # Build It
 
 Carry the supplied feature or bounded batch through the sequence below in the
@@ -18,7 +13,7 @@ not start a product build.
 
 ## Invocation and autonomous handoffs
 
-Example: `$build-it add Astra to example-project-12 with the agreed credit pricing`.
+Example: `$build-it add Astra to sample-app with the agreed credit pricing`.
 
 An invocation requesting execution authorizes the named scope through all
 phases, including local integration and the deployment target rule below.

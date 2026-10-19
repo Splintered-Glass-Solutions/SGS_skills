@@ -1,10 +1,10 @@
 ---
 name: to-do-list
 display_name: To Do List
-description: Put the current the agent task into to-do-list gathering mode. Use when
-  the user says to start a to-do list, wants to collect related tasks for later, or
-  invokes $to-do-list. Capture each actionable item as a concise planning note without
-  planning, implementing, messaging, or executing it.
+description: Put the current Codex task into to-do-list gathering mode. Use when the
+  user says to start a to-do list, wants to collect related tasks for later, or invokes
+  $to-do-list. Capture each actionable item as a concise planning note without planning,
+  implementing, messaging, or executing it.
 source: skills/to-do-list/SKILL.md
 entrypoint: AGENT.md
 target_platforms:

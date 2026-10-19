@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Log, append, report, or backfill work time in a local per-project JSONL ledger. Use when the user asks to track time for example-project-13, example-project-12, example-project-14, example-project-15, example-project-16, example-project-5, example-project-17, SGS, or another client project. New time entries are local-only; ClickUp is historical source data only.
+Log, append, report, or backfill work time in a local per-project JSONL ledger. Use when the user requests local time tracking or a time report. New entries are local-only; ClickUp is historical source data only.
 
 ## Portability Notes
 
@@ -25,18 +25,13 @@ Log, append, report, or backfill work time in a local per-project JSONL ledger. 
 
 ## Instructions
 
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
-
 # Local Time Tracking
 
 ## Storage
 
 Keep one append-only ledger at the client project root:
 
-`<project-root>/.agent/time_tracking.jsonl`
+`<project-root>/.codex/time_tracking.jsonl`
 
 The ledger is intentionally not Git tracked. Add the exact path to that
 checkout's `.git/info/exclude`; do not change the committed `.gitignore` just
@@ -51,8 +46,8 @@ Each line is one JSON object with this shape:
   "time": "HH:MM",
   "minutes": 90,
   "description": "Short, work-specific description",
-  "project": "example-project-13",
-  "timezone": "America/Chicago",
+  "project": "sample-project",
+  "timezone": "Etc/UTC",
   "source": "manual",
   "source_id": null,
   "source_duration_ms": null,
@@ -75,7 +70,8 @@ Use the user-approved canonical client root. Related repositories for one client
 
 1. Identify the project and its canonical root.
 2. Determine the local date, start time, and duration in minutes. Use
-   America/Chicago unless the user gives another timezone.
+   the user/project timezone; use UTC only as an explicit fallback. Pass the
+   resolved timezone to the helper with `--timezone`.
 3. Write a concise description that names the actual work.
 4. Append one JSON object with `source: "manual"`, or use `source: "clickup"`
    and the ClickUp entry ID only for a historical backfill.
@@ -90,10 +86,10 @@ matching local ledger.
 
 ```bash
 python3 <agent-config>/skills/local-time-tracking/scripts/log_time.py \
-  --project-root <workspace>/example-project-3 \
+  --project-root <project-root> \
   --date 2026-08-13 --time 14:30 --minutes 45 \
-  --description "example-project-13 release validation and QA evidence" \
-  --project example-project-13
+  --description "Release validation and QA evidence" \
+  --project sample-project
 ```
 
 The command is safe to repeat when `--source-id` is supplied for imported

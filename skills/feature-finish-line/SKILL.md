@@ -2,11 +2,6 @@
 name: feature-finish-line
 description: Finish accepted feature work with meaningful coverage, required data gates, QA records and docs. Marketing is opt-in; full-app testing is separate.
 ---
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
-
 # Feature Finish Line
 
 ## When called by build-it
@@ -85,7 +80,7 @@ End with a concise handoff:
 - Tests and checks run.
 - Feature test coverage added or confirmed, including the exact behavior asserted.
 - Finish-line coverage ledger: every issue/behavior mapped to exact automated tests, with the direct command and full-suite command that exercise each test.
-- QA/QC catalog records: every issue/behavior mapped to a created, updated, unchanged, or pending-import specification with the project record ID, stable key/identity, local file, database/dashboard sync state, and validation evidence; include exact `check_id` and `coverage_key` for example-project-12.
+- QA/QC catalog records: every issue/behavior mapped to a created, updated, unchanged, or pending-import specification with the project record ID, stable key/identity, local file, database/dashboard sync state, and validation evidence; use the project’s stable behavior identifiers.
 - Local/browser verification performed.
 - Docs updated, including shared docs status.
 - Release notes/social copy prepared or explicitly marked not applicable.

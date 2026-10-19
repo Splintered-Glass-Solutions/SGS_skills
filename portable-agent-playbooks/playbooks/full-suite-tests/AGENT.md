@@ -27,7 +27,7 @@ Run or plan a repository's complete environment-scoped test and QA suite, includ
 
 # Full Suite Tests
 
-When login is needed, find the matching approved account in 1Password by site/domain and username, and use its credentials in the the agent internal browser. Prefer secure autofill; never expose passwords, OTPs, tokens, or recovery codes in chat, logs, screenshots, or saved artifacts. If 1Password needs unlocking or the matching login is unavailable, report the precise blocker.
+When login is needed, use the project-approved identity and secure credential manager or login flow. Prefer secure autofill. Never expose passwords, OTPs, tokens, recovery codes or session storage in chat, logs, screenshots or public artifacts. If credentials or login tooling are unavailable, report the precise blocker.
 
 Use this skill when the user asks for a full test or QA pass scoped to an environment such as `local`, `dev`, `staging`, `preview`, or `prod`.
 
@@ -95,10 +95,10 @@ If a previous or current `feature-finish-line` run produced a finish-line covera
 
 Mandatory orchestration, token-saving, and safe-run posture:
 
-- Always use the `token-saver`, `orchestrator-mode`, `agent-safe-run`, and `qa-run` skills before starting broad checks or running full-suite tests. For authenticated live UI coverage, also use `authenticated-browser-testing`. Treat these as part of this skill even when the user does not mention them separately.
+- Always use the `token-saver`, `orchestrator-mode`, `codex-safe-run`, and `qa-run` skills before starting broad checks or running full-suite tests. For authenticated live UI coverage, also use `authenticated-browser-testing`. Treat these as part of this skill even when the user does not mention them separately.
 - Keep the active thread as the orchestrator for decomposition, validation strategy, delegated evidence review, and final synthesis.
-- Make an explicit delegation decision before broad execution. For broad, high-cost, multi-suite, browser-heavy, or log-heavy runs, normally launch bounded the agent subagents for independent discovery, coverage slices, or log reduction when the slices can stand alone. Skip subagents only for a concrete reason and state it.
-- Minimize the agent token usage during test execution. Do not stream full test, build, browser, deploy, or CI logs into the chat.
+- Make an explicit delegation decision before broad execution. For broad, high-cost, multi-suite, browser-heavy, or log-heavy runs, normally launch bounded Codex subagents for independent discovery, coverage slices, or log reduction when the slices can stand alone. Skip subagents only for a concrete reason and state it.
+- Minimize Codex token usage during test execution. Do not stream full test, build, browser, deploy, or CI logs into the chat.
 - Redirect verbose command output to dated files under `/tmp` or the repo's documented QA output folder, then read only compact summaries, targeted failures, and short log tails.
 - Prefer compact milestone updates over repeated progress narration. Report status changes and actionable failures, not unchanged polling output.
 - Avoid watches, live monitors, broad process dumps, full artifact dumps, full Playwright traces, full screenshots lists, and repeated unchanged CI/status polling.
@@ -113,7 +113,7 @@ Mandatory orchestration, token-saving, and safe-run posture:
 Default meaning:
 
 1. Discover the project's own definition of full validation.
-2. Discover the QA/QC catalog and run store, then materialize the complete environment-applicable check scope with reviewer `Codey` through `$qa-run`.
+2. Discover the QA/QC catalog and run store, then materialize the complete environment-applicable check scope with the configured reviewer through `$qa-run`.
 3. Build a complete suite inventory for the repo before running: catalog checks, deterministic tests, build/type/lint, integration/API, browser/e2e/computer-use, environment canaries, and documented manual smoke checklists. Map executable tests to stable catalog check IDs/keys.
 4. Run deterministic automated checks first and persist only the catalog results they directly prove.
 5. Verify environment/deploy health for the requested target.
@@ -148,7 +148,7 @@ Use `rg` and targeted file reads. Avoid broad scans of generated folders such as
 ## Execution Order
 
 1. Preflight
-   - Invoke `$token-saver`, `$orchestrator-mode`, `$agent-safe-run`, and `$qa-run` as mandatory setup for broad test execution.
+   - Invoke `$token-saver`, `$orchestrator-mode`, `$codex-safe-run`, and `$qa-run` as mandatory setup for broad test execution.
    - State the objective, task class, success bar, and delegation decision before widening the run.
    - Record repo path, branch, commit, dirty git state, requested environment, target URL, and known deploy/build identifier when applicable.
    - Locate any finish-line coverage ledger from this thread, repo QA docs, PR notes, branch docs, or recent finish-line report. If a ledger exists, import it into the suite inventory before execution. If the user specifically asks to validate recent finish-line work and no ledger can be found, report that as a coverage accounting blocker and reconstruct the issue-to-test mapping from diffs/tests before running broad checks.
@@ -157,7 +157,7 @@ Use `rg` and targeted file reads. Avoid broad scans of generated folders such as
    - Produce a suite inventory before execution. Include every discovered script/check/config file and every finish-line ledger test, and classify each as in-scope, blocked, not applicable, or explicitly excluded by the user. Do not omit configured suites because they are slow, browser-heavy, or previously passing.
    - Complete the core-feature test traceability audit before running: verify the referenced test/assertion and runnable command for each cataloged core behavior, note fixture/environment prerequisites, and flag any missing or ambiguous coverage. Preserve this matrix in the run artifact or QA ledger.
    - Discover the project's QA catalog/checklist, current catalog revision, prior attempts, run/session writer, evidence store, reviewer representation, and stable check identity. Prefer an authenticated dashboard API over direct database writes.
-   - Create the parent QA run with reviewer display name `Codey`, snapshot every active check applicable to the environment, read the scope back, and reconcile its selected count before running tests. If the project has no QA store, initialize the local `qa-run` artifacts instead.
+   - Create the parent QA run with the configured reviewer display name, snapshot every active check applicable to the environment, read the scope back, and reconcile its selected count before running tests. If the project has no QA store, initialize the local `qa-run` artifacts instead.
 
 2. Automated checks
    - Run the repo's canonical full deterministic suite.
@@ -179,12 +179,12 @@ Use `rg` and targeted file reads. Avoid broad scans of generated folders such as
    - Production: verify target URL and health using production-safe actions only.
 
 4. Authenticated test-user setup
-   - Read and follow `<agent-config>/skills/authenticated-browser-testing/SKILL.md`. Use the the agent internal browser for every authenticated live UI workflow. Reuse a valid session with the approved identity and role, or find and use the matching login in 1Password before declaring authentication blocked.
+   - Read and follow `<agent-config>/skills/authenticated-browser-testing/SKILL.md`. Use the Codex internal browser for every authenticated live UI workflow. Reuse a valid session with the approved identity and role, or find and use the matching login in 1Password before declaring authentication blocked.
    - For any real app with login, dashboard, account, admin, settings, data, billing, or other authenticated surfaces, a full suite is incomplete and must be reported as failed unless browser/e2e/manual coverage logs in with an approved test or QA user.
    - First look for project docs that name approved QA users, seeded auth sessions, or test credentials. Then inspect safe local env names only, such as `PLAYWRIGHT_AUTH_SESSION_FILE`, `PLAYWRIGHT_AUTH_SESSION_JSON`, `PLAYWRIGHT_AUTH_EMAIL`, `PLAYWRIGHT_AUTH_PASSWORD`, `QA_EMAIL`, `TEST_USER_EMAIL`, or project-specific equivalents. Do not print secret values.
    - If no auth session exists, create or recover one only through approved, production-safe flows for the target environment: test-user signup in local/dev, passwordless or forgot-password flows for approved QA aliases, or an app-supported auth fixture. Use email access when available to complete the login/recovery flow.
-   - Prefer `the user@splinteredglass.solutions` as the user's general cross-app QA identity when a project does not document a better one and the account is approved for the target environment. This email is a common QA/test account across apps the user builds.
-   - the agent is allowed and expected to complete auth for this QA identity during full-suite validation when Gmail or Superhuman access is available: trigger the app's real login, retrieve the OTP/passcode or magic link from that mailbox, complete login, save/reuse the browser or Playwright auth state, and run the authenticated suite. Do not ask the user for the OTP or treat "no auth session was already present" as a blocker before attempting this path.
+   - Resolve the approved QA identity from current project configuration; never use a publisher or maintainer account by default.
+   - Complete OTP or magic-link authentication only through a currently authorized mailbox and login flow. If unavailable, record the exact access blocker.
    - For production, do not treat missing credentials as an acceptable pass. Report missing authenticated QA access as a full-suite failure/incomplete result, continue only with clearly labeled unauthenticated/public checks for supplemental evidence, and state plainly that most of the app was not tested.
    - Do not use real customer accounts, invite real users, reset passwords for non-approved accounts, or create/modify paid production subscriptions unless the user explicitly approves that exact action.
 
@@ -215,7 +215,7 @@ Use `rg` and targeted file reads. Avoid broad scans of generated folders such as
    - Default to a maximum of 5 loops. If the user explicitly gives a lower cap, honor the lower cap. If the user asks for more than 5 loops, pause at loop 5 with a compact status report and ask before continuing.
    - For `local`, validate fixes against the local suite and local app. For hosted `dev`, `staging`, or `preview`, validate locally first, then use the documented non-production deployment path only when the exact deployment is already authorized. Otherwise record the hosted retest as blocked and report the exact next action needed.
    - For `prod` or `production`, do not deploy or mutate production as part of the loop unless the user explicitly approves that exact production action. Production loops are read-only by default and should stop at a local or non-prod fix plus a clear production validation blocker when deployment would be required.
-   - Continue looping while the next step is under the agent control and reasonably safe: code fixes, test fixes, config corrections, fixture cleanup, local service restarts, retrying flaky third-party reads, recovering approved auth sessions, and adding missing documented setup. Include non-production redeploys only under separate valid deployment authority.
+   - Continue looping while the next step is under Codex control and reasonably safe: code fixes, test fixes, config corrections, fixture cleanup, local service restarts, retrying flaky third-party reads, recovering approved auth sessions, and adding missing documented setup. Include non-production redeploys only under separate valid deployment authority.
    - Stop looping only when the suite is green, the loop cap is reached, or the remaining issue is blocked by something outside the current agent run: missing/expired credentials that cannot be recovered through approved paths, access or billing limits, unavailable third-party services, required human product/scope decision, production-safety approval, destructive data migration approval, account owner action, or another dependency that cannot be resolved from the repo/session.
    - Do not label ordinary test failures, unclear code paths, slow suites, or broad logs as blockers until a focused diagnosis has shown that the next useful step requires outside input or would exceed approved safety boundaries.
    - Keep a compact loop log with loop number, failure groups, hypotheses, local changes/actions, focused local retests, broader local retests, deployment identifier when applicable, hosted retest command/result, and whether the loop expanded or narrowed the remaining failure set.
@@ -232,7 +232,7 @@ Use `rg` and targeted file reads. Avoid broad scans of generated folders such as
    - State whether authenticated coverage ran. If it did not, and the app has any authenticated surface, lead the report with a failure status and explicitly say that the suite did not test most of the app behind login. Do not bury this as a secondary blocker after public passes.
    - End with a high-level loop summary: total loops run out of the cap, failure groups found in each pass, what changed, what passed locally before deployment, deployment identifiers for hosted loops, hosted retest results, how the failures were solved or why they remain blocked, and any implications that should be reviewed to ensure the fixes did not unintentionally change app scope or functionality.
    - If a run-log convention exists, update it. Otherwise create a dated log only when the run is substantial or browser/manual coverage is performed.
-   - Include a "QA/QC persistence" section: storage mode, run/session ID or path, reviewer `Codey`, catalog revision, selected/result counts, per-outcome rollup, read-back proof, dashboard/local synchronization status, and any checks whose persistence failed.
+   - Include a "QA/QC persistence" section: storage mode, run/session ID or path, the configured reviewer, catalog revision, selected/result counts, per-outcome rollup, read-back proof, dashboard/local synchronization status, and any checks whose persistence failed.
 
 ## Safety Rules
 

@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Analyze the current the agent conversation or selected text for repeated, reusable workflows that should become skills, dedupe candidates against the installed skill catalog, and create or improve high-confidence user-level agent skills with picker metadata and slash-command wrappers. Use when the user asks to save patterns from a thread as skills, mine a conversation for reusable commands, create skills from repeated instructions, or invokes the save-skills slash command.
+Analyze the current Codex conversation or selected text for repeated, reusable workflows that should become skills, dedupe candidates against the installed skill catalog, and create or improve high-confidence user-level agent skills with picker metadata and slash-command wrappers. Use when the user asks to save patterns from a thread as skills, mine a conversation for reusable commands, create skills from repeated instructions, or invokes the save-skills slash command.
 
 ## Portability Notes
 
@@ -37,7 +37,7 @@ Do not confuse it with `$save-skill`:
 
 - `$save-skills` discovers and creates reusable skills from conversation
   patterns.
-- `$save-skill` archives already-created skills to the private `SGS_skills`
+- `$save-skill` archives already-created skills to the configured skills
   repository, commits, and pushes them.
 
 Do not push to Git from this skill unless the user explicitly also requests
@@ -69,7 +69,7 @@ history.
 
 1. Read and follow:
    - `<agent-config>/skills/.system/skill-creator/SKILL.md`
-   - `<agent-config>/skills/agent-slash-command-skill/SKILL.md`
+   - `<agent-config>/skills/codex-slash-command-skill/SKILL.md`
 2. Inventory existing user-level skills and slash wrappers:
 
 ```bash

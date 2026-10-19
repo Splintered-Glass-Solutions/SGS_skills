@@ -2,11 +2,6 @@
 name: codex-slash-command-skill
 description: Create or repair user-level Codex skills that should appear in the slash picker or behave like slash commands. Use when the user asks to make a workflow into a slash command, create a slash-command skill, expose a skill in the picker, fix a skill that is not showing up, or mirror an existing user-level Codex command/skill pattern under ~/.codex.
 ---
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
-
 # Codex Slash Command Skill
 
 ## Overview
@@ -32,7 +27,7 @@ When the user asks for a `/command`, a slash command, or a skill that should sho
 
 - Use lowercase letters, digits, and hyphens only.
 - Keep the folder name, `SKILL.md` frontmatter `name`, `agents/openai.yaml` `default_prompt`, and optional command filename aligned.
-- Prefer the shortest clear name, such as `sideline-feature`, `interview-spec`, or `example-project-13-feature-release-update`.
+- Prefer the shortest clear name, such as `sideline-feature`, `interview-spec`, or `sample-app-feature-release-update`.
 - Preserve existing misspelled or older folders as aliases unless the user explicitly asks to rename or remove them.
 
 ## Required File Shapes

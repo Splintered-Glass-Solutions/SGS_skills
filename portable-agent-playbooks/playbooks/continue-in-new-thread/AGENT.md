@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Continue a context-heavy the agent task in a new thread by transferring its essential decisions, evidence, constraints, and next actions. Use when the current thread is becoming too large to work reliably or the user asks for a fresh continuation thread.
+Continue a context-heavy Codex task in a new thread by transferring its essential decisions, evidence, constraints, and next actions. Use when the current thread is becoming too large to work reliably or the user asks for a fresh continuation thread.
 
 ## Portability Notes
 

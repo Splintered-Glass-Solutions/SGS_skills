@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Prepare one scoped the agent editing task and isolated local worktree from the confirmed dev baseline, using an approved Batch Brief and a committed Batch Manifest. Use when the user says "bulk edits thread", wants one focused task ready to receive many related edits, or asks to start an isolated local editing lane. Always enforce agent-safe-run throughout.
+Prepare one scoped Codex editing task and isolated local worktree from the confirmed dev baseline, using an approved Batch Brief and a committed Batch Manifest. Use when the user says "bulk edits thread", wants one focused task ready to receive many related edits, or asks to start an isolated local editing lane. Always enforce codex-safe-run throughout.
 
 ## Portability Notes
 
@@ -50,11 +50,11 @@ that request.
    assets as a release boundary, not an automatic blocker. Do not make
    topology-dependent implementation or deployment assumptions until this
    mapping is known.
-3. **Mandatory safe-run gate:** Read and follow `agent-safe-run` before any repository action, and keep its token-budget and compact-output rules active for the entire bulk-edits task. Take one `agent-safe-monitor.sh --once` snapshot at the start. Do not start persistent monitors, streaming CI checks, verbose process dumps, or unnecessary Browser/Computer Use/MCP sessions.
+3. **Mandatory safe-run gate:** Read and follow `codex-safe-run` before any repository action, and keep its token-budget and compact-output rules active for the entire bulk-edits task. Take one `codex-safe-monitor.sh --once` snapshot at the start. Do not start persistent monitors, streaming CI checks, verbose process dumps, or unnecessary Browser/Computer Use/MCP sessions.
 4. Read and follow the current `reanme-chat`, `local-dev-consolidation`, and
    `spin-up-local` skills before acting. Use `session-budget` when the
    repository has many active branches/worktrees or an overlap is ambiguous.
-5. Rename the current the agent task first by prefixing its existing name with
+5. Rename the current Codex task first by prefixing its existing name with
    `✍️BULK - `, preserving the existing thread name exactly after the prefix.
    Do not create, fork, archive, or hand off a task.
 6. Run an isolation preflight against every affected repository:
@@ -67,11 +67,11 @@ that request.
      fixture);
    - stop with a decision item if an overlapping writable batch exists.
 7. Create one uniquely named local branch and worktree from the fetched dev
-   tip, such as `agent/bulk-<scope-slug>-YYYYMMDD`. Add a numeric suffix when
+   tip, such as `codex/bulk-<scope-slug>-YYYYMMDD`. Add a numeric suffix when
    needed; never reuse a date-only bulk branch. Preserve all existing user work
    before switching contexts.
 8. Create and commit a non-secret Batch Manifest at
-   `.agent/batches/<batch-id>.md` in each affected worktree. It must record:
+   `.codex/batches/<batch-id>.md` in each affected worktree. It must record:
    batch ID; scope and exclusions; repository/worktree/branch; baseline dev
    ref/SHA; planned item IDs and acceptance criteria; touched areas and overlap
    zones; commits; validation evidence; deferred work; and a blank
@@ -106,7 +106,7 @@ that request.
 - Never create or use an unapproved local or shared database. Use only the
   configured target when the app requires database access, and do not run
   migrations during this workflow.
-- Keep `agent-safe-run` active throughout: use one-shot checks, capped/file-backed logs, and concise delta-only updates. Do not use watchers or start extra Desktop threads, agents, Browser/Computer Use, or MCP-heavy sessions unless the task requires them.
+- Keep `codex-safe-run` active throughout: use one-shot checks, capped/file-backed logs, and concise delta-only updates. Do not use watchers or start extra Desktop threads, agents, Browser/Computer Use, or MCP-heavy sessions unless the task requires them.
 - Do not claim readiness until consolidation validation passes and the local app or service is reachable.
 - If incompatible product directions or unsafe work prevent a single branch, stop with a concise decision item instead of guessing.
 

@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Evaluate the immediately preceding the agent result and conditionally execute any explicitly requested next action or ordered action chain only when that result clearly succeeded; otherwise return a compact blocker-and-decision recap. Use for gated commands, skills, reviews, deployments, communications, or closeout workflows.
+Evaluate the immediately preceding Codex result and conditionally execute any explicitly requested next action or ordered action chain only when that result clearly succeeded; otherwise return a compact blocker-and-decision recap. Use for gated commands, skills, reviews, deployments, communications, or closeout workflows.
 
 ## Portability Notes
 

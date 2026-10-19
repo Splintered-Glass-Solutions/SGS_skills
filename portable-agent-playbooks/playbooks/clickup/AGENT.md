@@ -25,14 +25,9 @@ Use when creating, updating, finding, summarizing, or organizing ClickUp tasks, 
 
 ## Instructions
 
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
-
 # ClickUp
 
-Use this as the general ClickUp operating guide. If a more specific skill applies, such as `example-project-13-clickup`, use that skill's defaults for workspace, list, assignees, statuses, and project conventions.
+Use this as the general ClickUp operating guide. If a more specific skill applies, such as an installed project-specific task workflow, use that skill's defaults for workspace, list, assignees, statuses, and project conventions.
 
 ## Workflow
 

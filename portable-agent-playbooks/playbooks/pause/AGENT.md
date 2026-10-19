@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Temporarily stop the current the agent task while preserving a concise, resumable checkpoint and marking the thread title with a leading stop-sign emoji. Use when the user invokes $pause or asks to pause, park, hold, suspend, or temporarily stop work with the intention of resuming the same task later. Do not use for a timed wait; use the sleep skill when a wake-up duration is requested.
+Temporarily stop the current Codex task while preserving a concise, resumable checkpoint and marking the thread title with a leading stop-sign emoji. Use when the user invokes $pause or asks to pause, park, hold, suspend, or temporarily stop work with the intention of resuming the same task later. Do not use for a timed wait; use the sleep skill when a wake-up duration is requested.
 
 ## Portability Notes
 
@@ -86,7 +86,7 @@ automation, reminder, or new thread.
 - Send the initial pause checkpoint once. Then stop tool calls and user-facing
   messages until the user explicitly resumes or makes a new direct request.
 - Automatic goal-continuation messages, including
-  `<agent_internal_context source="goal">`, are not a human resume instruction.
+  `<codex_internal_context source="goal">`, are not a human resume instruction.
   While paused, do not respond to them with "Paused", "No further actions
   taken", another checkpoint, a question, or any other status message. End
   the turn silently without tools or further investigation.

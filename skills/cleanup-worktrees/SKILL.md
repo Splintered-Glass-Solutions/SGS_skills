@@ -2,11 +2,6 @@
 name: cleanup-worktrees
 description: Audit Codex worktrees by actual chat inactivity, preserve unfinished work with sideline-feature, close inactive chats, and remove verified recoverable worktrees. Use for stale worktree or disk cleanup; skill creation and audit requests do not authorize deletion.
 ---
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
-
 # Cleanup Worktrees
 
 Use the shared [repository worktree lifecycle contract](../repo-worktree-lifecycle/references/operating-contract.md)
@@ -61,8 +56,7 @@ Proceed only for candidates covered by the user's cleanup authorization.
    source block that checkout.
 2. **Sideline the exact owning chat.** Read its turns and use `$sideline-feature`
    to save completed work, dated proof, unfinished scope, decisions, paths/SHAs,
-   recovery links and a resume plan in canonical `sideline_features/`. example-project-12
-   uses `example-project-1`. Update the index and keep packets outside removed
+   recovery links and a resume plan in canonical `sideline_features/`. Use the project’s configured shared-docs repository when applicable. Update the index and keep packets outside removed
    worktrees. Completed tasks need a short closeout packet that sidelines only
    their unresolved follow-up scope.
 3. **Close the target with `$close-thread`.** Keep 🗄️ as the sole leading marker,

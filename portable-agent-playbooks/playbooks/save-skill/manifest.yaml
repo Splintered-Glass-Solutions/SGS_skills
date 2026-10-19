@@ -1,11 +1,11 @@
 ---
 name: save-skill
 display_name: Save Skill
-description: Save one or more local agent skills into the public SGS_skills GitHub
+description: Save one or more local agent skills into the public <skills-repo> GitHub
   repo, including skill files, agents metadata, slash-command wrappers, portable playbooks,
   docs/index updates, validation, commit, and push. Use when the user asks to save,
-  archive, publish, commit, or push a custom skill to SGS_skills, or invokes the save-skill
-  slash command for selected skill content.
+  archive, publish, commit, or push a custom skill to <skills-repo>, or invokes the
+  save-skill slash command for selected skill content.
 source: skills/save-skill/SKILL.md
 entrypoint: AGENT.md
 target_platforms:

@@ -75,7 +75,7 @@ Read and apply the relevant skills before acting:
   overlap checks, dirty-`dev` preservation, and the later merge contract.
 - `$test` for feature-scoped deterministic, integration, local-stack, and
   browser evidence.
-- `$agent-safe-run` for one-shot/file-backed logs and process discipline.
+- `$codex-safe-run` for one-shot/file-backed logs and process discipline.
 - `$session-budget` for a compact checkpoint when the thread crosses repos,
   environments, auth, billing, migrations, or repeated failures.
 

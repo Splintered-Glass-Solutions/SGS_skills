@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-PM delegate: delegate highlighted or selected portfolio work to the correct the agent project agent, bounded worker, or approval queue. Use from any PM-capable thread when the user highlights a blocker, next action, task packet, or PM update line and asks to delegate it.
+PM delegate: delegate highlighted or selected portfolio work to the correct Codex project agent, bounded worker, or approval queue. Use from any PM-capable thread when the user highlights a blocker, next action, task packet, or PM update line and asks to delegate it.
 
 ## Portability Notes
 
@@ -24,11 +24,6 @@ PM delegate: delegate highlighted or selected portfolio work to the correct the 
   actions.
 
 ## Instructions
-
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
 
 # PM Delegate
 
@@ -195,7 +190,7 @@ When the route is `persistent_project_thread`:
 
 1. Confirm `thread_id` is not `TBD` and `binding_status` is `verified_existing`.
 2. Confirm the selected work fits `when_to_message_this_thread`.
-3. Send a bounded prompt only when current authority permits internal the agent
+3. Send a bounded prompt only when current authority permits internal Codex
    thread messaging and the work is genuinely continuity/fan-in/closeout.
 4. Include `PROJECT_AGENT_ROLE: PM_ORCHESTRATOR_NOT_WORKER`, a stop condition,
    and required closeout. If the prompt contains executable repo work, direct
@@ -225,22 +220,9 @@ current turn.
 
 ## Portfolio-Specific Routing Notes
 
-- Broad example-project-12 project-agent/orchestrator context should prefer
-  `<workspace>/example-project-1`; scoped app QA and implementation
-  should use `<workspace>/example-project-12`.
-- Broad example-project-13 project-agent/orchestrator context should prefer
-  `<workspace>/example-project-3`; scoped frontend/backend/stage work
-  should use the matching implementation repo.
-- Persistent Project Agents are PM lanes. They should route implementation, QA,
-  source research, screenshots, validation, cleanup, and other execution to
-  fresh bounded worker threads, then monitor and report back. Do not reuse them
-  as catch-all worker threads.
-- Garden.io hygiene, finish-line QA, visual checks, and isolated website/app
-  fixes should usually become bounded workers.
-- Personal ops, client communications, and support/customer-facing work must not
-  send external messages unless the user explicitly asks to send.
-- Production deploys, production jobs, protected branches, and DB permission
-  changes always require an `ACTION_PROPOSAL`.
+- Resolve umbrella/shared-documentation versus implementation context from the
+  project registry. Broad coordination belongs in the configured project context;
+  scoped implementation belongs in its verified checkout.
 
 ## Output Shape
 

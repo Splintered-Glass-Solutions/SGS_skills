@@ -1,8 +1,8 @@
 ---
 name: continue-in-new-thread
 display_name: Continue In New Thread
-description: Continue a context-heavy the agent task in a new thread by transferring
-  its essential decisions, evidence, constraints, and next actions. Use when the current
+description: Continue a context-heavy Codex task in a new thread by transferring its
+  essential decisions, evidence, constraints, and next actions. Use when the current
   thread is becoming too large to work reliably or the user asks for a fresh continuation
   thread.
 source: skills/continue-in-new-thread/SKILL.md

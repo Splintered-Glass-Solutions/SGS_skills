@@ -8,8 +8,8 @@ description: "Monitor a shared testing or QA discussion thread with a temporary 
   dispatch parallel triage and fix slices, batch fixes across one or more repos, run
   full-suite-tests locally and in the requested hosted environment, deploy through
   PRs to dev or another non-production target, and post release notes back to the
-  relevant thread. Use when the user asks the agent to watch a group text, Slack,
-  Teams, email, or other testing thread during a coordinated test sweep and fix reported
+  relevant thread. Use when the user asks Codex to watch a group text, Slack, Teams,
+  email, or other testing thread during a coordinated test sweep and fix reported
   bugs until the temporary testing window ends."
 source: skills/group-testing-thread/SKILL.md
 entrypoint: AGENT.md

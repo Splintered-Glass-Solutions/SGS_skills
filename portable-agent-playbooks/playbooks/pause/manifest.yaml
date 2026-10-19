@@ -1,10 +1,10 @@
 ---
 name: pause
 display_name: Pause
-description: Temporarily stop the current the agent task while preserving a concise,
-  resumable checkpoint and marking the thread title with a leading stop-sign emoji.
-  Use when the user invokes $pause or asks to pause, park, hold, suspend, or temporarily
-  stop work with the intention of resuming the same task later. Do not use for a timed
+description: Temporarily stop the current Codex task while preserving a concise, resumable
+  checkpoint and marking the thread title with a leading stop-sign emoji. Use when
+  the user invokes $pause or asks to pause, park, hold, suspend, or temporarily stop
+  work with the intention of resuming the same task later. Do not use for a timed
   wait; use the sleep skill when a wake-up duration is requested.
 source: skills/pause/SKILL.md
 entrypoint: AGENT.md

@@ -9,7 +9,7 @@ Apply this contract to any Git repository. Repository instructions and the share
 - Within one build batch, reuse the batch worktree across items and workers sequentially. Do not create a new worktree for every worker or phase.
 - Identify and record the canonical local development branch that future feature work should branch from, including its path/ref/SHA and its relationship to the mapped remote development release ref. Start new local feature branches from its verified current HEAD.
 - Use a primary checkout only when it is clean, the task has exclusive write ownership, and repository guidance allows it. Never switch, reset, clean, or repurpose a dirty primary checkout to start a task.
-- Never check out the same local branch in two worktrees. Use a unique task branch such as `agent/<scope>-<date>-<short-id>`; inspect existing refs before creating it.
+- Never check out the same local branch in two worktrees. Use a unique task branch such as `codex/<scope>-<date>-<short-id>`; inspect existing refs before creating it.
 - Before the first write, record in the task ledger or manifest: task/owner, repository path and remote, worktree path, branch, exact base ref/SHA, scoped files or overlap areas, current dirty/untracked state, and intended release lane. Keep the record updated when ownership or state changes.
 
 ## 2. Work in parallel safely

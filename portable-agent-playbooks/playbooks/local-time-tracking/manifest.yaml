@@ -2,10 +2,8 @@
 name: local-time-tracking
 display_name: Local Time Tracking
 description: Log, append, report, or backfill work time in a local per-project JSONL
-  ledger. Use when the user asks to track time for example-project-13, example-project-12,
-  example-project-14, example-project-15, example-project-16, example-project-5, example-project-17,
-  SGS, or another client project. New time entries are local-only; ClickUp is historical
-  source data only.
+  ledger. Use when the user requests local time tracking or a time report. New entries
+  are local-only; ClickUp is historical source data only.
 source: skills/local-time-tracking/SKILL.md
 entrypoint: AGENT.md
 target_platforms:

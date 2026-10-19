@@ -45,7 +45,7 @@ Support both forms:
   Fathom meeting. If there are multiple equally plausible matches, ask one
   concise question rather than silently choosing.
 
-Use America/Chicago for relative dates and preserve the meeting's original
+Use the user/project timezone for relative dates and preserve the meeting's original
 date, participants, title, and source links in the internal working context.
 
 ## Source recovery order

@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Use when agent work is long, ambiguous, cross-repo, high-cost, repeatedly looping, or needs task-type budget rules; includes checkpoints for debugging, build work, planning, research/transcripts, QA/review, automation, and communication so sessions produce artifacts instead of open-ended token burn.
+Use when Codex work is long, ambiguous, cross-repo, high-cost, repeatedly looping, or needs task-type budget rules; includes checkpoints for debugging, build work, planning, research/transcripts, QA/review, automation, and communication so sessions produce artifacts instead of open-ended token burn.
 
 ## Portability Notes
 
@@ -27,7 +27,7 @@ Use when agent work is long, ambiguous, cross-repo, high-cost, repeatedly loopin
 
 # Session Budget
 
-Use this skill to keep agent work bounded, useful, and reusable. The goal is not a hard token cap; it is a clear objective, right-sized context, early checkpoints, and evidence before continued iteration.
+Use this skill to keep Codex work bounded, useful, and reusable. The goal is not a hard token cap; it is a clear objective, right-sized context, early checkpoints, and evidence before continued iteration.
 
 ## First Classification
 

@@ -29,7 +29,7 @@ PM clean unreads: use for PM-style cleanup of unread agent threads when the user
 
 ## Overview
 
-Run a conservative unread cleanup pass for the agent project-management hygiene.
+Run a conservative unread cleanup pass for Codex project-management hygiene.
 The goal is to remove unread noise only when the thread is truly complete and
 no longer needs the user's attention.
 

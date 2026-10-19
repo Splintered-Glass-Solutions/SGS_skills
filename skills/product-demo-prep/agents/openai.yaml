@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Demo Prep"
+  short_description: "Prepare and verify a source-backed product demo"
+  default_prompt: "Use $product-demo-prep to prepare and rehearse this demo in the authorized environment."

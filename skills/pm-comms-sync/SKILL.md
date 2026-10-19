@@ -6,11 +6,6 @@ description: >-
   surfaces. Use when the user wants to refresh comms monitoring outside the
   scheduled four-hour automation or validate the PM comms monitor.
 ---
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
-
 # PM Comms Sync
 
 ## Overview
@@ -35,17 +30,12 @@ for the run and duplicate checks pass.
 
 ## Required Preflight
 
-Read these first:
-
-- `<agent-config>/portfolio/comms/source-registry.md`
-- `<agent-config>/portfolio/comms/comms-ledger.jsonl`
-- `<agent-config>/portfolio/pm-ledger-clickup-model.md`
-- `<agent-config>/automations/pm-comms-monitor-every-4-hours-2/memory.md`
-
-Use source-specific memory before rescanning:
-
-- `<agent-config>/automations/nightly-email-task-triage/memory.md`
-- `<agent-config>/automations/example-project-13-feedback-issue-monitor/memory.md`
+Resolve a local source registry, communication ledger, deduplication keys and
+checkpoint location from the current request or project configuration. Inspect
+only the explicitly approved accounts/channels and read prior checkpoints before
+fetching deltas. If no setup exists, create a local schema/template after the user
+selects sources; do not assume any installed automation, personal portfolio or
+provider account. Task creation remains disabled until explicitly authorized.
 
 ## Source Scan Order
 

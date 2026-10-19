@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Pause the current the agent task for a requested duration before continuing or processing queued user work. Use when the user says sleep, wait, pause for a specific amount of time, delay the next response, or asks for a prompt-level equivalent of sleep().
+Pause the current Codex task for a requested duration before continuing or processing queued user work. Use when the user says sleep, wait, pause for a specific amount of time, delay the next response, or asks for a prompt-level equivalent of sleep().
 
 ## Portability Notes
 

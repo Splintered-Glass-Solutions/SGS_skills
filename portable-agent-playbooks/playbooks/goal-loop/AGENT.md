@@ -27,7 +27,7 @@ Turn current work into an explicit goal and keep going to completion, using inde
 
 # Goal Loop
 
-Use this when the agent is already working on a user-requested task without an explicit goal and should keep going until the deliverable is complete. For code changes, completion means release-ready implementation. This does not authorize publishing, deployment, or other gated release actions.
+Use this when Codex is already working on a user-requested task without an explicit goal and should keep going until the deliverable is complete. For code changes, completion means release-ready implementation. This does not authorize publishing, deployment, or other gated release actions.
 
 ## Start the goal
 

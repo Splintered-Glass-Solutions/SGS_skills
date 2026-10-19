@@ -1,7 +1,7 @@
 ---
 name: cleanup-worktrees
 display_name: Cleanup Worktrees
-description: Audit agent worktrees by actual chat inactivity, preserve unfinished
+description: Audit Codex worktrees by actual chat inactivity, preserve unfinished
   work with sideline-feature, close inactive chats, and remove verified recoverable
   worktrees. Use for stale worktree or disk cleanup; skill creation and audit requests
   do not authorize deletion.

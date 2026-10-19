@@ -1,49 +1,56 @@
-# Mac capture and editing setup
+# Capture and Edit
 
-These are tested operational lessons from the September 2026 FCA workflow, not permanent device or dependency assumptions.
+## Select a capture surface
 
-## Capture
+Use the available authorized capture tool for the current operating system.
+Verify the exact browser/profile, window and display with a short preview.
+Do not assume a monitor name, device index, resolution or previous permission.
+Pause if the chosen tool cannot isolate the authorized surface.
 
-Use the authorized computer-control tool for UI interaction. FFmpeg recording requires authorization when the active computer-control rules restrict alternative capture methods. The FCA session explicitly authorized it; that does not grant permission for unrelated future sessions.
-
-On the tested Mac, the external DELL display was `Capture screen 0`, 1920×1080. Reconfirm the display before capture. AVFoundation numeric device indices changed when a phone camera disconnected; prefer the verified screen device name.
-
-Example after verifying the target display and choosing a new output filename:
+On macOS, FFmpeg AVFoundation is one optional capture path. Inspect available
+devices and the installed tool's help before selecting a device. A bounded example,
+after replacing the verified screen input and choosing a fresh filename:
 
 ```sh
 ffmpeg -hide_banner -loglevel error \
-  -f avfoundation -framerate 30 -pixel_format uyvy422 -capture_cursor 1 \
-  -i 'Capture screen 0:none' -t 45 -an -r 30 \
+  -f avfoundation -framerate 30 -capture_cursor 1 \
+  -i "$VERIFIED_SCREEN_INPUT" -t 45 -an -r 30 \
   -c:v libx264 -preset veryfast -crf 18 -pix_fmt yuv420p \
-  test-recording.mp4
+  review-capture.mp4
 ```
 
-- Keep `-t` bounded. `none` and `-an` prevent microphone/audio capture; narration is added later.
-- Keep explicit output `-r 30`; input timing alone produced misleading frame-rate behavior.
-- Use an interactive terminal session if early stopping with `q` is needed; otherwise let the bounded capture finalize normally.
-- Do not directly launch `com.apple.screencaptureui` on this setup: it produced repeated “application can't be opened” dialogs. Use the proven authorized capture path instead.
-- Check fullscreen framing and hide browser sidebar/address history before recording. Do not use a crop to claim that an unintended capture never happened; retain originals privately and share only clean cuts.
-- Refresh accessibility state after UI actions. Some Arc AX clicks focus controls without activating them; inspect the result before another action. Never blindly press Return after Send or Download. Downloads can succeed without a visible AX change.
-- In the embedded PDF viewer, thumbnail clicks were reliable. Setting a page/zoom field without focus then pressing Return could send the keystroke into chat. Focus the actual field or use visible buttons/thumbnails.
+`VERIFIED_SCREEN_INPUT` must select the approved screen without microphone audio.
+Verify that the local FFmpeg build accepts these options. On other platforms use
+an equivalent authorized recorder. Stop if capture permissions are unavailable.
+Check output framing, resolution and frame rate before the full recording.
 
-## Existing reusable implementation
+## Reuse the project editor
 
-The established local project is `<workspace>/bonfire-video-studio`. Inspect current status before editing and preserve unrelated changes. Look for `remotion/compositions/FcaDemo.tsx`, composition registration, `fca/` timeline manifests, and `public/fca/` media. Reuse the composition and manifest pattern when it fits rather than rebuilding a video engine.
+Inspect the current checkout and preserve unrelated work. Discover composition
+registration, scene manifests and media folders instead of assuming a local path.
+Read lockfiles before installation or upgrades and verify applicable licensing.
 
-The September 2026 implementation used Remotion 4.0.464 and React 19.2.6. Read current lockfiles before installing or upgrading. Confirm current Remotion license eligibility; the user reported a two-person company during the FCA project.
-
-Use real `OffthreadVideo` clips with scene audio, timed captions, and purposeful annotations. Make holds and compressed waits deliberate. Keep filenames, clip offsets, narration timing, and export settings in a manifest so small changes only require affected scenes to be regenerated.
-
-A typical render, adjusted to the existing entrypoint and composition:
+For Remotion, keep real video clips, scene audio, captions and annotations in a
+manifest so narrow edits regenerate only affected scenes. A typical render,
+adjusted to the project's actual entrypoint and composition:
 
 ```sh
-pnpm exec remotion render remotion/index.ts FcaDemo review-render.mp4 \
-  --props=fca/sample.json --codec=h264 --crf=18 --concurrency=4
+pnpm exec remotion render remotion/index.ts Demo review-render.mp4 \
+  --props=demo/sample.json --codec=h264 --crf=18 --concurrency=4
 ```
 
-Final processing can use H.264 video, 48 kHz AAC, faststart, and loudness normalization targeting roughly -16 LUFS with -1.5 dBTP. Prefer measured two-pass normalization for a final delivery master. Preserve a pre-normalized render and verify the actual final file.
+Verify installed CLI options and choose concurrency for available resources.
+Use another existing editor if Remotion is absent; report missing capabilities.
 
-Inspect with `ffprobe`, decode the complete output with FFmpeg, and inspect frames at scene boundaries as well as within scenes. A successful render or transcript match is not a listening review.
+## Validate the result
 
-- Verify exact source timestamps at important cuts. Low-frequency contact sheets can sample between nominal intervals; do not infer precise transitions solely from their grid position. Check the actual frame where narration names a result.
-- Distinguish labels for accelerated navigation ("Time shortened") and real processing waits ("Processing time shortened"). Insert short sentence-boundary pauses when narration would otherwise announce a result before it appears.
+Keep capture private until clean framing is confirmed. Use H.264 video, AAC audio
+and faststart when the destination supports them. Choose loudness to match the
+delivery specification; a common web-video target is about -16 LUFS and -1.5 dBTP.
+Keep the pre-normalized render and use measured normalization for final delivery.
+
+Inspect with `ffprobe`, decode the complete output with FFmpeg, listen to the final
+audio and inspect frames at scene boundaries and when narration names a result.
+Label accelerated navigation and shortened processing accurately. Verify captions
+after all timing edits. A successful render does not establish correctness,
+accessibility, licensing or user acceptance.

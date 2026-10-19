@@ -43,4 +43,4 @@ Resolve the project root in this order: an explicit project path in the request 
    - **Suppressed/deferred items:** explain the decision in plain language, especially when an item is duplicated, blocked, or lacks customer/device evidence.
    - **Reconciliation summary:** include freshness, coverage, contradictions, abstentions, zero-is-valid, artifact/image status, and commit status.
 
-   Explain that Preston can invoke `$discovery-accept-proposal` with a number plus an optional note. Do not implement anything.
+   Explain that the user can invoke `$discovery-accept-proposal` with a number plus an optional note. Do not implement anything.

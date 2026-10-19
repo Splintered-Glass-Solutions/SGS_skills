@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Run feature-scoped validation for only the feature or related features worked on recently in the current the agent task. Use when the user invokes $test or /test, asks to test the current feature, wants focused QA after recent implementation work, or wants the rigor of full-suite-tests without running unrelated repository suites.
+Run feature-scoped validation for only the feature or related features worked on recently in the current Codex task. Use when the user invokes $test or /test, asks to test the current feature, wants focused QA after recent implementation work, or wants the rigor of full-suite-tests without running unrelated repository suites.
 
 ## Portability Notes
 
@@ -184,7 +184,7 @@ surface exists or an explicit blocker prevents it. For an authenticated
 feature, public-only coverage cannot produce a passing result.
 
 Use project-specific test and QA skills when applicable. Use
-`orchestrator-mode` and `agent-safe-run` for multi-surface, browser-heavy,
+`orchestrator-mode` and `codex-safe-run` for multi-surface, browser-heavy,
 log-heavy, or otherwise costly runs. For a small deterministic pass, skip that
 overhead and state that the run is intentionally bounded.
 

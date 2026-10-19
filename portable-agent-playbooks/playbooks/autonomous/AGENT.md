@@ -27,7 +27,7 @@ Use with a feature or function request to build it through implementation and re
 
 # Autonomous
 
-Append `$autonomous` to a feature or function request when the user wants the agent
+Append `$autonomous` to a feature or function request when the user wants Codex
 to carry the work forward independently. Treat it as task-scoped authority to
 inspect, design, implement, make ordinary engineering decisions, and verify the
 requested outcome. Keep working through routine choices and compatible
@@ -68,7 +68,7 @@ empty. Keep source reads bounded, retain logs on disk, batch independent checks,
 and reuse unchanged proof instead of restarting discovery or validation.
 
 When the rules call for rotation, run
-[$continue-in-new-thread](../continue-in-new-thread/SKILL.md) without a routine
+[$continue-in-new-thread](../continue-in-new-thread/AGENT.md) without a routine
 approval pause, subject to current user limits and supported tool authority.
 Keep one compact project checkpoint with scope, decisions, checkout, proof,
 remaining work and next action. Carry the original permissions, goal status and

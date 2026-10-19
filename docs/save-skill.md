@@ -36,8 +36,7 @@ wrapper, portable playbook, and catalog entry aligned.
    ruby scripts/generate-portable-playbooks.rb
    ```
 
-6. Validate YAML/frontmatter, Markdown fences, links, and sensitive-content
-   scans.
+6. Run the commands in [publication checks](publication-boundary.md#required-publication-checks) and review the full diff for personal defaults and private dependencies.
 7. Review the full diff before committing and pushing.
 
 ## Safety boundary

@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Run before large, long-running, autonomous jobs to audit whether the agent has the repo context, target environments and accounts, credentials, database/API access, environment variables, approval classes, existing sessions, and validation path needed to finish without avoidable user interruption, then produce a reusable run contract for the executing skill.
+Run before large, long-running, autonomous jobs to audit whether Codex has the repo context, target environments and accounts, credentials, database/API access, environment variables, approval classes, existing sessions, and validation path needed to finish without avoidable user interruption, then produce a reusable run contract for the executing skill.
 
 ## Portability Notes
 
@@ -121,7 +121,7 @@ Ask for only the precise missing items. Prefer this style:
 
 ### 6. State The Autonomous Run Contract
 
-Explicitly define what the agent may do and what remains gated.
+Explicitly define what Codex may do and what remains gated.
 
 Common allowed actions:
 

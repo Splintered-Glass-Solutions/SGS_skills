@@ -39,7 +39,7 @@ collapse; do not silently switch to another checkout.
   and predecessor notes before editing.
 - Invoke `$token-saver` first, then use `$autonomous-feature-build` as the
   per-feature implementation orchestrator. Pair long or noisy work with
-  `$orchestrator-mode` and `$agent-safe-run`.
+  `$orchestrator-mode` and `$codex-safe-run`.
 - Create or resume one concrete goal and one compact execution ledger. Record
   the batch ID, feature ID, repo, worktree, branch, base SHA, current commit,
   migrations, tests, docs, blockers, and exact next action. Never record

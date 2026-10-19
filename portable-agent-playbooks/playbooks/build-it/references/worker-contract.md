@@ -4,7 +4,7 @@ Applies to user-authorized build-it execution and explicit build-plan,
 build-implement or sol-review requests. Build-it always routes item review to
 sol-review; its execution path does not call astra-review. A standalone
 astra-review request may use this contract for that independent review. Use
-same-task subagents, not new the agent sidebar tasks. The parent retains scope,
+same-task subagents, not new Codex sidebar tasks. The parent retains scope,
 ordering, authority, canonical ledger,
 integration, release and final proof. Subagents do not recursively orchestrate.
 

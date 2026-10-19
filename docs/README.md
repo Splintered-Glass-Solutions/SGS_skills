@@ -2,6 +2,8 @@
 
 Use this page to find the right layer of the SGS resource library.
 
+- [Getting started](getting-started.md): installation, runtime prerequisites and your own project bindings.
+
 ## Start with the outcome
 
 - [AI Best Practices](../packages/ai-best-practices/README.md): learn the

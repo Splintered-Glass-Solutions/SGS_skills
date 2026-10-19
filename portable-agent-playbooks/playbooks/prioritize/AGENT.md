@@ -6,7 +6,7 @@ platform that supports reusable instructions.
 
 ## Trigger
 
-Mark the current the agent task as a native priority by pinning it and setting its single leading title-status marker to a star. Use when the user invokes /prioritize, asks to prioritize, star, flag, pin, or elevate the current task.
+Mark the current Codex task as a native priority by pinning it and setting its single leading title-status marker to a star. Use when the user invokes /prioritize, asks to prioritize, star, flag, pin, or elevate the current task.
 
 ## Portability Notes
 
@@ -37,7 +37,7 @@ Mark the current the agent task as a native priority by pinning it and setting i
    If the normalized title already has exactly one `★` marker, leave the title
    unchanged and report that it is already prioritized.
 4. Pin the current task with the native thread-pinning tool. A pin places the
-   task in the agent's pinned-task ordering rather than ordinary recency sorting.
+   task in Codex's pinned-task ordering rather than ordinary recency sorting.
    Do not claim it can set a specific pin rank: the available tool has no
    priority-rank or reorder field.
 5. Do not create, archive, fork, or modify any other task.

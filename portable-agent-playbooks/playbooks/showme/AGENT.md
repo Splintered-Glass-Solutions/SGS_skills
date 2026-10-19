@@ -175,7 +175,7 @@ record the path in the handoff. Keep:
 
 After local artifacts are inspected, check the configured project-to-Google
 Drive mapping before offering team-share delivery. The mapping is external to
-this general skill and may be maintained in the agent project configuration; do not
+this general skill and may be maintained in Codex project configuration; do not
 hardcode folder IDs or infer a destination from a project name.
 
 - Keep the repository copy as the canonical evidence and release-note source.

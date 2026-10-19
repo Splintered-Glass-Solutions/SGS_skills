@@ -47,7 +47,7 @@ is closed while any affected repository remains unresolved.
 
 ## Phase 1: Audit before mutation
 
-1. Read the full current the agent task, including the initial bulk-edit scope,
+1. Read the full current Codex task, including the initial bulk-edit scope,
    subsequent edit requests, replies, test results, and closeout comments.
    Read each affected repository's committed Batch Manifest and treat its
    planned items, exclusions, commits, validation evidence, and blank
@@ -156,7 +156,7 @@ bulk-edit thread. If cleanup is not safe, leave it in place and report it.
 - If one repository succeeds and another is blocked, report the split result;
   do not remove the blocked repository's worktree or call the coordinated
   closeout complete.
-- Do not create a new the agent task or alter unrelated threads.
+- Do not create a new Codex task or alter unrelated threads.
 
 ## Completion report
 

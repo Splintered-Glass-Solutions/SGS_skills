@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 
 const BASE_URL = "https://api.fathom.ai/external/v1";
-const DEFAULT_SECRET_PATH = path.join(process.env.CODEX_HOME || path.join(os.homedir(), ".agent"), "secrets", "fathom.env");
+const DEFAULT_SECRET_PATH = path.join(process.env.CODEX_HOME || path.join(os.homedir(), ".codex"), "secrets", "fathom.env");
 
 function loadEnvFile(filePath) {
   if (!fs.existsSync(filePath)) return;

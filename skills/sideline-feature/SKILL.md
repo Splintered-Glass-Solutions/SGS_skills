@@ -2,11 +2,6 @@
 name: sideline-feature
 description: Capture and preserve scoped feature ideas, feature plans, product explorations, technical designs, or deferred implementation context into a dedicated sidelined-features folder, mark the current task with a 🗄️ sidelined prefix, and close the thread. Use when the user says to sideline, park, shelve, defer, backlog, save for later, preserve context, or organize a feature plan without implementing it.
 ---
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
-
 # Sideline Feature
 
 Use this skill when a feature has been explored or scoped but should not be implemented now. The goal is to preserve useful context in the right repository location without making it look like active implementation truth.
@@ -15,8 +10,7 @@ Use this skill when a feature has been explored or scoped but should not be impl
 
 1. Confirm the work is documentation-only unless the user explicitly requests code changes.
 2. Identify the target repository:
-   - For example-project-12 ecosystem work, prefer `<workspace>/example-project-1/sideline_features/`.
-   - For other repositories, use a repo-local `sideline_features/` folder at the repository root unless an existing equivalent folder is clearly established.
+   - For the current repository, use a repo-local `sideline_features/` folder at the repository root unless an existing equivalent folder is clearly established.
 3. Inspect existing folders and references before renaming anything.
    - Do not rename existing folders if doing so would break manifests, governance docs, links, imports, automations, or unrelated in-progress work.
    - If an older folder exists with a different name and is referenced elsewhere, create or use `sideline_features/` instead of churning existing structure.
@@ -24,7 +18,7 @@ Use this skill when a feature has been explored or scoped but should not be impl
 5. Save the feature packet as a dated Markdown file:
    - `YYYY-MM-DD_<short-feature-slug>.md`
    - Use lowercase words separated by hyphens or underscores consistently with the repo.
-6. Include front matter when the repo uses front matter. For example-project-12 shared docs, include:
+6. Include front matter when the repo uses front matter. A reusable schema may include:
    - `id`
    - `title`
    - `doc_type: feature_plan`
@@ -68,17 +62,12 @@ Every sidelined feature packet should include enough context for a future agent 
 
 Use `references/feature-packet-template.md` as the default structure when the repo has no better template.
 
-## example-project-12-Specific Rules
+## Shared-documentation projects
 
-For example-project-12, use `example-project-1/sideline_features/` for cross-system sidelined features. This is intentionally different from canonical system docs and from implementation repos.
-
-Preserve these boundaries:
-
-- `example-project-12/`, `example-project-7/`, and `example-project-6/` source repos remain implementation truth.
-- `example-project-1` can preserve cross-system feature context.
-- Sidelined feature docs are draft planning context, not customer-facing commitments or current production behavior.
-
-If the sidelined feature is system-specific but still strategic, keep it in shared docs and mark the relevant `source_repos`. If it is purely local to a non-example-project-12 repo, use that repo's local `sideline_features/`.
+Use a configured shared-docs repository for cross-system plans when the project
+has one. Source repositories remain implementation truth; sidelined documents
+are draft planning context. Record affected repositories without assuming a
+particular repository family or making customer-facing commitments.
 
 ## Safety Rules
 

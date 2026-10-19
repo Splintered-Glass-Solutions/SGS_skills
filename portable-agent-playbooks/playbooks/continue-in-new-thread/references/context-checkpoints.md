@@ -65,7 +65,7 @@ bounded source reads, and store raw logs/evidence on disk with concise pointers.
 
 ## Make a stable handoff
 
-When rotation is due, follow [Thread Handoff](../SKILL.md). The parent skills record
+When rotation is due, follow [Thread Handoff](../AGENT.md). The parent skills record
 the user's explicit request for automatic continuations; carry that instruction and
 the original invocation into the packet. Respect a later no-new-chat instruction,
 user pause, or tool restriction. Do not create chats merely while editing skills.

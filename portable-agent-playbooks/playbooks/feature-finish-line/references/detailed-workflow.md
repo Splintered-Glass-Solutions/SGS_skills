@@ -1,6 +1,3 @@
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
 ## Workflow
 
 1. Preflight the repo state.
@@ -59,20 +56,20 @@
    - Clearly distinguish focused tests executed during finish-line from broader tests reserved for a separate full-suite run.
 
 6. Create or update the QA/QC catalog records.
-   - Use `$qaqc-record-upsert` when available. If it is unavailable, read [references/qaqc-catalog-adapters.md](qaqc-catalog-adapters.md) completely. For example-project-12, also read [references/qaqc-catalog-write.md](qaqc-catalog-write.md) completely.
+   - Use `$qaqc-record-upsert` when available. If it is unavailable, read [references/qaqc-catalog-adapters.md](qaqc-catalog-adapters.md) completely.
    - Locate the project QA catalog and search for each issue/behavior by its stable identity/key, interface/route/job/tool, feature wording, issue title, source path, and test name.
    - Update the existing record when it represents the same behavior; otherwise create one new atomic record per independently executable behavior.
    - Populate the project’s required ownership, surface, behavior, prerequisites/fixtures, deterministic input or prompt when applicable, test steps, success criteria, environment scope, safety classification, source evidence, and readiness status. Never impose non-applicable fixture categories or store secrets/environment credentials.
    - Make the smallest local source-of-truth edit and run the project’s schema, identity/uniqueness, controlled-vocabulary, source-reference, checksum, and secret validations.
    - If the project has no central catalog, create `output/qa/<feature-slug>-qaqc-record.json`. Treat this as valid local persistence unless the project requires a central dashboard/database import.
-   - For example-project-12's unified database, treat validated additive QA/QC catalog upserts required by the current finish line as authorized non-destructive data setup. Apply them after target and schema verification unless a separately gated risk exists. For other projects, follow the project's canonical database boundary and the mandatory database completion gate.
-   - Record each disposition as `created`, `updated`, `unchanged`, or `pending import`, including the project’s record ID/stable key, local file, database/dashboard sync state, and blockers. Use `pending import` only when a separately gated risk, unresolved canonical target, or unavailable project writer prevents the authorized import; never use it to defer an otherwise safe required example-project-12 upsert.
+   - Synchronize database records only through the project-owned writer when the current task authorizes the exact target and operation; otherwise retain a validated pending-import artifact.
+   - Record each disposition as `created`, `updated`, `unchanged`, or `pending import`, including the project’s record ID/stable key, local file, database/dashboard sync state, and blockers. Use `pending import` only when a separately gated risk, unresolved canonical target, or unavailable project writer prevents the authorized import; do not claim database persistence until readback succeeds.
    - Do not mark finish-line complete if a changed behavior has no durable local QA record or explicit pending-import artifact.
 
 7. Review rollout and migration safety.
    - Identify any migrations, schema/type changes, seed/backfill scripts, env changes, deploy steps, queues/jobs, or provider credentials needed for the feature to actually work after code merge.
    - For every migration, inspect the exact SQL or migration code for destructive operations, table rewrites, enum/check changes, locking risk, backfill behavior, tenant isolation, RLS/policy/grant/ownership changes, indexes, rollback/forward-fix path, and compatibility with currently deployed code.
-   - For every required non-deployment external change such as env vars, cloud database migrations, seed/upsert/backfill scripts, billing products/prices/links, webhooks, queue/job setup, provider config, or one-off operational commands, inspect the exact command/payload first. Apply required safe canonical-database migrations and bounded feature data setup under this skill's standing authority. Run other operations only when they fall inside the inherited approval register and the safety review is clean.
+   - For every required non-deployment external change such as env vars, cloud database migrations, seed/upsert/backfill scripts, billing products/prices/links, webhooks, queue/job setup, provider config, or one-off operational commands, inspect the exact command/payload first. Apply required safe canonical-database migrations and bounded feature data setup only within current task authority. Run other operations only when they fall inside the inherited approval register and the safety review is clean.
    - For every deploy step, check compatibility between old code/new schema and new code/old schema, required env vars, feature flags, worker/job order, external provider scopes, and smoke-test plan.
    - Do not deploy to dev or production merely because deployment is needed.
      Deployment requires an exact task-scoped approval naming the repo, target,
@@ -94,7 +91,7 @@
    - Run any local setup, generation, migrations, seed commands, or data backfills only when they are clearly local and reversible.
    - Apply required safe migrations and bounded feature-specific data setup to
      the verified canonical database under the mandatory database completion
-     gate, including example-project-12's unified production-connected database. Run other
+     gate, after verifying the exact canonical target and authorization. Run other
      non-deployment operations only inside the inherited authorized target and
      approval register. Paid-service or billing changes, provider-account
      permissions, persistent access creation, and customer messaging remain
@@ -116,7 +113,7 @@
      explicitly requests those deliverables. Otherwise mark them not applicable.
    - Generate release-note draft material after validation and live-status classification. Keep production/public release notes unpublished unless production-live proof exists and the user has requested publication through the release workflow.
    - Keep required release documentation focused on changed behavior, validation and limitations. Include promotional copy, social copy, support/sales collateral and generated assets only in an explicitly requested package.
-   - Use the project’s feature-release/update workflow for team-facing release notes when the user asks for a package or delivery. For example-project-12, use `example-project-12-feature-release-update` for ClickUp, group text, or production update-log requests. Pass along any marketing asset package path or `asset-manifest.json` found or created in this finish-line run so release notes reuse those assets.
+   - Use the project’s feature-release/update workflow for team-facing release notes when the user asks for a package or delivery. Pass along any marketing asset package path or `asset-manifest.json` found or created in this finish-line run so release notes reuse those assets.
    - When marketing is applicable, use `marketing-asset-generation` after validation and live-status classification to create or reuse persona-specific promotional images without overstating deployment status.
    - When marketing is applicable, first run `<agent-config>/skills/marketing-asset-generation/scripts/find_marketing_asset_package.py --feature-name "<Feature Name>"` from the relevant repo. If it finds an `asset-manifest.json`, reuse that package and include its path in the handoff.
    - When marketing is applicable and no package exists, run the Marketing Asset Generation workflow to create the local package. If image generation is unavailable, include prompts and mark image rows as `planned`, `failed`, or `blocked` instead of pretending assets were generated.
@@ -128,7 +125,7 @@
    - Include a rollout section that states whether migrations, env updates, provider setup, billing setup, webhooks, queues/jobs, seeds/backfills, or deploys were needed, whether breaking-change review passed, exactly what was or was not executed, and what live verification proved.
    - Include a "Feature test coverage" line naming the exact test(s) added or reused for the feature, what behavior they assert, and whether authenticated/deployed coverage is complete or blocked.
    - Include a "Finish-line coverage ledger" section with one row per issue/behavior: issue title, root cause or failure mode, test file, test name/grep pattern, command that runs it directly, broader suite command that includes it, and current status.
-   - Include a "QA/QC catalog record" section with one row per issue/behavior: disposition, project record ID, stable key/identity, local catalog file, database/dashboard sync status, validation evidence, and remaining blocker. For example-project-12, report `check_id` and `coverage_key` explicitly.
+   - Include a "QA/QC catalog record" section with one row per issue/behavior: disposition, project record ID, stable key/identity, local catalog file, database/dashboard sync status, validation evidence, and remaining blocker. Report stable behavior IDs using the project’s schema.
    - Include a "Finish-line sequence status" section with one row for each of the 11 high-level steps: completed, incomplete, blocked, or not applicable, plus evidence or artifact path.
    - Include a "Marketing assets" section with reused/generated package path, asset manifest path, persona image statuses, screenshots, social copy status, and any blocked asset-generation reason.
    - Explicitly state whether the repo's full-suite definition now exercises every finish-line ledger test. If not, list exactly which tests are missing from full-suite and do not call the finish-line complete until that is fixed or blocked.

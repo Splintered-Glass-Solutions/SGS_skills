@@ -175,7 +175,7 @@ the recap. If saving is requested and no path is specified, choose a small
 plain-text markdown artifact under the relevant repo's `tmp/`, `output/`,
 `docs/qa/`, or another existing local convention. Report the exact path.
 
-Do not update the agent memory unless the user explicitly asks to update memory.
+Do not update Codex memory unless the user explicitly asks to update memory.
 
 ## Final Response
 

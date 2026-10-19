@@ -1,6 +1,6 @@
 # Source-derived principles
 
-Primary source: Nate B. Jones, [“15 Ways to Cut Token Waste in the agent and Claude”](https://unlock-ai.natebjones.com/guides/cut-token-waste), last verified by the publisher on 2026-07-28 and retrieved for this skill on 2026-08-05.
+Primary source: Nate B. Jones, [“15 Ways to Cut Token Waste in Codex and Claude”](https://unlock-ai.natebjones.com/guides/cut-token-waste), last verified by the publisher on 2026-07-28 and retrieved for this skill on 2026-08-05.
 
 Earlier source: “Paste This Into Claude, Never Hit a Token Limit Again,” published 2026-07-29. Local transcript: `<workspace-root>/personal/output/youtube-Y8vAQ1FgNbM-transcript.md`.
 

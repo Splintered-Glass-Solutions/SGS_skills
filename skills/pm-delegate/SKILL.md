@@ -6,11 +6,6 @@ description: >-
   the user highlights a blocker, next action, task packet, or PM update line and
   asks to delegate it.
 ---
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
-
 # PM Delegate
 
 For parallel repository work, follow the shared [repository worktree lifecycle contract](../repo-worktree-lifecycle/references/operating-contract.md). Give each concurrent writer its own task-owned worktree and branch; do not fork another writer into a shared directory or release the writer slot before its commands stop.
@@ -206,22 +201,9 @@ current turn.
 
 ## Portfolio-Specific Routing Notes
 
-- Broad example-project-12 project-agent/orchestrator context should prefer
-  `<workspace>/example-project-1`; scoped app QA and implementation
-  should use `<workspace>/example-project-12`.
-- Broad example-project-13 project-agent/orchestrator context should prefer
-  `<workspace>/example-project-3`; scoped frontend/backend/stage work
-  should use the matching implementation repo.
-- Persistent Project Agents are PM lanes. They should route implementation, QA,
-  source research, screenshots, validation, cleanup, and other execution to
-  fresh bounded worker threads, then monitor and report back. Do not reuse them
-  as catch-all worker threads.
-- Garden.io hygiene, finish-line QA, visual checks, and isolated website/app
-  fixes should usually become bounded workers.
-- Personal ops, client communications, and support/customer-facing work must not
-  send external messages unless the user explicitly asks to send.
-- Production deploys, production jobs, protected branches, and DB permission
-  changes always require an `ACTION_PROPOSAL`.
+- Resolve umbrella/shared-documentation versus implementation context from the
+  project registry. Broad coordination belongs in the configured project context;
+  scoped implementation belongs in its verified checkout.
 
 ## Output Shape
 

@@ -2,9 +2,9 @@
 name: pm-delegate
 display_name: PM Delegate
 description: 'PM delegate: delegate highlighted or selected portfolio work to the
-  correct the agent project agent, bounded worker, or approval queue. Use from any
-  PM-capable thread when the user highlights a blocker, next action, task packet,
-  or PM update line and asks to delegate it.'
+  correct Codex project agent, bounded worker, or approval queue. Use from any PM-capable
+  thread when the user highlights a blocker, next action, task packet, or PM update
+  line and asks to delegate it.'
 source: skills/pm-delegate/SKILL.md
 entrypoint: AGENT.md
 target_platforms:

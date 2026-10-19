@@ -45,7 +45,7 @@ Classify the request before acting:
 2. **New-thread handoff** — the user explicitly asks to create, start, open, or
    hand off to a new thread/task.
    - Create the Markdown handoff first.
-   - Then create the new thread in the **same the agent project** as the current
+   - Then create the new thread in the **same Codex project** as the current
      thread.
    - Use the **same model and reasoning/thinking settings** as the current
      thread.
@@ -53,7 +53,7 @@ Classify the request before acting:
      user's default model settings merely because they are convenient.
 
 If the current project ID or current model/reasoning settings cannot be
-resolved from the the agent app context or thread metadata, do not guess. Still
+resolved from the Codex app context or thread metadata, do not guess. Still
 create the Markdown handoff, explain exactly which setting could not be
 resolved, and ask for the missing direction before creating the new thread.
 

@@ -11,13 +11,17 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 
-TIMEZONE = "America/Chicago"
+TIMEZONE = "UTC"
 LEDGER_RELATIVE = Path(".codex/time_tracking.jsonl")
 
 
 def parse_args() -> argparse.Namespace:
-    now = datetime.now(ZoneInfo(TIMEZONE))
+    timezone_parser = argparse.ArgumentParser(add_help=False, allow_abbrev=False)
+    timezone_parser.add_argument("--timezone", default=TIMEZONE)
+    known, _ = timezone_parser.parse_known_args()
+    now = datetime.now(ZoneInfo(known.timezone))
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--timezone", default=known.timezone)
     parser.add_argument("--project-root", required=True, type=Path)
     parser.add_argument("--date", default=now.strftime("%Y-%m-%d"))
     parser.add_argument("--time", default=now.strftime("%H:%M"))
@@ -102,7 +106,7 @@ def main() -> int:
         "minutes": args.minutes,
         "description": args.description.strip(),
         "project": args.project,
-        "timezone": TIMEZONE,
+        "timezone": args.timezone,
         "source": args.source,
         "source_id": args.source_id,
         "task": args.task,

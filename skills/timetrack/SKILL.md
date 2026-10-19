@@ -6,11 +6,6 @@ description: >-
   1h30m. Infer the active project and work items from the thread, and split
   longer durations into gradual local records. Never create new ClickUp time.
 ---
-> Public template: example project paths, schemas and fixtures are illustrative.
-> Resolve real bindings and current authority from private project configuration;
-> examples confer no account, data-write, permission or deployment authority.
-
-
 # `/timetrack`
 
 ## Purpose
@@ -30,26 +25,10 @@ Accept compact durations such as:
 - `2hr`, `2h`, `2 hours`
 - `90m`, `1h 30m`, `1:30`
 
-Normalize an explicit duration to positive integer minutes. If no duration is
-supplied, do not ask a follow-up question: infer the count of conversational
-messages in the current thread (user and assistant messages only; do not count
-tool calls, hidden metadata, or annotations), then choose one random integer
-minute value from this table:
-
-| Conversational messages | Automatic duration |
-|---|---:|
-| 1–5 | exactly 20 minutes |
-| 6–15 | randomly 20–45 minutes |
-| 16–30 | randomly 45–90 minutes |
-| 31–40 | randomly 90–120 minutes |
-| 41+ | randomly 120–180 minutes |
-
-Use a fresh random selection once per no-duration invocation, keep the selected
-value fixed across all records created for that invocation, and report the
-message count, bracket, and selected minutes in the closeout. This keeps the
-minimum at 20 minutes, caps the maximum at 3 hours, and makes threads over 40
-messages roughly 2 hours or longer. Do not ask for the project when the current
-thread clearly establishes one.
+Normalize an explicit duration to positive integer minutes. If it is omitted,
+use reliable tracked elapsed time only when the user has requested that method.
+Otherwise ask for the duration. Never derive billable time from message counts,
+random ranges or an invented start time.
 
 ## Project inference
 
@@ -62,11 +41,8 @@ Infer the project from the strongest current-thread evidence, in this order:
 4. The current working directory, only when it maps unambiguously to a known
    client root.
 
-Use the canonical roots from `local-time-tracking`. Treat example-project-13's related
-repositories as one example-project-13 ledger, and example-project-12's related repositories as one
-example-project-12 ledger. If the thread contains materially mixed projects and no single
-project is dominant, ask which project to use rather than silently mixing
-clients.
+Use the canonical root configured for the client. Related repositories may
+share one client ledger. Ask before assigning materially mixed-client work.
 
 ## Work-item inference
 
@@ -94,10 +70,9 @@ not manufacturing variety.
   the entire total into one record.
 - Allocate minutes across the evidenced items in proportion to the thread's
   actual work emphasis. The sum must equal the requested total exactly.
-- Use the actual thread work order. If no reliable work times are present, use
-  today's America/Chicago date and ordered start times working backward from
-  the current time, with a modest gap between records. Never place records in
-  the future or silently spread them across earlier dates.
+- Use evidenced dates and times in the user/project timezone. If no reliable
+  start time exists, ask for it or record only a date when the ledger supports it.
+  Never invent earlier work intervals or future timestamps.
 
 The purpose of multiple records is a more useful work history. It is not a
 reason to exaggerate duration, change the project, or make unsupported claims.
@@ -128,8 +103,7 @@ Return:
 - total requested or automatically selected minutes and the ledger total added
 - any inference or timing assumption
 
-When the duration was automatic, explicitly identify it as automatically
-selected and include the conversational-message count and randomization bracket.
+When duration was measured automatically, identify the evidence and method.
 
 If the project is ambiguous, duration is missing, or a local ledger cannot be
 written, stop before appending and report the smallest missing input.
