@@ -1,0 +1,4 @@
+interface:
+  display_name: "Task Report Card"
+  short_description: "Build a cross-chat task status report."
+  default_prompt: "Create or update a task report card for this work, including scope, QA, evidence, progress, and usage across continuation chats."

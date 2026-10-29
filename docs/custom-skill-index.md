@@ -75,6 +75,8 @@ SGS resource library. Each entry links to its Codex-native `SKILL.md`.
 
 ## Coordinate and hand off
 
+- [`task-report-card`](../skills/task-report-card/SKILL.md): maintain a concise live task report with status, decisions, and usage across chats.
+
 - [`orchestrator-mode`](../skills/orchestrator-mode/SKILL.md): coordinate bounded work while keeping the main thread accountable for decisions.
 - [`bring-in-the-big-guns`](../skills/bring-in-the-big-guns/SKILL.md): escalate a stuck or repeatedly patched task.
 - [`pm-clean-unreads`](../skills/pm-clean-unreads/SKILL.md): classify unread work before clearing it.

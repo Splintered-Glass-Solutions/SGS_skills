@@ -1,0 +1,15 @@
+---
+name: task-report-card
+display_name: Task Report Card
+description: Create or update a concise HTML status report card for a long-running
+  task spanning chats, including scope, evidence, blockers, Dev deployment, usage
+  estimates, thread counts, and subagent counts.
+source: skills/task-report-card/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

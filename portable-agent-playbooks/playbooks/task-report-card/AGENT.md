@@ -1,0 +1,67 @@
+# Task Report Card Agent Playbook
+
+This is a platform-neutral version of the `task-report-card` skill. It is designed
+for use with Claude, Claude Code, Cursor, OpenAI agents, or another agent
+platform that supports reusable instructions.
+
+## Trigger
+
+Create or update a concise HTML status report card for a long-running task spanning chats, including scope, evidence, blockers, Dev deployment, usage estimates, thread counts, and subagent counts.
+
+## Portability Notes
+
+- Replace `<agent-config>` with the local configuration folder for the
+  target agent platform.
+- Replace `<workspace>` with the user's active project/workspace root.
+- Treat slash commands and `$skill-name` references as invocation hints.
+  If the target platform does not support slash commands, paste this
+  playbook into the agent's custom instructions or project memory.
+- Keep all original safety gates. Do not send messages, deploy, mutate
+  production data, change permissions, or perform irreversible actions
+  without explicit approval from the user.
+- If a referenced connector or tool is not available in the target platform,
+  stop and report the missing capability instead of simulating external
+  actions.
+
+## Instructions
+
+# Task Report Card
+
+Create a self-contained, readable HTML report and keep it current through continuation handoffs. The user can open it locally without a service. Keep a companion JSON data file so a later chat can update the same report instead of reconstructing it. Render the [HTML template](assets/report-card.html) with `python3 <skill-dir>/scripts/render.py <report-data.json> <report.html>`. The renderer escapes data for embedding. No external deployment, sharing, or messages are implied.
+
+## Keep the report live
+
+- Treat the report as a maintained task artifact, not a one-time snapshot. Update the companion JSON and regenerate the same HTML at meaningful milestones: a decision or unblocker arrives, a blocker changes, implementation or review passes, a release or test changes the proof, an email is sent, or work pauses or resumes. Update the snapshot time and affected items; preserve the rest of the scope.
+- When the user selects an item's A/B/C path or provides information that clears a blocker, record the choice or information promptly, mark the chosen option `selected: true`, and revise the summary, next action and status from current evidence. Move a formerly blocked item to in-progress when work can resume; use green only after completion and Dev deployment are proved. Do not ask the user to repeat an already authorized decision.
+- Make each path a keyboard-accessible click-to-copy control that copies the item ID, letter and path label in a format the user can paste into chat. Show clear success or failure feedback and offer a selectable fallback if clipboard access is denied. Copying alone does not send a message or change the saved decision; apply a choice when the user communicates it.
+- Keep options honest and concise: show the current blocker and practical paths, flag unverified alternatives and avoid fabricating a third path. Mark the chosen path separately from a recommendation; do not imply that selecting it completed any work. Interpret authority according to the action the user actually chose and its stated scope.
+- Refresh usage and chat/agent counts when reliable current measurements are available. Otherwise retain the prior values, mark their measurement time and limitations, and use defensible estimates or minimums rather than inventing numbers. Do not sum incompatible accounting methods or overlapping agent time.
+- In every continuation handoff, carry the report and data paths, last snapshot, decisions and authority, current blocker, known accounting limits and next milestone update. Reuse the existing report in the new chat; don't create a disconnected replacement. A static HTML file updates when regenerated and may require the reader to refresh the open tab; do not imply automatic real-time syncing.
+
+## Five-second scan
+
+- Above the fold, show the task name, snapshot time, the most important current blocker or next action, and four clear status counts. Keep chat, subagent, token and elapsed totals in one compact line.
+- Default to short item names, status indicators and plain-language summaries. Put evidence, detailed blockers, per-item usage, methodology and source notes behind expandable item or section details; keep all source data available and searchable. Avoid paragraphs, repeated legends, or long descriptions above the work list.
+- Under each item title, provide a short plain-language summary; in its expandable details provide a brief A/B/C set of possible paths, using the decision-focused style of [interview-spec](../interview-spec/AGENT.md). Open blocked item details by default so their choices are easy to find. State the actual obstacle, what it affects, the next action and a practical tradeoff for each viable path. Mark a recommendation only when supported by the evidence.
+- Make explanations specific to the item and understandable to a nontechnical reader. For work already underway, say what remains to prove or do; do not present it as broken. Treat options as informational, not clickable approvals. Preserve settled decisions and existing authority: do not ask the user to redecide them, invent dependencies, suggest an unauthorized action as already approved, or claim a workaround is verified when it is only a proposal. If fewer than three honest paths are known, show those available and explicitly identify the remaining path as needing investigation instead of fabricating choices. Only request input where a real unresolved decision requires it.
+- Set `headline` with a short `title` and `note` grounded in the current task. If no blocker exists, describe the current focus without labeling it blocked. Make text labels convey meaning independently of color and clearly distinguish historical/reconciliation counts from active work.
+- Validate the first screen at desktop and mobile sizes: the task, current focus, status counts and usage totals should be understandable quickly, without clipping or horizontal page scrolling. Iterate only on visible issues.
+
+## Evidence and scope
+
+- Recover the exact task, scope, ledger, prior report and continuation chain. Include every explicitly selected item and the relevant QA/QC backlog, including subitems where available. Read the real source list; do not count blank template rows as work. Retain original IDs, titles, source links, dates and reported statuses.
+- Reconcile relevant repositories, release SHAs, deployed environment and current evidence when inexpensive and consequential. Separate local, merged, deployed Dev, production, provider and customer acceptance. Historical reports and sheet statuses are evidence, not automatic current truth. Surface conflicting or missing evidence instead of hiding it.
+- Enumerate additional reports in conversation threads and linked trackers where accessible. Deduplicate only when identity is established; otherwise display separate records and state overlap. Include unknown or inaccessible sources as a clear coverage limitation.
+- Show all four statuses with both text and color: green only when complete **and deployed to Dev** with evidence; red for an evidenced blocker; blue for in-progress work or explicit reconciliation, with a rough completion percentage when defensible; grey for work not started. Never label old work “not started” without qualifying the new scope. For unknown status or percentage, say unknown; do not invent data to fill a cell.
+- Show a short next step or blocker per item where known, plus per-item token and time usage. Prefer measured values or bounded estimates with a stated basis; use `Unknown` when allocations cannot be supported. Do not allocate the entire parent total to every child or sum overlapping phases.
+- Put totals at the top: count by status, number of delivery chats, number of distinct descendant subagent runs, aggregate tokens and elapsed time when available. Label the population and timestamp. Distinguish elapsed from human labor and concurrent agent time; avoid double-counting handoffs. State whether token counters include cached/repeated context and whether descendants are included. Never present token counters as cost.
+- Use the task's durable handoff and available thread tools to identify predecessor and successor chats. Do not create or modify chats just to produce a report. If only partial thread history or subagent records are accessible, label counts as minimums or unknown.
+- Status counts must say whether they count parent and child entries, duplicates, or unique items. Don't imply a single overall completion percentage from uneven scope. Status controls and text must remain usable without color vision.
+
+## Template data
+
+`title`, `updated`, `subtitle`, `headline` (optional `{title, note, status}`), `threads`, `agents`, `tokens`, `elapsed`, `tokenBasis`, `elapsedBasis`, `checkpoint`, `sources`, and `sections`. Each section has `title`, `description`, and `items`. Each item has `id`, `title`, `status` (`done`, `blocked`, `progress`, `not_started`), `progress` (number or null), `detail`, `time`, `tokens`, `plainSummary` (short plain-language explanation), and `options` (up to three objects with `label` and `description`, plus optional `recommended: true` or `selected: true`). Present choices in A/B/C order and explain uncertainty or deferral where applicable. For older blocked items without these fields, show a clear missing-analysis message rather than inventing a summary or options; keep other older rows compact and update their data when asked. Optional `sheetStatus`, `sheetRow`, `priority`, `environment`, `source`, `note`, and `usageNote` preserve provenance and measurement basis. Use null for unknowns.
+
+## Verification and handoff
+
+Check that the HTML opens, its embedded data parses, each source item is present, explanations and options are present and accurate, the status counts match the rendered items, links use verified destinations, search/status filters include the new text, and readable desktop/mobile views show no broken layout. Check that blocked details are discoverable and that older data without the new fields renders without errors. Record any inaccessible scope or unverified status. During `$continue-in-new-thread`, include the report path, data path, last snapshot time, source pointers and next update action in the handoff; do not reset counters across successor chats. Return the report link and any material coverage or accounting limits.
