@@ -17,7 +17,7 @@ def main():
         if not isinstance(section.get("items"), list):
             parser.error("each section needs an items array")
         for item in section["items"]:
-            if item.get("status") not in {"done", "blocked", "progress", "not_started"}:
+            if item.get("status") not in {"done", "local_working", "blocked", "progress", "not_started"}:
                 parser.error("each item needs a valid status")
     template = (Path(__file__).resolve().parents[1] / "assets/report-card.html").read_text(encoding="utf-8")
     marker = "__TASK_REPORT_DATA__"
