@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Usage Steward"
+  short_description: "Review usage and efficiency with honest coverage"
+  default_prompt: "Use $codex-usage-steward for this task within the current scope and configured inputs."

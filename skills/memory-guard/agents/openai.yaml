@@ -1,0 +1,4 @@
+interface:
+  display_name: "Memory Guard"
+  short_description: "Assess resource pressure at safe task checkpoints"
+  default_prompt: "Use $memory-guard for this task within the current scope and configured inputs."

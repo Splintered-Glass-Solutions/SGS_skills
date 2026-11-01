@@ -1,0 +1,15 @@
+---
+name: codex-usage-steward
+display_name: Agent Usage Steward
+description: Review an agent workflow's usage allowance and context/coordination overhead
+  using authorized metrics, retain honest coverage accounting and recommend bounded
+  efficiency improvements.
+source: skills/codex-usage-steward/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

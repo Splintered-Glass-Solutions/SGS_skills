@@ -48,6 +48,8 @@ remaining blockers and next action.
 | Plan a defined change | [expansive-planning](skills/expansive-planning/SKILL.md) |
 | Build an accepted feature | [build-it](skills/build-it/SKILL.md) |
 | Run and record scoped QA | [qa-run](skills/qa-run/SKILL.md) |
+| Understand an unfamiliar concept | [explain-clearly](skills/explain-clearly/SKILL.md) |
+| Review resource or usage pressure | [memory-guard](skills/memory-guard/SKILL.md) · [codex-usage-steward](skills/codex-usage-steward/SKILL.md) |
 | Improve project documentation | [doc-sync](skills/doc-sync/SKILL.md) |
 | Prepare a product demonstration | [product-demo-prep](skills/product-demo-prep/SKILL.md) |
 

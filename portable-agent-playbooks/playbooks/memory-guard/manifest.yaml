@@ -1,0 +1,15 @@
+---
+name: memory-guard
+display_name: Memory Guard
+description: Assess macOS memory pressure during sustained work, preserve in-flight
+  operations and reduce only authorized task-owned load when measured capacity crosses
+  a configured threshold.
+source: skills/memory-guard/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

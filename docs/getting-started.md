@@ -57,6 +57,7 @@ your task. Missing tools or permissions should produce an exact blocker.
 | Build orchestration | Available worker models/tools, repository lifecycle and authorized release route | Resolve an equivalent documented configuration or report the missing capability |
 | Demo production | Audience, source material, brand assets, authorized capture surface, selected voice and budget | Rehearse locally; do not assume paid access or an approved voice |
 | Time tracking | Client ledger root, actual duration/start evidence and timezone | Ask for missing time; do not manufacture hours from chat length |
+| Resource and usage stewardship | Diagnostic/metrics sources, configured thresholds, observation scope and private checkpoint | Return honest partial coverage; do not invent account access or a monitoring schedule |
 | Skill publication | Your archive checkout, verified remote/branch and publishing authority | Prepare reviewable local changes only |
 
 Keep these bindings and all account state in private project configuration.

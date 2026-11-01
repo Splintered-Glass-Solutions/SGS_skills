@@ -1,0 +1,15 @@
+---
+name: explain-clearly
+display_name: Explain Clearly
+description: Explain or re-explain a topic in plain, accessible language. Use when
+  the user asks to simplify an explanation, says “explain like I'm five,” or invokes
+  this skill.
+source: skills/explain-clearly/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

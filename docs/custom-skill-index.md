@@ -153,3 +153,9 @@ SGS resource library. Each entry links to its Codex-native `SKILL.md`.
 - [`sideline-feature`](../skills/sideline-feature/SKILL.md): Capture and preserve scoped feature ideas, feature plans, product explorations, technical designs, or deferred implementation context into a dedicated sidelined-features folder, mark the current task with a 🗄️ sidelined prefix, and close the thread.
 - [`sol-review`](../skills/sol-review/SKILL.md): Independently review one implemented build item with a fresh Sol 6.1 medium reviewer; return evidence-backed findings without editing.
 - [`timetrack`](../skills/timetrack/SKILL.md): Track the work completed in the current Codex thread in the correct local client ledger.
+
+## Explanation and runtime stewardship
+
+- [`explain-clearly`](../skills/explain-clearly/SKILL.md): explain a topic in plain language while preserving accuracy and uncertainty.
+- [`memory-guard`](../skills/memory-guard/SKILL.md): measure macOS resource pressure and preserve task state at configured safety boundaries.
+- [`codex-usage-steward`](../skills/codex-usage-steward/SKILL.md): review authorized usage metrics, account for missing coverage and recommend bounded efficiency improvements.
