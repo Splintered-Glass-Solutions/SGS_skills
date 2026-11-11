@@ -1,0 +1,14 @@
+---
+name: suprise-inspection
+display_name: Suprise Inspection
+description: Compatibility alias for the /suprise-inspection spelling; use the surprise-inspection
+  independent task audit.
+source: skills/suprise-inspection/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

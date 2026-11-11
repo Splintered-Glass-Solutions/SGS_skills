@@ -1,0 +1,15 @@
+---
+name: reclaim-disk-space
+display_name: Reclaim Disk Space
+description: Audit and reclaim disk space on a Mac when storage is low, prioritizing
+  measured, disposable caches and generated output while preserving active work and
+  data.
+source: skills/reclaim-disk-space/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

@@ -1,0 +1,15 @@
+---
+name: 3-hour-checkin-mode
+display_name: 3 Hour Checkin Mode
+description: Run sustained work in focused three-hour blocks with autonomous progress,
+  same-chat phone-readable snapshots, and decision-ready blocker paths. Use when the
+  user requests this check-in mode.
+source: skills/3-hour-checkin-mode/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

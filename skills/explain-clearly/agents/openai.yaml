@@ -1,4 +1,4 @@
 interface:
   display_name: "Explain Clearly"
-  short_description: "Explain a topic in plain language"
-  default_prompt: "Use $explain-clearly for this task within the current scope and configured inputs."
+  short_description: "Explain complex things in plain language"
+  default_prompt: "Use $explain-clearly to explain this in plain language."

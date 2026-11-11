@@ -159,3 +159,11 @@ SGS resource library. Each entry links to its Codex-native `SKILL.md`.
 - [`explain-clearly`](../skills/explain-clearly/SKILL.md): explain a topic in plain language while preserving accuracy and uncertainty.
 - [`memory-guard`](../skills/memory-guard/SKILL.md): measure macOS resource pressure and preserve task state at configured safety boundaries.
 - [`codex-usage-steward`](../skills/codex-usage-steward/SKILL.md): review authorized usage metrics, account for missing coverage and recommend bounded efficiency improvements.
+
+## Recent workflows (November 2026)
+
+- [`video-production`](../skills/video-production/SKILL.md): Plan and produce source-aware AI-assisted video.
+- [`surprise-inspection`](../skills/surprise-inspection/SKILL.md): Independently inspect an ongoing task and course-correct.
+- [`suprise-inspection`](../skills/suprise-inspection/SKILL.md): Compatibility alias for surprise-inspection.
+- [`reclaim-disk-space`](../skills/reclaim-disk-space/SKILL.md): Audit and reclaim disposable storage while preserving active work.
+- [`3-hour-checkin-mode`](../skills/3-hour-checkin-mode/SKILL.md): Run sustained work with three-hour progress snapshots.

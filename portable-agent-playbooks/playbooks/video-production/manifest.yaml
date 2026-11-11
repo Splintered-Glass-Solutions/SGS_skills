@@ -1,0 +1,16 @@
+---
+name: video-production
+display_name: Video Production
+description: Plan, produce, edit, or refine an AI-assisted film, advertisement, or
+  website video using verified source imagery, generated motion, narration, music,
+  and captions. Use for creative video production; use demo-video-production for product
+  walkthrough recordings.
+source: skills/video-production/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

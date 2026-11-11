@@ -1,0 +1,3 @@
+interface:
+  display_name: "Surprise Inspection"
+  short_description: "Audit task progress and course-correct"

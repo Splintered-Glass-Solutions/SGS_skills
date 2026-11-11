@@ -1,0 +1,16 @@
+---
+name: surprise-inspection
+display_name: Surprise Inspection
+description: Independently audit whether an ongoing Codex task is advancing the user's
+  actual objective, especially when work may be stuck, circling through testing, accumulating
+  process, or consuming excessive effort. Use when the user requests a surprise inspection
+  or an outside course-correction review.
+source: skills/surprise-inspection/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions
