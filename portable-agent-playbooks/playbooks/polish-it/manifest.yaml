@@ -1,0 +1,16 @@
+---
+name: polish-it
+display_name: Polish It
+description: Polish an existing app or website by removing developer-facing clutter,
+  excessive warnings and redundant copy while preserving essential user guidance,
+  trust and accessible feedback. Use when asked to polish, declutter or make a user
+  experience feel production-ready.
+source: skills/polish-it/SKILL.md
+entrypoint: AGENT.md
+target_platforms:
+- claude
+- claude-code
+- cursor
+- openai-agents
+- generic-agent
+safety_level: approval-gated for external or irreversible actions

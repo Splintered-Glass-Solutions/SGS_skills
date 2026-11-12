@@ -62,6 +62,8 @@ SGS resource library. Each entry links to its Codex-native `SKILL.md`.
 
 ## Validate and improve
 
+- [`polish-it`](../skills/polish-it/SKILL.md): remove development clutter and refine the user experience while preserving essential guidance and feedback.
+
 - [`doc-sync`](../skills/doc-sync/SKILL.md): audit and improve a repository's documentation.
 - [`make-it-better`](../skills/make-it-better/SKILL.md): run a structured improvement pass across product, workflow, and documentation surfaces.
 - [`security-best-practices`](../skills/security-best-practices/SKILL.md): review code against language and framework security guidance.
